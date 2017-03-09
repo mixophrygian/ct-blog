@@ -9,11 +9,9 @@ export default class Menu extends React.Component {
     return (
         <Navbar className="navbar-fixed-top">
           <Nav bsStyle="pills">
-            <IndexLinkContainer to="/">
               <NavItem>
-                Home
+                <Glyphicon glyph="align-justify"/>
               </NavItem>
-            </IndexLinkContainer>
             <LinkContainer to="/user-edit">
               <NavItem>
                 New <Glyphicon glyph="plus-sign"/>

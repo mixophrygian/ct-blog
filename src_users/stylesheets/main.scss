@@ -12,18 +12,38 @@
   height: 5vh;
 }
 
+.nav li {
+  border-radius: 3px;
+}
+
+//Hamburger menu
+.nav li:first-child {
+  margin-right: 42vw;
+  display: flex;
+  
+  a {
+    padding-left: 0;
+  }
+  
+  a span.glyphicon {
+  color: lightgray;
+  font-size: 24px;
+  }
+}
+
+//New button
 .nav li:nth-child(2){
   border: 1px dashed gray;
-}
-
-.nav li:nth-child(2) a{
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
- .nav a span.glyphicon {
-   margin-left: 3px;
+  
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  span.glyphicon {
+    margin-left: 3px;
+  }
 }
 
 //page-home
