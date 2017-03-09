@@ -36,6 +36,7 @@ export class UserList extends React.Component {
     // show the list of users
     return (
       <div>
+      <h1>D blog</h1>
         <Table bordered hover responsive striped>
           <thead>
           <tr>
