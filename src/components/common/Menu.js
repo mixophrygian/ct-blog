@@ -2,6 +2,8 @@ import React from "react";
 import { Nav, NavItem, Navbar, Glyphicon } from "react-bootstrap";
 import { IndexLinkContainer, LinkContainer } from "react-router-bootstrap";
 import Sidebar from 'react-sidebar';
+/* https://github.com/balloob/react-sidebar */
+
 // Menu component
 export default class Menu extends React.Component {
   
@@ -66,6 +68,7 @@ export default class Menu extends React.Component {
         </Navbar>
           <Sidebar 
             sidebar={sidebarContent}
+            shadow={false}
             open={this.state.sidebarOpen}
             onSetOpen={this.onSetSidebarOpen}>
             <b>Main content</b>

@@ -31,7 +31,8 @@
   }
 }
 
-//Sidebar styles are inlined, since it's an npm module
+//Sidebar styles are inlined in the Menu componen
+// since it's an npm module
 
 
 //New button
@@ -53,8 +54,19 @@
 
 .page-home {
   margin-top: 15vh;
+  display: flex;
+  
+  div:first-child {
+    max-width: 100%;
+  }
 }
 
+.users-pagination {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0;
+  margin: 0 auto;
+}
 
 .footer {
   clear: both;
@@ -71,8 +83,10 @@
   }
 }
 
-.users-pagination {
-  margin-top: 0;
+//page user-edit
+
+.page-user-edit {
+  margin-top: 15vh;
 }
 
 .page-user-edit form {
@@ -80,6 +94,4 @@
   margin-top: 40px;
 }
 
-th {
-  background-image: url('/media/pattern.jpg');
-}
+

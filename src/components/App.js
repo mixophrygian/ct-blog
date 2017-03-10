@@ -32,7 +32,7 @@ export class App extends React.Component {
           {children}
         </div>
         <div className="footer">
-          <img src="/media/logo.svg"/>
+        <p>some footer content</p>
         </div>
       </div>
     );
