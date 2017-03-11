@@ -85,7 +85,6 @@ export default class Menu extends React.Component {
             sidebar={sidebarContent}
             shadow={false}
             touch={false}
-            touchHandleWidth={0}
             open={this.state.sidebarOpen}
             onSetOpen={this.onSetSidebarOpen}>
             <b>Main content</b>
