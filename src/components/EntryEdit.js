@@ -6,8 +6,8 @@ import { PageHeader, Form } from "react-bootstrap";
 import FormField from "./common/FormField";
 import FormSubmit from "./common/FormSubmit";
 
-// User add/edit page component
-export class UserEdit extends React.Component {
+// Entry add/edit page component
+export class EntryEdit extends React.Component {
   // constructor
   constructor(props) {
     super(props);
@@ -18,15 +18,15 @@ export class UserEdit extends React.Component {
 
   // render
   render() {
-    const {user, handleSubmit, error, invalid, submitting} = this.props;
+    const {entry, handleSubmit, error, invalid, submitting} = this.props;
     return (
-      <div className="page-user-edit">
-        <PageHeader>{'User ' + (user.id ? 'edit' : 'add')}</PageHeader>
+      <div className="page-entry-edit">
+        <PageHeader>{'Entry ' + (entry.id ? 'edit' : 'add')}</PageHeader>
         <Form horizontal onSubmit={handleSubmit(this.formSubmit)}>
-          <Field component={FormField} name="username" label="Username" doValidate={true}/>
+          <Field component={FormField} name="entryname" label="Entryname" doValidate={true}/>
           <Field component={FormField} name="job" label="Job"/>
           <FormSubmit error={error} invalid={invalid} submitting={submitting} buttonSaveLoading="Saving..."
-            buttonSave="Save User"/>
+            buttonSave="Save Entry"/>
         </Form>
       </div>
     );
@@ -37,10 +37,10 @@ export class UserEdit extends React.Component {
     const {dispatch} = this.props;
     return new Promise((resolve, reject) => {
       dispatch({
-        type: 'USERS_ADD_EDIT',
-        user: {
+        type: 'ENTRIES_ADD_EDIT',
+        entry: {
           id: values.id || 0,
-          username: values.username,
+          entryname: values.entryname,
           job: values.job,
         },
         callbackError: (error) => {
@@ -56,23 +56,23 @@ export class UserEdit extends React.Component {
 }
 
 // decorate the form component
-const UserEditForm = reduxForm({
-  form: 'user_edit',
+const EntryEditForm = reduxForm({
+  form: 'entry_edit',
   validate: function (values) {
     const errors = {};
-    if (!values.username) {
-      errors.username = 'Username is required';
+    if (!values.entryname) {
+      errors.entryname = 'Entryname is required';
     }
     return errors;
   },
-})(UserEdit);
+})(EntryEdit);
 
 // export the connected class
 function mapStateToProps(state, own_props) {
-  const user = state.users.find(x => Number(x.id) === Number(own_props.params.id)) || {};
+  const entry = state.entries.find(x => Number(x.id) === Number(own_props.params.id)) || {};
   return {
-    user: user,
-    initialValues: user,
+    entry: entry,
+    initialValues: entry,
   };
 }
-export default connect(mapStateToProps)(UserEditForm);
+export default connect(mapStateToProps)(EntryEditForm);

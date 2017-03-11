@@ -8,15 +8,15 @@ import "../stylesheets/main.scss";
 export class App extends React.Component {
   // pre-render logic
   componentWillMount() {
-    // the first time we load the app, we need that users list
-    this.props.dispatch({type: 'USERS_FETCH_LIST'});
+    // the first time we load the app, we need that entries list
+    this.props.dispatch({type: 'ENTRIES_FETCH_LIST'});
   }
 
   // render
   render() {
     // show the loading state while we wait for the app to load
-    const {users, children} = this.props;
-    if (!users.length) {
+    const {entries, children} = this.props;
+    if (!entries.length) {
       return (
         <ProgressBar active now={100}/>
       );
@@ -42,7 +42,7 @@ export class App extends React.Component {
 // export the connected class
 function mapStateToProps(state) {
   return {
-    users: state.users || [],
+    entries: state.entries || [],
   };
 }
 export default connect(mapStateToProps)(App);

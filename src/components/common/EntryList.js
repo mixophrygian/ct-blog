@@ -2,11 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { push } from "react-router-redux";
 import { Table, Pagination } from "react-bootstrap";
-import UserListElement from "./UserListElement";
-import UserDeletePrompt from "./UserDeletePrompt";
+import SingleEntryRow from "./SingleEntryRow";
+import EntryDeletePrompt from "./EntryDeletePrompt";
 
 // User list component
-export class UserList extends React.Component {
+export class EntryList extends React.Component {
   // constructor
   constructor(props) {
     super(props);
@@ -14,89 +14,80 @@ export class UserList extends React.Component {
     // default ui local state
     this.state = {
       delete_show: false,
-      delete_user: {},
+      delete_entry: {},
     };
 
     // bind <this> to the event method
     this.changePage = this.changePage.bind(this);
     this.showDelete = this.showDelete.bind(this);
     this.hideDelete = this.hideDelete.bind(this);
-    this.userDelete = this.userDelete.bind(this);
+    this.entryDelete = this.entryDelete.bind(this);
   }
 
   // render
   render() {
     // pagination
-    const {users, page} = this.props;
+    const {entries, page} = this.props;
     const per_page = 10;
-    const pages = Math.ceil(users.length / per_page);
+    const pages = Math.ceil(entries.length / per_page);
     const start_offset = (page - 1) * per_page;
     let start_count = 0;
 
-    // show the list of users
+    // show the list of entries
     return (
       <div>
       <h1>D blog</h1>
         <Table bordered hover responsive striped>
-          <thead>
-          <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Job</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-          </thead>
           <tbody>
-          {users.map((user, index) => {
+          {entries.map((entry, index) => {
             if (index >= start_offset && start_count < per_page) {
               start_count++;
               return (
-                <UserListElement key={index} user={user} showDelete={this.showDelete}/>
+                <SingleEntryRow key={index} entry={entry} showDelete={this.showDelete}/>
               );
             }
           })}
           </tbody>
         </Table>
 
-        <Pagination className="users-pagination" bsSize="medium" maxButtons={10} first last next
+        <Pagination className="entries-pagination" bsSize="medium" maxButtons={10} first last next
           prev boundaryLinks items={pages} activePage={page} onSelect={this.changePage}/>
 
-        <UserDeletePrompt show={this.state.delete_show} user={this.state.delete_user}
-          hideDelete={this.hideDelete} userDelete={this.userDelete}/>
+        <EntryDeletePrompt show={this.state.delete_show} entry={this.state.delete_entry}
+          hideDelete={this.hideDelete} entryDelete={this.entryDelete}/>
       </div>
     );
   }
 
-  // change the user lists' current page
+  // change the entry lists' current page
   changePage(page) {
     this.props.dispatch(push('/?page=' + page));
   }
 
-  // show the delete user prompt
-  showDelete(user) {
+  // show the delete entry prompt
+  showDelete(entry) {
     // change the local ui state
     this.setState({
       delete_show: true,
-      delete_user: user,
+      delete_entry: entry,
     });
   }
 
-  // hide the delete user prompt
+  // hide the delete entry prompt
   hideDelete() {
     // change the local ui state
     this.setState({
       delete_show: false,
-      delete_user: {},
+      delete_entry: {},
     });
   }
 
-  // delete the user
-  userDelete() {
-    // delete the user
+  // delete the entry
+  entryDelete() {
+    // delete the entry
     this.props.dispatch({
-      type: 'USERS_DELETE',
-      user_id: this.state.delete_user.id,
+      type: 'ENTRIES_DELETE',
+      entry_id: this.state.delete_entry.id,
     });
 
     // hide the prompt
@@ -107,7 +98,7 @@ export class UserList extends React.Component {
 // export the connected class
 function mapStateToProps(state) {
   return {
-    users: state.users,
+    entries: state.entries,
 
     // https://github.com/reactjs/react-router-redux#how-do-i-access-router-state-in-a-container-component
     // react-router-redux wants you to get the url data by passing the props through a million components instead of
@@ -115,4 +106,4 @@ function mapStateToProps(state) {
     page: Number(state.routing.locationBeforeTransitions.query.page) || 1,
   };
 }
-export default connect(mapStateToProps)(UserList);
+export default connect(mapStateToProps)(EntryList);

@@ -59,7 +59,7 @@ export default class Menu extends React.Component {
               <NavItem onClick={this.onSetSidebarOpen}>
                 <Glyphicon glyph="align-justify"/>
               </NavItem>
-            <LinkContainer to="/user-edit">
+            <LinkContainer to="/entry-edit">
               <NavItem>
                 New <Glyphicon glyph="plus-sign"/>
               </NavItem>

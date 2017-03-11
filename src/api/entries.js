@@ -1,24 +1,24 @@
-// API Users static class
-export default class ApiUsers {
-  // get a list of users
+// API Entries static class
+export default class ApiEntries {
+  // get a list of entries
   static getList() {
     return new Promise(resolve => {
       setTimeout(() => {
-        // build some dummy users list
-        let users = [];
+        // build some dummy entries list
+        let entries = [];
         for (let x = 1; x <= 5; x++) {
-          users.push({
+          entries.push({
             id: x,
-            username: 'Johny ' + x,
+            title: 'Johny ' + x,
             job: 'Employee ' + x,
           });
         }
-        resolve(users);
+        resolve(entries);
       }, 1000);
     });
   }
 
-  // add/edit a user
+  // add/edit an entry
   static addEdit() {
     return new Promise(resolve => {
       setTimeout(() => {
@@ -28,7 +28,7 @@ export default class ApiUsers {
     });
   }
 
-  // delete a user
+  // delete an entry
   static delete() {
     return new Promise(resolve => {
       setTimeout(() => {

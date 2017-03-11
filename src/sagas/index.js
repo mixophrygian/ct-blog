@@ -1,12 +1,12 @@
 import { takeLatest } from "redux-saga";
 import { fork } from "redux-saga/effects";
-import { usersFetchList, usersAddEdit, usersDelete } from "./users";
+import { entriesFetchList, entriesAddEdit, entriesDelete } from "./entries";
 
 // main saga generators
 export function* sagas() {
   yield [
-    fork(takeLatest, 'USERS_FETCH_LIST', usersFetchList),
-    fork(takeLatest, 'USERS_ADD_EDIT', usersAddEdit),
-    fork(takeLatest, 'USERS_DELETE', usersDelete),
+    fork(takeLatest, 'ENTRIES_FETCH_LIST', entriesFetchList),
+    fork(takeLatest, 'ENTRIES_ADD_EDIT', entriesAddEdit),
+    fork(takeLatest, 'ENTRIES_DELETE', entriesDelete),
   ];
 }

@@ -18,8 +18,8 @@
 
 //Hamburger menu
 .nav li:first-child {
-  margin-right: 42vw;
   display: flex;
+  flex: 1;
   
   a {
     padding-left: 0;
@@ -61,7 +61,7 @@
   }
 }
 
-.users-pagination {
+.entries-pagination {
   display: flex;
   justify-content: flex-end;
   margin-top: 0;
@@ -83,13 +83,13 @@
   }
 }
 
-//page user-edit
+//page entry-edit
 
-.page-user-edit {
+.page-entry-edit {
   margin-top: 15vh;
 }
 
-.page-user-edit form {
+.page-entry-edit form {
   width: 500px;
   margin-top: 40px;
 }
