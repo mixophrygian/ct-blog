@@ -27,3 +27,4 @@ But Burns' full journal has in fact five columns:
 
 
 Cognitive Therapy Journal is a mobile-first web app built using React Redux minimal starter kit (boilerplate)
+https://github.com/catalin-luntraru/redux-minimal
