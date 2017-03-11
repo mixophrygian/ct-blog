@@ -52,6 +52,20 @@ export default class Menu extends React.Component {
       </div>
     );
     
+    let dynamicStyles = this.state.sidebarOpen ? 
+    //so the sidebar doesn't lay on top of the UI, invisibly
+      { 
+        root: {
+          zIndex: 1
+        }
+      }
+       :
+       {
+         root: {
+           zIndex: -1
+        }
+      };
+    
     return (
         <div>
         <Navbar className="navbar-fixed-top">
@@ -67,8 +81,11 @@ export default class Menu extends React.Component {
           </Nav>
         </Navbar>
           <Sidebar 
+            styles={dynamicStyles}
             sidebar={sidebarContent}
             shadow={false}
+            touch={false}
+            touchHandleWidth={0}
             open={this.state.sidebarOpen}
             onSetOpen={this.onSetSidebarOpen}>
             <b>Main content</b>
