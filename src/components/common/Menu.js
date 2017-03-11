@@ -47,8 +47,8 @@ export default class Menu extends React.Component {
     const sidebarContent = (
       <div style={styles.content}>
         <a style={styles.sidebarLink} href="/">Home</a>
-        <a style={styles.sidebarLink} href="/">About</a>
-        <a style={styles.sidebarLink} href="/">FAQ</a>
+        <a style={styles.sidebarLink} href="/about">About</a>
+        <a style={styles.sidebarLink} href="/faq">FAQ</a>
       </div>
     );
     
