@@ -14,7 +14,7 @@ export default class ApiEntries {
           });
         }
         resolve(entries);
-      }, 1000);
+      }, 0);
     });
   }
 
