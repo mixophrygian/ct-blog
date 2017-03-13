@@ -68,8 +68,8 @@
   margin: 0 auto;
 }
 
-.pagination>.active>a {
-  z-index: 1;
+.pagination > li.active>a {
+  z-index: auto;
 }
 
 .footer {
