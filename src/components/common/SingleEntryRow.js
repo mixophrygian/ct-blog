@@ -10,8 +10,11 @@ export default class SingleEntryRow extends React.Component {
     return (
       <tr>
         <td>{entry.entryname}</td>
-        <td>
+        <td className="entryTitle">
+        <div>
         {entry.job}
+        </div>
+        <div>
           <Link to={'entry-edit/' + entry.id}>
             <Button bsSize="xsmall">
               <Glyphicon glyph="edit"/>
@@ -20,6 +23,7 @@ export default class SingleEntryRow extends React.Component {
           <Button bsSize="xsmall" className="entry-delete" onClick={() => showDelete(entry)}>
             <Glyphicon glyph="remove-circle"/>
           </Button>
+          </div>
         </td>
       </tr>
     );

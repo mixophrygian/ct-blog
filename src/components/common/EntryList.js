@@ -35,15 +35,15 @@ export class EntryList extends React.Component {
 
     // show the list of entries
     return (
-      <div>
+      <div className="EntryList">
       <h1>D blog</h1>
-        <Table bordered hover responsive striped>
+        <Table bordered hover responsive striped className="Table">
           <tbody>
           {entries.map((entry, index) => {
             if (index >= start_offset && start_count < per_page) {
               start_count++;
               return (
-                <SingleEntryRow key={index} entry={entry} showDelete={this.showDelete}/>
+                <SingleEntryRow key={index} entry={entry} showDelete={this.showDelete} className="SingleEntryRow"/>
               );
             }
           })}

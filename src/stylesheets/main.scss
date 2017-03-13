@@ -58,6 +58,14 @@
   
   div:first-child {
     max-width: 100%;
+    flex: 1;
+  }
+  
+  .EntryList .Table {
+    .entryTitle {
+      display: flex;
+      justify-content: space-between;
+    }  
   }
 }
 
@@ -71,6 +79,8 @@
 .pagination > li.active>a {
   z-index: auto;
 }
+
+//footer
 
 .footer {
   clear: both;
