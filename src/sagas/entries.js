@@ -17,7 +17,7 @@ export function* entriesFetchList(action) {
 // add/edit a entry
 export function* entriesAddEdit(action) {
   // call the api to add/edit the entry
-  yield call(ApiEntries.addEdit);
+  yield call(ApiEntries.addEdit, action);
   //return action.callbackError("Some error");   // show an error when the API fails
 
   // update the state by adding/editing the entry
@@ -33,7 +33,7 @@ export function* entriesAddEdit(action) {
 // delete a entry
 export function* entriesDelete(action) {
   // call the api to delete the entry
-  yield call(ApiEntries.delete);
+  yield call(ApiEntries.delete, action);
 
   // update the state by removing the entry
   yield put({

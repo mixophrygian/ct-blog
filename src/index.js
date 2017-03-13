@@ -6,10 +6,6 @@ import { store } from "./store.js";
 import { router } from "./router.js";
 import { saveState } from "./localstorage"
 
-store.subscribe(()=> {
-//  saveState(store.onChange);
-})
-
 // render the main component
 ReactDOM.render(
   <Provider store={store}>
