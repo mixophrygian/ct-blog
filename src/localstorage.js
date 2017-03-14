@@ -14,6 +14,8 @@ export const saveState = (state) => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem('state', serializedState);
+    console.log('save state succeeded');
+    console.log(state);
   } catch (err) {
     console.log(err);
   }

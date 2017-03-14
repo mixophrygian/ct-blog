@@ -39,7 +39,8 @@ export class EntryEdit extends React.Component {
       dispatch({
         type: 'ENTRIES_ADD_EDIT',
         entry: {
-          id: values.id || 0,
+          id: values.id,
+          date: new Date(),
           entryname: values.entryname,
           job: values.job,
         },

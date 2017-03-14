@@ -27,7 +27,7 @@ export class EntryList extends React.Component {
   // render
   render() {
     // pagination
-    const {entries, page} = this.props;
+    let {entries, page} = this.props;
     const per_page = 10;
     const pages = Math.ceil(entries.length / per_page);
     const start_offset = (page - 1) * per_page;

@@ -14,6 +14,7 @@ export default class ApiEntries {
           for (let x = 1; x <= 5; x++) {
             entries.push({
               id: x,
+              date: new Date(),
               title: 'Johny ' + x,
               job: 'Employee ' + x,
             });
@@ -32,12 +33,12 @@ export default class ApiEntries {
         let entries = [];
         entries = loadState();
         if(!action.entry.id){
+          action.id = new Date().getUTCMilliseconds();
           entries.push(action.entry);
         } else {
-          var toChange = entries.find((saved) => {return saved.id === action.entry.id});
+          var toChange = entries.find((saved) => {return saved === action});
           entries.splice(entries.indexOf(toChange), 1);
-          toChange = action.entry;
-          entries.push(toChange);
+          entries.push(action.entry);
         }
         saveState(entries);
         resolve();
