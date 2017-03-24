@@ -15,12 +15,13 @@ export default class ApiEntries {
             entries.push({
               id: x,
               date: new Date(),
-              title: 'Johny ' + x,
+              entryname: 'Johny ' + x,
               job: 'Employee ' + x,
             });
           }
+          console.log('saving new entries');
+          saveState(entries);
         }
-        saveState(entries);
         resolve(entries);
       }, 0);
     });
@@ -33,16 +34,18 @@ export default class ApiEntries {
         let entries = [];
         entries = loadState();
         if(!action.entry.id){
-          action.id = new Date().getUTCMilliseconds();
+          console.log('new entry');
+          action.entry.id = new Date();
           entries.push(action.entry);
         } else {
-          var toChange = entries.find((saved) => {return saved === action});
-          entries.splice(entries.indexOf(toChange), 1);
-          entries.push(action.entry);
+          console.log('edited entry', action);
+          var toChange = entries.find((saved) => {return saved.id === action.entry.id});
+          entries.splice(entries.indexOf(toChange), 1, action.entry);
         }
+        console.log('add/edit saved entries');
         saveState(entries);
         resolve();
-      }, 100);
+      }, 0);
     });
   }
 
@@ -52,11 +55,11 @@ export default class ApiEntries {
       setTimeout(() => {
         let entries = [];
         entries = loadState();  
-        var toChange = entries.find((saved) => {return saved === action});
+        var toChange = entries.find((saved) => {return saved === action.entry});
         entries.splice(entries.indexOf(toChange), 1);
         saveState(entries);
         resolve();
-      }, 500);
+      }, 100);
     });
   }
 }
