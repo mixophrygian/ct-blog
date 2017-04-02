@@ -35,6 +35,7 @@ export class EntryEdit extends React.Component {
   // submit the form
   formSubmit(values) {
     const {dispatch} = this.props;
+    console.log(values.id, 'the id');
     return new Promise((resolve, reject) => {
       dispatch({
         type: 'ENTRIES_ADD_EDIT',

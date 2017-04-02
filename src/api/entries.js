@@ -23,7 +23,7 @@ export default class ApiEntries {
           saveState(entries);
         }
         resolve(entries);
-      }, 0);
+      }, 200);
     });
   }
 
@@ -34,8 +34,8 @@ export default class ApiEntries {
         let entries = [];
         entries = loadState();
         if(!action.entry.id){
-          console.log('new entry');
-          action.entry.id = new Date();
+          console.log('new entry', action);
+          action.entry.id = new Date().getTime();
           entries.push(action.entry);
         } else {
           console.log('edited entry', action);
@@ -45,7 +45,7 @@ export default class ApiEntries {
         console.log('add/edit saved entries');
         saveState(entries);
         resolve();
-      }, 0);
+      }, 200);
     });
   }
 
@@ -55,11 +55,12 @@ export default class ApiEntries {
       setTimeout(() => {
         let entries = [];
         entries = loadState();  
-        var toChange = entries.find((saved) => {return saved === action.entry});
+        var toChange = entries.find((el) => el.id === action.entry_id);
+        debugger;
         entries.splice(entries.indexOf(toChange), 1);
         saveState(entries);
         resolve();
-      }, 100);
+      }, 200);
     });
   }
 }

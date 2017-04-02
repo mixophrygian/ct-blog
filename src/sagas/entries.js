@@ -19,14 +19,14 @@ export function* entriesAddEdit(action) {
   // call the api to add/edit the entry
   yield call(ApiEntries.addEdit, action);
   //return action.callbackError("Some error");   // show an error when the API fails
-
+  
   // update the state by adding/editing the entry
   yield put({
     type: action.entry.id ? 'ENTRIES_EDIT_SAVE' : 'ENTRIES_ADD_SAVE',
     entry: action.entry,
   });
 
-  // success
+    // success
   action.callbackSuccess();
 }
 
@@ -40,4 +40,5 @@ export function* entriesDelete(action) {
     type: 'ENTRIES_DELETE_SAVE',
     entry_id: action.entry_id,
   });
-}
+  
+  }
