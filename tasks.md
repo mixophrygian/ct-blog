@@ -1,5 +1,10 @@
 #Project Roadmap
-3/23 - next :
+
+4/1 - next:
+  -Make tapping on an entry date/title take the user to the detailed view.  This should be similar but different from the edit view
+  -Then flesh out the edit/detail view with stacked layout
+  
+3/23 - next:
   -fix delete and save (they don't update the UI and sometimes behave unpredictably, especially delete. Check to see how it's updating the 'db' - by id? correctly?)
 
 3/12 - next:
