@@ -1,43 +1,46 @@
 import React, { PropTypes } from "react";
-import { Link } from "react-router";
+import { Link, browserHistory } from "react-router";
 import { Button, Glyphicon } from "react-bootstrap";
+import { formatDate } from '../../utils/utils';
 
 // User List Element component
 export default class SingleEntryRow extends React.Component {
   constructor(props){
     super(props);
-    this.formatDate = this.formatDate.bind(this);
+    this.viewEntry = this.viewEntry.bind(this);
   }
   
   // render
-  formatDate (date){
-    date = new Date(date);
-    var month = date.getMonth() + 1;
-    var weekdayIndex = date.getDay();
-    var weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    return weekDays[weekdayIndex] + ' ' + month + '/' + date.getDate() +'/' + date.getFullYear();
+    
+  viewEntry(e) {
+    e.preventDefault();
+    const id = e.currentTarget.getAttribute('data-id');
+    if(e.target.tagName !== "SPAN"){
+      browserHistory.push('entry/' + id);
+    }
   }
   
   render() {
     const {entry, showDelete} = this.props;
-    const date = this.formatDate(entry.date);
+    const date = formatDate(entry.date);
     
     return (
-      <tr>
+      <tr data-id={entry.id} onClick={this.viewEntry}>
         <td>{date}</td>
         <td className="entryTitle">
-        <div>
-        {entry.entryname}
-        </div>
-        <div>
-          <Link to={'entry-edit/' + entry.id}>
-            <Button bsSize="xsmall">
-              <Glyphicon glyph="edit"/>
+          <div>
+            {entry.entryname}
+          </div>
+          
+          <div>
+            <Link to={'entry-edit/' + entry.id}>
+              <Button bsSize="xsmall">
+                <Glyphicon glyph="edit"/>
+              </Button>
+            </Link>
+            <Button bsSize="xsmall" className="entry-delete" onClick={() => showDelete(entry)}>
+              <Glyphicon glyph="remove-circle"/>
             </Button>
-          </Link>
-          <Button bsSize="xsmall" className="entry-delete" onClick={() => showDelete(entry)}>
-            <Glyphicon glyph="remove-circle"/>
-          </Button>
           </div>
         </td>
       </tr>
