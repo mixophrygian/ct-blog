@@ -6,8 +6,8 @@ export default function entries(state = {}, action) {
       break;
 
     case 'ENTRIES_ADD_SAVE':
-      action.entry.id = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
-      console.log('saving a new entry', ...state, action.entry);
+      action.entry.id = action.entry.id || Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+      console.log('saving a new entry', [...state, action.entry]);
       return [...state, action.entry];
       break;
 

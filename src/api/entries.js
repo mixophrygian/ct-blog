@@ -33,18 +33,21 @@ export default class ApiEntries {
       setTimeout(() => {
         let entries = [];
         entries = loadState();
+        let actionType = '';
         if(!action.entry.id){
           console.log('new entry', action);
           action.entry.id = new Date().getTime();
           entries.push(action.entry);
+          actionType = 'Add';
         } else {
           console.log('edited entry', action);
           var toChange = entries.find((saved) => {return saved.id === action.entry.id});
           entries.splice(entries.indexOf(toChange), 1, action.entry);
+          actionType = 'Edit';
         }
         console.log('add/edit saved entries');
         saveState(entries);
-        resolve();
+        resolve(actionType);
       }, 200);
     });
   }
@@ -56,7 +59,6 @@ export default class ApiEntries {
         let entries = [];
         entries = loadState();  
         var toChange = entries.find((el) => el.id === action.entry_id);
-        debugger;
         entries.splice(entries.indexOf(toChange), 1);
         saveState(entries);
         resolve();
