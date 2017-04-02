@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, browserHistory } from "react-router";
 import { Nav, NavItem, Navbar, Glyphicon } from "react-bootstrap";
 import { IndexLinkContainer, LinkContainer } from "react-router-bootstrap";
 import Sidebar from 'react-sidebar';
@@ -10,7 +11,6 @@ export default class Menu extends React.Component {
   constructor(props){
     super(props);
     this.state = {sidebarOpen: false};
-    
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
   }
   
@@ -46,9 +46,9 @@ export default class Menu extends React.Component {
     
     const sidebarContent = (
       <div style={styles.content}>
-        <a style={styles.sidebarLink} href="/">Home</a>
-        <a style={styles.sidebarLink} href="/about">About</a>
-        <a style={styles.sidebarLink} href="/faq">FAQ</a>
+        <Link style={styles.sidebarLink} onClick={this.onSetSidebarOpen} to={'/'}>Home</Link>
+        <Link style={styles.sidebarLink} onClick={this.onSetSidebarOpen} to={'/about'}>About</Link>
+        <Link style={styles.sidebarLink} onClick={this.onSetSidebarOpen} to={'/faq'}>FAQ</Link>
       </div>
     );
     
