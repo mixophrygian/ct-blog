@@ -74,7 +74,7 @@ export default class Menu extends React.Component {
                 <Glyphicon glyph="align-justify"/>
               </NavItem>
             <LinkContainer to="/entry-edit">
-              <NavItem>
+              <NavItem className="edit-button">
                 New <Glyphicon glyph="plus-sign"/>
               </NavItem>
             </LinkContainer>

@@ -1,5 +1,10 @@
 #Project Roadmap
 
+4/2 - next:
+  -Fix janky sidebar z index bug
+  -consider better UX for viewing single entries then returning home -> button?
+  -actually add in correct form fields for both data and UI
+
 4/1 - next:
   -Make tapping on an entry date/title take the user to the detailed view.  This should be similar but different from the edit view
   -Then flesh out the edit/detail view with stacked layout

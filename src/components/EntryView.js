@@ -2,7 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { push } from "react-router-redux";
 import { Field, SubmissionError, reduxForm } from "redux-form";
-import { PageHeader, Form, Panel } from "react-bootstrap";
+import { PageHeader, Form, Panel, Nav, NavItem, Navbar, Glyphicon } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import FormField from "./common/FormField";
 import FormSubmit from "./common/FormSubmit";
 import { formatDate } from '../utils/utils';
@@ -22,8 +23,16 @@ export class EntryView extends React.Component {
     const {entry, handleSubmit, error, invalid, submitting} = this.props;
     console.log(entry);
     return (
-      <div className="page-entry-edit">
-        <PageHeader>{formatDate(entry.date)}</PageHeader>
+      <div className="page-entry-view">
+        <div className="header">
+          <div className="date">{formatDate(entry.date)}</div>
+          <LinkContainer to={'entry-edit/' + entry.id}>
+            <NavItem className="edit-button">
+              <span>Edit</span> <Glyphicon glyph="edit"/>
+            </NavItem>
+          </LinkContainer>
+        </div>
+        
         <Panel header={'Entryname'}>
           {entry.entryname}
         </Panel>
