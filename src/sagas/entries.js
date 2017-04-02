@@ -11,7 +11,6 @@ export function* entriesFetchList(action) {
     type: 'ENTRIES_LIST_SAVE',
     entries: entries,
   });
-  console.log('retrieved entries', entries);
 }
 
 // add/edit a entry

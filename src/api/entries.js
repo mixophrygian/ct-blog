@@ -10,7 +10,6 @@ export default class ApiEntries {
         let entries = [];
         entries = loadState();
         if(!entries || !entries.length) {
-          console.log('load state didnt work');
           for (let x = 1; x <= 5; x++) {
             entries.push({
               id: x,
@@ -19,7 +18,6 @@ export default class ApiEntries {
               job: 'Employee ' + x,
             });
           }
-          console.log('saving new entries');
           saveState(entries);
         }
         resolve(entries);
@@ -35,17 +33,14 @@ export default class ApiEntries {
         entries = loadState();
         let actionType = '';
         if(!action.entry.id){
-          console.log('new entry', action);
           action.entry.id = new Date().getTime();
           entries.push(action.entry);
           actionType = 'Add';
         } else {
-          console.log('edited entry', action);
           var toChange = entries.find((saved) => {return saved.id === action.entry.id});
           entries.splice(entries.indexOf(toChange), 1, action.entry);
           actionType = 'Edit';
         }
-        console.log('add/edit saved entries');
         saveState(entries);
         resolve(actionType);
       }, 200);

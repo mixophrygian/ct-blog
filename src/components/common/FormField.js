@@ -46,7 +46,7 @@ export default class FormField extends React.Component {
   field() {
     const {input, componentClass, type, placeholder, children} = this.props;
     return (
-      <FormControl {...input} componentClass={componentClass} type={type} placeholder={placeholder}>
+      <FormControl {...input} componentClass={componentClass} autoComplete={"off"} type={type} placeholder={placeholder}>
         {children}
       </FormControl>
     );
