@@ -1,5 +1,10 @@
 #Project Roadmap
 
+4/10 - next:
+  -get all fields hacked in (as simple forms)  - 
+    -situation, emotional response, automatic thought, cognititve distortions, rational response
+  -Add the "cognitive distortion" check boxes
+
 4/2 - next:
   -Fix janky sidebar z index bug
   -consider better UX for viewing single entries then returning home -> button?
