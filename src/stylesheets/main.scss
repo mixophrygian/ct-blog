@@ -35,17 +35,24 @@
   display: flex;
 }
 
+.nav > li > a {
+  padding :0;
+}
+
 //Sidebar styles are inlined in the Menu componen
 // since it's an npm module
 
 
 //New button
-.edit-button {
+.edit-button, .home-button {
+  padding: 8px;
+  justify-content: center;
   border: 1px dashed gray;
   list-style: none;
   
   a {
     display: flex;
+    color: gray;
     align-items: center;
     justify-content: space-around;
   }
@@ -54,6 +61,10 @@
     margin-left: 3px;
     top: 0;
   }
+}
+
+.home-button {
+  border: 1px solid lightgray;
 }
 
 .page-home,
@@ -149,8 +160,6 @@
   }
   .edit-button {
     display: inline-flex;
-    padding: 8px;
-    justify-content: center;
     
     a {
       color: gray;
