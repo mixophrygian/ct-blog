@@ -56,13 +56,13 @@ export default class Menu extends React.Component {
     //so the sidebar doesn't lay on top of the UI, invisibly
       { 
         root: {
-          zIndex: 1
+          visibility: "visible"
         }
       }
        :
        {
          root: {
-           zIndex: -1
+           visibility: "hidden"
         }
       };
     
