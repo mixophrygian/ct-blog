@@ -10,14 +10,15 @@ export default class ApiEntries {
         let entries = [];
         entries = loadState();
         if(!entries || !entries.length) {
-          for (let x = 1; x <= 5; x++) {
-            entries.push({
-              id: x,
-              date: new Date(),
-              entryname: 'Johny ' + x,
-              job: 'Employee ' + x,
-            });
-          }
+          entries.push({
+            id: 1,
+            date: new Date(),
+            situation: "My boyfriend isn't that into me",
+            emotionalResponse: "FML",
+            automaticThoughts: "Forever alone",
+            cognitiveDistortions: "all of them ",
+            rationalResponse: "everybody hurts",
+          });
           saveState(entries);
         }
         resolve(entries);

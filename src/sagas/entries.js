@@ -26,7 +26,7 @@ export function* entriesAddEdit(action) {
   });
 
     // success
-  action.callbackSuccess();
+  action.callbackSuccess(action.entry);
 }
 
 // delete a entry

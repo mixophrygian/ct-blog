@@ -23,8 +23,11 @@ export class EntryEdit extends React.Component {
       <div className="page-entry-edit">
         <PageHeader>{'Entry ' + (entry.id ? 'edit' : 'add')}</PageHeader>
         <Form horizontal onSubmit={handleSubmit(this.formSubmit)}>
-          <Field component={FormField} name="entryname" label="Entryname" doValidate={true}/>
-          <Field component={FormField} name="job" label="Job"/>
+          <Field component={FormField} name="situation" label="Situation"/>
+          <Field component={FormField} name="emotionalResponse" label="Emotional Response"/>
+          <Field component={FormField} name="automaticThoughts" label="Automatic Thoughts"/>
+          <Field component={FormField} name="cognitiveDistortions" label="Cognitive Distortions"/>
+          <Field component={FormField} name="rationalResponse" label="Rational Response"/>
           <FormSubmit error={error} invalid={invalid} submitting={submitting} buttonSaveLoading="Saving..."
             buttonSave="Save Entry"/>
         </Form>
@@ -34,21 +37,24 @@ export class EntryEdit extends React.Component {
 
   // submit the form
   formSubmit(values) {
-    const {dispatch} = this.props;
+    const {dispatch, entry} = this.props;
     return new Promise((resolve, reject) => {
       dispatch({
         type: 'ENTRIES_ADD_EDIT',
         entry: {
           id: values.id,
           date: new Date(),
-          entryname: values.entryname,
-          job: values.job,
+          situation: values.situation,
+          emotionalResponse: values.emotionalResponse,
+          automaticThoughts: values.automaticThoughts,
+          cognitiveDistortions: values.cognitiveDistortions,
+          rationalResponse: values.rationalResponse,
         },
         callbackError: (error) => {
           reject(new SubmissionError({_error: error}));
         },
-        callbackSuccess: () => {
-          dispatch(push('/'));
+        callbackSuccess: (response) => {
+          dispatch(push(`/entry/${response.id}`));
           resolve();
         }
       });

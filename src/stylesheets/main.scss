@@ -73,7 +73,9 @@
 .page-faq,
 .page-about {
   margin-top: 15vh;
+  max-width: 100vw;
 }
+
 //page-home
 
 .page-home {
@@ -130,8 +132,13 @@
 .page-entry-edit {
   
   form {
-    width: 500px;
+    max-width: 100vw;
     margin-top: 40px;
+    padding: 0 15px;
+  }
+  
+  form > *{
+    
   }
 }
 

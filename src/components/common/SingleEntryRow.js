@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
 import { Link, browserHistory } from "react-router";
 import { Button, Glyphicon } from "react-bootstrap";
-import { formatDate } from '../../utils/utils';
+import { formatDate, excerptText } from '../../utils/utils';
 
 // User List Element component
 export default class SingleEntryRow extends React.Component {
@@ -23,13 +23,14 @@ export default class SingleEntryRow extends React.Component {
   render() {
     const {entry, showDelete} = this.props;
     const date = formatDate(entry.date);
+    const excerpt = excerptText(entry.situation, 10);
     
     return (
       <tr data-id={entry.id} onClick={this.viewEntry}>
         <td>{date}</td>
         <td className="entryTitle">
           <div>
-            {entry.entryname}
+            {excerpt}
           </div>
           
           <div>

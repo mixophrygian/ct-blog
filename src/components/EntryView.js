@@ -41,11 +41,20 @@ export class EntryView extends React.Component {
           
         </div>
         
-        <Panel header={'Entryname'}>
-          {entry.entryname}
+        <Panel header={'Situation'}>
+          {entry.situation}
         </Panel>
-        <Panel header={'Job'}>
-          {entry.job || ''}
+        <Panel header={'Emotional Response'}>
+          {entry.emotionalResponse || ''}
+        </Panel>
+        <Panel header={'Automatic Thoughts'}>
+          {entry.automaticThoughts || ''}
+        </Panel>
+        <Panel header={'Cognitive Distortions'}>
+          {entry.cognitiveDistortions || ''}
+        </Panel>
+        <Panel header={'Rational Response'}>
+          {entry.rationalResponse || ''}
         </Panel>
       </div>
     );
