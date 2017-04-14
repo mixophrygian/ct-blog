@@ -1,8 +1,11 @@
 #Project Roadmap
 
+4/13 - next:
+  -Add cognitive distortion check boxes that are toggle-able on touch
+
 4/10 - next:
   -get all fields hacked in (as simple forms)  - 
-    -situation, emotional response, automatic thought, cognititve distortions, rational response
+    -situation, emotional response, automatic thought, cognitive distortions, rational responses
   -Add the "cognitive distortion" check boxes
 
 4/2 - next:
