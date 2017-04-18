@@ -2,6 +2,12 @@
 
 4/13 - next:
   -Add cognitive distortion check boxes that are toggle-able on touch
+  -About section with explanation of blog and each cognitive distortion
+  -Make text inputs expandable veritcally
+  -Add "delete entry" button below the "view" section
+  -Style nav drawer to always be full height and fixed to the top of the view port.
+  -View entry screen - make sure the default zooming is OUT.
+  -Make edit/delete buttons on entry list bigger for mobile and more spaced out so they're more finger-friendly.
 
 4/10 - next:
   -get all fields hacked in (as simple forms)  - 

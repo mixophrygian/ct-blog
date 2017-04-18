@@ -43,7 +43,7 @@ export class EntryEdit extends React.Component {
         type: 'ENTRIES_ADD_EDIT',
         entry: {
           id: values.id,
-          date: new Date(),
+          date: entry.date || new Date(),
           situation: values.situation,
           emotionalResponse: values.emotionalResponse,
           automaticThoughts: values.automaticThoughts,

@@ -10,6 +10,7 @@ export default class ApiEntries {
         let entries = [];
         entries = loadState();
         if(!entries || !entries.length) {
+          entries = [];
           entries.push({
             id: 1,
             date: new Date(),
