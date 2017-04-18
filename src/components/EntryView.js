@@ -1,12 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
+import { browserHistory } from "react-router";
 import { push } from "react-router-redux";
 import { Field, SubmissionError, reduxForm } from "redux-form";
-import { PageHeader, Form, Panel, Nav, NavItem, Navbar, Glyphicon } from "react-bootstrap";
+import { Button, PageHeader, Form, Panel, Nav, NavItem, Navbar, Glyphicon } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import FormField from "./common/FormField";
 import FormSubmit from "./common/FormSubmit";
 import { formatDate } from '../utils/utils';
+import EntryDeletePrompt from "./common/EntryDeletePrompt";
 
 
 // Entry add/edit page component
@@ -14,8 +16,16 @@ export class EntryView extends React.Component {
   // constructor
   constructor(props) {
     super(props);
+    
+    this.state = {
+      delete_show: false,
+      delete_entry: {},
+    };
     // bind <this> to the event method
     this.formSubmit = this.formSubmit.bind(this);
+    this.showDelete = this.showDelete.bind(this);
+    this.hideDelete = this.hideDelete.bind(this);
+    this.entryDelete = this.entryDelete.bind(this);
   }
 
   // render
@@ -56,9 +66,41 @@ export class EntryView extends React.Component {
         <Panel header={'Rational Response'}>
           {entry.rationalResponse || ''}
         </Panel>
+        <div className="delete-container">
+          <Button bsSize="xsmall" className="entry-delete" onClick={() => this.showDelete(entry)}>
+          Delete
+          </Button>
+        </div>
+        <EntryDeletePrompt show={this.state.delete_show} entry={this.state.delete_entry}
+          hideDelete={this.hideDelete} entryDelete={this.entryDelete}/>
       </div>
     );
   }
+  showDelete(entry) {
+    // change the local ui state
+    this.setState({
+      delete_show: true,
+      delete_entry: entry,
+    });
+  }
+  
+  entryDelete() {
+    // delete the entry
+    this.props.dispatch({
+      type: 'ENTRIES_DELETE',
+      entry_id: this.props.entry.id,
+    });
+    this.hideDelete();
+    browserHistory.push('/');
+  }
+  
+  hideDelete() {
+    this.setState({
+      delete_show: false,
+      delete_entry: {},
+    });  
+  }
+
 
   // submit the form
   formSubmit(values) {

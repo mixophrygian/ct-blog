@@ -10,7 +10,7 @@ export default class EntryDeletePrompt extends React.Component {
       <Modal show={show}>
         <Modal.Header>
           <Modal.Title>
-            Are you sure you want to delete <strong>{entry.entryname}</strong>?
+            Are you sure you want to delete this one?
           </Modal.Title>
         </Modal.Header>
         <Modal.Footer>

@@ -172,7 +172,18 @@
       color: gray;
     }
   }
+  
+  .delete-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  Button {
+    padding: 8px 15px;
+    border: 1px solid red;
+  }
 }
+
 
 //page about
 .page-about {
