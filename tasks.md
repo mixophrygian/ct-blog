@@ -1,5 +1,11 @@
 #Project Roadmap
 
+4/17 next :
+  -Add cognitive distortion check boxes that are toggle-able on touch
+  -About section with explanation of blog and each cognitive distortion
+  -Style nav drawer to always be full height and fixed to the top of the view port.
+  -View entry screen - make sure the default zooming is OUT.
+  
 4/13 - next:
   -Add cognitive distortion check boxes that are toggle-able on touch
   -About section with explanation of blog and each cognitive distortion
