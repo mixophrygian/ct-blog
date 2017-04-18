@@ -21,13 +21,13 @@ export class EntryEdit extends React.Component {
     const {entry, handleSubmit, error, invalid, submitting} = this.props;
     return (
       <div className="page-entry-edit">
-        <PageHeader>{'Entry ' + (entry.id ? 'edit' : 'add')}</PageHeader>
+        <PageHeader>{(entry.id ? 'Edit' : 'Add')}</PageHeader>
         <Form horizontal onSubmit={handleSubmit(this.formSubmit)}>
-          <Field component={FormField} name="situation" label="Situation"/>
-          <Field component={FormField} name="emotionalResponse" label="Emotional Response"/>
-          <Field component={FormField} name="automaticThoughts" label="Automatic Thoughts"/>
-          <Field component={FormField} name="cognitiveDistortions" label="Cognitive Distortions"/>
-          <Field component={FormField} name="rationalResponse" label="Rational Response"/>
+          <Field component={FormField} name="situation" label="Situation" placeholder="Just the facts.  No evaluation"/>
+          <Field component={FormField} name="emotionalResponse" label="Emotional Response" placeholder="Your raw emotional response"/>
+          <Field component={FormField} name="automaticThoughts" label="Automatic Thoughts" placeholder="The automatic thoughts"/>
+          <Field component={FormField} name="cognitiveDistortions" label="Cognitive Distortions" placeholder="The cognitive distortion"/>
+          <Field component={FormField} name="rationalResponse" label="Rational Response" placeholder="A rational response to these distortions"/>
           <FormSubmit error={error} invalid={invalid} submitting={submitting} buttonSaveLoading="Saving..."
             buttonSave="Save Entry"/>
         </Form>

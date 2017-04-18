@@ -1,5 +1,6 @@
 import React, { PropTypes } from "react";
 import { FormGroup, FormControl, HelpBlock, Row, Col } from "react-bootstrap";
+import Textarea from 'react-textarea-autosize';
 
 // Form field component
 export default class FormField extends React.Component {
@@ -46,9 +47,9 @@ export default class FormField extends React.Component {
   field() {
     const {input, componentClass, type, placeholder, children} = this.props;
     return (
-      <FormControl {...input} componentClass={componentClass} autoComplete={"off"} type={type} placeholder={placeholder}>
+      <Textarea {...input} autoComplete={"off"} type={type} placeholder={placeholder}>
         {children}
-      </FormControl>
+      </Textarea>
     );
   }
 }
