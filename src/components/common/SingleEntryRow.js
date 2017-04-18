@@ -23,7 +23,7 @@ export default class SingleEntryRow extends React.Component {
   render() {
     const {entry, showDelete} = this.props;
     const date = formatDate(entry.date);
-    const excerpt = excerptText(entry.situation, 10);
+    const excerpt = excerptText(entry.situation, 17);
     
     return (
       <tr data-id={entry.id} onClick={this.viewEntry}>
@@ -33,13 +33,8 @@ export default class SingleEntryRow extends React.Component {
             {excerpt}
           </div>
           
-          <div>
-            <Link to={'entry-edit/' + entry.id}>
-              <Button bsSize="xsmall">
-                <Glyphicon glyph="edit"/>
-              </Button>
-            </Link>
-            <Button bsSize="xsmall" className="entry-delete" onClick={() => showDelete(entry)}>
+          <div className="buttonWrapper">
+            <Button bsSize="xsmall" className="glyphbutton entry-delete" onClick={() => showDelete(entry)}>
               <Glyphicon glyph="remove-circle"/>
             </Button>
           </div>

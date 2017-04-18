@@ -90,13 +90,35 @@
     .entryTitle {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       border-bottom: 0;
       border-left: 0;
+      height: 9vh;
       
-      div a {
-        z-index: 2;
+      div {
+        display: flex;
+        justify-content: flex-start;
+        a {
+          z-index: 2;
+        }  
+      }
+      
+      .buttonWrapper button {
+        background: #eee;
+        color: #999;
+        border-color: lightgray;
+        vertical-align: center;
+        display: flex;
+        
+        span {
+          top: 0;
+          padding: 3px 1px;
+        }
       }
     }  
+  }
+  tr {
+    height: 9vh;
   }
 }
 .entries-pagination {
