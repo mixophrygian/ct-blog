@@ -11,28 +11,38 @@ export class EntryEdit extends React.Component {
   // constructor
   constructor(props) {
     super(props);
+    this.state = {
+      cognitiveDistortions: []
+    };
 
     // bind <this> to the event method
     this.formSubmit = this.formSubmit.bind(this);
+    this.saveChecked = this.saveChecked.bind(this);
+    this.toggleChecked = this.toggleChecked.bind(this);
   }
 
-  // render
-  render() {
-    const {entry, handleSubmit, error, invalid, submitting} = this.props;
-    return (
-      <div className="page-entry-edit">
-        <PageHeader>{(entry.id ? 'Edit' : 'Add')}</PageHeader>
-        <Form horizontal onSubmit={handleSubmit(this.formSubmit)}>
-          <Field component={FormField} name="situation" label="Situation" placeholder="Just the facts.  No evaluation"/>
-          <Field component={FormField} name="emotionalResponse" label="Emotional Response" placeholder="Your raw emotional response"/>
-          <Field component={FormField} name="automaticThoughts" label="Automatic Thoughts" placeholder="The automatic thoughts"/>
-          <Field component={FormField} name="cognitiveDistortions" label="Cognitive Distortions" placeholder="The cognitive distortion"/>
-          <Field component={FormField} name="rationalResponse" label="Rational Response" placeholder="A rational response to these distortions"/>
-          <FormSubmit error={error} invalid={invalid} submitting={submitting} buttonSaveLoading="Saving..."
-            buttonSave="Save Entry"/>
-        </Form>
-      </div>
-    );
+  
+  toggleChecked(e){
+    e.preventDefault();
+    var checkbox = e.target.getElementsByTagName('input')[0];
+    checkbox.checked  = !checkbox.checked;
+    if(checkbox.checked) {
+      e.target.className = 'choice-active';
+    } else {
+      e.target.className = 'choice';
+    }
+    this.saveChecked(checkbox);
+  }
+
+  saveChecked(checkbox){
+    var newDistortions = this.state.cognitiveDistortions.slice();
+    if(checkbox.checked){
+      newDistortions.push(checkbox.name);
+    } else {
+      var index = newDistortions.indexOf(checkbox.name);
+      if(index > -1) newDistortions.splice(index, 1);
+    }
+    this.setState({ cognitiveDistortions: newDistortions});
   }
 
   // submit the form
@@ -47,7 +57,7 @@ export class EntryEdit extends React.Component {
           situation: values.situation,
           emotionalResponse: values.emotionalResponse,
           automaticThoughts: values.automaticThoughts,
-          cognitiveDistortions: values.cognitiveDistortions,
+          cognitiveDistortions: this.state.cognitiveDistortions,
           rationalResponse: values.rationalResponse,
         },
         callbackError: (error) => {
@@ -60,8 +70,77 @@ export class EntryEdit extends React.Component {
       });
     });
   }
-}
 
+// render
+  render() {
+    const {entry, handleSubmit, error, invalid, submitting} = this.props;
+    return (
+      <div className="page-entry-edit">
+        <PageHeader>{(entry.id ? 'Edit' : 'Add')}</PageHeader>
+        <Form horizontal onSubmit={handleSubmit(this.formSubmit)}>
+          <Field component={FormField} name="situation" label="Situation" placeholder="Just the facts.  No evaluation"/>
+          <Field component={FormField} name="emotionalResponse" label="Emotional Response" placeholder="Your raw emotional response"/>
+          <Field component={FormField} name="automaticThoughts" label="Automatic Thoughts" placeholder="The automatic thoughts"/>
+          <div className="distortions-container">
+            <p>Cognitive Distortions</p>
+            <button className='choice' onClick={this.toggleChecked}>
+           All-or-Nothing Thinking
+                <input type="checkbox" className="invisible" name="allOrNothingThinking" defaultChecked={false} />
+            </button>
+
+            <button className='choice' onClick={this.toggleChecked}>
+            Overgeneralizaton
+                <input type="checkbox" className="invisible" name="overgeneralization" defaultChecked={false} />
+            </button>
+            
+            <button className='choice' onClick={this.toggleChecked}>
+             Mental Filter
+                <input type="checkbox" className="invisible" name="mentalFilter" defaultChecked={false} />
+            </button>
+
+             <button className='choice' onClick={this.toggleChecked}>
+             Discounting the Positives
+                <input type="checkbox" className="invisible" name="discountingThePositive" defaultChecked={false} />
+            </button>
+
+            <button className='choice' onClick={this.toggleChecked}>
+             Jumping to Conclusions
+                <input type="checkbox" className="invisible" name="jumpingToConclusions" defaultChecked={false} />
+            </button>
+            
+            <button className='choice' onClick={this.toggleChecked}>
+             Magnifying or Minifying
+                <input type="checkbox" className="invisible" name="magnifyingOrMinifying" defaultChecked={false} />
+            </button>
+
+            <button className='choice' onClick={this.toggleChecked}>
+             Emotional Reasoning
+                <input type="checkbox" className="invisible" name="emotionalReasoning" defaultChecked={false} />
+            </button>
+
+            <button className='choice' onClick={this.toggleChecked}>
+             "Should" statements
+                <input type="checkbox" className="invisible" name="shouldStatements" defaultChecked={false} />
+            </button>
+            
+            <button className='choice' onClick={this.toggleChecked}>
+             Labeling 
+                <input type="checkbox" className="invisible" name="labeling" defaultChecked={false} />
+            </button>
+
+            <button className='choice' onClick={this.toggleChecked}>
+            Personalization and Blame
+                <input type="checkbox" className="invisible" name="personalizationAndBlame" defaultChecked={false} />
+            </button>
+          </div>
+          <Field component={FormField} name="rationalResponse" label="Rational Response" placeholder="A rational response to these distortions"/>
+          <FormSubmit error={error} invalid={invalid} submitting={submitting} buttonSaveLoading="Saving..."
+            buttonSave="Save Entry"/>
+        </Form>
+      </div>
+    );
+  }
+}
 // decorate the form component
 const EntryEditForm = reduxForm({
   form: 'entry_edit',

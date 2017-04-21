@@ -9,7 +9,7 @@ export const formatDate = (date) => {
 }
 
 export const excerptText = (text: string, length: number) => {
-  if(text.length <= length) return text;
+  if(!text || text.length <= length) return text;
   const ending = "...";
   return text.substring(0, length) + ending; 
 }

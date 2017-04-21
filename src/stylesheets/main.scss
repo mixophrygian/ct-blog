@@ -182,6 +182,33 @@
    text-align: center;
 }
 
+// automatic thoughts
+
+.distortions-container {
+  margin: 0 -15px 15px -15px;
+}
+
+.choice, .choice-active {
+  width: 100%;
+  max-width: 100%;
+  padding: 11px;
+  background-color: lightgreen;
+  border: none;
+  border-radius: 4px;
+  color: #333;
+  font-family: 'Futura';
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  outline: none;
+}
+
+.choice-active{
+  outline: none;
+  background-color: #46b946;
+  color: black;
+}
+
+
 
 //page entry view 
 
