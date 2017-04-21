@@ -19,8 +19,24 @@ export class EntryEdit extends React.Component {
     this.formSubmit = this.formSubmit.bind(this);
     this.saveChecked = this.saveChecked.bind(this);
     this.toggleChecked = this.toggleChecked.bind(this);
+    this.setPreviouslyChecked = this.setPreviouslyChecked.bind(this);
   }
-
+  
+  componentDidMount(){
+    const { entry } = this.props;
+    const distortions = entry.cognitiveDistortions;
+    if(distortions){
+      distortions.map(this.setPreviouslyChecked);
+      this.setState({ cognitiveDistortions: distortions})
+    }
+  }
+  
+  setPreviouslyChecked(name){
+    const node = document.getElementsByName(name)[0];
+    node.checked = true;
+    node.parentNode.className = 'choice-active';
+  }
+  
   
   toggleChecked(e){
     e.preventDefault();
@@ -48,6 +64,7 @@ export class EntryEdit extends React.Component {
   // submit the form
   formSubmit(values) {
     const {dispatch, entry} = this.props;
+    const {cognitiveDistortions} = this.state;
     return new Promise((resolve, reject) => {
       dispatch({
         type: 'ENTRIES_ADD_EDIT',
@@ -57,13 +74,14 @@ export class EntryEdit extends React.Component {
           situation: values.situation,
           emotionalResponse: values.emotionalResponse,
           automaticThoughts: values.automaticThoughts,
-          cognitiveDistortions: this.state.cognitiveDistortions,
+          cognitiveDistortions: cognitiveDistortions,
           rationalResponse: values.rationalResponse,
         },
         callbackError: (error) => {
           reject(new SubmissionError({_error: error}));
         },
         callbackSuccess: (response) => {
+          this.setState({ cognitiveDistortions: [] })
           dispatch(push(`/entry/${response.id}`));
           resolve();
         }
