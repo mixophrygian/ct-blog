@@ -4,6 +4,7 @@
   -add cognitive distortion UI to EntryView component.
   -style nav drawer to always be full height and fixed
   -Rough draft of 'about' section and what this is.
+  -Fix routing so that bogus / confused routes just return home
   * bought a domain! automaticthoughtjournal.com 
 
 4/17 next :
