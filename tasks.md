@@ -1,5 +1,11 @@
 #Project Roadmap
 
+4/20 next: 
+  -add cognitive distortion UI to EntryView component.
+  -style nav drawer to always be full height and fixed
+  -Rough draft of 'about' section and what this is.
+  * bought a domain! automaticthoughtjournal.com 
+
 4/17 next :
   -Add cognitive distortion check boxes that are toggle-able on touch
   -About section with explanation of blog and each cognitive distortion
@@ -65,6 +71,8 @@
 * Rethink UI - try wire-framing main page?
 
 * Set up SEO tags
+
+* Thorough device / browser pass
 
 * robots.txt?
 
