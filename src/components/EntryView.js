@@ -70,7 +70,7 @@ export class EntryView extends React.Component {
         </Panel>
         <div className="delete-container">
           <Button bsSize="xsmall" className="entry-delete" onClick={() => this.showDelete(entry)}>
-          Delete
+          Delete Entry
           </Button>
         </div>
         <EntryDeletePrompt show={this.state.delete_show} entry={this.state.delete_entry}
