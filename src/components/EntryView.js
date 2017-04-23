@@ -98,7 +98,6 @@ export class EntryView extends React.Component {
   renderDistortions(distortionsList) {
     if(distortionsList.length === 0) return '';
     const returnNodes = distortionsList.map((distortion, index) => {
-      console.log(distortion, index);
       const classes = "distortionsView " + distortion; 
       return (
         <p className={classes} key={index}>{this.prettyLabel(distortion)}</p>

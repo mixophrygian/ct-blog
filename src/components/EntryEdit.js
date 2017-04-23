@@ -41,11 +41,12 @@ export class EntryEdit extends React.Component {
   toggleChecked(e){
     e.preventDefault();
     var checkbox = e.target.getElementsByTagName('input')[0];
+    console.log(checkbox);
     checkbox.checked  = !checkbox.checked;
     if(checkbox.checked) {
-      e.target.className = 'choice-active';
+      e.target.className = 'choice-active ' + checkbox.name;
     } else {
-      e.target.className = 'choice';
+      e.target.className = 'choice ' + checkbox.name;
     }
     this.saveChecked(checkbox);
   }
@@ -101,7 +102,7 @@ export class EntryEdit extends React.Component {
           <Field component={FormField} name="automaticThoughts" label="Automatic Thoughts" placeholder="The automatic thoughts"/>
           <div className="distortions-container">
             <p>Cognitive Distortions</p>
-            <button className='choice' onClick={this.toggleChecked}>
+            <button className='choice allOrNothingThinking' onClick={this.toggleChecked}>
            All-or-Nothing Thinking
                 <input type="checkbox" className="invisible" name="allOrNothingThinking" defaultChecked={false} />
             </button>

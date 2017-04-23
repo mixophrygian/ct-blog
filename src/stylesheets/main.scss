@@ -189,10 +189,10 @@
 }
 
 .choice, .choice-active {
+  opacity: 0.5;
   width: 100%;
   max-width: 100%;
   padding: 11px;
-  background-color: lightgreen;
   border: none;
   border-radius: 4px;
   color: #333;
@@ -203,8 +203,8 @@
 }
 
 .choice-active{
+  opacity: 1;
   outline: none;
-  background-color: #46b946;
   color: black;
 }
 
@@ -251,43 +251,54 @@
 //common to distortions
 
 .allOrNothingThinking {
-  background-color: red,
+  background-color: #fab3a8,
+}
+
+.overgeneralization {
+  background-color: #fcd48c,
+}
+
+.mentalFilter {
+  background-color: #fcf666,
+}
+
+.discountingThePositive {
+  background-color: #8cff8c,
 }
 
 
-.emotionalReasoning {
-  background-color: orange,
-}
-
-.labeling {
-  background-color: yellow,
-}
-
-.personalizationAndBlame {
-  background-color: green,
-}
-
-.shouldStatements {
-  background-color: lime,
+.jumpingToConclusions {
+  background-color: #7beffa,
 }
 
 
 .magnifyingOrMinifying {
-  background-color: blue,
+  background-color: #b8b8fe,
 }
 
-.jumpingToConclusions {
-  background-color: purple,
+.emotionalReasoning {
+  background-color: #dbb3fa,
 }
 
-.discountingThePositive {
-  background-color: indigo,
+.shouldStatements {
+  background-color: #ffbdff,
+}
+
+.labeling {
+  background-color: #ffbec8,
+}
+
+.personalizationAndBlame {
+  background-color: #ffe1ac,
 }
 
 
-.overgeneralization {
-  background-color: magenta,
-}
+
+
+
+
+
+
 
 //page about
 .page-about {
