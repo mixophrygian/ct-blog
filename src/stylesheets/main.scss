@@ -230,6 +230,13 @@
     }
   }
   
+  .distortionsView {
+    margin: 0 0 10px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+  }
+  
   .delete-container {
     display: flex;
     justify-content: flex-end;
@@ -240,7 +247,47 @@
     border: 1px solid red;
   }
 }
+  
+//common to distortions
 
+.allOrNothingThinking {
+  background-color: red,
+}
+
+
+.emotionalReasoning {
+  background-color: orange,
+}
+
+.labeling {
+  background-color: yellow,
+}
+
+.personalizationAndBlame {
+  background-color: green,
+}
+
+.shouldStatements {
+  background-color: lime,
+}
+
+
+.magnifyingOrMinifying {
+  background-color: blue,
+}
+
+.jumpingToConclusions {
+  background-color: purple,
+}
+
+.discountingThePositive {
+  background-color: indigo,
+}
+
+
+.overgeneralization {
+  background-color: magenta,
+}
 
 //page about
 .page-about {

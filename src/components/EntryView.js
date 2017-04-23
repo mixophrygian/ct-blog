@@ -26,12 +26,14 @@ export class EntryView extends React.Component {
     this.showDelete = this.showDelete.bind(this);
     this.hideDelete = this.hideDelete.bind(this);
     this.entryDelete = this.entryDelete.bind(this);
+    this.renderDistortions = this.renderDistortions.bind(this);
+    this.prettyLabel = this.prettyLabel.bind(this);
   }
 
   // render
   render() {
     const {entry, handleSubmit, error, invalid, submitting} = this.props;
-    console.log(entry);
+    const distortions = this.renderDistortions(entry.cognitiveDistortions);
     return (
       <div className="page-entry-view">
         <div className="header">
@@ -61,7 +63,7 @@ export class EntryView extends React.Component {
           {entry.automaticThoughts || ''}
         </Panel>
         <Panel header={'Cognitive Distortions'}>
-          {entry.cognitiveDistortions || ''}
+          {distortions}
         </Panel>
         <Panel header={'Rational Response'}>
           {entry.rationalResponse || ''}
@@ -76,6 +78,35 @@ export class EntryView extends React.Component {
       </div>
     );
   }
+  
+  prettyLabel(name){
+    const list = {
+      allOrNothingThinking: "All-or-Nothing Thinking",
+      overgeneralization: "Overgeneralization",
+      mentalFilter: "Mental Filter",
+      discountingThePositive: "Discounting The Positives",
+      jumpingToConclusions: "Jumping to Conclusions",
+      magnifyingOrMinifying: "Magnifying Or Minifying",
+      emotionalReasoning: "Emotional Reasoning", 
+      shouldStatements: "\'Should\' Statements",
+      labeling: "Labeling",
+      personalizationAndBlame: "Personalization and Blame",
+    }
+    return list[name];
+  }
+  
+  renderDistortions(distortionsList) {
+    if(distortionsList.length === 0) return '';
+    const returnNodes = distortionsList.map((distortion, index) => {
+      console.log(distortion, index);
+      const classes = "distortionsView " + distortion; 
+      return (
+        <p className={classes} key={index}>{this.prettyLabel(distortion)}</p>
+      )
+    })
+    return returnNodes;
+  }
+  
   showDelete(entry) {
     // change the local ui state
     this.setState({
