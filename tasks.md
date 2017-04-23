@@ -1,5 +1,10 @@
 #Project Roadmap
 
+4/23 next:
+  -organize css into sane, separate pages so responsive styling isn't insane
+  -make nav drawer full height
+  -fit routing
+
 4/20 next: 
   -add cognitive distortion UI to EntryView component.
   -style nav drawer to always be full height and fixed
