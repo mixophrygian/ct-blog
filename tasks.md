@@ -1,6 +1,10 @@
 #Project Roadmap
 
 4/23 next:
+  -create pre-commit hook for linter?
+  -double check my usage of Promises
+  -double check for entry.id redundancy between redux and component and api layer
+  -start writing some tests for sagas and api?
   -organize css into sane, separate pages so responsive styling isn't insane
   -make nav drawer full height
   -fit routing
