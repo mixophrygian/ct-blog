@@ -16,6 +16,7 @@
     "url": "https://github.com/catalin-luntraru/redux-minimal"
   },
   "scripts": {
+    "lint": "./node_modules/.bin/eslint ./",
     "start": "webpack-dev-server --inline --hot --history-api-fallback --host localhost --port 8080",
     "build-dev": "webpack --config webpack.dev.config.js",
     "build-prod": "webpack -p --config webpack.prod.config.js",
@@ -32,6 +33,7 @@
   "author": "Catalin Luntraru",
   "license": "MIT",
   "dependencies": {
+    "prop-types": "^15.5.8",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.2",
@@ -56,6 +58,11 @@
     "clean-webpack-plugin": "^0.1.15",
     "css-loader": "^0.26.1",
     "enzyme": "^2.7.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
     "extract-text-webpack-plugin": "^1.0.1",
     "ignore-styles": "^5.0.1",
     "mocha": "^3.2.0",

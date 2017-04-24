@@ -1,24 +1,24 @@
-import { saveState, loadState } from "../localstorage"
+import { saveState, loadState } from '../localstorage';
 
 // API Entries static class
 export default class ApiEntries {
-  
+
   // get a list of entries
   static getList() {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         let entries = [];
         entries = loadState();
-        if(!entries || !entries.length) {
+        if (!entries || !entries.length) {
           entries = [];
           entries.push({
             id: 1,
             date: new Date(),
             situation: "My boyfriend isn't that into me",
-            emotionalResponse: "FML",
-            automaticThoughts: "Forever alone",
-            cognitiveDistortions: "all of them ",
-            rationalResponse: "everybody hurts",
+            emotionalResponse: 'FML',
+            automaticThoughts: 'Forever alone',
+            cognitiveDistortions: 'all of them ',
+            rationalResponse: 'everybody hurts',
           });
           saveState(entries);
         }
@@ -29,17 +29,17 @@ export default class ApiEntries {
 
   // add/edit an entry
   static addEdit(action) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         let entries = [];
         entries = loadState();
         let actionType = '';
-        if(!action.entry.id){
+        if (!action.entry.id) {
           action.entry.id = new Date().getTime();
           entries.push(action.entry);
           actionType = 'Add';
         } else {
-          var toChange = entries.find((saved) => {return saved.id === action.entry.id});
+          const toChange = entries.find(saved => saved.id === action.entry.id);
           entries.splice(entries.indexOf(toChange), 1, action.entry);
           actionType = 'Edit';
         }
@@ -51,11 +51,11 @@ export default class ApiEntries {
 
   // delete an entry
   static delete(action) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         let entries = [];
-        entries = loadState();  
-        var toChange = entries.find((el) => el.id === action.entry_id);
+        entries = loadState();
+        const toChange = entries.find(el => el.id === action.entry.id);
         entries.splice(entries.indexOf(toChange), 1);
         saveState(entries);
         resolve();

@@ -1,15 +1,14 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import { browserHistory } from "react-router";
-import { syncHistoryWithStore, routerMiddleware } from "react-router-redux";
-import createSagaMiddleware from "redux-saga";
-import freeze from "redux-freeze";
-import { reducers } from "./reducers/index";
-import { sagas } from "./sagas/index";
-import { entriesFetchList } from "./sagas/entries";
-import { loadState } from "./localstorage"
+import { createStore, applyMiddleware, compose } from 'redux';
+import { browserHistory } from 'react-router';
+import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
+import createSagaMiddleware from 'redux-saga';
+import freeze from 'redux-freeze';
+import { reducers } from './reducers/index';
+import { sagas } from './sagas/index';
+import { loadState } from './localstorage';
 
 // add the middlewares
-let middlewares = [];
+const middlewares = [];
 
 // add the router middleware
 middlewares.push(routerMiddleware(browserHistory));
@@ -31,7 +30,7 @@ if (process.env.NODE_ENV !== 'production' && window.devToolsExtension) {
   middleware = compose(middleware, window.devToolsExtension());
 }
 
-const persistedState = { entries: loadState()};
+const persistedState = { entries: loadState() };
 // create the store
 const store = createStore(reducers, persistedState, middleware);
 const history = syncHistoryWithStore(browserHistory, store);

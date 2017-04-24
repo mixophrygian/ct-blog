@@ -1,7 +1,7 @@
-import { call, put } from "redux-saga/effects";
-import assert from "assert";
-import { usersFetchList, usersAddEdit, usersDelete } from "../../src_users/sagas/users";
-import ApiUsers from "../../src_users/api/users";
+import { call, put } from 'redux-saga/effects';
+import assert from 'assert';
+import { usersFetchList, usersAddEdit, usersDelete } from '../../src_users/sagas/users';
+import ApiUsers from '../../src_users/api/users';
 
 // unit tests for the users saga
 describe('Users saga', () => {
@@ -13,7 +13,7 @@ describe('Users saga', () => {
     });
 
     it('should return the USERS_LIST_SAVE action', () => {
-      assert.deepEqual(generator.next().value, put({type: 'USERS_LIST_SAVE', users: undefined}));
+      assert.deepEqual(generator.next().value, put({ type: 'USERS_LIST_SAVE', users: {}}));
     });
 
     it('should be finished', () => {
@@ -46,7 +46,7 @@ describe('Users saga', () => {
 
   describe('usersAddEdit() - edit', () => {
     const action = {
-      user: {id: 1},
+      user: { id: 1 },
       callbackSuccess: () => {},
     };
     const generator = usersAddEdit(action);
@@ -69,7 +69,7 @@ describe('Users saga', () => {
 
   describe('usersDelete()', () => {
     const action = {
-      user_id: 1,
+      entry: {id: 1},
     };
     const generator = usersDelete(action);
 
@@ -80,7 +80,7 @@ describe('Users saga', () => {
     it('should return the USERS_DELETE_SAVE action', () => {
       assert.deepEqual(generator.next().value, put({
         type: 'USERS_DELETE_SAVE',
-        user_id: action.user_id,
+        entry: action.entry,
       }));
     });
 

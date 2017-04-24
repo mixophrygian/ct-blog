@@ -1,13 +1,16 @@
+ /* eslint-disable no-console */
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state');
-    if(serializedState === null){
-      return undefined;
+    if (serializedState === null) {
+      console.err('something went wrong with serializing the local storage.  Private browser?');
+      return;
     }
     const ordinaryState = JSON.parse(serializedState);
     return ordinaryState;
   } catch (err) {
-    return undefined;
+    console.err(err);
+    return;
   }
 };
 
@@ -16,6 +19,6 @@ export const saveState = (state) => {
     const serializedState = JSON.stringify(state);
     localStorage.setItem('state', serializedState);
   } catch (err) {
-    console.log(err);
+    console.err(err);
   }
-}
+};

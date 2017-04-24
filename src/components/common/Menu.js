@@ -1,23 +1,23 @@
-import React from "react";
-import { Link, browserHistory } from "react-router";
-import { Nav, NavItem, Navbar, Glyphicon } from "react-bootstrap";
-import { IndexLinkContainer, LinkContainer } from "react-router-bootstrap";
+import React from 'react';
+import { Link } from 'react-router';
+import { Nav, NavItem, Navbar, Glyphicon } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import Sidebar from 'react-sidebar';
 /* https://github.com/balloob/react-sidebar */
 
 // Menu component
 export default class Menu extends React.Component {
-  
-  constructor(props){
+
+  constructor(props) {
     super(props);
-    this.state = {sidebarOpen: false};
+    this.state = { sidebarOpen: false };
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
   }
-  
-  onSetSidebarOpen(open) {
-    this.setState({sidebarOpen: !this.state.sidebarOpen});
+
+  onSetSidebarOpen() {
+    this.setState({ sidebarOpen: !this.state.sidebarOpen });
   }
-  
+
   render() {
     const styles = {
       sidebar: {
@@ -43,53 +43,53 @@ export default class Menu extends React.Component {
         backgroundColor: 'white',
       },
     };
-    
-    const sidebarContent = (
+
+    const sidebarContent =
       <div style={styles.content}>
         <Link style={styles.sidebarLink} onClick={this.onSetSidebarOpen} to={'/'}>Home</Link>
         <Link style={styles.sidebarLink} onClick={this.onSetSidebarOpen} to={'/about'}>About</Link>
         <Link style={styles.sidebarLink} onClick={this.onSetSidebarOpen} to={'/faq'}>FAQ</Link>
       </div>
-    );
-    
-    let dynamicStyles = this.state.sidebarOpen ? 
-    //so the sidebar doesn't lay on top of the UI, invisibly
-      { 
-        root: {
-          visibility: "visible"
-        }
-      }
+
+    const dynamicStyles = this.state.sidebarOpen ?
+    // so the sidebar doesn't lay on top of the UI, invisibly
+    {
+      root: {
+        visibility: 'visible',
+      },
+    }
        :
-       {
-         root: {
-           visibility: "hidden"
-        }
-      };
-    
+    {
+      root: {
+        visibility: 'hidden',
+      },
+    };
+
     return (
-        <div>
+      <div>
         <Navbar className="navbar-fixed-top">
           <Nav bsStyle="pills">
-              <NavItem onClick={this.onSetSidebarOpen}>
-                <Glyphicon glyph="align-justify"/>
-              </NavItem>
+            <NavItem onClick={this.onSetSidebarOpen}>
+              <Glyphicon glyph="align-justify" />
+            </NavItem>
             <LinkContainer to="/entry-edit">
               <NavItem className="edit-button">
-                New <Glyphicon glyph="plus-sign"/>
+                New <Glyphicon glyph="plus-sign" />
               </NavItem>
             </LinkContainer>
           </Nav>
         </Navbar>
-          <Sidebar 
-            styles={dynamicStyles}
-            sidebar={sidebarContent}
-            shadow={false}
-            touch={false}
-            open={this.state.sidebarOpen}
-            onSetOpen={this.onSetSidebarOpen}>
-            <div></div>
-          </Sidebar>
-        </div>
+        <Sidebar
+          styles={dynamicStyles}
+          sidebar={sidebarContent}
+          shadow={false}
+          touch={false}
+          open={this.state.sidebarOpen}
+          onSetOpen={this.onSetSidebarOpen}
+        >
+          <div />
+        </Sidebar>
+      </div>
     );
   }
 }

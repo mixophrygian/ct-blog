@@ -1,36 +1,37 @@
-import React, { PropTypes } from "react";
-import { FormGroup, FormControl, HelpBlock, Row, Col } from "react-bootstrap";
+import React, { PropTypes } from 'react';
+import { FormGroup, FormControl, HelpBlock, Row, Col } from 'react-bootstrap';
 import Textarea from 'react-textarea-autosize';
 
 // Form field component
 export default class FormField extends React.Component {
   // render
   render() {
-    const {className, doValidate, meta} = this.props;
+    const { className, doValidate, meta } = this.props;
     if (doValidate) {
       return (
-        <FormGroup className={className}
-          validationState={!meta.touched ? null : (meta.error ? 'error' : 'success')}>
+        <FormGroup
+          className={className}
+          validationState={!meta.touched ? null : meta.error ? 'error' : 'success'}
+        >
           {this.content()}
-          <FormControl.Feedback/>
+          <FormControl.Feedback />
           <HelpBlock>
             {meta.touched && meta.error ? meta.error : null}
           </HelpBlock>
         </FormGroup>
       );
-    } else {
-      return (
-        <FormGroup className={className}>
-          {this.content()}
-        </FormGroup>
-      );
     }
+    return (
+      <FormGroup className={className}>
+        {this.content()}
+      </FormGroup>
+    );
   }
 
   // the field content
   content() {
-    const {theme, label} = this.props;
-    if ('other_theme' === theme) {
+    const { theme, label } = this.props;
+    if (theme === 'other_theme') {
       // layout for some other theme
     } else {
       // default theme: 2col
@@ -45,9 +46,9 @@ export default class FormField extends React.Component {
 
   // the field itself
   field() {
-    const {input, componentClass, type, placeholder, children} = this.props;
+    const { input, type, placeholder, children } = this.props;
     return (
-      <Textarea {...input} autoComplete={"off"} type={type} placeholder={placeholder}>
+      <Textarea {...input} autoComplete={'off'} type={type} placeholder={placeholder}>
         {children}
       </Textarea>
     );
@@ -57,12 +58,12 @@ export default class FormField extends React.Component {
 // prop checks
 FormField.propTypes = {
   meta: PropTypes.object,
+  children: PropTypes.node,
   input: PropTypes.object,
   theme: PropTypes.string,  // 2col (default), etc
   doValidate: PropTypes.bool, // true or false
   label: PropTypes.any,  // the field text or a react component if we have html inside (empty string by default)
-  componentClass: PropTypes.string, // input (by default), textarea, select
   type: PropTypes.string,   // input type: text (by default), password
   placeholder: PropTypes.string,    // input placeholder (empty string by default)
   className: PropTypes.string,  // the class name (empty string by default)
-}
+};

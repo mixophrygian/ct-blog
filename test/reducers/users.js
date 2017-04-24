@@ -1,5 +1,5 @@
-import assert from "assert";
-import users from "../../src_users/reducers/users";
+import assert from 'assert';
+import users from '../../src_users/reducers/users';
 
 // unit tests for the users reducers
 // mocha - http://mochajs.org/#getting-started
@@ -95,7 +95,7 @@ describe('Users reducer', () => {
           job: 'Other job',
         }], {
           type: 'USERS_DELETE_SAVE',
-          user_id: 2,
+          entry: {id: 2},
         }), [{
           id: 1,
           username: 'Some name',
