@@ -64,6 +64,8 @@
 
 * Consider other secure, local options for persistence (localforage?)
 
+* Let's encrypt - SSL certs
+
 * Option to download as a PDF or text file?
 
 * Look into hosting on AWS or Google Cloud?
