@@ -40,7 +40,7 @@ export class App extends React.Component {
 }
 // prop checks
 App.propTypes = {
-  entries: PropTypes.array.isRequired,
+  entries: PropTypes.any,
   children: PropTypes.node,
   dispatch: PropTypes.func,
 };
