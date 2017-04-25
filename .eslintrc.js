@@ -131,7 +131,7 @@ module.exports = {
       
       "array-bracket-spacing": ERROR,       // enforce spacing inside array brackets (off by default)
       "brace-style": ERROR,                 // enforce one true brace style (off by default)
-      "camelcase": ERROR,                   // require camel case names
+      "camelcase": OFF,                   // require camel case names
       "comma-spacing": ERROR,               // enforce spacing before and after comma
       "comma-style": ERROR,                 // enforce one true comma style (off by default)
       "computed-property-spacing": ERROR,   // require or disallow padding inside computed properties (off by default)
