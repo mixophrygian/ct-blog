@@ -6,60 +6,55 @@ export default class ApiEntries {
   // get a list of entries
   static getList() {
     return new Promise((resolve) => {
-      setTimeout(() => {
-        let entries = [];
-        entries = loadState();
-        if (!entries || !entries.length) {
-          entries = [];
-          entries.push({
-            id: 1,
-            date: new Date(),
-            situation: "My boyfriend isn't that into me",
-            emotionalResponse: 'FML',
-            automaticThoughts: 'Forever alone',
-            cognitiveDistortions: 'all of them ',
-            rationalResponse: 'everybody hurts',
-          });
-          saveState(entries);
-        }
-        resolve(entries);
-      }, 200);
-    });
+      let entries = [];
+      entries = loadState();
+      if (!entries || !entries.length) {
+        entries = [];
+        entries.push({
+          id: 1,
+          date: new Date(),
+          situation: "My boyfriend isn't that into me",
+          emotionalResponse: 'FML',
+          automaticThoughts: 'Forever alone',
+          cognitiveDistortions: 'all of them ',
+          rationalResponse: 'everybody hurts',
+        });
+        saveState(entries);
+      }
+      resolve(entries);
+    }
+    );
   }
 
   // add/edit an entry
   static addEdit(action) {
     return new Promise((resolve) => {
-      setTimeout(() => {
-        let entries = [];
-        entries = loadState();
-        let actionType = '';
-        if (!action.entry.id) {
-          action.entry.id = new Date().getTime();
-          entries.push(action.entry);
-          actionType = 'Add';
-        } else {
-          const toChange = entries.find(saved => saved.id === action.entry.id);
-          entries.splice(entries.indexOf(toChange), 1, action.entry);
-          actionType = 'Edit';
-        }
-        saveState(entries);
-        resolve(actionType);
-      }, 200);
+      let entries = [];
+      entries = loadState();
+      let actionType = '';
+      if (!action.entry.id) {
+        action.entry.id = new Date().getTime();
+        entries.push(action.entry);
+        actionType = 'Add';
+      } else {
+        const toChange = entries.find(saved => saved.id === action.entry.id);
+        entries.splice(entries.indexOf(toChange), 1, action.entry);
+        actionType = 'Edit';
+      }
+      saveState(entries);
+      resolve(actionType);
     });
   }
 
   // delete an entry
   static delete(action) {
     return new Promise((resolve) => {
-      setTimeout(() => {
-        let entries = [];
-        entries = loadState();
-        const toChange = entries.find(el => el.id === action.entry.id);
-        entries.splice(entries.indexOf(toChange), 1);
-        saveState(entries);
-        resolve();
-      }, 200);
+      let entries = [];
+      entries = loadState();
+      const toChange = entries.find(el => el.id === action.entry.id);
+      entries.splice(entries.indexOf(toChange), 1);
+      saveState(entries);
+      resolve();
     });
   }
 }
