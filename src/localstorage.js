@@ -3,13 +3,14 @@ export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state');
     if (serializedState === null) {
-      console.err('something went wrong with serializing the local storage.  Private browser?');
+      console.log(serializedState);
+      console.error('something went wrong with serializing the local storage.  Private browser?');
       return;
     }
     const ordinaryState = JSON.parse(serializedState);
     return ordinaryState;
   } catch (err) {
-    console.err(err);
+    console.error(err);
     return;
   }
 };
@@ -19,6 +20,6 @@ export const saveState = (state) => {
     const serializedState = JSON.stringify(state);
     localStorage.setItem('state', serializedState);
   } catch (err) {
-    console.err(err);
+    console.error(err);
   }
 };
