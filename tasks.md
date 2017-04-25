@@ -1,5 +1,13 @@
 #Project Roadmap
 
+4/24 next: 
+  -linter precommit hook
+  -double check for entry.id redundancy between redux and component and api layer
+  -Fix routing so that bogus / confused routes just return home
+  -organize css into sane, separate pages so responsive styling isn't insane
+  -make nav drawer full height
+  -Rough draft of 'about' section and what this is.
+
 4/23 next:
   -create pre-commit hook for linter?
   -double check my usage of Promises
@@ -61,9 +69,6 @@
 
 ###Long-Term Goals
 
-
-* Consider other secure, local options for persistence (localforage?)
-
 * Let's encrypt - SSL certs
 
 * Option to download as a PDF or text file?
@@ -74,7 +79,11 @@
 
 * Local storage for single-browser persistence, only(done!)
 
+* Consider other secure, local options for persistence (localforage?)(done!)
+
 ###Medium Tasks
+
+* set up github organization for opensourcing
 
 * Basic Accessibility pass (start this early!)
 
@@ -100,7 +109,7 @@
 
 * Add some cool transitions / animations / snazz
 
-* Add a linter to gulp task
+* Add a linter to gulp task(done!)
 
 * Update gulp task to auto-reload page after watch task
 
