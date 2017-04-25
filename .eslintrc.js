@@ -25,6 +25,9 @@ module.exports = {
            "blockBindings": true,
        }
     },
+    "globals": {
+      "localforage": true,
+    },
     "rules": {
       "no-cond-assign": ERROR,          // disallow assignment in conditional expressions
       "no-debugger": ERROR, 

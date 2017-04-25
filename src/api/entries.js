@@ -13,11 +13,11 @@ export default class ApiEntries {
         entries.push({
           id: 1,
           date: new Date(),
-          situation: "My boyfriend isn't that into me",
-          emotionalResponse: 'FML',
-          automaticThoughts: 'Forever alone',
-          cognitiveDistortions: 'all of them ',
-          rationalResponse: 'everybody hurts',
+          situation: "I\'m worried about an event that occurred",
+          emotionalResponse: 'This event made me feel sad and stupid',
+          automaticThoughts: 'I\'m always doing stupid things, I\'ll never improve',
+          cognitiveDistortions: ['allOrNothingThinking', 'overgeneralization'],
+          rationalResponse: 'Everybody feels stupid sometimes, I can improve',
         });
         saveState(entries);
       }
