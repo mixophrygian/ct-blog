@@ -31,7 +31,7 @@ export function* entriesAddEdit(action) {
 // delete a entry
 export function* entriesDelete(action) {
   // call the api to delete the entry
-  yield call(ApiEntries.delete, action);
+  yield call(ApiEntries.deleteEntry, action);
 
   // update the state by removing the entry
   yield put({

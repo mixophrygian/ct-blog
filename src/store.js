@@ -5,7 +5,7 @@ import createSagaMiddleware from 'redux-saga';
 import freeze from 'redux-freeze';
 import { reducers } from './reducers/index';
 import { sagas } from './sagas/index';
-import { loadState } from './localstorage';
+import ApiEntries from './api/entries';
 
 // add the middlewares
 const middlewares = [];
@@ -30,7 +30,7 @@ if (process.env.NODE_ENV !== 'production' && window.devToolsExtension) {
   middleware = compose(middleware, window.devToolsExtension());
 }
 
-const persistedState = { entries: loadState() };
+const persistedState = { entries: ApiEntries.getList() };
 // create the store
 const store = createStore(reducers, persistedState, middleware);
 const history = syncHistoryWithStore(browserHistory, store);
