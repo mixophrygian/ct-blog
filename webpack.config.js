@@ -19,6 +19,7 @@ module.exports = {
     filename: 'bundle.js',
   },
   module: {
+    noParse: /node_modules\/localforage\/dist\/localforage.js/,
     loaders: [
       {
         test: /\.js$/,
