@@ -1,0 +1,62 @@
+#!/bin/sh
+
+# This pre-commit hook will allow you to automatically run lint and flow
+# commands before committing.  If either commands result in an error, the
+# commit aborts and shows the errors.  If the commands result in a warning, the
+# warning is displayed but the commit still succeeds.  
+#
+# If you would like to use this hook, rename this file from 'pre-commit.sample' 
+# to 'pre-commit' (no file extension) and save it in .git/hooks
+#
+# The full path of the file should be .git/hooks/pre-commit
+#
+
+if git rev-parse --verify HEAD >/dev/null 2>&1
+then
+	against=HEAD
+else
+	# Initial commit: diff against an empty tree object
+	against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
+fi
+
+# If you want to allow non-ASCII filenames set this variable to true.
+allownonascii=$(git config --bool hooks.allownonascii)
+
+# Redirect output to stderr.
+exec 1>&2
+
+cd "$(git rev-parse --show-toplevel)"
+ESLINT="node_modules/.bin/eslint"
+pwd
+
+if [[ ! -x "$ESLINT" ]]; then
+  printf "\t\033[41mPlease install ESlint\033[0m (npm install eslint)\n"
+  exit 1
+fi
+
+STAGED_FILES=($(git diff --cached --name-only --diff-filter=ACM | grep ".jsx\{0,1\}$"))
+
+echo "ESLint'ing ${#STAGED_FILES[@]} files"
+
+if [[ "$STAGED_FILES" = "" ]]; then
+  exit 0
+fi
+
+$ESLINT "${STAGED_FILES[@]}"
+
+ESLINT_EXIT="$?"
+
+# Re-add files since they may have been fixed
+git add "${STAGED_FILES[@]}"
+
+if [ "${ESLINT_EXIT}" == 0 ] ; then
+  printf "\n\033[42mCOMMIT SUCCEEDED\033[0m\n"
+else
+  printf "\n\033[41mCOMMIT FAILED:\033[0m Fix errors and try again\n"
+  exit 1
+fi
+
+exit $?
+
+
+
