@@ -1,4 +1,10 @@
 #Project Roadmap
+4/29 next:
+  -make nav drawer full height
+  -Fix routing so that bogus / confused routes just return home
+  -double check for entry.id redundancy between redux and component and api layer
+  -organize css into sane, separate pages so responsive styling isn't insane
+  -Rough draft of 'about' section and what this is.
 
 4/24 next: 
   -linter precommit hook
