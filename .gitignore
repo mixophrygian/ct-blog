@@ -4,3 +4,6 @@ public/js/
 public/css/
 .log
 npm-debug.log
+.swp
+.swo
+.swn

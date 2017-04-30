@@ -12,6 +12,8 @@
   max-width: 100vw;
 }
 
+
+
 //navigation 
 
 .progress {
@@ -19,12 +21,25 @@
   width: 300px;
 }
 
-.nav {
+ul.nav {
   display: flex;
+  width: 100vw;
   align-items: center;
   justify-content: space-between;
-  margin: 20px 0;
-  height: 5vh;
+  padding: 3px 15px;
+}
+
+//fuck bootstrap
+ul.nav::before,
+ul.nav::after {
+ display: none; 
+}
+
+.customNav {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: auto;
 }
 
 .nav li {
@@ -34,7 +49,6 @@
 //Hamburger menu
 .nav li:first-child {
   display: flex;
-  flex: 1;
   
   a {
     padding-left: 0;

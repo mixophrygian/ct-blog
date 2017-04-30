@@ -38,8 +38,9 @@ export default class Menu extends React.Component {
       content: {
         padding: '16px',
         width: '45vw',
-        height: '100%',
-        marginTop: '18vw',
+        height: 'calc(100 - 18)vh',
+        marginTop: '5vh',
+        border: '3px solid pink',
         backgroundColor: 'white',
       },
     };
@@ -67,7 +68,7 @@ export default class Menu extends React.Component {
 
     return (
       <div>
-        <Navbar className="navbar-fixed-top">
+        <Navbar className="navbar-fixed-top customNav">
           <Nav bsStyle="pills">
             <NavItem onClick={this.onSetSidebarOpen}>
               <Glyphicon glyph="align-justify" />
