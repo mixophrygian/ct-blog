@@ -1,5 +1,7 @@
 #Project Roadmap
+
 4/29 next:
+  -some kind of warning for private browser users that their data wont persist
   -make nav drawer full height
   -Fix routing so that bogus / confused routes just return home
   -double check for entry.id redundancy between redux and component and api layer

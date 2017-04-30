@@ -1,0 +1,67 @@
+ul.nav {
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 15px;
+}
+
+//fuck bootstrap
+ul.nav::before,
+ul.nav::after {
+ display: none; 
+}
+
+.customNav {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 10vh;
+  margin: 0;
+}
+
+.nav li {
+  border-radius: 3px;
+}
+
+//Hamburger menu
+.nav li:first-child {
+  display: flex;
+  
+  a {
+    padding-left: 0;
+  }
+  
+  a span.glyphicon {
+  color: lightgray;
+  font-size: 24px;
+  }
+}
+
+.navbar-nav > .edit-button > a {
+  display: flex;
+}
+
+.nav > li > a {
+  padding :0;
+}
+
+//New button
+.edit-button, .home-button {
+  padding: 8px;
+  justify-content: center;
+  border: 1px dashed gray;
+  list-style: none;
+  
+  a {
+    display: flex;
+    color: gray;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  span.glyphicon {
+    margin-left: 3px;
+    top: 0;
+  }
+}

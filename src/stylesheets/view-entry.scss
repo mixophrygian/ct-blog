@@ -1,0 +1,40 @@
+//page entry view 
+
+.page-entry-view {
+  .header, .date {
+    display: flex;
+    align-items: center;
+  }
+  .header {
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-left: 3px;
+  }
+  .edit-button {
+    display: inline-flex;
+    
+    a {
+      color: gray;
+    }
+  }
+  
+  .distortionsView {
+    margin: 0 0 10px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .delete-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  Button {
+    padding: 8px 15px;
+    width: 100%;
+    padding: 8px 15px;
+    border-radius: 4px;
+  }
+}
+  
