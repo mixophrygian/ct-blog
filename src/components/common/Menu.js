@@ -36,11 +36,9 @@ export default class Menu extends React.Component {
         backgroundColor: '#757575',
       },
       content: {
-        padding: '16px',
+        padding: "0 15px",
         width: '45vw',
-        height: 'calc(100 - 18)vh',
-        marginTop: '5vh',
-        border: '3px solid pink',
+        height: '95vh',
         backgroundColor: 'white',
       },
     };
@@ -56,8 +54,13 @@ export default class Menu extends React.Component {
     // so the sidebar doesn't lay on top of the UI, invisibly
     {
       root: {
+        position: 'fixed',
         visibility: 'visible',
+        top:'10vh'
       },
+      sidebar: {
+        overflowY: 'hidden',
+      }
     }
        :
     {
