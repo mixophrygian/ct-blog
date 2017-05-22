@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import { ProgressBar } from 'react-bootstrap';
 import Menu from './common/Menu';
 import '../stylesheets/main.scss';
+import localforage from 'localforage';
 
 // App component
 export class App extends React.Component {
   // pre-render logic
   componentWillMount() {
     // the first time we load the app, we need that entries list
+    localforage.config({ name: "Automatic Thought Journal"});
     this.props.dispatch({ type: 'ENTRIES_FETCH_LIST' });
   }
 

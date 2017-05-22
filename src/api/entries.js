@@ -8,7 +8,7 @@ export default class ApiEntries {
   // get a list of entries
   static getList() {
     return new Promise((resolve) => {
-      let entries;
+      let entries = {};
       localforage.getItem('state').then((retrievedEntries) => {
         entries = retrievedEntries;
         if (!entries || !entries.length) {
