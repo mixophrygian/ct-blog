@@ -1,5 +1,12 @@
 #Project Roadmap
 
+5/22 next:
+  -write tests for API to compensate for pending tests in saga
+  -create "About" section explanation of project for project and Guiomar
+  -Fix routing so that bogus / confused routes just return home
+  -some kind of warning for private browser users that their data wont persist
+  -double check for entry.id redundancy between redux and component and api layer
+
 4/29 next:
   -some kind of warning for private browser users that their data wont persist
   -Fix routing so that bogus / confused routes just return home
