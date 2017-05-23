@@ -6,6 +6,7 @@
   -Fix routing so that bogus / confused routes just return home
   -some kind of warning for private browser users that their data wont persist
   -double check for entry.id redundancy between redux and component and api layer
+  -add disclaimer for user about private browsers and losing the data
 
 4/29 next:
   -some kind of warning for private browser users that their data wont persist

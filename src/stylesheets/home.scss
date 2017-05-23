@@ -9,7 +9,12 @@
   }
   
   .EntryList .Table {
+    tr {
+      display: flex;
+    }
+    .entryDate,
     .entryTitle {
+      flex: 1;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -38,6 +43,9 @@
         }
       }
     }  
+    .entryDate {
+      flex: 0.5;
+    }
   }
   tr {
     height: 9vh;

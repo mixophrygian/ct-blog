@@ -23,11 +23,13 @@ export default class SingleEntryRow extends React.Component {
   render() {
     const { entry, showDelete } = this.props;
     const date = formatDate(entry.date);
-    const excerpt = excerptText(entry.situation, 17);
+    const excerpt = excerptText(entry.situation, 18);
 
     return (
       <tr data-id={entry.id} onClick={this.viewEntry}>
-        <td>{date}</td>
+        <td className="entryDate">
+          <div>{date}</div>
+        </td>
         <td className="entryTitle">
           <div>
             {excerpt}

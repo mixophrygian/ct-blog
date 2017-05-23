@@ -36,7 +36,7 @@ export class EntryList extends React.Component {
     // show the list of entries
     return (
       <div className="EntryList">
-        <h1>CBT blog</h1>
+        <h1>Automatic Thought Journal</h1>
         <Table bordered hover responsive striped className="Table">
           <tbody>
             {entries.map((entry, index) => {
