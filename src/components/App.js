@@ -28,10 +28,7 @@ export class App extends React.Component {
     return (
       <div className="container">
         <div>
-          <Menu />
-        </div>
-        <div>
-          {children}
+          <Menu children={children} />
         </div>
         <div className="footer">
           <p>some footer content</p>

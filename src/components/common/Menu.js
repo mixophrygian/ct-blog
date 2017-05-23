@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Nav, NavItem, Navbar, Glyphicon } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -50,25 +50,6 @@ export default class Menu extends React.Component {
         <Link style={styles.sidebarLink} onClick={this.onSetSidebarOpen} to={'/faq'}>FAQ</Link>
       </div>
 
-    const dynamicStyles = this.state.sidebarOpen ?
-    // so the sidebar doesn't lay on top of the UI, invisibly
-    {
-      root: {
-        position: 'fixed',
-        visibility: 'visible',
-        top:'10vh'
-      },
-      sidebar: {
-        overflowY: 'hidden',
-      }
-    }
-       :
-    {
-      root: {
-        visibility: 'hidden',
-      },
-    };
-
     return (
       <div>
         <Navbar className="navbar-fixed-top customNav">
@@ -84,16 +65,19 @@ export default class Menu extends React.Component {
           </Nav>
         </Navbar>
         <Sidebar
-          styles={dynamicStyles}
           sidebar={sidebarContent}
           shadow={false}
           touch={false}
           open={this.state.sidebarOpen}
           onSetOpen={this.onSetSidebarOpen}
         >
-          <div />
+          {this.props.children}
         </Sidebar>
       </div>
     );
   }
+}
+
+Menu.propTypes = {
+    children: PropTypes.node,
 }
