@@ -22,7 +22,7 @@ describe('Entries saga', () => {
     });
   });
 
-  xdescribe('entriesAddEdit() - add', () => {
+  describe('entriesAddEdit() - add', () => {
     const action = {
       entry: {},
       callbackSuccess: () => {},
@@ -30,7 +30,7 @@ describe('Entries saga', () => {
     const generator = entriesAddEdit(action);
 
     it('should return the ApiEntries.addEdit call', () => {
-      assert.deepEqual(generator.next().value, call(ApiEntries.addEdit));
+      assert.deepEqual(generator.next().value, call(ApiEntries.addEdit, action));
     });
 
     // it('should return the ENTRIES_ADD_SAVE action', () => {
@@ -53,8 +53,8 @@ describe('Entries saga', () => {
     };
     const generator = entriesAddEdit(action);
 
-    xit('should return the ApiEntries.addEdit call', () => {
-      assert.deepEqual(generator.next().value, call(ApiEntries.addEdit));
+    it('should return the ApiEntries.addEdit call', () => {
+      assert.deepEqual(generator.next().value, call(ApiEntries.addEdit, action));
     });
 
     // it('should return the ENTRIES_EDIT_SAVE action', () => {
@@ -64,7 +64,7 @@ describe('Entries saga', () => {
     //   }));
     // });
 
-    xit('should be finished', () => {
+    it('should be finished', () => {
       generator.next();
       assert.equal(generator.next().done, true);
     });
@@ -76,8 +76,8 @@ describe('Entries saga', () => {
     };
     const generator = entriesDelete(action);
 
-    xit('should return the ApiEntries.delete call', () => {
-      assert.deepEqual(generator.next().value, call(ApiEntries.delete));
+    it('should return the ApiEntries.delete call', () => {
+      assert.deepEqual(generator.next().value, call(ApiEntries.deleteEntry, action));
     });
 
     // it('should return the ENTRIES_DELETE_SAVE action', () => {
@@ -87,7 +87,7 @@ describe('Entries saga', () => {
     //   }));
     // });
 
-    xit('should be finished', () => {
+    it('should be finished', () => {
       generator.next();
       assert.equal(generator.next().done, true);
     });
