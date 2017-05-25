@@ -18,7 +18,44 @@ In the three column version it's easy to intermingle emotional responses with bo
 # What are cognitive distortions?
 /* Todo: stand-alone section for side bar? * /
 
-At the heart of this exercise is the ability to identify distorted conclusions that you may have been drawing about yourself or your life.**  
+At the heart of this exercise is the ability to identify distorted conclusions that you may have been drawing about yourself or your life.**  Read over these distortions to get a feel for them and refer back to them when you are feeling upset.  This list is the key to clearing the fog of distorted thinking. 
+
+- All-or-Nothing thinking
+  You see things in black-and-white categories.  If your performance falls short of perfect, you see yourself as a total failure.
+
+- Overgeneralizaton
+  You see a single negative event as a never-ending pattern of defeat.
+
+- Mental Filter 
+  You pick out a single negative detail in any situation and dwell on it exclusively, thus perceiving that the whole situation is negative.
+  
+- Disqualifying the Positive
+  You reject positive experiences by insisting they "don't count" for some reason.  In this way you can maintain a negative belief.
+
+- Jumping to Conclusions
+  You make a negative interpretation even thought there are no definite facts that convincingly support your conclusion.
+    a. Mind reading
+      You arbitrarily conclude that someone is reacting negatively to you and you don't bother to check this out.
+      
+    b. Fortune Telling
+      You anticipate that things will turn out badly and you feel convinced that your prediction is an already-established fact.
+
+- Magnification and Minimization 
+  You exaggerate the importance of things (such as a minor goof-up or someone else's achievement) or you inappropriately shrink things until they appear tiny (your own good qualities or another person's imperfections).
+
+- Emotional Reasoning
+  You take your emotions as evidence for the truth.  "I feel like a dud, therefore I am a dud."
+  
+- Should Statements
+  You try to motivate yourself by saying "I should do this" or "I must do that." causing you to feel pressured or resentful. When the reality of your own behavior falls short of your standards, your shoulds and shouldn'ts create self-loathing, shame, and guilt.
+  
+- Labeling
+  Personal labeling means creating a completely negative self-image based on your mistakes.  It's an extreme form of overgeneralization.  If you describe your mistakes with sentences beginning with "I'm a ..." you are probably labeling.  "I'm a born loser." "I'm a failure."
+  
+- Personalization
+  You assume responsibility for a negative incident, even when there is no basis for doing so.  You arbitrarily conclude that what happened was your fault or reflects your inadequacy even when you were not responsible for it.  Personalization can cause crippling guilt and a paralyzing sense of responsibility.  It confuses influence over others with control over others. 
+  
+  
 
 
 
