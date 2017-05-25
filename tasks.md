@@ -1,12 +1,18 @@
 #Project Roadmap
 
+5/24 next:
+  -Draft email requesting permission to reprint sections of Feeling Good for the app
+  -Create email of screenshots and explanation for Guiomar that reflects what the app is/does.  Reusable screenshots for permission email.
+  -Add "Cognitive Distortions" section to sidebar
+  - all of 5/22 next items
+  
+
 5/22 next:
   -write tests for API to compensate for pending tests in saga
   -create "About" section explanation of project for project and Guiomar
   -Fix routing so that bogus / confused routes just return home
   -some kind of warning for private browser users that their data wont persist
   -double check for entry.id redundancy between redux and component and api layer
-  -add disclaimer for user about private browsers and losing the data
 
 4/29 next:
   -some kind of warning for private browser users that their data wont persist
