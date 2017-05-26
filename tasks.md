@@ -3,6 +3,7 @@
 5/25 next:
   -css reset
   -rip out bootstrap so offline mode works.  (Try no-internet and clearing cache.)
+  -check out redux best practices - does the reducer's new state update the API? How should state and API relate. Seems silly to perform the same state chance twice, once for state and once for API.
   -all 5/22 and 5/24
   
 
