@@ -1,5 +1,11 @@
 #Project Roadmap
 
+5/25 next:
+  -css reset
+  -rip out bootstrap so offline mode works.  (Try no-internet and clearing cache.)
+  -all 5/22 and 5/24
+  
+
 5/24 next:
   -Draft email requesting permission to reprint sections of Feeling Good for the app
   -Create email of screenshots and explanation for Guiomar that reflects what the app is/does.  Reusable screenshots for permission email.
