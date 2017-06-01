@@ -23,6 +23,7 @@ export default class ApiEntries {
             rationalResponse: 'Everybody feels stupid sometimes, I can improve',
           });
           localforage.setItem('state', entries).then((savedEntries) => {
+            console.log('here');
             resolve(savedEntries);
           });
         } else {
