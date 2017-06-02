@@ -1,8 +1,8 @@
-  import assert from 'assert';
-  import { expect } from "chai";
-  import sinon from 'sinon';
-  import localforage from "localforage";
-  import ApiEntries from '../../src/api/entries';
+//import assert from 'assert';
+import { expect } from "chai";
+import sinon from 'sinon';
+import localforage from "localforage";
+import ApiEntries from '../../src/api/entries';
 
 let boilerplateEntry;
 let store;
@@ -39,26 +39,24 @@ describe("Entries API", () => {
      cognitiveDistortions: ['emotionalReasoning', 'jumpingToConclusions'],
      rationalResponse: "A unique rational response",
    }
- describe('getList()', () => {
+ describe('getEntries()', () => {
    it('should create a boilerplate list of entries if none are present', () => {
      boilerplateEntry;
-     ApiEntries.getList().then(data => {
+     ApiEntries.getEntries().then(data => {
        const resultEntry = data[0];
-       //TODO fix date discrepancy?
+       //TODO fix date discrepancy? check only year/month/day?
        expect(resultEntry.id).to.equal(boilerplateEntry.id);
        expect(resultEntry.situation).to.equal(boilerplateEntry.situation);
-       //console.log(data[0], boilerplateEntry);
-       //expect(data[0]).to.deep.equal(boilerplateEntry);
-       //assert.deepEqual(data[0], boilerplateEntry);
+       expect(resultEntry.emotionalResponse).to.equal(boilerplateEntry.emotionalResponse);
      });
      //mock localforage getItem promise to resolve with undefined
-     //expect ApiEntries.getList() to resolve with the boilerplateEntry
+     //expect ApiEntries.getEntries() to resolve with the boilerplateEntry
    });
 
    it('should retrieve a list of entries, if they exist', () => {
      uniqueEntry;
      //mock localforage getItem promise to resolve with an array that contains a uniqueEntry
-     //expect ApiEntries.getList() to resolve with the uniquEntry
+     //expect ApiEntries.getEntries() to resolve with the uniquEntry
 
    });
  });
@@ -101,7 +99,7 @@ describe("Entries API", () => {
    it('should delete an existing entry', () => {
     // mock localforage getItem promise to resolve with only boilerPlateEntry and a unique entry
     // expect(ApiEntries.deleteEntry()) to resolve with nothing?
-    // expect localForage getList to resolve with only a unique entry
+    // expect localForage getEntries to resolve with only a unique entry
    });
  });
 })

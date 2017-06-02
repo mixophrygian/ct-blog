@@ -30,7 +30,7 @@ if (process.env.NODE_ENV !== 'production' && window.devToolsExtension) {
   middleware = compose(middleware, window.devToolsExtension());
 }
 
-const persistedState = { entries: ApiEntries.getList() };
+const persistedState = { entries: ApiEntries.getEntries() };
 // create the store
 const store = createStore(reducers, persistedState, middleware);
 const history = syncHistoryWithStore(browserHistory, store);

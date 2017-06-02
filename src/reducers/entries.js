@@ -5,7 +5,7 @@ export default function entries(state = {}, action) {
       return action.entries;
 
     case 'ENTRIES_ADD_SAVE':
-      action.entry.id = action.entry.id || Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+      action.entry.id = action.entry.id || new Date().getTime();
       return [...state, action.entry];
 
     case 'ENTRIES_EDIT_SAVE':
