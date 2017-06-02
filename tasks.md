@@ -1,4 +1,15 @@
 #Project Roadmap
+6/1 next:
+  -update api tests
+  -css reset 
+  -rip out bootstrap so offline mode works (try no internet and clearing cache)
+  -Draft email requesting permission to reprint sections of Feeling Good for the app
+  -Create email of screenshots and explanation for Guiomar that reflects what the app is/does.  Reusable screenshots for permission email.
+  -create "About" section explanation of project for project and Guiomar
+  -Fix routing so that bogus / confused routes just return home
+  -some kind of warning for private browser users that their data wont persist -Add "Cognitive Distortions" section to sidebar
+  -Fix sidebar css to get full height
+
 
 5/25 next:
   -css reset
