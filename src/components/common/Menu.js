@@ -38,7 +38,8 @@ export default class Menu extends React.Component {
       content: {
         padding: "0 15px",
         width: '45vw',
-        height: '95vh',
+        marginTop: '10vh',
+        height: '90vh',
         backgroundColor: 'white',
       },
     };
