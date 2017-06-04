@@ -14,7 +14,6 @@ export class EntryView extends React.Component {
   // constructor
   constructor(props) {
     super(props);
-
     this.state = {
       deleteShow: false,
       deleteEntry: {},
@@ -26,6 +25,13 @@ export class EntryView extends React.Component {
     this.entryDelete = this.entryDelete.bind(this);
     this.renderDistortions = this.renderDistortions.bind(this);
     this.prettyLabel = this.prettyLabel.bind(this);
+  }
+
+  componentWillMount() {
+    const { entry } = this.props;
+    if (!entry.id) {
+      browserHistory.replace('/');
+    }
   }
 
   // render
