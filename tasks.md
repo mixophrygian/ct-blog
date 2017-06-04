@@ -1,5 +1,13 @@
 #Project Roadmap
 
+6/4 next:
+  -deal with "deleted every entry" state so that if zero entries are found there's an empty state or boilerplate (probs empty state)
+  -make list of todos before creating porfolio to share
+  -create "About" section explanation of project for project and Guiomar
+  -Add "Cognitive Distortions" section to sidebar
+  -Draft email requesting permission to reprint sections of Feeling Good for the app
+  
+
 6/3 next:
   -update api tests
   -Fix routing so that bogus / confused routes just return home 
