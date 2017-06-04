@@ -19,7 +19,7 @@ export function* entriesAddEdit(action) {
     entry: action.entry,
   });
   const entries = yield select(getEntries);
-  ApiEntries.saveEntries(entries);
+  yield ApiEntries.saveEntries(entries);
 
   action.callbackSuccess(action.entry);
 }
@@ -31,5 +31,5 @@ export function* entriesDelete(action) {
   });
 
   const entries = yield select(getEntries);
-  ApiEntries.saveEntries(entries);
+  yield ApiEntries.saveEntries(entries);
 }

@@ -1,4 +1,11 @@
 #Project Roadmap
+
+6/3 next:
+  -update api tests
+  -Fix routing so that bogus / confused routes just return home 
+  -make list of todos before creating porfolio to share
+  -create "About" section explanation of project for project and Guiomar
+  
 6/1 next:
   -update api tests
   -css reset 
@@ -121,13 +128,17 @@
 
 ###Medium Tasks
 
+* Draft email requesting permission to reprint sections of Feeling Good for the app
+
+* Create email of screenshots and explanation for Guiomar that reflects what the app is/does.  Reusable screenshots for permission email.
+
+* remove bootstrap :before and :after nonsense
+
+*  some kind of warning for private browser users that their data wont persist -Add "Cognitive Distortions" section to sidebar
+
 * set up github organization for opensourcing
 
 * Basic Accessibility pass (start this early!)
-
-* Make past entries collapse and toggle-able (to expand)
-
-* Rethink UI - try wire-framing main page?
 
 * Set up SEO tags
 
@@ -137,17 +148,11 @@
 
 * Branding / favicon?
 
-* Set up a testing suite - basic testing
 
 ###Short-Term Goals
 
-* Make mobile layout with stacked columns
-
-* Find a good domain - cbt - feeling good, automatic thought jot, and nab it for future hosting
 
 * Add some cool transitions / animations / snazz
-
-* Add a linter to gulp task(done!)
 
 * Update gulp task to auto-reload page after watch task
 

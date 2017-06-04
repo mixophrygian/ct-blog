@@ -36,8 +36,10 @@ export default class ApiEntries {
 
   //save the entries to storage
   static saveEntries(entries) {
-    localforage.setItem('state', entries).then(() => {
-      console.log('local forage saved the entries', entries);
+    return new Promise((resolve) => {
+      localforage.setItem('state', entries).then((savedEntries) => {
+        resolve(savedEntries);
+      });
     });
   }
 }

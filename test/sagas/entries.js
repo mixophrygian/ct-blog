@@ -8,13 +8,15 @@ import ApiEntries from '../../src/api/entries';
 describe('Entries saga', () => {
   describe('entriesFetchList()', () => {
     const generator = entriesFetchList();
+    let val;
 
     it('should return the ApiEntries.getEntries call', () => {
       assert.deepEqual(generator.next().value, call(ApiEntries.getEntries));
     });
 
     it('should return the ENTRIES_LIST_SAVE action', () => {
-       expect(generator.next().value).to.include.keys({ "PUT": {type: 'ENTRIES_LIST_SAVE'}});
+       val = generator.next();
+       expect(val.value).to.include.keys({ "PUT": {type: 'ENTRIES_LIST_SAVE'}});
     });
 
     it('should be finished', () => {
@@ -33,8 +35,12 @@ describe('Entries saga', () => {
       expect(generator.next().value.PUT.action.type).to.equal("ENTRIES_ADD_SAVE");
     });
 
-    it('should return the ApiEntries.addEdit call', () => {
+    it('should retrieve the entries from state', () => {
       assert.deepEqual(generator.next().value, select(getEntries));
+    });
+
+    it('should save those entries to localforage', () => {
+      assert.deepEqual(generator.next().value, ApiEntries.saveEntries);
     });
 
     it('should be finished', () => {
@@ -50,14 +56,17 @@ describe('Entries saga', () => {
     const generator = entriesAddEdit(action);
 
     it('should return the ENTRIES_EDIT_SAVE action', () => {
-      const val = generator.next().value.PUT.action;
-      //TODO: test that the right type is being passed by somehow passing 'Edit' to yield? idk
-      //expect(val.type).to.equal("ENTRIES_EDIT_SAVE");
-      expect(val.entry).to.equal(action.entry)
+      const val = generator.next().value;
+      expect(val.PUT.action.entry).to.equal(action.entry)
+      expect(val.PUT.action.type).to.equal('ENTRIES_EDIT_SAVE');
     });
 
-    it('should return the ApiEntries.addEdit call', () => {
+    it('should retrieve the entries from state', () => {
       assert.deepEqual(generator.next().value, select(getEntries));
+    });
+
+    it('should save those entries to localforage', () => {
+      assert.deepEqual(generator.next().value, ApiEntries.saveEntries);
     });
 
     it('should be finished', () => {
@@ -78,14 +87,12 @@ describe('Entries saga', () => {
       expect(val.entry).to.equal(action.entry)
      });
 
-     it('should return the ApiEntries.addEdit call', () => {
-      assert.deepEqual(generator.next().value, select(getEntries));
+     it('should retrieve the entries from state', () => {
+       assert.deepEqual(generator.next().value, select(getEntries));
      });
 
-
-    it('should be finished', () => {
-      generator.next();
-      assert.equal(generator.next().done, true);
-    });
+     it('should save those entries to localforage', () => {
+       assert.deepEqual(generator.next().value, ApiEntries.saveEntries);
+     });
   });
 });
