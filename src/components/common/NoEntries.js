@@ -17,10 +17,12 @@ export default class NoEntries extends React.Component {
         <p className="quote">
         "Your thoughts create your emotions; therefore, your emotions cannot prove that your thoughts are accurate."
         -David Burns</p>
-        <Link to={'/about'}>About</Link>
+        <Link to={'/about'}>What is this?</Link>
+        <br/>
+        <br/>
         <LinkContainer to="/entry-edit">
           <NavItem className="edit-button cta">
-            New <Glyphicon glyph="plus-sign" />
+            New Entry <Glyphicon glyph="plus-sign" />
           </NavItem>
         </LinkContainer>
       </div>
