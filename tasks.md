@@ -4,7 +4,8 @@
   -create "About" section explanation of project for project and Guiomar
   -Add "Cognitive Distortions" section to sidebar
   -host this somewhere private for sharing
-  -google analytics?
+  -piwik for analytics?
+  -try hosting on github pages?
   -make list of todos before creating portfolio to share
   -Draft email requesting permission to reprint sections of Feeling Good for the app
 
