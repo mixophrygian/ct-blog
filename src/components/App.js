@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { ProgressBar } from 'react-bootstrap';
 import Menu from './common/Menu';
 import '../stylesheets/main.scss';
 import localforage from 'localforage';
@@ -16,14 +15,7 @@ export class App extends React.Component {
 
   // render
   render() {
-    // show the loading state while we wait for the app to load
-    const { entries, children } = this.props;
-    if (!entries.length) {
-      return (
-        <ProgressBar active now={100} />
-      );
-    }
-
+    const { children } = this.props;
     // render
     return (
       <div className="container">
@@ -39,7 +31,6 @@ export class App extends React.Component {
 }
 // prop checks
 App.propTypes = {
-  entries: PropTypes.any,
   children: PropTypes.node,
   dispatch: PropTypes.func,
 };

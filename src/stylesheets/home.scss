@@ -7,6 +7,7 @@
     max-width: 100%;
     flex: 1;
   }
+ 
   
   .EntryList .Table {
     tr {
@@ -62,7 +63,3 @@
 .pagination > li.active>a {
   z-index: auto;
 }
-
-// .pagination > li.disabled > a {
-//   background-color: transparent;
-// }

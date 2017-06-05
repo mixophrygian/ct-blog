@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { Table, Pagination } from 'react-bootstrap';
 import SingleEntryRow from './SingleEntryRow';
+import NoEntries from './NoEntries';
 import EntryDeletePrompt from './EntryDeletePrompt';
 
 // User list component
@@ -32,21 +33,19 @@ export class EntryList extends React.Component {
     const pages = Math.ceil(entries.length / perPage);
     const startOffset = (page - 1) * perPage;
     let startCount = 0;
-
-    // show the list of entries
-    return (
-      <div className="EntryList">
-        <h1>Automatic Thought Journal</h1>
-        <Table bordered hover responsive striped className="Table">
+    const savedEntries = entries.length ?
+    <div>
+      <Table bordered hover responsive striped className="Table">
           <tbody>
-            {entries.map((entry, index) => {
-              if (index >= startOffset && startCount < perPage) {
-                startCount++;
-                return (
-                  <SingleEntryRow key={index} entry={entry} showDelete={this.showDelete} className="SingleEntryRow" />
-                );
-              }
-            })}
+          {entries.map((entry, index) => {
+            if (index >= startOffset && startCount < perPage) {
+              startCount++;
+              return (
+                <SingleEntryRow key={index} entry={entry} showDelete={this.showDelete} className="SingleEntryRow" />
+              );
+            }
+            })
+          }
           </tbody>
         </Table>
 
@@ -59,6 +58,12 @@ export class EntryList extends React.Component {
           show={this.state.deleteShow} entry={this.state.deleteEntry}
           hideDelete={this.hideDelete} entryDelete={this.entryDelete}
         />
+       </div> :
+       <NoEntries className="SingleEntryRow" />
+    return (
+      <div className="EntryList">
+        <h2>Automatic Thought Journal</h2>
+          {savedEntries}
       </div>
     );
   }
@@ -100,7 +105,7 @@ export class EntryList extends React.Component {
 }
 
 EntryList.propTypes = {
-  entries: PropTypes.array,
+  entries: PropTypes.any,
   dispatch: PropTypes.func,
   page: PropTypes.number,
 }
