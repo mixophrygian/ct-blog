@@ -9,7 +9,7 @@ export default class ApiEntries {
   static getEntries() {
     return new Promise((resolve) => {
       localforage.getItem('state').then((retrievedEntries) => {
-        resolve(retrievedEntries || {});
+        resolve(retrievedEntries || []);
       }).catch((err) => {
         console.log('Something went wrong while trying to save to localforage', err);
       });

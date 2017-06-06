@@ -33,6 +33,7 @@ export class App extends React.Component {
 App.propTypes = {
   children: PropTypes.node,
   dispatch: PropTypes.func,
+  entries: PropTypes.any,
 };
 
 // export the connected class
