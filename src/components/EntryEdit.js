@@ -14,6 +14,7 @@ export class EntryEdit extends React.Component {
     super(props);
     this.state = {
       cognitiveDistortions: [],
+      entries: [],
     };
 
     // bind <this> to the event method
@@ -257,7 +258,9 @@ const EntryEditForm = reduxForm({
 
 // export the connected class
 function mapStateToProps(state, ownProps) {
-  const entry = state.entries.find(x => Number(x.id) === Number(ownProps.params.id)) || {};
+  const entry = typeof state.entries === Array ?
+   state.entries.find(x => Number(x.id) === Number(ownProps.params.id))
+   : {};
   return {
     entry,
     initialValues: entry,
