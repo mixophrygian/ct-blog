@@ -1,5 +1,19 @@
 #Project Roadmap
 
+6/5:
+  -stress test weird routes and deep links
+  -make new routes scroll to top automatically
+  -make 'new entry' auto close nav bar
+   -force layout into mobile?
+  -https://github.com/rafrex/spa-github-pages to make github pages work?
+  -create "About" section explanation of project for project and Guiomar
+  -Add "Cognitive Distortions" section to sidebar
+  -host this somewhere private for sharing
+  -piwik for analytics?
+  -make list of todos before creating portfolio to share
+  -Draft email requesting permission to reprint sections of Feeling Good for the app
+  
+
 6/5 next:
   -fix edit/add problem - editing entry instead goes to 'add'
   -force layout into mobile?
