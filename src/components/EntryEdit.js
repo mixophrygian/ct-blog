@@ -26,6 +26,7 @@ export class EntryEdit extends React.Component {
 
   componentDidMount() {
     const { entry } = this.props;
+    if (!entry) return;
     const distortions = entry.cognitiveDistortions;
     if (distortions) {
       distortions.map(this.setPreviouslyChecked);
@@ -67,12 +68,18 @@ export class EntryEdit extends React.Component {
   formSubmit(values) {
     const { dispatch, entry } = this.props;
     const { cognitiveDistortions } = this.state;
+    let date = new Date();
+    let id = values.id;
+    if (entry) {
+      date = entry.date;
+      id = entry.id;
+    }
     return new Promise((resolve, reject) => {
       dispatch({
         type: 'ENTRIES_ADD_EDIT',
         entry: {
-          id: entry.id || values.id,
-          date: entry.date || new Date(),
+          id: id,
+          date: date,
           situation: values.situation || "",
           emotionalResponse: values.emotionalResponse || "",
           automaticThoughts: values.automaticThoughts || "",
@@ -96,7 +103,7 @@ export class EntryEdit extends React.Component {
     const { entry, handleSubmit, error, invalid, submitting } = this.props;
     return (
       <div className="page-entry-edit">
-        <PageHeader>{(entry.id ? 'Edit' : 'Add')}</PageHeader>
+        <PageHeader>{(entry && entry.id ? 'Edit' : 'Add')}</PageHeader>
         <Form horizontal onSubmit={handleSubmit(this.formSubmit)}>
           <Field
             component={FormField}
@@ -258,9 +265,7 @@ const EntryEditForm = reduxForm({
 
 // export the connected class
 function mapStateToProps(state, ownProps) {
-  const entry = typeof state.entries === Array ?
-   state.entries.find(x => Number(x.id) === Number(ownProps.params.id))
-   : {};
+  const entry = state.entries.find(x => Number(x.id) === Number(ownProps.params.id))
   return {
     entry,
     initialValues: entry,
