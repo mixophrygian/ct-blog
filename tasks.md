@@ -1,5 +1,15 @@
 #Project Roadmap
 
+6/14:
+  -fix scroll to Top functionality
+  -Make tablet / desktop layout tolerable
+  -Add in "About" section
+  -Add in "cognitive distortions" section to sidebar
+  -stress test weird routes
+  -host on s3
+  -piwik for analytics
+  -draft email requesting permission to reprint sections
+
 6/5:
   -stress test weird routes and deep links
   -make new routes scroll to top automatically
