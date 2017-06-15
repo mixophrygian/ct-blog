@@ -15,7 +15,7 @@
     }
     .entryDate,
     .entryTitle {
-      flex: 1;
+      flex: 4;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -31,21 +31,27 @@
         }  
       }
       
-      .buttonWrapper button {
-        background: #eee;
-        color: #999;
-        border-color: lightgray;
-        vertical-align: center;
+      .buttonWrapper {
         display: flex;
+        justify-content: flex-end;
+        flex: 1;
+        
+       button {
+          background: #eee;
+          color: #999;
+          border-color: lightgray;
+          vertical-align: center;
+          display: flex;
         
         span {
           top: 0;
           padding: 3px 1px;
         }
       }
+    }
     }  
     .entryDate {
-      flex: 0.5;
+      flex: 2;
     }
   }
   tr {
@@ -63,3 +69,30 @@
 .pagination > li.active>a {
   z-index: auto;
 }
+
+@media only screen and (min-width: 768px) {
+  .page-home {
+    .EntryList .Table {
+      .entryTitle {
+        .buttonWrapper {
+          display: flex;
+          justify-content: center;
+          flex: 1;
+          
+         button {
+            background: #eee;
+            color: #999;
+            border-color: lightgray;
+            vertical-align: center;
+            display: flex;
+          
+          span {
+            top: 0;
+            padding: 3px 1px;
+          }
+          }
+        }
+      }
+    }
+  }
+} 
