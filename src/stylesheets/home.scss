@@ -24,8 +24,14 @@
       height: 9vh;
       
       div {
-        display: flex;
+        display: block;
         justify-content: flex-start;
+        flex: 3;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 0px;
+        overflow: hidden;
+        
         a {
           z-index: 2;
         }  
@@ -73,7 +79,9 @@
 @media only screen and (min-width: 768px) {
   .page-home {
     .EntryList .Table {
+      
       .entryTitle {
+        
         .buttonWrapper {
           display: flex;
           justify-content: center;
@@ -92,6 +100,10 @@
           }
           }
         }
+      }
+      .entryDate,
+      .entryTitle {
+        padding-left: 30px;
       }
     }
   }
