@@ -24,7 +24,7 @@ export class App extends React.Component {
         <ProgressBar active now={100}/>
       );
     }
-
+    //otherwise show the whole page, EntryList will handle the no-entry state
     return (
       <div className="container">
         <div>
