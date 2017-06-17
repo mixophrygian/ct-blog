@@ -17,12 +17,14 @@ export class App extends React.Component {
   // render
   render() {
     const { children, entries } = this.props;
-    if (!entries.length) {
+
+    //if entries is a pending promise, show progress bar
+    if (entries.then) {
       return (
         <ProgressBar active now={100}/>
       );
     }
-    // render
+
     return (
       <div className="container">
         <div>

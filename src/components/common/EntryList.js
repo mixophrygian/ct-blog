@@ -33,6 +33,7 @@ export class EntryList extends React.Component {
     const pages = Math.ceil(entries.length / perPage);
     const startOffset = (page - 1) * perPage;
     let startCount = 0;
+    //if there's no length of entries, show the empty state
     const savedEntries = entries.length ?
     <div>
       <Table bordered hover responsive striped className="Table">
