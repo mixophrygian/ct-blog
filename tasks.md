@@ -1,5 +1,13 @@
 #Project Roadmap
 
+6/17:
+  -fix scroll to Top functionality
+  -Make tablet / desktop layout tolerable
+  -stress test weird routes
+  -host on s3
+  -piwik for analytics
+  -draft email requesting permission to reprint sections
+
 6/14:
   -fix scroll to Top functionality
   -Make tablet / desktop layout tolerable
