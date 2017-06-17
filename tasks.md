@@ -2,10 +2,12 @@
 
 6/17:
   -fix scroll to Top functionality
-  -Make tablet / desktop layout tolerable
+  -make 'new entry' auto close nav bar
+  -Make desktop layout tolerable
   -stress test weird routes
-  -host on s3
   -piwik for analytics
+  -host on s3
+  -Send to Guiomar
   -draft email requesting permission to reprint sections
 
 6/14:
