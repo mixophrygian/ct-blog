@@ -47,7 +47,8 @@ export default class Menu extends React.Component {
     const sidebarContent =
       <div style={styles.content}>
         <Link style={styles.sidebarLink} onClick={this.onSetSidebarOpen} to={'/'}>Home</Link>
-        <Link style={styles.sidebarLink} onClick={this.onSetSidebarOpen} to={'/about'}>About</Link>
+        <Link style={styles.sidebarLink} onClick={this.onSetSidebarOpen} to={'/about'}>What is this?</Link>
+        <Link style={styles.sidebarLink} onClick={this.onSetSidebarOpen} to={'/distortions'}>Distortions</Link>
         <Link style={styles.sidebarLink} onClick={this.onSetSidebarOpen} to={'/faq'}>FAQ</Link>
       </div>
 
