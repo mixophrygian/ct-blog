@@ -103,7 +103,7 @@ export class EntryEdit extends React.Component {
     const { entry, handleSubmit, error, invalid, submitting } = this.props;
     return (
       <div className="page-entry-edit">
-        <PageHeader>{(entry && entry.id ? 'Edit' : 'Add')}</PageHeader>
+        <PageHeader>{(entry && entry.id ? 'Edit Entry' : 'New Entry')}</PageHeader>
         <Form horizontal onSubmit={handleSubmit(this.formSubmit)}>
           <Field
             component={FormField}
@@ -124,8 +124,8 @@ export class EntryEdit extends React.Component {
             placeholder="The automatic thoughts"
           />
 
-          <div className="distortions-container">
             <p>Cognitive Distortions</p>
+          <div className="distortions-container">
             <button className="choice" onClick={this.toggleChecked}>
            All-or-Nothing Thinking
                 <input

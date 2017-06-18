@@ -3,6 +3,10 @@
 .page-home {
   display: flex;
   
+  h2 {
+    margin-bottom: 4vw;
+  }
+  
   div:first-child {
     max-width: 100%;
     flex: 1;

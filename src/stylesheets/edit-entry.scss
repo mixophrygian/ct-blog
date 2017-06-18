@@ -1,6 +1,11 @@
 //page entry-edit
 
 .page-entry-edit {
+  .row div {
+    width: auto;
+    flex: 1;
+    float: none;
+  }
   .row Textarea {
     width: 100%;
     border: 1px solid lightgray;
@@ -44,4 +49,18 @@
   opacity: 1;
   outline: none;
   color: black;
+}
+
+@media only screen and (min-width: 769px) {
+  .distortions-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+  }
+  
+  .choice, .choice-active {
+    width: 260px;
+    margin: 2%;
+  }
 }

@@ -66,9 +66,10 @@ export class EntryView extends React.Component {
         <Panel header={'Automatic Thoughts'}>
           {entry.automaticThoughts || ''}
         </Panel>
-        <Panel header={'Cognitive Distortions'}>
+        <h5>Cognitive Distortions</h5>
+        <div className="distortions-container">
           {distortions}
-        </Panel>
+        </div>
         <Panel header={'Rational Response'}>
           {entry.rationalResponse || ''}
         </Panel>
