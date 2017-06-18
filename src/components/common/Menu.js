@@ -36,8 +36,9 @@ export default class Menu extends React.Component {
         backgroundColor: '#757575',
       },
       content: {
-        padding: "0 15px",
+        padding: "0 10%",
         width: '45vw',
+        maxWidth: '300px',
         marginTop: '10vh',
         height: '90vh',
         backgroundColor: 'white',

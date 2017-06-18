@@ -44,6 +44,10 @@ ul.nav::after {
 
 .nav > li > a {
   padding :0;
+  background-image: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  color: #555;
 }
 
 //New button
@@ -63,5 +67,12 @@ ul.nav::after {
   span.glyphicon {
     margin-left: 3px;
     top: 0;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .container {
+    width: 100vw;
+    padding: 0 4vw;
   }
 }
