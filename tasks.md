@@ -1,4 +1,9 @@
 #Project Roadmap
+6/18:
+  -fix scroll to Top functionality
+  -make 'new entry' auto close nav bar
+  -piwik for analytics
+  -draft email requesting permission to reprint sections
 
 6/17:
   -fix scroll to Top functionality
