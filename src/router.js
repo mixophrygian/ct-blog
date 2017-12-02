@@ -9,9 +9,8 @@ import Home from './components/Home';
 import EntryEdit from './components/EntryEdit';
 import EntryView from './components/EntryView';
 
-// build the router
 const router = (
-  <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
+  <Router history={history}>
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path="entry-edit(/:id)" component={EntryEdit} />
@@ -24,5 +23,4 @@ const router = (
   </Router>
 );
 
-// export
 export { router };

@@ -13,7 +13,7 @@ export default class About extends React.Component {
   // render
   render() {
     return (
-      <div className="page-about">
+      <div className="page-about page">
         <h1>What is this?</h1>
         <blockquote>
           <i>

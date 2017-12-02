@@ -102,7 +102,7 @@ export class EntryEdit extends React.Component {
   render() {
     const { entry, handleSubmit, error, invalid, submitting } = this.props;
     return (
-      <div className="page-entry-edit">
+      <div className="page-entry-edit page">
         <PageHeader>{(entry && entry.id ? 'Edit Entry' : 'New Entry')}</PageHeader>
         <Form horizontal onSubmit={handleSubmit(this.formSubmit)}>
           <Field

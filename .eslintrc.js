@@ -116,7 +116,7 @@ module.exports = {
       "no-undef-init": ERROR,               // disallow use of undefined when initializing variables
       "no-undefined": ERROR,                // disallow use of undefined variable (off by default)
       "no-unused-vars": ERROR,              // disallow declaration of variables that are not used in the code
-      "no-use-before-define": ERROR,        // disallow use of variables before they are defined
+      "no-use-before-define": 0,        // disallow use of variables before they are defined
       
       
       ////////// Node.js //////////

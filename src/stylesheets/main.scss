@@ -8,6 +8,8 @@
 @import 'bootstrap-min.css';
 @import 'bootstrap-theme-min.css';
 
+html { height: 100%; overflow:auto; }
+body { height: 100%; }
 
 .home-button {
   border: 1px solid lightgray;
@@ -18,6 +20,7 @@
 .page-entry-edit,
 .page-faq,
 .page-about {
+  height: 100%;
   margin: 15vh auto;
   width: 100vw;
   max-width: 1000px;

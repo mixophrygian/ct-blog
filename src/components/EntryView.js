@@ -39,7 +39,7 @@ export class EntryView extends React.Component {
     const { entry } = this.props;
     const distortions = this.renderDistortions(entry.cognitiveDistortions);
     return (
-      <div className="page-entry-view">
+      <div className="page-entry-view page">
         <div className="header">
           <div className="date">{formatDate(entry.date)}</div>
 

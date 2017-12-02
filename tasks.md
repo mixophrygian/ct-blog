@@ -1,4 +1,13 @@
 #Project Roadmap
+
+12/1: 
+  -start to do some research on what a decent blog looks like
+  -What's the wow-factor as a portfolio piece?  Visually stunning?
+  -Scope out whether or not its worth copying over into a new repo?
+  -form validation for submitting a new entry
+    -all fields need something, no blank Entries
+  -New entry - needs a cancel button
+
 6/18:
   -fix scroll to Top functionality
   -make 'new entry' auto close nav bar

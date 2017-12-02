@@ -13,7 +13,7 @@ export default class Distortions extends React.Component {
   // render
   render() {
     return (
-      <div className="page-about">
+      <div className="page-about page">
         <h2> Cognitive Distortions </h2>
         <p><i>Psst, this is a reference page.  For an introduction, see 
          <Link to={'/about'}> What is This?</Link>
