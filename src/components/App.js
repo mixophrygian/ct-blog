@@ -23,12 +23,6 @@ export class App extends React.Component {
   }
 }
 
-App.propTypes = {
-  children: PropTypes.node,
-  dispatch: PropTypes.func,
-  entries: PropTypes.any,
-};
-
 function scrollToTop() {
   // hack due to crazy component heights due to the sidebar library due to poor choices
   const parent = document.getElementsByClassName("page")[0];
@@ -42,4 +36,12 @@ function mapStateToProps(state) {
     entries: state.entries || [],
   };
 }
+
+App.propTypes = {
+  children: PropTypes.node,
+  dispatch: PropTypes.func,
+  entries: PropTypes.any,
+};
+
 export default connect(mapStateToProps)(App);
+

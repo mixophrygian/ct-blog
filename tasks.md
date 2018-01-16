@@ -1,13 +1,27 @@
 #Project Roadmap
 
+1/15:
+  -Create onboarding flow (multiple screens with breadcrumbs, only visible when no entries exist)
+  -Split out "new entry" section into one page -per section
+
+12/3:
+  -Complete balsamiq mobile wireframe
+  -Start to plan tablet wireframe
+  -Start to plan desktop wireframe
+  -auto close menu when "new" button is hit 
+  -Add "Cancel" button to new entry and hide hamburger
+  -Validate new Entries
+  -think about cool AF loading svg animations
+  -consider typography / color
+
 12/1: 
+ -form validation for submitting a new entry
+    -all fields need something, no blank Entries
+  -New entry - needs a cancel button
   -start to do some research on what a decent blog looks like
   -What's the wow-factor as a portfolio piece?  Visually stunning?
   -Scope out whether or not its worth copying over into a new repo?
-  -form validation for submitting a new entry
-    -all fields need something, no blank Entries
-  -New entry - needs a cancel button
-
+ 
 6/18:
   -fix scroll to Top functionality
   -make 'new entry' auto close nav bar

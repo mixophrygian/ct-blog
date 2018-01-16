@@ -1,19 +1,51 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import EntryList from './common/EntryList';
+import SplashAndOnboarding from './SplashAndOnboarding';
+import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+     showSplash: false,
+    };
+    this.hideSplash = this.hideSplash.bind(this);
+  }
 
-// Home page component
-export default class Home extends React.Component {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.entries.length) {
+      this.hideSplash();
+    } else {
+      this.setState({ showSplash: true })
+    }
+  }
   componentDidMount() {
    browserHistory.replace('/');
   }
 
+  hideSplash() {
+    this.setState({ showSplash: false });
+  }
+
   render() {
     return (
-      <div className="page-home">
-        <EntryList />
-      </div>
+      this.state.showSplash ?
+        <SplashAndOnboarding hide={this.hideSplash}/> :
+        <div className="page-home">
+          <EntryList />
+        </div>
     );
   }
 }
+
+Home.propTypes = {
+  entries: PropTypes.any,
+};
+
+function mapStateToProps(state) {
+  return {
+    entries: state.entries || [],
+  };
+}
+export default connect(mapStateToProps)(Home);

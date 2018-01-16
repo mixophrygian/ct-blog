@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import assert from 'assert';
-import Home from '../../src/components/Home';
+import { Home } from '../../src/components/Home';
 
 // unit tests for the Home component
 describe('Home component', () => {
@@ -11,4 +11,14 @@ describe('Home component', () => {
       assert.equal(wrapper.length, 1);
     });
   });
+  describe('Splash page', () => {
+    it("should show the splash page when there are no entries", () => {
+      /*
+      const props = {
+        entries: [1, 2, 3],
+      };
+      const wrapper = shallow(<Home {...props} />)
+      */
+    })
+  })
 });

@@ -1,5 +1,6 @@
 @import 'navbar';
 @import 'home';
+@import 'SplashAndOnboarding';
 @import 'footer';
 @import 'edit-entry';
 @import 'view-entry';
@@ -13,6 +14,10 @@ body { height: 100%; }
 
 .home-button {
   border: 1px solid lightgray;
+}
+
+.navbar-fixed-bottom, .navbar-fixed-top {
+  z-index: 130;
 }
 
 .page-home,
