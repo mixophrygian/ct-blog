@@ -1,4 +1,4 @@
-//page-home
+//page-splash
 
 .page-splash {
   display: flex;
@@ -17,12 +17,31 @@ button {
   border: 1px solid black;
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.slick-list {
+  text-align: center;
+}
+
+.slick-arrow {
+  z-index: 10;
+  background: rgba(0,0,0,0.5);
+}
+
+.slick-prev {
+  left: 0;
+}
+
+.slick-next {
+  right: 0;
+}
+
+.slick-disabled {
+  display: none !important;
 }
 
 @media only screen and (min-width: 768px) {
+}
+
+* {
+  min-height: 0;
+  min-width: 0;
 }
