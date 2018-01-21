@@ -1,5 +1,11 @@
 #Project Roadmap
 
+1/20: 
+  -Split out "new entry" section into one page -per section
+    -use same carousel?
+     -add "cancel" option per page?
+  -test onboarding on desktop/tablet and other browsers
+
 1/15:
   -Create onboarding flow (multiple screens with breadcrumbs, only visible when no entries exist)
   -Split out "new entry" section into one page -per section
