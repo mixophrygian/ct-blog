@@ -3,6 +3,7 @@
 const app_root = 'src'; // the app root folder: src, src_users, etc
 const path = require('path'); /* eslint no-unused-vars: 0 */
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   app_root: app_root, // the app root folder, needed by the other webpack configs

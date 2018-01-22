@@ -5,14 +5,29 @@ import '../stylesheets/main.scss';
 import localforage from 'localforage';
 
 export class App extends React.Component {
+  constructor(props) {
+     super(props);
+     this.state = {
+       isLoading: true,
+     }
+  }
+
   componentWillMount() {
     localforage.config({ name: "Automatic Thought Journal"});
     this.props.dispatch({ type: 'ENTRIES_FETCH_LIST' });
   }
 
+  componentDidMount() {
+    this.setState({ isLoading: false });
+  }
+
   render() {
+    const { isLoading } = this.state;
     const { children } = this.props;
     scrollToTop();
+    if (isLoading) {
+      return null;
+    }
     return (
       <div className="container">
         <div>
