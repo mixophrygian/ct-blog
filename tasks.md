@@ -1,5 +1,9 @@
 #Project Roadmap
 
+1/22: 
+  -continue investigating why page load is shit
+  -split "new entry" section
+  
 1/20: 
   -Split out "new entry" section into one page -per section
     -use same carousel?
