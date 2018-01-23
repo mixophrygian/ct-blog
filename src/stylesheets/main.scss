@@ -1,15 +1,13 @@
-@import 'navbar';
-@import 'home';
-@import 'SplashAndOnboarding';
-@import 'footer';
-@import 'edit-entry';
-@import 'view-entry';
-@import 'no-entries';
-@import 'distortions';
-@import 'bootstrap-min.css';
-@import 'bootstrap-theme-min.css';
-@import "~slick-carousel/slick/slick.css";
-@import "~slick-carousel/slick/slick-theme.css";
+@import './navbar.scss';
+@import './home.scss';
+@import './splashAndOnboarding.scss';
+@import './footer.scss';
+@import './edit-entry.scss';
+@import './view-entry.scss';
+@import './no-entries.scss';
+@import './distortions.scss';
+@import './bootstrap-min.css';
+@import './bootstrap-theme-min.css';
 
 html { height: 100%; overflow:auto; }
 body { height: 100%; }
@@ -38,8 +36,3 @@ body { height: 100%; }
   margin: 10px auto;
   width: 300px;
 }
-
-//Sidebar styles are inlined in the Menu component
-// since it's an npm module
-
-

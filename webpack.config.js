@@ -4,15 +4,16 @@ const app_root = 'src'; // the app root folder: src, src_users, etc
 const path = require('path'); /* eslint no-unused-vars: 0 */
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  app_root: app_root, // the app root folder, needed by the other webpack configs
+//  app_root: app_root, // the app root folder, needed by the other webpack configs
   entry: [
     // http://gaearon.github.io/react-hot-loader/getstarted/
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
     'babel-polyfill',
-    __dirname + '/' + app_root + '/index.js',
+    './src/index.js',
   ],
   output: {
     path: __dirname + '/public/js',
@@ -21,25 +22,43 @@ module.exports = {
   },
   module: {
     noParse: /node_modules\/localforage\/dist\/localforage.js/,
-    loaders: [
-      {
-        test: /\.js$/,
-        loaders: ['react-hot', 'babel'],
-        exclude: /node_modules/,
+    rules: [{
+       test: /\.scss$/,
+       use:
+         ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            {
+                loader: 'css-loader',
+                options: {
+                    // If you are having trouble with urls not resolving add this setting.
+                    // See https://github.com/webpack-contrib/css-loader#url
+                    url: false,
+                    minimize: true,
+                    sourceMap: true
+                }
+            },
+            {
+                loader: 'sass-loader',
+                options: {
+                    sourceMap: true
+                }
+            }
+          ]
+       })
+     },
+     {
+       test: /\.js$/,
+       use: [
+         "react-hot-loader",
+         "babel-loader",
+       ],
+       exclude: /node_modules/,
+     },
+     {
+       test: /\.(png|gif|woff|woff2|eot|ttf|svg)$/,
+       loader: "url-loader"
       },
-      {
-        // https://github.com/jtangelder/sass-loader
-        test: /\.scss$/,
-        loaders: ['style', 'css', 'sass'],
-      },
-      {
-         test: /\.(png|gif|woff|woff2|eot|ttf|svg)$/,
-         loader: 'url-loader?limit=300000&name=[name]-[hash].[ext]',
-      },
-      {
-        test: /\.css$/,
-        loaders: ['style', 'css'],
-      }
     ],
   },
   devServer: {
@@ -51,5 +70,6 @@ module.exports = {
       verbose: true,
       dry: false, // true for simulation
     }),
+    new ExtractTextPlugin("../css/main.css"),
   ],
 };
