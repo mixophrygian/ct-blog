@@ -3,7 +3,6 @@
 const app_root = 'src'; // the app root folder: src, src_users, etc
 const path = require('path'); /* eslint no-unused-vars: 0 */
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
@@ -16,35 +15,27 @@ module.exports = {
     './src/index.js',
   ],
   output: {
-    path: __dirname + '/public/js',
+    path: path.resolve(__dirname, 'public/js'),
     publicPath: 'js/',
     filename: 'bundle.js',
   },
   module: {
     noParse: /node_modules\/localforage\/dist\/localforage.js/,
-    rules: [{
+    rules: [
+      {
        test: /\.scss$/,
        use:
          ExtractTextPlugin.extract({
-          fallback: "style-loader",
           use: [
             {
-                loader: 'css-loader',
-                options: {
-                    // If you are having trouble with urls not resolving add this setting.
-                    // See https://github.com/webpack-contrib/css-loader#url
-                    url: false,
-                    minimize: true,
-                    sourceMap: true
-                }
+              loader: 'css-loader',
+              options: {
+                  url: true,
+              }
             },
-            {
-                loader: 'sass-loader',
-                options: {
-                    sourceMap: true
-                }
-            }
-          ]
+            'sass-loader',
+          ],
+          fallback: "style-loader",
        })
      },
      {
@@ -71,5 +62,5 @@ module.exports = {
       dry: false, // true for simulation
     }),
     new ExtractTextPlugin("../css/main.css"),
-  ],
+   ],
 };
