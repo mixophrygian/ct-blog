@@ -1,6 +1,7 @@
 // We are using node's native package 'path'
 // https://nodejs.org/api/path.html
 const path = require('path');
+const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin'); //  -> ADDED IN THIS STEP
@@ -17,6 +18,7 @@ const paths = {
 
 // Webpack configuration
 module.exports = {
+  target: 'node',
   entry: path.join(paths.JS, 'index.js'),
   output: {
     path: paths.DIST,
@@ -39,6 +41,7 @@ module.exports = {
       cssProcessorOptions: { discardComments: { removeAll: true } },
       canPrint: true
     }),
+    new webpack.optimize.UglifyJsPlugin({minimize: true}),
     new UglifyWebpackPlugin(),
   ],
   // Loaders configuration
