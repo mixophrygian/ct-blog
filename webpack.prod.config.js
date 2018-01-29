@@ -12,21 +12,6 @@ module.exports.entry = [
   './src/index.js',
 ];
 
-module.exports.module.rules[0] = {
-  test: /\.scss$/,
-  use: extractSass.extract({
-    use: [{
-      loader: "css-loader", options: {
-        sourceMap: true
-      }
-    }, {
-      loader: "sass-loader", options: {
-        sourceMap: true
-      }
-    }],
-  })
-}
-
 module.exports.plugins.pop();
 
 module.exports.plugins.push(
@@ -51,3 +36,21 @@ module.exports.plugins.push(
     }
   })
 );
+
+module.exports.module.rules[0] = {
+  test: /\.scss$/,
+  use: extractSass.extract({
+    use: [{
+      loader: "css-loader", options: {
+        sourceMap: true,
+        url: true
+      }
+    }, {
+      loader: "sass-loader", options: {
+        sourceMap: true
+      }
+    }],
+    fallback: "style-loader",
+  })
+}
+
