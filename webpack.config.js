@@ -1,7 +1,6 @@
 // We are using node's native package 'path'
 // https://nodejs.org/api/path.html
 const path = require('path');
-const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin'); //  -> ADDED IN THIS STEP
@@ -15,6 +14,10 @@ const paths = {
   SRC: path.resolve(__dirname, 'src'),
   JS: path.resolve(__dirname, 'src'),
 };
+
+const extractSass = new ExtractTextPlugin({
+  filename: "css/main.css",
+});
 
 // Webpack configuration
 module.exports = {
@@ -34,14 +37,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(paths.SRC, 'index.html'),
     }),
-    new ExtractTextPlugin('css/main.css'), // CSS will be extracted to this bundle file -> ADDED IN THIS STEP
+    extractSass,
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.optimize\.css$/g,
       cssProcessor: require('cssnano'),
       cssProcessorOptions: { discardComments: { removeAll: true } },
       canPrint: true
     }),
-    new webpack.optimize.UglifyJsPlugin({minimize: true}),
     new UglifyWebpackPlugin(),
   ],
   // Loaders configuration
@@ -61,18 +63,23 @@ module.exports = {
       // which will write it to the file we defined above
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                url: true,
-                minimize: true,
-              }
-            },
-          ],
-        }),
+        use: extractSass.extract({
+          use: [{
+            loader: "css-loader", options: {
+              sourceMap: true
+            }
+          }, {
+            loader: "sass-loader", options: {
+              sourceMap: true
+            }
+          }],
+          // use style-loader in development
+          fallback: "style-loader"
+        })
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
       },
       // File loader for image assets -> ADDED IN THIS STEP
       // We'll add only image extensions, but you can add things like svgs, fonts and videos
@@ -89,7 +96,7 @@ module.exports = {
   //
   // Instead of:
   // import MyComponent from './my-component.jsx';
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
+  // resolve: {
+  //   extensions: ['.js', '.jsx'],
+  // },
 };

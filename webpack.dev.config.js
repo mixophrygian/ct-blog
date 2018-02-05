@@ -13,7 +13,6 @@ module.exports.entry = [
 //   test: /\.scss$/,
 //   loader: ExtractTextPlugin.extract('css!sass')
 // };
-module.exports.plugins.pop();
 
 module.exports.plugins = [
   new ExtractTextPlugin('../css/main.css'),
