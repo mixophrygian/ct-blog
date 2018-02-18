@@ -1,5 +1,6 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
+@import "colors";
 
 .page-splash {
   display: flex;
@@ -9,7 +10,7 @@
   right: 0;
   bottom: 0;
   z-index: 1000;
-  background-color: magenta;
+  background-color: $lightgreen;
   justify-content: center;
   align-items: center;
 }
