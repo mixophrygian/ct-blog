@@ -21,13 +21,27 @@
   align-items: center;
 }
 
+h3 {
+  margin: 0
+}
+
+p {
+  text-align: left;
+}
+
 .slide-container {
   background-color: white;
   border: 1px solid $borderGray;
   border-radius: 15px;
   width: 100%;
-  height: 70vh;
-  margin: 0 15px 35px 15px;
+  height: 75vh;
+  padding: 30px;
+  margin: 0 10px 35px 10px;
+}
+
+.slide-container img {
+  width: 44vw;
+  margin: auto;
 }
 
 button {
