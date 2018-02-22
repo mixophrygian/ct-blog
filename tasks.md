@@ -1,5 +1,12 @@
 #Project Roadmap
 
+2/21:
+  -Add cancel to every onboarding slide
+  -Add slick af pre-onboarding animation. -small fade in with title / logo?
+  -split "new entry" section
+  -add "cancel" option per page?
+  -continue investigating why page load is shit
+  
 1/22: 
   -continue investigating why page load is shit
   -split "new entry" section
