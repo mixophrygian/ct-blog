@@ -1,5 +1,13 @@
 #Project Roadmap
 
+2/22: 
+  -Restore smooth scrolling to long pages?
+  -Try to hide safari bottom bar and top bar...
+  -Add slick af pre-onboarding animation. -small fade in with title / logo?
+  -split "new entry" section
+  -add "cancel" option per page?
+  -continue investigating why page load is shit
+
 2/21:
   -Add cancel to every onboarding slide
   -Add slick af pre-onboarding animation. -small fade in with title / logo?
