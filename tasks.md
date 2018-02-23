@@ -1,6 +1,9 @@
 #Project Roadmap
 
 2/22: 
+  -can't create a new entry in mobile safari?
+  -lock onboarding so no vertical scrolling can happen!  Marilyn monroe moment
+lol
   -Restore smooth scrolling to long pages?
   -Try to hide safari bottom bar and top bar...
   -Add slick af pre-onboarding animation. -small fade in with title / logo?
