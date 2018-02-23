@@ -10,7 +10,10 @@
 @import './bootstrap-theme-min.css';
 
 html { height: 100%; overflow:auto; }
-body { height: 100%; }
+body { 
+  height: 100%;
+  font-family: sans-serif;
+ }
 
 .home-button {
   border: 1px solid lightgray;

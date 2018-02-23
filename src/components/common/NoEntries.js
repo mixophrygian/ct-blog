@@ -15,8 +15,11 @@ export default class NoEntries extends React.Component {
     return (
       <div className="empty-container">
         <p className="quote">
-        "Your thoughts create your emotions; therefore, your emotions cannot prove that your thoughts are accurate."
-        -David Burns</p>
+          [2/22 - mobile wireframe layout. Looks terrible on anything bigger than a phone!
+        </p>
+        <p className="quote">
+           TODO: break out new entry page into sections, add pre-onboarding splash animation, iterate on a few colored prototypes, iterate on copy]
+        </p>
         <Link to={'/about'}>What is this?</Link>
         <br/>
         <br/>

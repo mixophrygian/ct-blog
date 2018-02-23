@@ -27,9 +27,11 @@ h3 {
 
 p {
   text-align: left;
+  margin: 0;
 }
 
 .slide-container {
+  position: relative;
   background-color: white;
   border: 1px solid $borderGray;
   border-radius: 15px;
@@ -40,12 +42,23 @@ p {
 }
 
 .slide-container img {
-  width: 44vw;
+  width: 38vw;
   margin: auto;
 }
 
 button {
   border: 1px solid $borderGray;
+}
+
+.closeIcon {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  box-shadow: none;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: lightgray;
 }
 
 .slick-list {
