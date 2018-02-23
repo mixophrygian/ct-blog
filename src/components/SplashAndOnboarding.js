@@ -37,7 +37,7 @@ export default class SplashAndOnboarding extends React.Component {
               <br/>
               <p><i>"Your thoughts create your emotions. Therefore, your emotions cannot prove that your thoughts are accurate. - David Burns.</i></p>
               <br/>
-              <p>Hi! The Automatic Thought Journal is a micro blog for deconstructing cognitive distortions.  It's free, has no ads or analytics, and your data is only saved to this browser.</p>
+              <p>Hi! The Automatic Thought Journal is a micro blog for deconstructing cognitive distortions.</p>
               <img src={Flowers} />
             </div>
           </div>
