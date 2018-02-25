@@ -13,12 +13,10 @@ export default class NoEntries extends React.Component {
 
   render() {
 
-  const todaysDate = new Date();
-
     return (
       <div className="empty-container">
         <p className="quote">
-          [Last updated: {todaysDate.toString()}
+          [Last updated: 2/24 5:45pm
            - mobile wireframe layout. Looks terrible on anything bigger than a phone!
         </p>
         <p className="quote">

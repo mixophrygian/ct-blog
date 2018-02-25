@@ -1,6 +1,7 @@
 #Project Roadmap
 
 2/24:
+  -make buttons more buttony - "new entry" buttons
   -Add a modal for users who have "block all cookies" set on their phones or any other localstorage preventing settings - private mode
   -nice to have: collapse / hide address bar on load
 
