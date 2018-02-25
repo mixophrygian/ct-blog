@@ -12,13 +12,20 @@ export default class NoEntries extends React.Component {
   // render
 
   render() {
+
+  const todaysDate = new Date();
+
     return (
       <div className="empty-container">
         <p className="quote">
-          [2/22 - mobile wireframe layout. Looks terrible on anything bigger than a phone!
+          [Last updated: {todaysDate.toString()}
+           - mobile wireframe layout. Looks terrible on anything bigger than a phone!
         </p>
         <p className="quote">
-           TODO: break out new entry page into sections, add pre-onboarding splash animation, iterate on a few colored prototypes, iterate on copy]
+           TODO: break out new entry page into sections,
+            add pre-onboarding splash animation,
+             iterate on a few colored prototypes,
+              iterate on copy]
         </p>
         <Link to={'/about'}>What is this?</Link>
         <br/>
