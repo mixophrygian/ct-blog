@@ -42,7 +42,7 @@ function scrollToTop() {
   // hack due to crazy component heights due to the sidebar library due to poor choices
   const parent = document.getElementsByClassName("page")[0];
     if (parent) {
-      parent.parentElement.scrollTo(0, 0);
+      parent.parentElement.scrollTo(0, 1);
     }
 }
 
