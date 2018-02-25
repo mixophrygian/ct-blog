@@ -1,7 +1,15 @@
 #Project Roadmap
 
+2/24:
+  -Add a modal for users who have "block all cookies" set on their phones or any other localstorage preventing settings - private mode
+  -nice to have: collapse / hide address bar on load
+
 2/22: 
   -can't create a new entry in mobile safari?
+    -e.entries.find is undefined
+    -error setting storage on safari
+    -try updating localforage to 1.5.7
+  -fix "new entry" button on top bar - not tappable
   -lock onboarding so no vertical scrolling can happen!  Marilyn monroe moment
 lol
   -Restore smooth scrolling to long pages?

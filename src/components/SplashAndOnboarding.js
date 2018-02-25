@@ -30,7 +30,7 @@ export default class SplashAndOnboarding extends React.Component {
           <Slider {...settings}>
           <div className="slide-wrapper">
             <div className="slide-container">
-            <Button className="closeIcon" onClick={this.props.hide}>X</Button>
+            <Button className="closeIcon" onClick={this.props.hide}><div aria-hidden="true">&times;</div></Button>
               <h3>Automatic</h3>
               <h3>Thought</h3>
               <h3>Journal</h3>
@@ -43,7 +43,7 @@ export default class SplashAndOnboarding extends React.Component {
           </div>
           <div className="slide-wrapper">
             <div className="slide-container">
-            <Button className="closeIcon" onClick={this.props.hide}>X</Button>
+            <Button className="closeIcon" onClick={this.props.hide}><div aria-hidden="true">&times;</div></Button>
               <h3>Cognitive Distortions?</h3>
               <br/>
               <p>This micro blog was created to be used as a companion tool for the book <b>Feeling Good</b> by David Burns.</p>
@@ -54,7 +54,7 @@ export default class SplashAndOnboarding extends React.Component {
           </div>
           <div className="slide-wrapper">
             <div className="slide-container">
-            <Button className="closeIcon" onClick={this.props.hide}>X</Button>
+            <Button className="closeIcon" onClick={this.props.hide}><div aria-hidden="true">&times;</div></Button>
               <h3>How do I use this?</h3>
               <br/>
               <p>In this book he outlines an exercize in which someone who has experienced an automatic thought can methodically break it down into manageable pieces.</p>
