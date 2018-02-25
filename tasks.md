@@ -1,6 +1,7 @@
 #Project Roadmap
 
 2/24:
+  -try updating localforage to 1.5.7
   -Add slick af pre-onboarding animation. -small fade in with title / logo?
   -make buttons more buttony - "new entry" buttons
   -Restore smooth scrolling to long pages?
@@ -11,14 +12,11 @@
   -continue investigating why page load is shit
 
 2/22: 
-<<<<<<< HEAD
   -can't create a new entry in mobile safari?
     -e.entries.find is undefined
     -error setting storage on safari
     -try updating localforage to 1.5.7
   -fix "new entry" button on top bar - not tappable
-=======
->>>>>>> onboarding
   -lock onboarding so no vertical scrolling can happen!  Marilyn monroe moment
 lol
   -Restore smooth scrolling to long pages?
