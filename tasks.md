@@ -1,8 +1,8 @@
 #Project Roadmap
 
 2/24:
-  -make buttons more buttony - "new entry" buttons
   -Add a modal for users who have "block all cookies" set on their phones or any other localstorage preventing settings - private mode - in the buttons!
+  -figure out why navitem button stays active? remove active?
   -Restore smooth scrolling to long pages?
   -try updating localforage to 1.5.7
   -Add slick af pre-onboarding animation. -small fade in with title / logo?
