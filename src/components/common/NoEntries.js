@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { LinkContainer } from 'react-router-bootstrap';
-import { NavItem, Glyphicon } from 'react-bootstrap';
+import { Glyphicon } from 'react-bootstrap';
 
 // User List Element component
 export default class NoEntries extends React.Component {
@@ -28,10 +28,10 @@ export default class NoEntries extends React.Component {
         <Link to={'/about'}>What is this?</Link>
         <br/>
         <br/>
-        <LinkContainer to="/entry-edit">
-          <NavItem className="edit-button cta">
-            New Entry <Glyphicon glyph="plus-sign" />
-          </NavItem>
+        <LinkContainer className="btn btn-default edit-button cta" to="/entry-edit">
+        <div>
+           New Entry <Glyphicon glyph="plus-sign" />
+           </div>
         </LinkContainer>
       </div>
     );
