@@ -1,15 +1,17 @@
 #Project Roadmap
 
 2/24:
+  -make buttons more buttony - "new entry" buttons
+  -Add a modal for users who have "block all cookies" set on their phones or any other localstorage preventing settings - private mode - in the buttons!
+  -Restore smooth scrolling to long pages?
   -try updating localforage to 1.5.7
   -Add slick af pre-onboarding animation. -small fade in with title / logo?
-  -make buttons more buttony - "new entry" buttons
-  -Restore smooth scrolling to long pages?
-  -Add a modal for users who have "block all cookies" set on their phones or any other localstorage preventing settings - private mode
-  -nice to have: collapse / hide address bar on load
   -split "new entry" section
   -add "cancel" option per page?
   -continue investigating why page load is shit
+  -nice to have: collapse / hide address bar on load
+  -nice to have: set up s3 to deploy from 'npm run build-prod'
+  or some other deploy script
 
 2/22: 
   -can't create a new entry in mobile safari?
