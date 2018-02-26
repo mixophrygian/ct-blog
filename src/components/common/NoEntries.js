@@ -16,7 +16,7 @@ export default class NoEntries extends React.Component {
     return (
       <div className="empty-container">
         <p className="quote">
-          [Last updated: 2/24 5:45pm
+          [Last updated: 2/25 10:45pm
            - mobile wireframe layout. Looks terrible on anything bigger than a phone!
         </p>
         <p className="quote">
