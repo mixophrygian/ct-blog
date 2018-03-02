@@ -1,11 +1,14 @@
 #Project Roadmap
 
+3/1: 
+  -view entry detail - content lives outside of the boxes for some reason
+  -landscape mode is cancer - disable?
+
 2/28:
   -bugs on mobile:
     -flash of onboarding screen when entry is there /s houldn't see it
     -landscape mode is cancer - disable?
     -view entry detail - content lives outside of the boxes for some reason
-    -new entry button shouldn't remain active
 
 2/24:
   -Add a modal for users who have "block all cookies" set on their phones or any other localstorage preventing settings - private mode - in the buttons!
