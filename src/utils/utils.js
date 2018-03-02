@@ -6,3 +6,7 @@ export const formatDate = (date) => {
   const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   return `${weekDays[weekdayIndex]} ${month}/${workingDate.getDate()}`;
 }
+
+export const isPromise = (props) => {
+  return props.entries.constructor.name === "Promise";
+}

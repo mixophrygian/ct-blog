@@ -3,6 +3,7 @@ import EntryList from './common/EntryList';
 import SplashAndOnboarding from './SplashAndOnboarding';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
+import { isPromise } from '../utils/utils';
 
 class Home extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Home extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.entries.length) {
+    if (nextProps.entries.length || isPromise(nextProps)) {
       this.hideSplash();
     } else {
       this.setState({ showSplash: true })
@@ -22,6 +23,11 @@ class Home extends React.Component {
   }
   componentDidMount() {
    browserHistory.replace('/');
+   if (this.props.entries.length || isPromise(this.props)) {
+      this.hideSplash();
+    } else {
+      this.setState({ showSplash: true })
+    }
   }
 
   hideSplash() {
