@@ -1,6 +1,9 @@
 #Project Roadmap
 
 3/1: 
+  -don't show onboarding after deleting the only entry...
+    -maybe add an entry to localstorage that ticks whether or not the onboarding has been seen?
+  -code splitting!! Make the bundle smaller!
   -view entry detail - content lives outside of the boxes for some reason
   -landscape mode is cancer - disable?
 
