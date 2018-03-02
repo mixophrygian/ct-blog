@@ -6,34 +6,27 @@ import SingleEntryRow from './SingleEntryRow';
 import NoEntries from './NoEntries';
 import EntryDeletePrompt from './EntryDeletePrompt';
 
-// User list component
 export class EntryList extends React.Component {
-  // constructor
   constructor(props) {
     super(props);
 
-    // default ui local state
     this.state = {
       deleteShow: false,
       deleteEntry: {},
     };
 
-    // bind <this> to the event method
     this.changePage = this.changePage.bind(this);
     this.showDelete = this.showDelete.bind(this);
     this.hideDelete = this.hideDelete.bind(this);
     this.entryDelete = this.entryDelete.bind(this);
   }
 
-  // render
   render() {
-    // pagination
     const { entries, page } = this.props;
     const perPage = 10;
     const pages = Math.ceil(entries.length / perPage);
     const startOffset = (page - 1) * perPage;
     let startCount = 0;
-    //if there's no length of entries, show the empty state
     const savedEntries = entries.length ?
     <div>
       <Table bordered hover responsive striped className="Table">
@@ -69,38 +62,30 @@ export class EntryList extends React.Component {
     );
   }
 
-  // change the entry lists' current page
   changePage(page) {
     this.props.dispatch(push(`/?page=${page}`));
   }
 
-  // show the delete entry prompt
   showDelete(entry) {
-    // change the local ui state
     this.setState({
       deleteShow: true,
       deleteEntry: entry,
     });
   }
 
-  // hide the delete entry prompt
   hideDelete() {
-    // change the local ui state
     this.setState({
       deleteShow: false,
       deleteEntry: {},
     });
   }
 
-  // delete the entry
   entryDelete() {
-    // delete the entry
     this.props.dispatch({
       type: 'ENTRIES_DELETE',
       entry: this.state.deleteEntry,
     });
 
-    // hide the prompt
     this.hideDelete();
   }
 }
@@ -111,15 +96,10 @@ EntryList.propTypes = {
   page: PropTypes.number,
 }
 
-// export the connected class
 function mapStateToProps(state) {
   return {
     entries: state.entries,
 
-    // https://github.com/reactjs/react-router-redux#how-do-i-access-router-state-in-a-container-component
-    // react-router-redux wants you to get the url data by passing the props through a million components instead of
-    // reading it directly from the state, which is basically why you store
-    // the url data in the state (to have access to it)
     page: Number(state.routing.locationBeforeTransitions.query.page) || 1,
   };
 }
