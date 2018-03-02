@@ -3,31 +3,35 @@ import EntryList from './common/EntryList';
 import SplashAndOnboarding from './SplashAndOnboarding';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-import { isPromise } from '../utils/utils';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
      showSplash: false,
+     loading: true,
     };
     this.hideSplash = this.hideSplash.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.entries.length || isPromise(nextProps)) {
+    if (nextProps.entries.length) {
       this.hideSplash();
     } else {
-      this.setState({ showSplash: true })
+      this.showSplash();
     }
   }
   componentDidMount() {
    browserHistory.replace('/');
-   if (this.props.entries.length || isPromise(this.props)) {
+   if (this.props.entries.length) {
       this.hideSplash();
     } else {
-      this.setState({ showSplash: true })
+      this.showSplash();
     }
+  }
+
+  showSplash() {
+    this.setState({ showSplash: true });
   }
 
   hideSplash() {

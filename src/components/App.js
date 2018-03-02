@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Menu from './common/Menu';
 import '../stylesheets/main.scss';
 import localforage from 'localforage';
+import { isPromise } from '../utils/utils';
 
 export class App extends React.Component {
   constructor(props) {
@@ -17,7 +18,14 @@ export class App extends React.Component {
     this.props.dispatch({ type: 'ENTRIES_FETCH_LIST' });
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!isPromise(nextProps)) {
+      this.setState({ isLoading: false });
+    }
+  }
+
   componentDidMount() {
+    if (isPromise(this.props)) return;
     this.setState({ isLoading: false });
   }
 
