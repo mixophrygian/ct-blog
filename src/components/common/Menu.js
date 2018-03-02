@@ -5,7 +5,6 @@ import { LinkContainer } from 'react-router-bootstrap';
 import Sidebar from 'react-sidebar';
 /* https://github.com/balloob/react-sidebar */
 
-// Menu component
 export default class Menu extends React.Component {
 
   constructor(props) {
@@ -60,10 +59,10 @@ export default class Menu extends React.Component {
             <NavItem onClick={this.onSetSidebarOpen}>
               <Glyphicon glyph="align-justify" />
             </NavItem>
-            <LinkContainer to="/entry-edit">
-              <NavItem className="edit-button btn btn-default">
+            <LinkContainer className="edit-button" to="/entry-edit">
+              <div role="button">
                 New <Glyphicon glyph="plus-sign" />
-              </NavItem>
+               </div>
             </LinkContainer>
           </Nav>
         </Navbar>
@@ -84,3 +83,4 @@ export default class Menu extends React.Component {
 Menu.propTypes = {
     children: PropTypes.node,
 }
+

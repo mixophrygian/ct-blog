@@ -29,9 +29,9 @@ export default class NoEntries extends React.Component {
         <br/>
         <br/>
         <LinkContainer className="btn btn-default edit-button cta" to="/entry-edit">
-        <div>
-           New Entry <Glyphicon glyph="plus-sign" />
-           </div>
+          <div>
+          New Entry <Glyphicon glyph="plus-sign" />
+          </div>
         </LinkContainer>
       </div>
     );
