@@ -50,7 +50,6 @@ ul.nav::after {
   color: #555;
 }
 
-//New button
 .edit-button, .home-button {
   padding: 8px;
   justify-content: center;
@@ -68,6 +67,10 @@ ul.nav::after {
     margin-left: 3px;
     top: 0;
   }
+}
+
+.edit-button:active {
+  background-color: lightgray;
 }
 
 @media only screen and (min-width: 769px) {
