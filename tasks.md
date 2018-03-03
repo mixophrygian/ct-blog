@@ -1,8 +1,8 @@
 #Project Roadmap
 
 TODO:
-  -fix tests
-  -add tests for new onboarding redux state - don't show splash when someones
+  -fix existing broken tests
+  -add new tests for new onboarding redux state - don't show splash when someones
 onboarded
   -onboarding fade in
   -fix view entry text margin bullshit / mobile
