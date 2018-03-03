@@ -37,9 +37,14 @@ export class App extends React.Component {
       return null;
     }
     return (
-      <div className="container">
-        <div>
-          <Menu children={children} />
+      <div>
+        <div className="container">
+          <div>
+            <Menu children={children} />
+          </div>
+        </div>
+        <div className="plzNoLandscape">
+          We think you'll like this better in portrait mode.
         </div>
       </div>
     );

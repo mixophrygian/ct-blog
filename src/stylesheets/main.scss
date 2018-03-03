@@ -7,6 +7,8 @@
 @import './no-entries.scss';
 @import './distortions.scss';
 @import './bootstrap-min.css';
+@import './normalize.css';
+@import './colors.scss';
 
 html { height: 100%; overflow:auto; }
 body { 
@@ -47,4 +49,31 @@ div:focus {
 .progress {
   margin: 10px auto;
   width: 300px;
+}
+
+.plzNoLandscape {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $lightgreen;
+  height: 100vh;
+  padding-bottom: 12px;
+}
+
+@media screen and (orientation:portrait) {
+  .container {
+    display: block;
+  } 
+  .plzNoLandscape {
+    display: none;
+  }
+}
+
+@media screen and (orientation:landscape) {
+  .container {
+    display: none;
+  } 
+  .plzNoLandscape {
+    display: flex;
+  }
 }
