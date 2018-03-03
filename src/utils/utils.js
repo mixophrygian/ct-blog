@@ -7,6 +7,6 @@ export const formatDate = (date) => {
   return `${weekDays[weekdayIndex]} ${month}/${workingDate.getDate()}`;
 }
 
-export const isPromise = (props) => {
-  return props.entries.constructor.name === "Promise";
+export const isLoadingAsync = (props) => {
+  return props.constructor.name === "Promise";
 }

@@ -15,7 +15,7 @@ class Home extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.entries.length) {
+    if (nextProps.entries.length || nextProps.onboarded) {
       this.hideSplash();
     } else {
       this.showSplash();
@@ -23,7 +23,7 @@ class Home extends React.Component {
   }
   componentDidMount() {
    browserHistory.replace('/');
-   if (this.props.entries.length) {
+   if (this.props.onboarded) {
       this.hideSplash();
     } else {
       this.showSplash();
@@ -36,6 +36,9 @@ class Home extends React.Component {
 
   hideSplash() {
     this.setState({ showSplash: false });
+    if (!this.props.onboarded) {
+      this.props.dispatch({ type: 'MARK_AS_ONBOARDED' });
+    }
   }
 
   render() {
@@ -51,11 +54,14 @@ class Home extends React.Component {
 
 Home.propTypes = {
   entries: PropTypes.any,
+  dispatch: PropTypes.func,
+  onboarded: PropTypes.any,
 };
 
 function mapStateToProps(state) {
   return {
-    entries: state.entries || [],
+    entries: state.entries,
+    onboarded: state.onboarded,
   };
 }
 export default connect(mapStateToProps)(Home);

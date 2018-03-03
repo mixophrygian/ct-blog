@@ -1,5 +1,5 @@
 // entries reducer
-export default function entries(state = {}, action) {
+export default function entries(state = [], action) {
   switch (action.type) {
     case 'ENTRIES_LIST_SAVE':
       return action.entries;

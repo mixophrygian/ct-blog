@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Menu from './common/Menu';
 import '../stylesheets/main.scss';
 import localforage from 'localforage';
-import { isPromise } from '../utils/utils';
+import { isLoadingAsync } from '../utils/utils';
 
 export class App extends React.Component {
   constructor(props) {
@@ -15,17 +15,23 @@ export class App extends React.Component {
 
   componentWillMount() {
     localforage.config({ name: "Automatic Thought Journal"});
-    this.props.dispatch({ type: 'ENTRIES_FETCH_LIST' });
+    this.props.dispatch({
+      type: 'ENTRIES_FETCH_LIST',
+    });
+    this.props.dispatch({
+      type: 'CHECK_IF_ONBOARDED',
+    });
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!isPromise(nextProps)) {
+    const hasEnoughStateToLoad = !isLoadingAsync(nextProps.entries) && !isLoadingAsync(nextProps.onboarded);
+    if (hasEnoughStateToLoad) {
       this.setState({ isLoading: false });
     }
   }
 
   componentDidMount() {
-    if (isPromise(this.props)) return;
+    if (isLoadingAsync(this.props.entries)) return;
     this.setState({ isLoading: false });
   }
 
@@ -62,6 +68,7 @@ function scrollToTop() {
 function mapStateToProps(state) {
   return {
     entries: state.entries || [],
+    onboarded: state.onboarded,
   };
 }
 
@@ -69,6 +76,7 @@ App.propTypes = {
   children: PropTypes.node,
   dispatch: PropTypes.func,
   entries: PropTypes.any,
+  onboarded: PropTypes.any,
 };
 
 export default connect(mapStateToProps)(App);
