@@ -35,7 +35,13 @@ export default class SplashAndOnboarding extends React.Component {
               <h3>Thought</h3>
               <h3>Journal</h3>
               <br/>
-              <p><i>"Your thoughts create your emotions. Therefore, your emotions cannot prove that your thoughts are accurate. - David Burns.</i></p>
+              <p>
+                <i>
+                  "Your thoughts create your emotions.
+                  Therefore, your emotions cannot prove that
+                  your thoughts are accurate." - David Burns.
+                </i>
+              </p>
               <br/>
               <p>Hi! The Automatic Thought Journal is a micro blog for deconstructing cognitive distortions.</p>
               <img src={Flowers} />
@@ -46,9 +52,16 @@ export default class SplashAndOnboarding extends React.Component {
             <Button className="closeIcon" onClick={this.props.hide}><div aria-hidden="true">&times;</div></Button>
               <h3>Cognitive Distortions?</h3>
               <br/>
-              <p>This micro blog was created to be used as a companion tool for the book <b>Feeling Good</b> by David Burns.</p>
+              <p>
+                This micro blog was created to be used as
+                 a companion tool for the book <b>Feeling Good</b>
+                  by David Burns.</p>
               <br/>
-              <p>In this book he outlines an exercize in which someone who has experienced an automatic thought can methodically break it down into manageable pieces.</p>
+              <p>
+                In this book he outlines an exercize in which
+                 someone who has experienced an automatic thought
+                  can methodically break it down into manageable pieces.
+              </p>
               <img src={AirBalloon} />
             </div>
           </div>
@@ -57,9 +70,18 @@ export default class SplashAndOnboarding extends React.Component {
             <Button className="closeIcon" onClick={this.props.hide}><div aria-hidden="true">&times;</div></Button>
               <h3>How do I use this?</h3>
               <br/>
-              <p>In this book he outlines an exercize in which someone who has experienced an automatic thought can methodically break it down into manageable pieces.</p>
+              <p>
+                In this book he outlines an exercize in
+                which someone who has experienced an automatic
+                thought can methodically break it down into
+                manageable pieces.
+              </p>
               <br/>
-              <p>By noticing the pattern that the thoughts follow, you start to see the distortions for what they are - distortions.</p>
+              <p>
+                By noticing the pattern that the thoughts follow,
+                you start to see the distortions for what they are
+                - distortions.
+              </p>
               <img src={Monkeys} />
             </div>
           </div>
@@ -67,10 +89,19 @@ export default class SplashAndOnboarding extends React.Component {
             <div className="slide-container">
             <h3>Try it out!</h3>
             <br/>
-            <p>We don't save your data, in fact it never leaves this phone.</p>
+            <p>
+              We don't save your data,
+              in fact it never leaves this phone.
+            </p>
             <br/>
-            <p>Read more about the cognitive distortions from the menu and in David Burns' <b>Feeling Good</b>.</p>
-            <p>[This onboarding flow only appears when a user has no entries]</p>
+            <p>
+              Read more about the cognitive distortions
+              from the menu and in David Burns' <b>Feeling Good</b>.
+            </p>
+            <p>
+             [This onboarding flow only appears when a
+             user has no entries]
+            </p>
             <img src={FingerPuppets} />
               <Button onClick={this.props.hide}>Got it!</Button>
               </div>
