@@ -1,5 +1,12 @@
 #Project Roadmap
 
+TODO:
+  -fix tests
+  -add tests for new onboarding redux state - don't show splash when someones
+onboarded
+  -onboarding fade in
+  -fix view entry text margin bullshit / mobile
+
 3/1: 
   -don't show onboarding after deleting the only entry...
     -maybe add an entry to localstorage that ticks whether or not the onboarding has been seen?
