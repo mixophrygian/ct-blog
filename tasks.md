@@ -4,6 +4,7 @@ TODO:
   -fix existing broken tests
   -add new tests for new onboarding redux state - don't show splash when someones
 onboarded
+    -consider replacing sidebar component with something better to restore scrolling
   -Add slick af pre-onboarding animation. -small fade in with title / logo?
   -fix view entry detail margin bullshit / mobile
   -code splitting!! Make the bundle smaller!
