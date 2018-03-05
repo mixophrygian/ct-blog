@@ -4,8 +4,12 @@ TODO:
   -fix existing broken tests
   -add new tests for new onboarding redux state - don't show splash when someones
 onboarded
-  -onboarding fade in
-  -fix view entry text margin bullshit / mobile
+  -Add slick af pre-onboarding animation. -small fade in with title / logo?
+  -fix view entry detail margin bullshit / mobile
+  -code splitting!! Make the bundle smaller!
+  -Add a modal for users who have "block all cookies" set on their phones or any other localstorage preventing settings - private mode - in the buttons!
+  -Restore smooth scrolling to long pages?
+  -split "new entry" section
 
 3/1: 
   -don't show onboarding after deleting the only entry...
