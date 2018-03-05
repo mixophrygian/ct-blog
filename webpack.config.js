@@ -1,9 +1,11 @@
 // We are using node's native package 'path'
 // https://nodejs.org/api/path.html
 const path = require("path");
-const webpack = require("webpack"); /* eslint no-unused-vars: 0 */
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserJSPlugin = require("terser-webpack-plugin");
 
 const paths = {
   DIST: path.resolve(__dirname, "public"),
@@ -22,22 +24,17 @@ module.exports = {
     path: paths.DIST,
     filename: "js/bundle.js",
   },
-
+  // Tell webpack to use html plugin
+  optimization: {
+    minimizer: [new TerserJSPlugin({}), new OptimizeCssAssetsPlugin()],
+  },
   plugins: [
-    new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-      },
-      SERVING_URL: JSON.stringify(process.env.SERVING_URL),
-      AUTH_DOMAIN: JSON.stringify(process.env.AUTH_DOMAIN),
-      AUTH_CLIENT_ID: JSON.stringify(process.env.AUTH_CLIENT_ID),
-      ISSUER: JSON.stringify(process.env.ISSUER),
-      API_IDENTIFIER: JSON.stringify(process.env.API_IDENTIFIER),
-    }),
-    new HtmlWebpackPlugin({
-      template: path.join(paths.SRC, "index.html"),
-    }),
+    new CleanWebpackPlugin(),
     extractSass,
+    new HtmlWebpackPlugin({
+      template: `${paths.SRC}/index.html`,
+      title: "Automatic Thought Journal",
+    }),
   ],
 
   module: {
