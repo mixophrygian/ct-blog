@@ -41,8 +41,17 @@ export default class Menu extends React.Component {
         marginTop: '10vh',
         height: '90vh',
         backgroundColor: 'white',
+        overflowY: 'scroll',
+        WebkitOverflowScrolling: 'touch'
       },
     };
+
+    const content = {
+      content: {
+        overflowY: 'scroll',
+        WebkitOverflowScrolling: 'touch'
+      }
+    }
 
     const sidebarContent =
       <div style={styles.content}>
@@ -72,8 +81,11 @@ export default class Menu extends React.Component {
           touch={false}
           open={this.state.sidebarOpen}
           onSetOpen={this.onSetSidebarOpen}
+          style={content}
         >
-          {this.props.children}
+          <div>
+            {this.props.children}
+          </div>
         </Sidebar>
       </div>
     );

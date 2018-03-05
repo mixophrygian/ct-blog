@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ct-blog</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> <!--320-->
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+
+ <style>
+   .loader:empty {
+     position: absolute;
+     top: calc(50% - 3em);
+     left: calc(50% - 3em);
+     width: 6em;
+     height: 6em;
+     border: 1.1em solid rgba(0, 0, 0, 0.2);
+     border-left: 1.1em solid #000000;
+     border-radius: 50%;
+     animation: load8 1.1s infinite linear;
+   }
+
+   @keyframes load8 {
+     0% {
+       transform: rotate(0deg);
+     }
+     100% {
+       transform: rotate(360deg);
+     }
+   }
+ </style>
+ 
+<link href="css/main.css" rel="stylesheet"></head>
+<body>
+
+<div id="app" class="loader"></div>
+
+<script type="text/javascript" src="js/bundle.js"></script></body>
+</html>

@@ -4,7 +4,7 @@ import SplashAndOnboarding from './SplashAndOnboarding';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
-class Home extends React.Component {
+export class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
