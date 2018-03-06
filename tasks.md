@@ -2,6 +2,7 @@
 3/5: 
   TODO:
     -fix jest so "test-watch" works
+    -figure out why the fuck saga tests break on 'saveEntries' and why it won't return a fulfilled promise
 3/4:
 
 TODO:
