@@ -20,7 +20,6 @@ export function* entriesAddEdit(action) {
   });
   const entries = yield select(getEntries);
   yield ApiEntries.saveEntries(entries);
-
   action.callbackSuccess(action.entry);
 }
 

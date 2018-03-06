@@ -4,5 +4,8 @@
   "coveragePathIgnorePatterns": ["<rootDir>/test-setup.js", "<rootDir>/empty-module.js"],
   "moduleNameMapper": {
     "\\.(css|jpg|png|svg|scss)$": "<rootDir>/empty-module.js"
+  },
+  "transform": {
+    "^.+\\.jsx?$": "babel-jest" 
   }
 }

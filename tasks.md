@@ -1,16 +1,20 @@
 #Project Roadmap
+3/5: 
+  TODO:
+    -fix jest so "test-watch" works
+3/4:
 
 TODO:
-  -fix existing broken tests
-  -add new tests for new onboarding redux state - don't show splash when someones
-onboarded
-    -consider replacing sidebar component with something better to restore scrolling
+  -add new tests for new onboarding redux state - don't show splash when someone has been onboarded
+  -consider replacing sidebar component with something better to restore scrolling
   -Add slick af pre-onboarding animation. -small fade in with title / logo?
   -fix view entry detail margin bullshit / mobile
-  -code splitting!! Make the bundle smaller!
+  
   -Add a modal for users who have "block all cookies" set on their phones or any other localstorage preventing settings - private mode - in the buttons!
   -Restore smooth scrolling to long pages?
   -split "new entry" section
+  -performance profiling?
+  -code splitting!! Make the bundle smaller!
 
 3/1: 
   -don't show onboarding after deleting the only entry...

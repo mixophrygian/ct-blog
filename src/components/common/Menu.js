@@ -41,8 +41,6 @@ export default class Menu extends React.Component {
         marginTop: '10vh',
         height: '90vh',
         backgroundColor: 'white',
-        overflowY: 'scroll',
-        WebkitOverflowScrolling: 'touch'
       },
     };
 

@@ -17,7 +17,9 @@ export default class NoEntries extends React.Component {
       <div className="empty-container">
         <p className="quote">
           [Last updated: 3/3 12:12am
-            - more initial load ux improvements - hide splash after first time, no flash of wrong content, no landscape or non-mobile garbage
+            - more initial load ux improvements
+            - hide splash after first time, no flash of wrong content,
+            no landscape or non-mobile garbage
         </p>
         <p className="quote">
            TODO: break out new entry page into sections,

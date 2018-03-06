@@ -5,7 +5,7 @@ export default class ApiEntries {
 
   static getEntries() {
     return new Promise((resolve) => {
-      localforage.getItem('entries').then((retrievedEntries) => {
+      return localforage.getItem('entries').then((retrievedEntries) => {
         resolve(retrievedEntries || []);
       }).catch((err) => {
         console.log('Something went wrong while trying to save to localforage', err);
@@ -15,9 +15,9 @@ export default class ApiEntries {
 
   static saveEntries(entries) {
     return new Promise((resolve) => {
-      localforage.setItem('entries', entries).then((savedEntries) => {
+      return localforage.setItem('entries', entries).then((savedEntries) => {
         resolve(savedEntries);
-      });
+      }).catch(err => console.log('fuuuuuck', err));
     });
   }
 }
