@@ -4,20 +4,17 @@ import localforage from 'localforage';
 export default class ApiEntries {
 
   static getEntries() {
-    return new Promise((resolve) => {
-      return localforage.getItem('entries').then((retrievedEntries) => {
-        resolve(retrievedEntries || []);
-      }).catch((err) => {
-        console.log('Something went wrong while trying to save to localforage', err);
-      });
-    })
+    return localforage.getItem('entries').then((retrievedEntries) => {
+      return retrievedEntries || [];
+    }).catch((err) => {
+      console.log('Something went wrong while trying to get data from local storage:', err);
+    });
   }
 
   static saveEntries(entries) {
-    return new Promise((resolve) => {
-      return localforage.setItem('entries', entries).then((savedEntries) => {
-        resolve(savedEntries);
-      }).catch(err => console.log('fuuuuuck', err));
-    });
+    return localforage.setItem('entries', entries).then((savedEntries) => {
+      return savedEntries;
+    }).catch(err => console.log('Something when wrong while trying to save to local storage', err));
   }
+
 }
