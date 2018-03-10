@@ -3,6 +3,10 @@
   -glorious return to actual coding!!!
   -add prettier?
   -fix fucking side bar / replace with something legit so scrolling is good
+  -fix view entry detail margin bullshit / mobile
+  -Add slick af pre-onboarding animation. -small fade in with title / logo?
+  -Add a modal for users who have "block all cookies" set on their phones or any other localstorage preventing settings - private mode - in the buttons!
+  -code splitting?
   
 3/5: 
   TODO:
