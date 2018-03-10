@@ -9,3 +9,4 @@ npm-debug.log
 .swo
 .swn
 .DS_Store
+package-lock.json

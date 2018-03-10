@@ -1,4 +1,9 @@
 #Project Roadmap
+3/10:
+  -glorious return to actual coding!!!
+  -add prettier?
+  -fix fucking side bar / replace with something legit so scrolling is good
+  
 3/5: 
   TODO:
     -fix jest so "test-watch" works

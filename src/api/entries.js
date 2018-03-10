@@ -16,5 +16,4 @@ export default class ApiEntries {
       return savedEntries;
     }).catch(err => console.log('Something when wrong while trying to save to local storage', err));
   }
-
 }

@@ -2,27 +2,9 @@ import { call, put, select } from 'redux-saga/effects'; // eslint-disable-line n
 import assert from 'assert';
 import { expect } from "chai";
 import { entriesFetchList, entriesAddEdit, entriesDelete, getEntries } from '../../src/sagas/entries';
-import sinon from 'sinon';
-import localforage from "localforage";
 import ApiEntries from '../../src/api/entries';
 
-// unit tests for the entries saga
-let store;
 describe('Entries saga', () => {
-  beforeEach(() => {
-      store = {};
-      sinon.stub(localforage, 'setItem').callsFake((key, value) => {
-        store[key] = value;
-        return Promise.resolve(store[key]);
-      });
-      sinon.stub(localforage, 'getItem').callsFake((key) => {
-        return Promise.resolve(store[key])
-      });
-    });
-   afterEach(() => {
-     localforage.getItem.restore();
-     localforage.setItem.restore();
-   })
   describe('entriesFetchList()', () => {
     const generator = entriesFetchList();
     let val;
@@ -57,7 +39,7 @@ describe('Entries saga', () => {
     });
 
     it('should save those entries to localforage', () => {
-      assert.deepEqual(generator.next().value, ApiEntries.saveEntries);
+      assert.deepEqual(generator.next().value.CALL.fn, ApiEntries.saveEntries);
     });
 
     it('should be finished', () => {
@@ -83,7 +65,7 @@ describe('Entries saga', () => {
     });
 
     it('should save those entries to localforage', () => {
-      assert.deepEqual(generator.next().value, ApiEntries.saveEntries);
+      assert.deepEqual(generator.next().value.CALL.fn, ApiEntries.saveEntries);
     });
 
     it('should be finished', () => {
@@ -109,7 +91,7 @@ describe('Entries saga', () => {
      });
 
      it('should save those entries to localforage', () => {
-       assert.deepEqual(generator.next().value, ApiEntries.saveEntries);
+       assert.deepEqual(generator.next().value.CALL.fn, ApiEntries.saveEntries);
      });
   });
 });

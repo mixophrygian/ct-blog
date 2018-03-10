@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 //import assert from 'assert';
 import { expect } from "chai";
 import sinon from 'sinon';
@@ -29,6 +30,16 @@ describe("Entries API", () => {
      cognitiveDistortions: ['emotionalReasoning', 'jumpingToConclusions'],
      rationalResponse: "A unique rational response",
    }
+describe('saveEntries()', () => {
+   it('should save entries', () => {
+     ApiEntries.getEntries().then(data => {
+       ApiEntries.saveEntries([...data, uniqueEntry]).then((savedEntries)=> {
+         expect(savedEntries[0]).to.equal(uniqueEntry);
+       }).catch((err) => console.log('save failed', err));
+     });
+   });
+ });
+
  describe('getEntries()', () => {
    it('should resolve with no entries if none exist', () => {
      ApiEntries.getEntries().then(data => {
@@ -39,21 +50,10 @@ describe("Entries API", () => {
    });
 
    it('should retrieve a list of entries, if they exist', () => {
-     ApiEntries.getEntries().then(data => {
-       ApiEntries.saveEntries([...data, uniqueEntry]).then(()=> {
-         ApiEntries.getEntries().then(savedEntries => {
-           expect(savedEntries[0]).to.equal(uniqueEntry);
-         });
-       });
-     });
-   });
- });
-describe('saveEntries()', () => {
-   it('should save entries', () => {
-     ApiEntries.getEntries().then(data => {
-       ApiEntries.saveEntries([...data, uniqueEntry]).then((savedEntries)=> {
+     ApiEntries.saveEntries([uniqueEntry]).then(()=> {
+       ApiEntries.getEntries().then(savedEntries => {
          expect(savedEntries[0]).to.equal(uniqueEntry);
-       });
+       }).catch((err) => console.log('retrieval failed', err));
      });
    });
  });

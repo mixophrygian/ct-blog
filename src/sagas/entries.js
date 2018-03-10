@@ -1,14 +1,23 @@
+/* eslint-disable no-console */
 import { call, put, select } from 'redux-saga/effects';
 import ApiEntries from '../api/entries';
 
 export const getEntries = (state) => state.entries;
 
 export function* entriesFetchList() {
-  const entries = yield call(ApiEntries.getEntries);
-  yield put({
-    type: 'ENTRIES_LIST_SAVE',
-    entries,
-  });
+  try {
+    const entries = yield call(ApiEntries.getEntries);
+    yield put({
+      type: 'ENTRIES_LIST_SAVE',
+      entries,
+    });
+  } catch (e) {
+    console.log(' fetching entries failed', e);
+    // TODO: handle failed fetch
+    // yield put({
+    //   // type: 'ENTRIES_FETCH FAILED', message: e.message});
+    // })
+  }
 }
 
 export function* entriesAddEdit(action) {
@@ -19,7 +28,7 @@ export function* entriesAddEdit(action) {
     entry: action.entry,
   });
   const entries = yield select(getEntries);
-  yield ApiEntries.saveEntries(entries);
+  yield call(ApiEntries.saveEntries, entries);
   action.callbackSuccess(action.entry);
 }
 
@@ -30,5 +39,5 @@ export function* entriesDelete(action) {
   });
 
   const entries = yield select(getEntries);
-  yield ApiEntries.saveEntries(entries);
+  yield call(ApiEntries.saveEntries, entries);
 }
