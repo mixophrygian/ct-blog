@@ -1,9 +1,8 @@
-import React, { PropTypes } from 'react';
-import { Nav, Navbar, Glyphicon } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import React, { PropTypes } from "react";
+import { Nav, Navbar, Glyphicon } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 export default class Menu extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = { sidebarOpen: false };
@@ -17,19 +16,16 @@ export default class Menu extends React.Component {
             <LinkContainer className="edit-button" to="/entry-edit">
               <div role="button">
                 New <Glyphicon glyph="plus-sign" />
-               </div>
+              </div>
             </LinkContainer>
           </Nav>
         </Navbar>
-        <div>
-          {this.props.children}
-        </div>
+        <div>{this.props.children}</div>
       </div>
     );
   }
 }
 
 Menu.propTypes = {
-    children: PropTypes.node,
-}
-
+  children: PropTypes.node,
+};

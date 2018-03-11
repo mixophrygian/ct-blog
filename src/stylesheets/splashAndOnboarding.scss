@@ -22,7 +22,7 @@
 }
 
 h3 {
-  margin: 0
+  margin: 0;
 }
 
 p {
@@ -61,7 +61,7 @@ button {
   padding-bottom: 11px;
 }
 
-Button div {
+button div {
   font-size: 40px;
   line-height: 21px;
 }
@@ -71,7 +71,7 @@ Button div {
 }
 
 .slick-arrow {
-  background: rgba(0,0,0,0.15) !important;
+  background: rgba(0, 0, 0, 0.15) !important;
   display: flex !important;
   z-index: 10;
   width: 40px;
@@ -99,11 +99,11 @@ Button div {
     button div {
       font-size: 30px;
     }
-    
+
     p {
       font-size: 12px;
     }
-    
+
     h3 {
       font-size: 20px;
     }

@@ -1,5 +1,5 @@
-import React, { PropTypes } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import React, { PropTypes } from "react";
+import { Modal, Button } from "react-bootstrap";
 
 // User delete component
 export default class EntryDeletePrompt extends React.Component {
@@ -9,13 +9,13 @@ export default class EntryDeletePrompt extends React.Component {
     return (
       <Modal show={show}>
         <Modal.Header>
-          <Modal.Title>
-            Are you sure you want to delete this one?
-          </Modal.Title>
+          <Modal.Title>Are you sure you want to delete this one?</Modal.Title>
         </Modal.Header>
         <Modal.Footer>
           <Button onClick={hideDelete}>No</Button>
-          <Button bsStyle="primary" onClick={entryDelete}>Yes</Button>
+          <Button bsStyle="primary" onClick={entryDelete}>
+            Yes
+          </Button>
         </Modal.Footer>
       </Modal>
     );

@@ -1,13 +1,12 @@
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
-import { push } from 'react-router-redux';
-import { SubmissionError, reduxForm } from 'redux-form';
-import { Button, Panel, NavItem, Glyphicon } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
-import { formatDate } from '../utils/utils';
-import EntryDeletePrompt from './common/EntryDeletePrompt';
-
+import React, { PropTypes } from "react";
+import { connect } from "react-redux";
+import { browserHistory } from "react-router";
+import { push } from "react-router-redux";
+import { SubmissionError, reduxForm } from "redux-form";
+import { Button, Panel, NavItem, Glyphicon } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import { formatDate } from "../utils/utils";
+import EntryDeletePrompt from "./common/EntryDeletePrompt";
 
 // Entry add/edit page component
 export class EntryView extends React.Component {
@@ -30,7 +29,7 @@ export class EntryView extends React.Component {
   componentWillMount() {
     const { entry } = this.props;
     if (!entry.id) {
-      browserHistory.replace('/');
+      browserHistory.replace("/");
     }
   }
 
@@ -43,7 +42,7 @@ export class EntryView extends React.Component {
         <div className="header">
           <div className="date">{formatDate(entry.date)}</div>
 
-          <LinkContainer to={'/'}>
+          <LinkContainer to={"/"}>
             <NavItem className="home-button">
               <span>Home</span> <Glyphicon glyph="home" />
             </NavItem>
@@ -54,33 +53,24 @@ export class EntryView extends React.Component {
               <span>Edit</span> <Glyphicon glyph="edit" />
             </NavItem>
           </LinkContainer>
-
         </div>
 
-        <Panel header={'Situation'}>
-          {entry.situation}
-        </Panel>
-        <Panel header={'Emotional Response'}>
-          {entry.emotionalResponse || ''}
-        </Panel>
-        <Panel header={'Automatic Thoughts'}>
-          {entry.automaticThoughts || ''}
-        </Panel>
+        <Panel header={"Situation"}>{entry.situation}</Panel>
+        <Panel header={"Emotional Response"}>{entry.emotionalResponse || ""}</Panel>
+        <Panel header={"Automatic Thoughts"}>{entry.automaticThoughts || ""}</Panel>
         <h5>Cognitive Distortions</h5>
-        <div className="distortions-container">
-          {distortions}
-        </div>
-        <Panel header={'Rational Response'}>
-          {entry.rationalResponse || ''}
-        </Panel>
+        <div className="distortions-container">{distortions}</div>
+        <Panel header={"Rational Response"}>{entry.rationalResponse || ""}</Panel>
         <div className="delete-container">
           <Button bsSize="xsmall" className="entry-delete" onClick={() => this.showDelete(entry)}>
-          Delete Entry
+            Delete Entry
           </Button>
         </div>
         <EntryDeletePrompt
-          show={this.state.deleteShow} entry={this.state.deleteEntry}
-          hideDelete={this.hideDelete} entryDelete={this.entryDelete}
+          show={this.state.deleteShow}
+          entry={this.state.deleteEntry}
+          hideDelete={this.hideDelete}
+          entryDelete={this.entryDelete}
         />
       </div>
     );
@@ -88,26 +78,29 @@ export class EntryView extends React.Component {
 
   prettyLabel(name) {
     const list = {
-      allOrNothingThinking: 'All-or-Nothing Thinking',
-      overgeneralization: 'Overgeneralization',
-      mentalFilter: 'Mental Filter',
-      discountingThePositive: 'Discounting The Positives',
-      jumpingToConclusions: 'Jumping to Conclusions',
-      magnifyingOrMinifying: 'Magnifying Or Minifying',
-      emotionalReasoning: 'Emotional Reasoning',
-      shouldStatements: "\'Should\' Statements",
-      labeling: 'Labeling',
-      personalizationAndBlame: 'Personalization and Blame',
+      allOrNothingThinking: "All-or-Nothing Thinking",
+      overgeneralization: "Overgeneralization",
+      mentalFilter: "Mental Filter",
+      discountingThePositive: "Discounting The Positives",
+      jumpingToConclusions: "Jumping to Conclusions",
+      magnifyingOrMinifying: "Magnifying Or Minifying",
+      emotionalReasoning: "Emotional Reasoning",
+      shouldStatements: "'Should' Statements",
+      labeling: "Labeling",
+      personalizationAndBlame: "Personalization and Blame",
     };
     return list[name];
   }
 
   renderDistortions(distortionsList) {
-    if (!distortionsList || distortionsList.length === 0 || typeof distortionsList === 'string') return distortionsList;
+    if (!distortionsList || distortionsList.length === 0 || typeof distortionsList === "string")
+      return distortionsList;
     const returnNodes = distortionsList.map((distortion, index) => {
       const classes = `distortionsView ${distortion}`;
       return (
-        <p className={classes} key={index}>{this.prettyLabel(distortion)}</p>
+        <p className={classes} key={index}>
+          {this.prettyLabel(distortion)}
+        </p>
       );
     });
     return returnNodes;
@@ -124,11 +117,11 @@ export class EntryView extends React.Component {
   entryDelete() {
     // delete the entry
     this.props.dispatch({
-      type: 'ENTRIES_DELETE',
+      type: "ENTRIES_DELETE",
       entry: this.props.entry,
     });
     this.hideDelete();
-    browserHistory.push('/');
+    browserHistory.push("/");
   }
 
   hideDelete() {
@@ -138,24 +131,23 @@ export class EntryView extends React.Component {
     });
   }
 
-
   // submit the form
   formSubmit(values) {
     const { dispatch } = this.props;
     return new Promise((resolve, reject) => {
       dispatch({
-        type: 'ENTRIES_ADD_EDIT',
+        type: "ENTRIES_ADD_EDIT",
         entry: {
           id: values.id,
           date: new Date(),
           entryname: values.entryname,
           job: values.job,
         },
-        callbackError: (error) => {
+        callbackError: error => {
           reject(new SubmissionError({ _error: error }));
         },
         callbackSuccess: () => {
-          dispatch(push('/'));
+          dispatch(push("/"));
           resolve();
         },
       });
@@ -163,20 +155,20 @@ export class EntryView extends React.Component {
   }
 }
 EntryView.propTypes = {
- entry: PropTypes.object,
- dispatch: PropTypes.func,
- handleSubmit: PropTypes.func,
- error: PropTypes.bool,
- submitting: PropTypes.bool,
- invalid: PropTypes.bool,
-}
+  entry: PropTypes.object,
+  dispatch: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  error: PropTypes.bool,
+  submitting: PropTypes.bool,
+  invalid: PropTypes.bool,
+};
 // decorate the form component
 const EntryViewForm = reduxForm({
-  form: 'entryEdit',
+  form: "entryEdit",
   validate(values) {
     const errors = {};
     if (!values.entryname) {
-      errors.entryname = 'Entryname is required';
+      errors.entryname = "Entryname is required";
     }
     return errors;
   },

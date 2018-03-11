@@ -1,6 +1,6 @@
 export default function appState(state = initialState, action) {
   switch (action.type) {
-    case 'UPDATE_ONBOARDING_STATE':
+    case "UPDATE_ONBOARDING_STATE":
       return action.onboarded;
     default:
       return state;
@@ -9,4 +9,4 @@ export default function appState(state = initialState, action) {
 
 const initialState = {
   onboarded: true,
-}
+};

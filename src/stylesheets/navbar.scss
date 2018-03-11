@@ -9,7 +9,7 @@ ul.nav {
 //fuck bootstrap
 ul.nav::before,
 ul.nav::after {
- display: none; 
+  display: none;
 }
 
 .customNav {
@@ -30,27 +30,26 @@ ul.nav::after {
 }
 
 .nav > li > a {
-  padding :0;
+  padding: 0;
   background-image: none !important;
   background-color: transparent !important;
   box-shadow: none !important;
   color: #555;
 }
 
-
 .edit-button {
   padding: 8px;
   justify-content: center;
   border: 1px dashed gray;
   list-style: none;
-  
+
   a {
     display: flex;
     color: gray;
     align-items: center;
     justify-content: space-around;
   }
-  
+
   span.glyphicon {
     margin-left: 3px;
     top: 0;

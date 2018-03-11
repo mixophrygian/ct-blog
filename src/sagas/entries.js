@@ -1,18 +1,18 @@
 /* eslint-disable no-console */
-import { call, put, select } from 'redux-saga/effects';
-import ApiEntries from '../api/entries';
+import { call, put, select } from "redux-saga/effects";
+import ApiEntries from "../api/entries";
 
-export const getEntries = (state) => state.entries;
+export const getEntries = state => state.entries;
 
 export function* entriesFetchList() {
   try {
     const entries = yield call(ApiEntries.getEntries);
     yield put({
-      type: 'ENTRIES_LIST_SAVE',
+      type: "ENTRIES_LIST_SAVE",
       entries,
     });
   } catch (e) {
-    console.log(' fetching entries failed', e);
+    console.log(" fetching entries failed", e);
     // TODO: handle failed fetch
     // yield put({
     //   // type: 'ENTRIES_FETCH FAILED', message: e.message});
@@ -21,7 +21,7 @@ export function* entriesFetchList() {
 }
 
 export function* entriesAddEdit(action) {
-  const type = action.entry.id ? 'ENTRIES_EDIT_SAVE' : 'ENTRIES_ADD_SAVE';
+  const type = action.entry.id ? "ENTRIES_EDIT_SAVE" : "ENTRIES_ADD_SAVE";
 
   yield put({
     type: type,
@@ -34,7 +34,7 @@ export function* entriesAddEdit(action) {
 
 export function* entriesDelete(action) {
   yield put({
-    type: 'ENTRIES_DELETE_SAVE',
+    type: "ENTRIES_DELETE_SAVE",
     entry: action.entry,
   });
 

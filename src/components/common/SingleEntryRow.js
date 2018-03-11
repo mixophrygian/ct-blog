@@ -1,7 +1,7 @@
-import React, { PropTypes } from 'react';
-import { browserHistory } from 'react-router';
-import { Button, Glyphicon } from 'react-bootstrap';
-import { formatDate } from '../../utils/utils';
+import React, { PropTypes } from "react";
+import { browserHistory } from "react-router";
+import { Button, Glyphicon } from "react-bootstrap";
+import { formatDate } from "../../utils/utils";
 
 // User List Element component
 export default class SingleEntryRow extends React.Component {
@@ -14,8 +14,8 @@ export default class SingleEntryRow extends React.Component {
 
   viewEntry(e) {
     e.preventDefault();
-    const id = e.currentTarget.getAttribute('data-id');
-    if (e.target.tagName !== 'SPAN') {
+    const id = e.currentTarget.getAttribute("data-id");
+    if (e.target.tagName !== "SPAN") {
       browserHistory.push(`entry/${id}`);
     }
   }
@@ -30,12 +30,14 @@ export default class SingleEntryRow extends React.Component {
           <div>{date}</div>
         </td>
         <td className="entryTitle">
-          <div>
-            {entry.situation}
-          </div>
+          <div>{entry.situation}</div>
 
           <div className="buttonWrapper">
-            <Button bsSize="xsmall" className="glyphbutton entry-delete" onClick={() => showDelete(entry)}>
+            <Button
+              bsSize="xsmall"
+              className="glyphbutton entry-delete"
+              onClick={() => showDelete(entry)}
+            >
               <Glyphicon glyph="remove-circle" />
             </Button>
           </div>

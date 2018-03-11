@@ -1,10 +1,11 @@
-//page entry view 
+//page entry view
 
 .page-entry-view {
   display: flex;
   flex-direction: column;
-  
-  .header, .date {
+
+  .header,
+  .date {
     display: flex;
     align-items: center;
   }
@@ -15,28 +16,28 @@
   }
   .edit-button {
     display: inline-flex;
-    
+
     a {
       color: gray;
     }
   }
-  
+
   .distortions-container {
     margin: 0;
   }
-  
+
   .distortionsView {
     margin: 0 0 10px;
     border-radius: 5px;
     text-align: center;
     padding: 10px;
   }
-  
+
   .delete-container {
-    align-self:flex-end;
+    align-self: flex-end;
   }
-  
-  Button {
+
+  button {
     padding: 8px 15px;
     width: 100%;
     padding: 8px 15px;
@@ -50,11 +51,10 @@
     flex-wrap: wrap;
     align-items: stretch;
     justify-content: center;
-  
-   p {
+
+    p {
       width: 260px;
       margin: 2% !important;
     }
   }
 }
-  

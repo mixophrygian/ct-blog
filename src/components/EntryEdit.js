@@ -1,10 +1,10 @@
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
-import { Field, SubmissionError, reduxForm } from 'redux-form';
-import { PageHeader, Form } from 'react-bootstrap';
-import FormField from './common/FormField';
-import FormSubmit from './common/FormSubmit';
+import React, { PropTypes } from "react";
+import { connect } from "react-redux";
+import { push } from "react-router-redux";
+import { Field, SubmissionError, reduxForm } from "redux-form";
+import { PageHeader, Form } from "react-bootstrap";
+import FormField from "./common/FormField";
+import FormSubmit from "./common/FormSubmit";
 
 // Entry add/edit page component
 export class EntryEdit extends React.Component {
@@ -40,10 +40,9 @@ export class EntryEdit extends React.Component {
     node.parentNode.className = `choice-active ${name}`;
   }
 
-
   toggleChecked(e) {
     e.preventDefault();
-    const checkbox = e.target.getElementsByTagName('input')[0];
+    const checkbox = e.target.getElementsByTagName("input")[0];
     checkbox.checked = !checkbox.checked;
     if (checkbox.checked) {
       e.target.className = `choice-active ${checkbox.name}`;
@@ -76,7 +75,7 @@ export class EntryEdit extends React.Component {
     }
     return new Promise((resolve, reject) => {
       dispatch({
-        type: 'ENTRIES_ADD_EDIT',
+        type: "ENTRIES_ADD_EDIT",
         entry: {
           id: id,
           date: date,
@@ -86,10 +85,10 @@ export class EntryEdit extends React.Component {
           cognitiveDistortions: cognitiveDistortions || "",
           rationalResponse: values.rationalResponse || "",
         },
-        callbackError: (error) => {
+        callbackError: error => {
           reject(new SubmissionError({ _error: error }));
         },
-        callbackSuccess: (response) => {
+        callbackSuccess: response => {
           this.setState({ cognitiveDistortions: [] });
           dispatch(push(`/entry/${response.id}`));
           resolve();
@@ -98,12 +97,12 @@ export class EntryEdit extends React.Component {
     });
   }
 
-// render
+  // render
   render() {
     const { entry, handleSubmit, error, invalid, submitting } = this.props;
     return (
       <div className="page-entry-edit page">
-        <PageHeader>{(entry && entry.id ? 'Edit Entry' : 'New Entry')}</PageHeader>
+        <PageHeader>{entry && entry.id ? "Edit Entry" : "New Entry"}</PageHeader>
         <Form horizontal onSubmit={handleSubmit(this.formSubmit)}>
           <Field
             component={FormField}
@@ -124,106 +123,101 @@ export class EntryEdit extends React.Component {
             placeholder="The automatic thoughts"
           />
 
-            <p>Cognitive Distortions</p>
+          <p>Cognitive Distortions</p>
           <div className="distortions-container">
             <button className="choice" onClick={this.toggleChecked}>
-           All-or-Nothing Thinking
-                <input
-                  type="checkbox"
-                  className="invisible"
-                  name="allOrNothingThinking"
-                  defaultChecked={false}
-                />
+              All-or-Nothing Thinking
+              <input
+                type="checkbox"
+                className="invisible"
+                name="allOrNothingThinking"
+                defaultChecked={false}
+              />
             </button>
 
             <button className="choice" onClick={this.toggleChecked}>
-            Overgeneralizaton
-                <input
-                  type="checkbox"
-                  className="invisible"
-                  name="overgeneralization"
-                  defaultChecked={false}
-                />
+              Overgeneralizaton
+              <input
+                type="checkbox"
+                className="invisible"
+                name="overgeneralization"
+                defaultChecked={false}
+              />
             </button>
 
             <button className="choice" onClick={this.toggleChecked}>
-             Mental Filter
-                <input
-                  type="checkbox"
-                  className="invisible"
-                  name="mentalFilter"
-                  defaultChecked={false}
-                />
+              Mental Filter
+              <input
+                type="checkbox"
+                className="invisible"
+                name="mentalFilter"
+                defaultChecked={false}
+              />
             </button>
 
             <button className="choice" onClick={this.toggleChecked}>
-             Discounting the Positives
-                <input
-                  type="checkbox"
-                  className="invisible"
-                  name="discountingThePositive"
-                  defaultChecked={false}
-                />
+              Discounting the Positives
+              <input
+                type="checkbox"
+                className="invisible"
+                name="discountingThePositive"
+                defaultChecked={false}
+              />
             </button>
 
             <button className="choice" onClick={this.toggleChecked}>
-             Jumping to Conclusions
-                <input
-                  type="checkbox"
-                  className="invisible"
-                  name="jumpingToConclusions"
-                  defaultChecked={false}
-                />
+              Jumping to Conclusions
+              <input
+                type="checkbox"
+                className="invisible"
+                name="jumpingToConclusions"
+                defaultChecked={false}
+              />
             </button>
 
             <button className="choice" onClick={this.toggleChecked}>
-             Magnifying or Minifying
-                <input
-                  type="checkbox"
-                  className="invisible"
-                  name="magnifyingOrMinifying"
-                  defaultChecked={false}
-                />
+              Magnifying or Minifying
+              <input
+                type="checkbox"
+                className="invisible"
+                name="magnifyingOrMinifying"
+                defaultChecked={false}
+              />
             </button>
 
             <button className="choice" onClick={this.toggleChecked}>
-             Emotional Reasoning
-                <input
-                  type="checkbox"
-                  className="invisible"
-                  name="emotionalReasoning"
-                  defaultChecked={false}
-                />
+              Emotional Reasoning
+              <input
+                type="checkbox"
+                className="invisible"
+                name="emotionalReasoning"
+                defaultChecked={false}
+              />
             </button>
 
             <button className="choice" onClick={this.toggleChecked}>
-             'Should' statements
-                <input
-                  type="checkbox"
-                  className="invisible"
-                  name="shouldStatements"
-                  defaultChecked={false}
-                />
+              'Should' statements
+              <input
+                type="checkbox"
+                className="invisible"
+                name="shouldStatements"
+                defaultChecked={false}
+              />
             </button>
 
             <button className="choice" onClick={this.toggleChecked}>
-             Labeling
-                <input
-                  type="checkbox"
-                  className="invisible"
-                  name="labeling"
-                  defaultChecked={false}
-                />
+              Labeling
+              <input type="checkbox" className="invisible" name="labeling" defaultChecked={false} />
             </button>
 
             <button className="choice" onClick={this.toggleChecked}>
-            Personalization and Blame
-                <input
-                  type="checkbox"
-                  className="invisible"
-                  name="personalizationAndBlame"
-                  defaultChecked={false}
-                />
+              Personalization and Blame
+              <input
+                type="checkbox"
+                className="invisible"
+                name="personalizationAndBlame"
+                defaultChecked={false}
+              />
             </button>
           </div>
           <Field
@@ -233,7 +227,10 @@ export class EntryEdit extends React.Component {
             placeholder="A rational response to these distortions"
           />
           <FormSubmit
-            error={error} invalid={invalid} submitting={submitting} buttonSaveLoading="Saving..."
+            error={error}
+            invalid={invalid}
+            submitting={submitting}
+            buttonSaveLoading="Saving..."
             buttonSave="Save Entry"
           />
         </Form>
@@ -243,21 +240,21 @@ export class EntryEdit extends React.Component {
 }
 
 EntryEdit.propTypes = {
- entry: PropTypes.object,
- dispatch: PropTypes.func,
- handleSubmit: PropTypes.func,
- error: PropTypes.bool,
- submitting: PropTypes.bool,
- invalid: PropTypes.bool,
-}
+  entry: PropTypes.object,
+  dispatch: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  error: PropTypes.bool,
+  submitting: PropTypes.bool,
+  invalid: PropTypes.bool,
+};
 
 // decorate the form component
 const EntryEditForm = reduxForm({
-  form: 'entryEdit',
+  form: "entryEdit",
   validate(values) {
     const errors = {};
     if (!values.entryname) {
-      errors.entryname = 'Entryname is required';
+      errors.entryname = "Entryname is required";
     }
     return errors;
   },
@@ -265,9 +262,9 @@ const EntryEditForm = reduxForm({
 
 // export the connected class
 function mapStateToProps(state, ownProps) {
-  const entry = state.entries.length ?
-   state.entries.find(x => Number(x.id) === Number(ownProps.params.id))
-   : null;
+  const entry = state.entries.length
+    ? state.entries.find(x => Number(x.id) === Number(ownProps.params.id))
+    : null;
   return {
     entry,
     initialValues: entry,

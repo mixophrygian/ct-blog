@@ -1,13 +1,13 @@
-import React from 'react';
-import { Router, Route, IndexRoute } from 'react-router';
-import { history } from './store.js';
-import App from './components/App';
-import About from './components/About';
-import Distortions from './components/Distortions';
-import FAQ from './components/FAQ';
-import Home from './components/Home';
-import EntryEdit from './components/EntryEdit';
-import EntryView from './components/EntryView';
+import React from "react";
+import { Router, Route, IndexRoute } from "react-router";
+import { history } from "./store.js";
+import App from "./components/App";
+import About from "./components/About";
+import Distortions from "./components/Distortions";
+import FAQ from "./components/FAQ";
+import Home from "./components/Home";
+import EntryEdit from "./components/EntryEdit";
+import EntryView from "./components/EntryView";
 
 const router = (
   <Router history={history}>

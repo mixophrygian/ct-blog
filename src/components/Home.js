@@ -1,15 +1,15 @@
-import React, { PropTypes } from 'react';
-import EntryList from './common/EntryList';
-import SplashAndOnboarding from './SplashAndOnboarding';
-import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+import React, { PropTypes } from "react";
+import EntryList from "./common/EntryList";
+import SplashAndOnboarding from "./SplashAndOnboarding";
+import { connect } from "react-redux";
+import { browserHistory } from "react-router";
 
 export class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-     showSplash: false,
-     loading: true,
+      showSplash: false,
+      loading: true,
     };
     this.hideSplash = this.hideSplash.bind(this);
   }
@@ -22,8 +22,8 @@ export class Home extends React.Component {
     }
   }
   componentDidMount() {
-   browserHistory.replace('/');
-   if (this.props.onboarded) {
+    browserHistory.replace("/");
+    if (this.props.onboarded) {
       this.hideSplash();
     } else {
       this.showSplash();
@@ -37,17 +37,17 @@ export class Home extends React.Component {
   hideSplash() {
     this.setState({ showSplash: false });
     if (!this.props.onboarded) {
-      this.props.dispatch({ type: 'MARK_AS_ONBOARDED' });
+      this.props.dispatch({ type: "MARK_AS_ONBOARDED" });
     }
   }
 
   render() {
-    return (
-      this.state.showSplash ?
-        <SplashAndOnboarding hide={this.hideSplash}/> :
-        <div className="page-home page">
-          <EntryList />
-        </div>
+    return this.state.showSplash ? (
+      <SplashAndOnboarding hide={this.hideSplash} />
+    ) : (
+      <div className="page-home page">
+        <EntryList />
+      </div>
     );
   }
 }

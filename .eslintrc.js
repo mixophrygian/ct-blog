@@ -63,7 +63,6 @@ module.exports = {
       "curly": OFF,                 // specify curly brace conventions for all control statements
       "default-case": ERROR,          // require default case in switch statements (off by default)
       "dot-notation": ERROR,          // encourages use of dot notation whenever possible
-      "dot-location": ERROR,          // enforces consistent newlines before or after dots (off by default)
       "eqeqeq": ERROR,                // require the use of === and !==
       "guard-for-in": ERROR,          // make sure for-in loops have an if statement (off by default)
       "no-alert": ERROR,              // disallow the use of alert, confirm, and prompt

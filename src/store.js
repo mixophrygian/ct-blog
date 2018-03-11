@@ -1,12 +1,12 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import { browserHistory } from 'react-router';
-import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
-import createSagaMiddleware from 'redux-saga';
-import freeze from 'redux-freeze';
-import { reducers } from './reducers/index';
-import { sagas } from './sagas/index';
-import ApiEntries from './api/entries';
-import appState from './api/appState';
+import { createStore, applyMiddleware, compose } from "redux";
+import { browserHistory } from "react-router";
+import { syncHistoryWithStore, routerMiddleware } from "react-router-redux";
+import createSagaMiddleware from "redux-saga";
+import freeze from "redux-freeze";
+import { reducers } from "./reducers/index";
+import { sagas } from "./sagas/index";
+import ApiEntries from "./api/entries";
+import appState from "./api/appState";
 
 // add the middlewares
 const middlewares = [];
@@ -19,7 +19,7 @@ const sagaMiddleware = createSagaMiddleware();
 middlewares.push(sagaMiddleware);
 
 // add the freeze dev middleware
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   middlewares.push(freeze);
 }
 
@@ -27,7 +27,7 @@ if (process.env.NODE_ENV !== 'production') {
 let middleware = applyMiddleware(...middlewares);
 
 // add the redux dev tools
-if (process.env.NODE_ENV !== 'production' && window.devToolsExtension) {
+if (process.env.NODE_ENV !== "production" && window.devToolsExtension) {
   middleware = compose(middleware, window.devToolsExtension());
 }
 

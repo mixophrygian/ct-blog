@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
-import { reducer as formReducer } from 'redux-form';
-import entries from './entries';
-import onboarded from './appState';
+import { combineReducers } from "redux";
+import { routerReducer } from "react-router-redux";
+import { reducer as formReducer } from "redux-form";
+import entries from "./entries";
+import onboarded from "./appState";
 
 // main reducers
 export const reducers = combineReducers({
@@ -11,7 +11,7 @@ export const reducers = combineReducers({
     entryEdit: (state, action) => {
       // reset form (wipe state) when navigating away from the User edit page
       switch (action.type) {
-        case '@@router/LOCATION_CHANGE':
+        case "@@router/LOCATION_CHANGE":
           return {};
         default:
           return state;

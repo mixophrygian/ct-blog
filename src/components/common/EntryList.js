@@ -1,10 +1,10 @@
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
-import { Table, Pagination } from 'react-bootstrap';
-import SingleEntryRow from './SingleEntryRow';
-import NoEntries from './NoEntries';
-import EntryDeletePrompt from './EntryDeletePrompt';
+import React, { PropTypes } from "react";
+import { connect } from "react-redux";
+import { push } from "react-router-redux";
+import { Table, Pagination } from "react-bootstrap";
+import SingleEntryRow from "./SingleEntryRow";
+import NoEntries from "./NoEntries";
+import EntryDeletePrompt from "./EntryDeletePrompt";
 
 export class EntryList extends React.Component {
   constructor(props) {
@@ -27,37 +27,54 @@ export class EntryList extends React.Component {
     const pages = Math.ceil(entries.length / perPage);
     const startOffset = (page - 1) * perPage;
     let startCount = 0;
-    const savedEntries = entries.length ?
-    <div>
-      <Table bordered hover responsive striped className="Table">
+    const savedEntries = entries.length ? (
+      <div>
+        <Table bordered hover responsive striped className="Table">
           <tbody>
-          {entries.map((entry, index) => {
-            if (index >= startOffset && startCount < perPage) {
-              startCount++;
-              return (
-                <SingleEntryRow key={index} entry={entry} showDelete={this.showDelete} className="SingleEntryRow" />
-              );
-            }
-            })
-          }
+            {entries.map((entry, index) => {
+              if (index >= startOffset && startCount < perPage) {
+                startCount++;
+                return (
+                  <SingleEntryRow
+                    key={index}
+                    entry={entry}
+                    showDelete={this.showDelete}
+                    className="SingleEntryRow"
+                  />
+                );
+              }
+            })}
           </tbody>
         </Table>
 
         <Pagination
-          className="entries-pagination" bsSize="medium" maxButtons={10} first last next
-          prev boundaryLinks items={pages} activePage={page} onSelect={this.changePage}
+          className="entries-pagination"
+          bsSize="medium"
+          maxButtons={10}
+          first
+          last
+          next
+          prev
+          boundaryLinks
+          items={pages}
+          activePage={page}
+          onSelect={this.changePage}
         />
 
         <EntryDeletePrompt
-          show={this.state.deleteShow} entry={this.state.deleteEntry}
-          hideDelete={this.hideDelete} entryDelete={this.entryDelete}
+          show={this.state.deleteShow}
+          entry={this.state.deleteEntry}
+          hideDelete={this.hideDelete}
+          entryDelete={this.entryDelete}
         />
-       </div> :
-       <NoEntries className="SingleEntryRow" />
+      </div>
+    ) : (
+      <NoEntries className="SingleEntryRow" />
+    );
     return (
       <div className="EntryList">
         <h2>Automatic Thought Journal</h2>
-          {savedEntries}
+        {savedEntries}
       </div>
     );
   }
@@ -82,7 +99,7 @@ export class EntryList extends React.Component {
 
   entryDelete() {
     this.props.dispatch({
-      type: 'ENTRIES_DELETE',
+      type: "ENTRIES_DELETE",
       entry: this.state.deleteEntry,
     });
 
@@ -94,7 +111,7 @@ EntryList.propTypes = {
   entries: PropTypes.any,
   dispatch: PropTypes.func,
   page: PropTypes.number,
-}
+};
 
 function mapStateToProps(state) {
   return {
