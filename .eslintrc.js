@@ -3,7 +3,8 @@ const OFF = 0, WARN = 1, ERROR = 2;
 module.exports = {
     "extends": [
      "eslint:recommended",
-     "plugin:react/recommended" 
+     "plugin:react/recommended",
+     "plugin:prettier/recommended",
     ],
     'env': {
         'browser': true,
@@ -14,7 +15,8 @@ module.exports = {
     "plugins": [
         "react",
         "jsx-a11y",
-        "import"
+        "import",
+        "prettier",
     ],
     "parserOptions": {
       "ecmaVersion": 6,
@@ -198,6 +200,8 @@ module.exports = {
       "max-depth": [WARN, 4],       // specify the maximum depth that blocks can be nested (off by default)
       "max-len": [WARN, 120],         // specify the maximum length of a line in your program (off by default)
       "max-statements": [WARN, 13],  // specify the maximum number of statement allowed in a function (off by default)
-      "no-plusplus": 0      // disallow use of unary operators, ++ and -- (off by default)
+      "no-plusplus": 0,      // disallow use of unary operators, ++ and -- (off by default)
+      
+      "prettier/prettier": "error"
     }
   };
