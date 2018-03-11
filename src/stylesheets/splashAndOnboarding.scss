@@ -3,13 +3,13 @@
 @import "colors";
 
 .page-splash {
+  z-index: 1000;
   display: flex;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1000;
   background-color: $lightgreen;
   justify-content: center;
   align-items: center;

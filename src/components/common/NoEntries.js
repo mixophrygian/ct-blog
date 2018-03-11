@@ -16,13 +16,14 @@ export default class NoEntries extends React.Component {
     return (
       <div className="empty-container">
         <p className="quote">
-          [Last updated: 3/3 12:12am
-            - more initial load ux improvements
+          [Last updated: 3/10 7:30pm
+            - fix side menu / smooth scrolling
             - hide splash after first time, no flash of wrong content,
             no landscape or non-mobile garbage
         </p>
         <p className="quote">
            TODO: break out new entry page into sections,
+           fix scroll-to-top on navigation,
             add pre-onboarding splash animation,
              iterate on a few colored prototypes,
               iterate on copy]

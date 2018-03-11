@@ -10,3 +10,5 @@ npm-debug.log
 .swn
 .DS_Store
 package-lock.json
+
+bootstrap-min.css

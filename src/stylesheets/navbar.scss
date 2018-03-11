@@ -2,7 +2,7 @@ ul.nav {
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin: 0;
 }
 
@@ -18,24 +18,11 @@ ul.nav::after {
   align-items: center;
   height: 10vh;
   margin: 0;
+  z-index: 1 !important;
 }
 
 .nav li {
   border-radius: 3px;
-}
-
-//Hamburger menu
-.nav li:first-child {
-  display: flex;
-  
-  a {
-    padding-left: 0;
-  }
-  
-  a span.glyphicon {
-  color: lightgray;
-  font-size: 24px;
-  }
 }
 
 .navbar-nav > .edit-button > a {
@@ -50,7 +37,8 @@ ul.nav::after {
   color: #555;
 }
 
-.edit-button, .home-button {
+
+.edit-button {
   padding: 8px;
   justify-content: center;
   border: 1px dashed gray;

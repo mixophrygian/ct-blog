@@ -1,17 +1,31 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Menu from './common/Menu';
+import { Link } from 'react-router';
 import '../stylesheets/main.scss';
 import localforage from 'localforage';
 import { isLoadingAsync } from '../utils/utils';
+import { slide as BurgerMenu } from 'react-burger-menu'
 
 export class App extends React.Component {
   constructor(props) {
      super(props);
      this.state = {
        isLoading: true,
+       sidebarOpen: false,
      }
+     this.onToggleSidebar = this.onToggleSidebar.bind(this);
+     this.closeSidebar = this.closeSidebar.bind(this);
   }
+
+  onToggleSidebar() {
+    this.setState({ sidebarOpen: !this.state.sidebarOpen });
+  }
+
+  closeSidebar() {
+    this.setState({ sidebarOpen: false });
+  }
+
 
   componentWillMount() {
     localforage.config({ name: "Automatic Thought Journal"});
@@ -38,15 +52,47 @@ export class App extends React.Component {
   render() {
     const { isLoading } = this.state;
     const { children } = this.props;
-    scrollToTop();
     if (isLoading) {
       return null;
     }
+    scrollToTop();
+
+    const styles = {
+      sidebarLink: {
+        display: 'block',
+        padding: '16px 0px',
+        color: '#757575',
+        textDecoration: 'none',
+      },
+      content: {
+        padding: "10%",
+        height: '100%',
+        backgroundColor: 'white',
+      },
+    };
+
+    const sidebarContent =
+      <div style={styles.content}>
+        <Link style={styles.sidebarLink} onClick={this.closeSidebar} to={'/'}>Home</Link>
+        <Link style={styles.sidebarLink} onClick={this.closeSidebar} to={'/about'}>What is this?</Link>
+        <Link style={styles.sidebarLink} onClick={this.closeSidebar} to={'/distortions'}>Distortions</Link>
+        <Link style={styles.sidebarLink} onClick={this.closeSidebar} to={'/faq'}>FAQ</Link>
+      </div>
+
     return (
-      <div>
+      <div className="mainWrapper">
+        <BurgerMenu
+          isOpen={this.state.sidebarOpen}
+          width={'45vw'}
+        >
+          {sidebarContent}
+        </BurgerMenu>
         <div className="container">
           <div>
-            <Menu children={children} />
+            <Menu
+              openSidebar={this.onToggleSidebar}
+              children={children}
+            />
           </div>
         </div>
         <div className="plzNoLandscape">

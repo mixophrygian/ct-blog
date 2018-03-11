@@ -7,7 +7,7 @@ export default class FAQ extends React.Component {
   // render
   render() {
     return (
-      <div className="page-faq">
+      <div className="page-faq page">
         <h2>Why was this made?</h2>
         <p>
           To make life easier. Complex, multi-step exercizes are just better in digital form.

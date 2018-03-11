@@ -45,7 +45,7 @@ export class Home extends React.Component {
     return (
       this.state.showSplash ?
         <SplashAndOnboarding hide={this.hideSplash}/> :
-        <div className="page-home">
+        <div className="page-home page">
           <EntryList />
         </div>
     );

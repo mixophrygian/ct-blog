@@ -6,6 +6,7 @@
 @import './view-entry.scss';
 @import './no-entries.scss';
 @import './distortions.scss';
+@import './burgerMenu.scss';
 @import './bootstrap-min.css';
 @import './normalize.css';
 @import './colors.scss';
@@ -30,10 +31,6 @@ div:focus {
   border: 1px solid lightgray;
 }
 
-.navbar-fixed-bottom, .navbar-fixed-top {
-  z-index: 130;
-}
-
 .page-home,
 .page-entry-view,
 .page-entry-edit,
@@ -41,7 +38,6 @@ div:focus {
 .page-about {
   height: 100%;
   margin: 15vh auto;
-  width: 100vw;
   max-width: 1000px;
   padding: 0 4vw 4vw 4vw;
 }
