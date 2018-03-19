@@ -1,11 +1,12 @@
 #Project Roadmap
-3/10:
-  -fix scrolling on rerouting issue
-  -try to restore the address bar collapse on scroll feature
-  -add prettier?
+ 3/10:
   -fix view entry detail margin bullshit / mobile
   -Add slick af pre-onboarding animation. -small fade in with title / logo?
   -Add a modal for users who have "block all cookies" set on their phones or any other localstorage preventing settings - private mode - in the buttons!
+  x - fix scrolling on rerouting issue
+  x - try to restore the address bar collapse on scroll feature
+  x - add prettier?
+  
   -code splitting?
   
 3/5: 
