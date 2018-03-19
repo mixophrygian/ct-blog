@@ -58,7 +58,7 @@ div:focus {
   padding-bottom: 12px;
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (max-device-aspect-ratio: 1/1) and (orientation: portrait) {
   .container {
     display: block;
   }
@@ -67,7 +67,7 @@ div:focus {
   }
 }
 
-@media screen and (orientation: landscape) {
+@media screen and (min-device-aspect-ratio: 1/1) and (orientation: landscape) {
   .container {
     display: none;
   }
