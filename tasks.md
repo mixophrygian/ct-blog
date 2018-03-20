@@ -1,4 +1,9 @@
 #Project Roadmap
+3/19:
+  -Fix deep linking 
+  -Modal for users blocking cookies / storage
+  -Break apart edit entry flow into sections
+
  3/10:
   -fix view entry detail margin bullshit / mobile
   -Add slick af pre-onboarding animation. -small fade in with title / logo?
