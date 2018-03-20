@@ -15,7 +15,8 @@ export default class NoEntries extends React.Component {
     return (
       <div className="empty-container">
         <p className="quote">
-          [Last updated: 3/20 1:30pm - fix deep links! Chrome iOS still wonky...
+          [Last updated: 3/20 1:30pm - still working on deep links reloads... Chrome iOS still
+          wonky...
         </p>
         <p className="quote">
           TODO: break out new entry page into sections, iterate on a few colored prototypes, iterate

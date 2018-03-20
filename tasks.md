@@ -1,8 +1,11 @@
 #Project Roadmap
 3/20: 
+  -see about deep linking on aws - why is it broken
+  -see about webpack bundle prod - why does it break.
   -Try to fix deep linking on chrome for iOS - update router and all dependencies?
   -Modal for users blocking cookies / storage
   -Break apart edit entry flow into sections
+  -consider integrating with AWS deployment on 'build prod' command
 
 3/19:
   x Fix deep linking 

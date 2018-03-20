@@ -19,8 +19,8 @@ module.exports = {
   entry: path.join(paths.JS, "index.js"),
   output: {
     publicPath: "/",
-    path: paths.DIST + "public/js",
-    filename: "bundle.js",
+    path: paths.DIST,
+    filename: "js/bundle.js",
   },
   // Tell webpack to use html plugin
   plugins: [
