@@ -1,6 +1,11 @@
 #Project Roadmap
+3/20: 
+  -Try to fix deep linking on chrome for iOS - update router and all dependencies?
+  -Modal for users blocking cookies / storage
+  -Break apart edit entry flow into sections
+
 3/19:
-  -Fix deep linking 
+  x Fix deep linking 
   -Modal for users blocking cookies / storage
   -Break apart edit entry flow into sections
 
