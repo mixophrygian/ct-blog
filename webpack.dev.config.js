@@ -30,4 +30,4 @@ module.exports.plugins.push(
   new UglifyWebpackPlugin()
 );
 
-module.export.mode = 'development';
+module.export.mode = "development";
