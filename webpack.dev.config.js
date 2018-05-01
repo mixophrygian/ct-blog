@@ -29,3 +29,5 @@ module.exports.plugins.push(
   }),
   new UglifyWebpackPlugin()
 );
+
+module.export.mode = 'development';
