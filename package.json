@@ -1,23 +1,16 @@
 {
-  "name": "redux-minimal",
+  "name": "ATJ",
   "version": "1.0.0",
-  "description": "Start building complex react-redux apps today, with this minimalist easy to understand starter kit (boilerplate)",
+  "description": "A blogging tool for deconstructing automatic thoughts",
   "keywords": [
     "react",
-    "redux",
-    "minimal",
-    "starter kit",
-    "boilerplate"
+    "redux"
   ],
   "main": "index.js",
-  "homepage": "http://redux-minimal.js.org/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/catalin-luntraru/redux-minimal"
-  },
   "scripts": {
     "lint": "eslint .",
-    "start": "webpack-dev-server --compress --inline --hot --history-api-fallback --host 192.168.1.25 --port 8080",
+    "start": "node server.js",
+    "start-dev": "webpack-dev-server --compress --inline --hot --history-api-fallback --host 192.168.1.25 --port 8080",
     "build-dev": "webpack --config webpack.dev.config.js",
     "build-prod": "webpack -p --config webpack.prod.config.js",
     "test": "jest --config=jestconfig.json",
@@ -35,6 +28,7 @@
   "author": "Catalin Luntraru",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.16.3",
     "jquery": "3.3.1",
     "localforage": "1.5.7",
     "prop-types": "15.5.8",
