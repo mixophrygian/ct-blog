@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react";
+import PropTypes from "prop-types";
+import React from "react";
 import { browserHistory } from "react-router";
 import { Button, Glyphicon } from "react-bootstrap";
 import { formatDate } from "../../utils/utils";

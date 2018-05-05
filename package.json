@@ -6,6 +6,7 @@
     "react",
     "redux"
   ],
+  "repository": "",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -32,7 +33,7 @@
     "jquery": "3.3.1",
     "localforage": "1.5.7",
     "prop-types": "15.5.8",
-    "react": "15.4.2",
+    "react": "^16.3.2",
     "react-bootstrap": "0.30.7",
     "react-burger-menu": "^2.3.0",
     "react-dom": "15.4.2",

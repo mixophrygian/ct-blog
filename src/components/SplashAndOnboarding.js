@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
-import React, { PropTypes } from "react";
+import PropTypes from "prop-types";
+
+import React from "react";
 import Slider from "react-slick";
 import { browserHistory } from "react-router";
 import { Button } from "react-bootstrap";
