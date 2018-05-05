@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { browserHistory } from "react-router";
+import { history } from "history";
 import { Button, Glyphicon } from "react-bootstrap";
 import { formatDate } from "../../utils/utils";
 
@@ -17,7 +17,7 @@ export default class SingleEntryRow extends React.Component {
     e.preventDefault();
     const id = e.currentTarget.getAttribute("data-id");
     if (e.target.tagName !== "SPAN") {
-      browserHistory.push(`entry/${id}`);
+      history.push(`entry/${id}`);
     }
   }
 

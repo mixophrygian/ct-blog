@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import React from "react";
 import Slider from "react-slick";
-import { browserHistory } from "react-router";
+import { history } from "history";
 import { Button } from "react-bootstrap";
 import Flowers from "./art/Flowers.svg";
 import AirBalloon from "./art/AirBalloon.svg";
@@ -12,7 +12,7 @@ import FingerPuppets from "./art/FingerPuppets.svg";
 
 export default class SplashAndOnboarding extends React.Component {
   componentDidMount() {
-    browserHistory.replace("/");
+    history.replace("/");
   }
 
   render() {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 /* eslint max-len: 0 */
 /* eslint no-trailing-spaces: 0 */
 

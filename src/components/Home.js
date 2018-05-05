@@ -3,7 +3,7 @@ import React from "react";
 import EntryList from "./common/EntryList";
 import SplashAndOnboarding from "./SplashAndOnboarding";
 import { connect } from "react-redux";
-import { browserHistory } from "react-router";
+// import { history } from "history";
 
 export class Home extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ export class Home extends React.Component {
     }
   }
   componentDidMount() {
-    browserHistory.replace("/");
+    // history.replace("/");
     if (this.props.onboarded) {
       this.hideSplash();
     } else {

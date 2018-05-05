@@ -118,7 +118,7 @@ function mapStateToProps(state) {
   return {
     entries: state.entries,
 
-    page: Number(state.routing.locationBeforeTransitions.query.page) || 1,
+    page: 1, // Number(state.routing.locationBeforeTransitions.query.page) || 1,
   };
 }
 export default connect(mapStateToProps)(EntryList);

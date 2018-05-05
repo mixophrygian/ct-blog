@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import { browserHistory } from "react-router";
+import { history } from "history";
 import { push } from "react-router-redux";
 import { SubmissionError, reduxForm } from "redux-form";
 import { Button, Panel, NavItem, Glyphicon } from "react-bootstrap";
@@ -9,16 +9,13 @@ import { LinkContainer } from "react-router-bootstrap";
 import { formatDate } from "../utils/utils";
 import EntryDeletePrompt from "./common/EntryDeletePrompt";
 
-// Entry add/edit page component
 export class EntryView extends React.Component {
-  // constructor
   constructor(props) {
     super(props);
     this.state = {
       deleteShow: false,
       deleteEntry: {},
     };
-    // bind <this> to the event method
     this.formSubmit = this.formSubmit.bind(this);
     this.showDelete = this.showDelete.bind(this);
     this.hideDelete = this.hideDelete.bind(this);
@@ -30,11 +27,10 @@ export class EntryView extends React.Component {
   componentWillMount() {
     const { entry } = this.props;
     if (!entry.id) {
-      browserHistory.replace("/");
+      history.replace("/");
     }
   }
 
-  // render
   render() {
     const { entry } = this.props;
     const distortions = this.renderDistortions(entry.cognitiveDistortions);
@@ -122,7 +118,7 @@ export class EntryView extends React.Component {
       entry: this.props.entry,
     });
     this.hideDelete();
-    browserHistory.push("/");
+    history.push("/");
   }
 
   hideDelete() {
