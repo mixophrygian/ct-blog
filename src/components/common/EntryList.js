@@ -2,7 +2,8 @@ import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
 import { push } from "react-router-redux";
-import { Table, Pagination } from "react-bootstrap";
+import { Table } from "react-bootstrap";
+// import Pagination from "react-bootstrap/lib/Pagination";
 import SingleEntryRow from "./SingleEntryRow";
 import NoEntries from "./NoEntries";
 import EntryDeletePrompt from "./EntryDeletePrompt";
@@ -25,7 +26,7 @@ export class EntryList extends React.Component {
   render() {
     const { entries, page } = this.props;
     const perPage = 10;
-    const pages = Math.ceil(entries.length / perPage);
+    // const pages = Math.ceil(entries.length / perPage);
     const startOffset = (page - 1) * perPage;
     let startCount = 0;
     const savedEntries = entries.length ? (
@@ -37,6 +38,7 @@ export class EntryList extends React.Component {
                 startCount++;
                 return (
                   <SingleEntryRow
+                    history={this.props.history}
                     key={index}
                     entry={entry}
                     showDelete={this.showDelete}
@@ -48,6 +50,7 @@ export class EntryList extends React.Component {
           </tbody>
         </Table>
 
+        {/*
         <Pagination
           className="entries-pagination"
           bsSize="medium"
@@ -61,6 +64,7 @@ export class EntryList extends React.Component {
           activePage={page}
           onSelect={this.changePage}
         />
+        */}
 
         <EntryDeletePrompt
           show={this.state.deleteShow}
@@ -111,14 +115,16 @@ export class EntryList extends React.Component {
 EntryList.propTypes = {
   entries: PropTypes.any,
   dispatch: PropTypes.func,
+  history: PropTypes.object,
   page: PropTypes.number,
 };
 
 function mapStateToProps(state) {
   return {
     entries: state.entries,
-
-    page: 1, // Number(state.routing.locationBeforeTransitions.query.page) || 1,
+    page: 1,
   };
 }
+
+// Number(state.routing.locationBeforeTransitions.query.page) || 1,
 export default connect(mapStateToProps)(EntryList);

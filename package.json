@@ -29,6 +29,7 @@
   "author": "Catalin Luntraru",
   "license": "MIT",
   "dependencies": {
+    "@react-bootstrap/pagination": "^1.0.0",
     "express": "^4.16.3",
     "history": "^4.7.2",
     "jquery": "3.3.1",

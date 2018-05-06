@@ -47,7 +47,7 @@ export class Home extends React.Component {
       <SplashAndOnboarding hide={this.hideSplash} />
     ) : (
       <div className="page-home page">
-        <EntryList />
+        <EntryList {...this.props} />
       </div>
     );
   }

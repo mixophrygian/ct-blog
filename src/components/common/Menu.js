@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React from "react";
 import { Nav, Navbar, NavItem, Glyphicon } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
@@ -23,12 +22,7 @@ export default class Menu extends React.Component {
             </NavItem>
           </Nav>
         </Navbar>
-        <div>{this.props.children}</div>
       </div>
     );
   }
 }
-
-Menu.propTypes = {
-  children: PropTypes.node,
-};

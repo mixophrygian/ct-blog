@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Menu from "./common/Menu";
@@ -11,7 +11,6 @@ import Home from "./Home";
 import EntryEdit from "./EntryEdit";
 import EntryView from "./EntryView";
 
-import { Link } from "react-router-dom";
 import "../stylesheets/main.scss";
 import localforage from "localforage";
 import { isLoadingAsync } from "../utils/utils";
@@ -61,16 +60,6 @@ export class App extends React.Component {
 
   render() {
     const { isLoading } = this.state;
-    const children = (
-      <div>
-        <Route exact path="/" component={Home} />
-        <Route exact path="entry(/:id)" component={EntryView} />
-        <Route exact path="entry-edit(/:id)" component={EntryEdit} />
-        <Route exact path="about" component={About} />
-        <Route exact path="distortions" component={Distortions} />
-        <Route exact path="faq" component={FAQ} />
-      </div>
-    );
     if (isLoading) {
       return null;
     }
@@ -114,8 +103,15 @@ export class App extends React.Component {
         </BurgerMenu>
         <div className="container">
           <div>
-            <Menu openSidebar={this.onToggleSidebar} children={children} />
+            <Menu openSidebar={this.onToggleSidebar} />
           </div>
+          <Route exact path="/" component={Home} {...this.props} />
+          <Route path="/entry/:id" component={EntryView} />
+          <Route exact path="/entry-edit" component={EntryEdit} />
+          <Route path="/entry-edit/:id" component={EntryEdit} />
+          <Route path="/about" component={About} />
+          <Route path="/distortions" component={Distortions} />
+          <Route path="/faq" component={FAQ} />
         </div>
         <div className="plzNoLandscape">We think you'll like this better in portrait mode.</div>
       </div>

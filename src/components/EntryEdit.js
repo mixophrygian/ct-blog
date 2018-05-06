@@ -261,14 +261,14 @@ const EntryEditForm = reduxForm({
   },
 })(EntryEdit);
 
-// export the connected class
 function mapStateToProps(state, ownProps) {
   const entry = state.entries.length
-    ? state.entries.find(x => Number(x.id) === Number(ownProps.params.id))
+    ? state.entries.find(x => Number(x.id) === Number(ownProps.match.params.id))
     : null;
   return {
     entry,
     initialValues: entry,
   };
 }
+
 export default connect(mapStateToProps)(EntryEditForm);

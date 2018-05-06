@@ -45,7 +45,7 @@ export class EntryView extends React.Component {
             </NavItem>
           </LinkContainer>
 
-          <LinkContainer to={`entry-edit/${entry.id}`}>
+          <LinkContainer to={`/entry-edit/${entry.id}`}>
             <NavItem className="edit-button">
               <span>Edit</span> <Glyphicon glyph="edit" />
             </NavItem>
@@ -159,6 +159,7 @@ EntryView.propTypes = {
   submitting: PropTypes.bool,
   invalid: PropTypes.bool,
 };
+
 // decorate the form component
 const EntryViewForm = reduxForm({
   form: "entryEdit",
@@ -171,9 +172,8 @@ const EntryViewForm = reduxForm({
   },
 })(EntryView);
 
-// export the connected class
 function mapStateToProps(state, ownProps) {
-  const entry = state.entries.find(x => Number(x.id) === Number(ownProps.params.id));
+  const entry = state.entries.find(x => Number(x.id) === Number(ownProps.match.params.id));
   return {
     entry,
     initialValues: entry,

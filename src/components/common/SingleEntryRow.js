@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { history } from "history";
+// import { history } from "history";
 import { Button, Glyphicon } from "react-bootstrap";
 import { formatDate } from "../../utils/utils";
 
@@ -11,13 +11,11 @@ export default class SingleEntryRow extends React.Component {
     this.viewEntry = this.viewEntry.bind(this);
   }
 
-  // render
-
   viewEntry(e) {
     e.preventDefault();
     const id = e.currentTarget.getAttribute("data-id");
     if (e.target.tagName !== "SPAN") {
-      history.push(`entry/${id}`);
+      this.props.history.push(`/entry/${id}`, {});
     }
   }
 
@@ -52,4 +50,5 @@ export default class SingleEntryRow extends React.Component {
 SingleEntryRow.propTypes = {
   entry: PropTypes.object.isRequired,
   showDelete: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
 };
