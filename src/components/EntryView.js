@@ -1,9 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import { history } from "history";
-import { push } from "react-router-redux";
-import { SubmissionError, reduxForm } from "redux-form";
 import { Button, Panel, NavItem, Glyphicon } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { formatDate } from "../utils/utils";
@@ -16,7 +13,6 @@ export class EntryView extends React.Component {
       deleteShow: false,
       deleteEntry: {},
     };
-    this.formSubmit = this.formSubmit.bind(this);
     this.showDelete = this.showDelete.bind(this);
     this.hideDelete = this.hideDelete.bind(this);
     this.entryDelete = this.entryDelete.bind(this);
@@ -25,14 +21,15 @@ export class EntryView extends React.Component {
   }
 
   componentWillMount() {
-    const { entry } = this.props;
-    if (!entry.id) {
+    const { entry, history } = this.props;
+    if (!entry || !entry.id) {
       history.replace("/");
     }
   }
 
   render() {
     const { entry } = this.props;
+    if (!entry) return null;
     const distortions = this.renderDistortions(entry.cognitiveDistortions);
     return (
       <div className="page-entry-view page">
@@ -118,7 +115,7 @@ export class EntryView extends React.Component {
       entry: this.props.entry,
     });
     this.hideDelete();
-    history.push("/");
+    this.props.history.push("/");
   }
 
   hideDelete() {
@@ -127,32 +124,10 @@ export class EntryView extends React.Component {
       deleteEntry: {},
     });
   }
-
-  // submit the form
-  formSubmit(values) {
-    const { dispatch } = this.props;
-    return new Promise((resolve, reject) => {
-      dispatch({
-        type: "ENTRIES_ADD_EDIT",
-        entry: {
-          id: values.id,
-          date: new Date(),
-          entryname: values.entryname,
-          job: values.job,
-        },
-        callbackError: error => {
-          reject(new SubmissionError({ _error: error }));
-        },
-        callbackSuccess: () => {
-          dispatch(push("/"));
-          resolve();
-        },
-      });
-    });
-  }
 }
 EntryView.propTypes = {
   entry: PropTypes.object,
+  history: PropTypes.object,
   dispatch: PropTypes.func,
   handleSubmit: PropTypes.func,
   error: PropTypes.bool,
@@ -160,23 +135,10 @@ EntryView.propTypes = {
   invalid: PropTypes.bool,
 };
 
-// decorate the form component
-const EntryViewForm = reduxForm({
-  form: "entryEdit",
-  validate(values) {
-    const errors = {};
-    if (!values.entryname) {
-      errors.entryname = "Entryname is required";
-    }
-    return errors;
-  },
-})(EntryView);
-
 function mapStateToProps(state, ownProps) {
   const entry = state.entries.find(x => Number(x.id) === Number(ownProps.match.params.id));
   return {
     entry,
-    initialValues: entry,
   };
 }
-export default connect(mapStateToProps)(EntryViewForm);
+export default connect(mapStateToProps)(EntryView);

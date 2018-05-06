@@ -1,14 +1,13 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import { push } from "react-router-redux";
 import { Field, SubmissionError, reduxForm } from "redux-form";
 import { PageHeader, Form } from "react-bootstrap";
 import FormField from "./common/FormField";
 import FormSubmit from "./common/FormSubmit";
 
 // Entry add/edit page component
-export class EntryEdit extends React.Component {
+class EntryEdit extends React.Component {
   // constructor
 
   constructor(props) {
@@ -91,14 +90,13 @@ export class EntryEdit extends React.Component {
         },
         callbackSuccess: response => {
           this.setState({ cognitiveDistortions: [] });
-          dispatch(push(`/entry/${response.id}`));
+          this.props.history.push(`/entry/${response.id}`);
           resolve();
         },
       });
     });
   }
 
-  // render
   render() {
     const { entry, handleSubmit, error, invalid, submitting } = this.props;
     return (
@@ -242,6 +240,7 @@ export class EntryEdit extends React.Component {
 
 EntryEdit.propTypes = {
   entry: PropTypes.object,
+  history: PropTypes.object,
   dispatch: PropTypes.func,
   handleSubmit: PropTypes.func,
   error: PropTypes.bool,
@@ -249,26 +248,24 @@ EntryEdit.propTypes = {
   invalid: PropTypes.bool,
 };
 
-// decorate the form component
 const EntryEditForm = reduxForm({
   form: "entryEdit",
-  validate(values) {
-    const errors = {};
-    if (!values.entryname) {
-      errors.entryname = "Entryname is required";
-    }
-    return errors;
-  },
+  // validate(values) {
+  //   const errors = {};
+  //   if (!values.situation) {
+  //     errors.situation = "Entryname is required";
+  //   }
+  //   return errors;
+  // },
 })(EntryEdit);
 
-function mapStateToProps(state, ownProps) {
+const mapStateToProps = (state, ownProps) => {
   const entry = state.entries.length
     ? state.entries.find(x => Number(x.id) === Number(ownProps.match.params.id))
     : null;
   return {
-    entry,
     initialValues: entry,
+    entry,
   };
-}
-
+};
 export default connect(mapStateToProps)(EntryEditForm);
