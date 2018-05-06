@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
-import { Glyphicon } from "react-bootstrap";
+// import { LinkContainer } from "react-router-bootstrap";
+import { /* Glyphicon, */ Button } from "react-bootstrap";
+import Auth from "../../api/Auth.js";
 
-// User List Element component
 export default class NoEntries extends React.Component {
   constructor(props) {
     super(props);
+    this.auth = new Auth();
   }
 
   // render
@@ -25,11 +26,14 @@ export default class NoEntries extends React.Component {
         <Link to={"/about"}>What is this?</Link>
         <br />
         <br />
+        <Button onClick={this.auth.login}>Log In</Button>
+        {/*}
         <LinkContainer className="btn btn-default edit-button cta" to="/entry-edit">
           <div>
             New Entry <Glyphicon glyph="plus-sign" />
           </div>
         </LinkContainer>
+        */}
       </div>
     );
   }

@@ -1,9 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
+import { connect } from "react-redux";
 import EntryList from "./common/EntryList";
 import SplashAndOnboarding from "./SplashAndOnboarding";
-import { connect } from "react-redux";
-// import { history } from "history";
 
 export class Home extends React.Component {
   constructor(props) {
