@@ -1,18 +1,28 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 // import { LinkContainer } from "react-router-bootstrap";
-import { /* Glyphicon, */ Button } from "react-bootstrap";
-import Auth from "../../api/Auth.js";
+import { Button } from "react-bootstrap";
+import Loader from "./Loader";
 
 export default class NoEntries extends React.Component {
   constructor(props) {
     super(props);
-    this.auth = new Auth();
+    this.login = this.login.bind(this);
+    this.state = {
+      isLoading: false,
+    };
   }
 
-  // render
+  login(e) {
+    e.preventDefault();
+    this.setState({ isLoading: true }, () => this.props.auth.login());
+  }
 
   render() {
+    const { isLoading } = this.state;
+    const { isAuthenticated } = this.props.auth;
+    if (isLoading) return <Loader />;
     return (
       <div className="empty-container">
         <p className="quote">
@@ -26,7 +36,16 @@ export default class NoEntries extends React.Component {
         <Link to={"/about"}>What is this?</Link>
         <br />
         <br />
-        <Button onClick={this.auth.login}>Log In</Button>
+        {!isAuthenticated() && (
+          <Button bsStyle="success" onClick={!isLoading ? this.login : null} disabled={isLoading}>
+            Log In!
+          </Button>
+        )}
+        {isAuthenticated() && (
+          <Button bsStyle="primary" className="btn-margin" onClick={this.props.auth.logout}>
+            Log Out
+          </Button>
+        )}
         {/*}
         <LinkContainer className="btn btn-default edit-button cta" to="/entry-edit">
           <div>
@@ -38,3 +57,8 @@ export default class NoEntries extends React.Component {
     );
   }
 }
+// prop checks
+NoEntries.propTypes = {
+  history: PropTypes.object.isRequired,
+  auth: PropTypes.object,
+};

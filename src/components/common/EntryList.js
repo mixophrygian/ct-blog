@@ -74,7 +74,7 @@ export class EntryList extends React.Component {
         />
       </div>
     ) : (
-      <NoEntries className="SingleEntryRow" />
+      <NoEntries history={this.props.history} auth={this.props.auth} className="SingleEntryRow" />
     );
     return (
       <div className="EntryList">
@@ -116,6 +116,7 @@ EntryList.propTypes = {
   entries: PropTypes.any,
   dispatch: PropTypes.func,
   history: PropTypes.object,
+  auth: PropTypes.any,
   page: PropTypes.number,
 };
 

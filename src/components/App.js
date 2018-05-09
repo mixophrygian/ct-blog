@@ -10,6 +10,8 @@ import FAQ from "./FAQ";
 import Home from "./Home";
 import EntryEdit from "./EntryEdit";
 import EntryView from "./EntryView";
+import Loader from "./common/Loader";
+import Auth from "../api/Auth.js";
 
 import "../stylesheets/main.scss";
 import localforage from "localforage";
@@ -23,6 +25,7 @@ export class App extends React.Component {
       isLoading: true,
       sidebarOpen: false,
     };
+    this.auth = new Auth(props.history);
     this.onToggleSidebar = this.onToggleSidebar.bind(this);
     this.closeSidebar = this.closeSidebar.bind(this);
   }
@@ -61,7 +64,7 @@ export class App extends React.Component {
   render() {
     const { isLoading } = this.state;
     if (isLoading) {
-      return null;
+      return <Loader />;
     }
     scrollToTop();
 
@@ -105,13 +108,20 @@ export class App extends React.Component {
           <div>
             <Menu openSidebar={this.onToggleSidebar} />
           </div>
-          <Route exact path="/" component={Home} {...this.props} />
+          <Route exact path="/" render={props => <Home auth={this.auth} {...props} />} />
           <Route path="/entry/:id" component={EntryView} />
           <Route exact path="/entry-edit" component={EntryEdit} />
           <Route path="/entry-edit/:id" component={EntryEdit} />
           <Route path="/about" component={About} />
           <Route path="/distortions" component={Distortions} />
           <Route path="/faq" component={FAQ} />
+          <Route
+            path="/callback"
+            render={props => {
+              this.auth.handleAuthentication(props);
+              return <Loader {...props} />;
+            }}
+          />
         </div>
         <div className="plzNoLandscape">We think you'll like this better in portrait mode.</div>
       </div>
@@ -135,6 +145,7 @@ App.propTypes = {
   dispatch: PropTypes.func,
   entries: PropTypes.any,
   onboarded: PropTypes.any,
+  history: PropTypes.object,
 };
 
 export default connect(mapStateToProps)(App);

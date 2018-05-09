@@ -46,13 +46,14 @@ export class Home extends React.Component {
       <SplashAndOnboarding hide={this.hideSplash} />
     ) : (
       <div className="page-home page">
-        <EntryList {...this.props} />
+        <EntryList auth={this.props.auth} {...this.props} />
       </div>
     );
   }
 }
 
 Home.propTypes = {
+  auth: PropTypes.any,
   entries: PropTypes.any,
   dispatch: PropTypes.func,
   onboarded: PropTypes.any,
