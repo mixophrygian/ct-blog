@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React from "react";
-// import { history } from "history";
 import { Button, Glyphicon } from "react-bootstrap";
 import { formatDate } from "../../utils/utils";
 

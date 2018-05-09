@@ -22,7 +22,7 @@ export class Home extends React.Component {
     }
   }
   componentDidMount() {
-    // history.replace("/");
+    this.props.history.replace("/");
     if (this.props.onboarded) {
       this.hideSplash();
     } else {
@@ -54,6 +54,7 @@ export class Home extends React.Component {
 
 Home.propTypes = {
   auth: PropTypes.any,
+  history: PropTypes.func,
   entries: PropTypes.any,
   dispatch: PropTypes.func,
   onboarded: PropTypes.any,

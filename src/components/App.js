@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Route, Link } from "react-router-dom";
+import { Route, Link, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Menu from "./common/Menu";
@@ -108,20 +108,23 @@ export class App extends React.Component {
           <div>
             <Menu openSidebar={this.onToggleSidebar} />
           </div>
-          <Route exact path="/" render={props => <Home auth={this.auth} {...props} />} />
-          <Route path="/entry/:id" component={EntryView} />
-          <Route exact path="/entry-edit" component={EntryEdit} />
-          <Route path="/entry-edit/:id" component={EntryEdit} />
-          <Route path="/about" component={About} />
-          <Route path="/distortions" component={Distortions} />
-          <Route path="/faq" component={FAQ} />
-          <Route
-            path="/callback"
-            render={props => {
-              this.auth.handleAuthentication(props);
-              return <Loader {...props} />;
-            }}
-          />
+          <Switch>
+            <Route exact path="/" render={props => <Home auth={this.auth} {...props} />} />
+            <Route path="/entry/:id" component={EntryView} />
+            <Route exact path="/entry-edit" component={EntryEdit} />
+            <Route path="/entry-edit/:id" component={EntryEdit} />
+            <Route path="/about" component={About} />
+            <Route path="/distortions" component={Distortions} />
+            <Route path="/faq" component={FAQ} />
+            <Route
+              path="/callback"
+              render={props => {
+                this.auth.handleAuthentication(props);
+                return <Loader {...props} />;
+              }}
+            />
+            <Route render={props => <Home auth={this.auth} {...props} />} />
+          </Switch>
         </div>
         <div className="plzNoLandscape">We think you'll like this better in portrait mode.</div>
       </div>

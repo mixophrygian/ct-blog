@@ -11,7 +11,7 @@ import FingerPuppets from "./art/FingerPuppets.svg";
 
 export default class SplashAndOnboarding extends React.Component {
   componentDidMount() {
-    // history.replace("/");
+    this.props.history.replace("/");
   }
 
   render() {
