@@ -36,27 +36,40 @@ export class EntryView extends React.Component {
         <div className="header">
           <div className="date">{formatDate(entry.date)}</div>
 
-          <LinkContainer to={"/"}>
-            <NavItem className="home-button">
+          <LinkContainer role="button" className="btn home-button" to={"/"}>
+            <NavItem>
               <span>Home</span> <Glyphicon glyph="home" />
             </NavItem>
           </LinkContainer>
 
-          <LinkContainer to={`/entry-edit/${entry.id}`}>
-            <NavItem className="edit-button">
+          <LinkContainer role="button" className="btn edit-button" to={`/entry-edit/${entry.id}`}>
+            <NavItem>
               <span>Edit</span> <Glyphicon glyph="edit" />
             </NavItem>
           </LinkContainer>
         </div>
 
-        <Panel header={"Situation"}>{entry.situation}</Panel>
-        <Panel header={"Emotional Response"}>{entry.emotionalResponse || ""}</Panel>
-        <Panel header={"Automatic Thoughts"}>{entry.automaticThoughts || ""}</Panel>
-        <h5>Cognitive Distortions</h5>
+        <Panel>
+          <Panel.Heading>Situation</Panel.Heading>
+          <Panel.Body>{entry.situation}</Panel.Body>
+        </Panel>
+        <Panel>
+          <Panel.Heading>Emotional Response</Panel.Heading>
+          <Panel.Body>{entry.emotionalResponse || ""}</Panel.Body>
+        </Panel>
+        <Panel>
+          <Panel.Heading>Automatic Thoughts</Panel.Heading>
+          <Panel.Body>{entry.automaticThoughts || ""}</Panel.Body>
+        </Panel>
+        <h4>Cognitive Distortions</h4>
         <div className="distortions-container">{distortions}</div>
-        <Panel header={"Rational Response"}>{entry.rationalResponse || ""}</Panel>
+        <br />
+        <Panel>
+          <Panel.Heading>Rational Response</Panel.Heading>
+          <Panel.Body>{entry.rationalResponse || ""}</Panel.Body>
+        </Panel>
         <div className="delete-container">
-          <Button bsSize="xsmall" className="entry-delete" onClick={() => this.showDelete(entry)}>
+          <Button className="btn delete-button" onClick={() => this.showDelete(entry)}>
             Delete Entry
           </Button>
         </div>

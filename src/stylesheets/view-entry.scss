@@ -14,7 +14,10 @@
     margin-bottom: 20px;
     padding-left: 3px;
   }
+  .home-button,
+  .delete-button,
   .edit-button {
+    border: 1px solid lightgray;
     display: inline-flex;
 
     a {
@@ -35,13 +38,6 @@
 
   .delete-container {
     align-self: flex-end;
-  }
-
-  button {
-    padding: 8px 15px;
-    width: 100%;
-    padding: 8px 15px;
-    border-radius: 4px;
   }
 }
 
