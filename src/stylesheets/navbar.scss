@@ -12,6 +12,7 @@ ul.nav::after {
   display: none;
 }
 
+
 .customNav {
   box-sizing: border-box;
   display: flex;
@@ -25,7 +26,11 @@ ul.nav::after {
   border-radius: 3px;
 }
 
-.navbar-nav > .edit-button > a {
+.loginButton {
+  margin-right: 10vw;
+}
+
+.navbar-nav > .new-entry-button > a {
   display: flex;
 }
 
@@ -37,7 +42,7 @@ ul.nav::after {
   color: #555;
 }
 
-.edit-button {
+.new-entry-button {
   padding: 8px;
   justify-content: center;
   border: 1px dashed gray;
@@ -56,7 +61,7 @@ ul.nav::after {
   }
 }
 
-.edit-button:active {
+.new-entry-button:active {
   background-color: lightgray;
 }
 

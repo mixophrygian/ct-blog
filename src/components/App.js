@@ -106,10 +106,10 @@ export class App extends React.Component {
         </BurgerMenu>
         <div className="container">
           <div>
-            <Menu openSidebar={this.onToggleSidebar} />
+            <Menu auth={this.auth} openSidebar={this.onToggleSidebar} />
           </div>
           <Switch>
-            <Route exact path="/" render={props => <Home auth={this.auth} {...props} />} />
+            <Route exact path="/" render={props => <Home {...props} />} />
             <Route path="/entry/:id" component={EntryView} />
             <Route exact path="/entry-edit" component={EntryEdit} />
             <Route path="/entry-edit/:id" component={EntryEdit} />

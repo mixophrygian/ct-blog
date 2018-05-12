@@ -9,7 +9,6 @@ export class Home extends React.Component {
     super(props);
     this.state = {
       showSplash: false,
-      loading: true,
     };
     this.hideSplash = this.hideSplash.bind(this);
   }
@@ -46,15 +45,14 @@ export class Home extends React.Component {
       <SplashAndOnboarding hide={this.hideSplash} />
     ) : (
       <div className="page-home page">
-        <EntryList auth={this.props.auth} {...this.props} />
+        <EntryList {...this.props} />
       </div>
     );
   }
 }
 
 Home.propTypes = {
-  auth: PropTypes.any,
-  history: PropTypes.func,
+  history: PropTypes.any,
   entries: PropTypes.any,
   dispatch: PropTypes.func,
   onboarded: PropTypes.any,
