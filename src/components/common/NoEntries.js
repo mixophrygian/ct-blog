@@ -13,12 +13,11 @@ export default class NoEntries extends React.Component {
     return (
       <div className="empty-container">
         <p className="quote">
-          [Last updated: 3/20 1:30pm - still working on deep links reloads... Chrome iOS still
-          wonky...
+          [Last updated: 5/12 8:46pm - add simple authentication and under-the-hood upgrades (react,
+          react-router, redux, bootstrap)
         </p>
         <p className="quote">
-          TODO: break out new entry page into sections, iterate on a few colored prototypes, iterate
-          on copy]
+          TODO: set up databse for users, break out new entry page into sections
         </p>
         <Link to={"/about"}>What is this?</Link>
         <br />
