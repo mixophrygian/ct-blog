@@ -10,14 +10,17 @@ export default class Auth {
       redirectUri: `${SERVING_URL}/authenticate`,
       audience: "https://automaticthoughtjournal.auth0.com/userinfo",
       responseType: "token id_token",
-      scope: "openid",
+      scope: "openid profile email",
     });
     this.history = history;
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.setSession = this.setSession.bind(this);
+    this.fetchProfile = this.fetchProfile.bind(this);
+    this.readProfile = this.readProfile.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
+    this.profile = {};
   }
 
   login() {
@@ -29,6 +32,7 @@ export default class Auth {
     localStorage.removeItem("access_token");
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
+    localStorage.removeItem("profile");
     this.history.replace("/");
   }
 
@@ -48,11 +52,22 @@ export default class Auth {
     this.history.replace("/");
   }
 
+  readProfile() {
+    return localStorage.getItem("profile");
+  }
+
+  fetchProfile(accessToken) {
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      localStorage.setItem("profile", profile);
+    });
+  }
+
   handleAuthentication(nextState) {
     if (/access_token|id_token|error/.test(nextState.location.hash)) {
       this.auth0.parseHash((err, authResult) => {
         if (authResult && authResult.accessToken && authResult.idToken) {
           this.setSession(authResult);
+          this.fetchProfile(authResult.accessToken);
         } else if (err) {
           this.history.replace("/");
           console.log(err);

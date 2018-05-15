@@ -1,6 +1,7 @@
 // We are using node's native package 'path'
 // https://nodejs.org/api/path.html
 const path = require("path");
+const webpack = require("webpack"); /* eslint no-unused-vars: 0 */
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -22,6 +23,12 @@ module.exports = {
   },
   // Tell webpack to use html plugin
   plugins: [
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify("development"),
+      },
+      SERVING_URL: JSON.stringify("http://localhost:3000"),
+    }),
     new HtmlWebpackPlugin({
       template: path.join(paths.SRC, "index.html"),
     }),

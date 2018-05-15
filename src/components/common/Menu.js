@@ -10,6 +10,7 @@ export default class Menu extends React.Component {
     this.state = {
       sidebarOpen: false,
       isLoading: false,
+      profile: {},
     };
     this.login = this.login.bind(this);
   }
@@ -19,10 +20,19 @@ export default class Menu extends React.Component {
     this.setState({ isLoading: true }, () => this.props.auth.login());
   }
 
+  getProfile() {
+    const profile = this.props.auth.readProfile();
+    this.setState({ profile });
+  }
+
   render() {
-    const { isLoading } = this.state;
+    const { isLoading /*, profile */ } = this.state;
     const { isAuthenticated } = this.props.auth;
     if (isLoading) return <Loader />;
+    // if (isAuthenticated() && (!profile || !Object.keys(profile).length)) {
+    //   this.getProfile();
+    // }
+    // console.log('profile', profile);
 
     return (
       <div>
@@ -35,9 +45,12 @@ export default class Menu extends React.Component {
                 </Button>
               )}
               {isAuthenticated() && (
-                <Button className="btn-margin" onClick={this.props.auth.logout}>
-                  Log Out
-                </Button>
+                <div>
+                  <span>Hi, user</span>
+                  <Button className="btn-margin" onClick={this.props.auth.logout}>
+                    Log Out
+                  </Button>
+                </div>
               )}
             </NavItem>
             <NavItem>
