@@ -117,7 +117,7 @@ export class App extends React.Component {
             <Route path="/distortions" component={Distortions} />
             <Route path="/faq" component={FAQ} />
             <Route
-              path="/callback"
+              path="/authenticate"
               render={props => {
                 this.auth.handleAuthentication(props);
                 return <Loader {...props} />;

@@ -21,7 +21,9 @@ export class Home extends React.Component {
     }
   }
   componentDidMount() {
-    this.props.history.replace("/");
+    if (this.props.history) {
+      this.props.history.replace("/");
+    }
     if (this.props.onboarded) {
       this.hideSplash();
     } else {
