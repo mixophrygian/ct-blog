@@ -10,9 +10,7 @@ const paths = {
   JS: path.resolve(__dirname, "src"),
 };
 
-const extractSass = new ExtractTextPlugin({
-  filename: "css/main.css",
-});
+const extractSass = new ExtractTextPlugin("css/main.css");
 
 module.exports = {
   target: "web",

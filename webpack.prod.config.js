@@ -1,12 +1,7 @@
 const webpack = require("webpack"); /* eslint no-unused-vars: 0 */
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyWebpackPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-
-const extractSass = new ExtractTextPlugin({
-  filename: "css/main.css",
-});
 
 module.exports = require("./webpack.config.js"); // inherit from the main config file
 
@@ -23,6 +18,7 @@ module.exports.plugins.push(
     "process.env": {
       NODE_ENV: JSON.stringify("production"),
     },
+    SERVING_URL: JSON.stringify("http://ec2-54-183-244-115.us-west-1.compute.amazonaws.com"),
   }),
   new webpack.optimize.UglifyJsPlugin({
     minimize: true,
