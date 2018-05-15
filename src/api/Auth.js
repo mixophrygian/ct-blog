@@ -7,7 +7,7 @@ export default class Auth {
     this.auth0 = new auth0.WebAuth({
       domain: "automaticthoughtjournal.auth0.com",
       clientID: "W8fK0U44WoTIr2VCsGN4n6hhKiu2YtUA",
-      redirectUri: "http://localhost:3000/callback",
+      redirectUri: "http://localhost:3000/authenticate",
       audience: "https://automaticthoughtjournal.auth0.com/userinfo",
       responseType: "token id_token",
       scope: "openid",
