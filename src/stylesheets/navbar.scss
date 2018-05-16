@@ -27,7 +27,11 @@ ul.nav::after {
 }
 
 .loginButton {
-  margin-right: 10vw;
+  margin-right: 5vw;
+}
+
+.user-name {
+  margin-right: 1vw;
 }
 
 .navbar-nav > .new-entry-button > a {
@@ -63,6 +67,17 @@ ul.nav::after {
 
 .new-entry-button:active {
   background-color: lightgray;
+}
+
+@media only screen and (max-width: 320px){
+  
+  .loginButton {
+    margin-right: 7vw;
+  }
+  
+  .user-name {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 769px) {

@@ -1,9 +1,11 @@
 /* eslint-disable no-console, no-undef */
 
 import auth0 from "auth0-js";
+import { Component } from "react";
 
-export default class Auth {
+export default class Auth extends Component {
   constructor(history) {
+    super(history);
     this.auth0 = new auth0.WebAuth({
       domain: "automaticthoughtjournal.auth0.com",
       clientID: "W8fK0U44WoTIr2VCsGN4n6hhKiu2YtUA",
@@ -18,9 +20,7 @@ export default class Auth {
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.setSession = this.setSession.bind(this);
     this.fetchProfile = this.fetchProfile.bind(this);
-    this.readProfile = this.readProfile.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
-    this.profile = {};
   }
 
   login() {
@@ -52,13 +52,14 @@ export default class Auth {
     this.history.replace("/");
   }
 
-  readProfile() {
-    return localStorage.getItem("profile");
-  }
-
-  fetchProfile(accessToken) {
-    this.auth0.client.userInfo(accessToken, (err, profile) => {
-      localStorage.setItem("profile", profile);
+  fetchProfile() {
+    return new Promise((resolve, reject) => {
+      const token = localStorage.getItem("access_token");
+      this.auth0.client.userInfo(token, (err, profile) => {
+        if (err) reject(err);
+        localStorage.setItem("profile", JSON.stringify(profile));
+        resolve(profile);
+      });
     });
   }
 
@@ -67,7 +68,7 @@ export default class Auth {
       this.auth0.parseHash((err, authResult) => {
         if (authResult && authResult.accessToken && authResult.idToken) {
           this.setSession(authResult);
-          this.fetchProfile(authResult.accessToken);
+          this.fetchProfile();
         } else if (err) {
           this.history.replace("/");
           console.log(err);

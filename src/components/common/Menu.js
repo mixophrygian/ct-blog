@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Button, Nav, Navbar, NavItem, Glyphicon } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import Loader from "./Loader";
+import UserGreeting from "./UserGreeting";
 
 export default class Menu extends React.Component {
   constructor(props) {
@@ -10,9 +11,9 @@ export default class Menu extends React.Component {
     this.state = {
       sidebarOpen: false,
       isLoading: false,
-      profile: {},
     };
     this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   login(e) {
@@ -20,34 +21,30 @@ export default class Menu extends React.Component {
     this.setState({ isLoading: true }, () => this.props.auth.login());
   }
 
-  getProfile() {
-    const profile = this.props.auth.readProfile();
-    this.setState({ profile });
+  logout(e) {
+    e.preventDefault();
+    this.props.auth.logout();
   }
 
   render() {
-    const { isLoading /*, profile */ } = this.state;
-    const { isAuthenticated } = this.props.auth;
+    const { isLoading } = this.state;
+    const isAuthenticated = this.props.auth.isAuthenticated();
     if (isLoading) return <Loader />;
-    // if (isAuthenticated() && (!profile || !Object.keys(profile).length)) {
-    //   this.getProfile();
-    // }
-    // console.log('profile', profile);
 
     return (
       <div>
         <Navbar className="navbar-fixed-top customNav">
           <Nav bsStyle="pills">
             <NavItem className="loginButton">
-              {!isAuthenticated() && (
+              {!isAuthenticated && (
                 <Button onClick={!isLoading ? this.login : null} disabled={isLoading}>
                   Log In
                 </Button>
               )}
-              {isAuthenticated() && (
+              {isAuthenticated && (
                 <div>
-                  <span>Hi, user</span>
-                  <Button className="btn-margin" onClick={this.props.auth.logout}>
+                  <UserGreeting auth={this.props.auth} />
+                  <Button className="btn-margin" onClick={this.logout}>
                     Log Out
                   </Button>
                 </div>
