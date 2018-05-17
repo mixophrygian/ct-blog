@@ -7,7 +7,7 @@ import FormField from "./common/FormField";
 import FormSubmit from "./common/FormSubmit";
 
 // Entry add/edit page component
-class EntryEdit extends React.Component {
+export class EntryEdit extends React.Component {
   // constructor
 
   constructor(props) {

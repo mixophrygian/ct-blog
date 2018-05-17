@@ -3,13 +3,15 @@
 import auth0 from "auth0-js";
 import { Component } from "react";
 
+const url = window.SERVING_URL || "localhost:3000";
+
 export default class Auth extends Component {
   constructor(history) {
     super(history);
     this.auth0 = new auth0.WebAuth({
       domain: "automaticthoughtjournal.auth0.com",
       clientID: "W8fK0U44WoTIr2VCsGN4n6hhKiu2YtUA",
-      redirectUri: `${SERVING_URL}/authenticate`,
+      redirectUri: `${url}/authenticate`,
       audience: "https://automaticthoughtjournal.auth0.com/userinfo",
       responseType: "token id_token",
       scope: "openid profile email",
