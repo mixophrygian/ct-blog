@@ -120,7 +120,7 @@ export class App extends React.Component {
               path="/authenticate"
               render={props => {
                 this.auth.handleAuthentication(props);
-                return <Loader {...props} />;
+                return <Loader />;
               }}
             />
             <Route render={props => <Home auth={this.auth} {...props} />} />

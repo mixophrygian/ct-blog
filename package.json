@@ -50,7 +50,8 @@
     "redux": "3.6.0",
     "redux-form": "^7.3.0",
     "redux-saga": "0.16.0",
-    "slick-carousel": "1.8.1"
+    "slick-carousel": "1.8.1",
+    "styled-components": "^3.2.6"
   },
   "devDependencies": {
     "babel-core": "6.26.0",

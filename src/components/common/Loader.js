@@ -1,11 +1,33 @@
 // src/Loader.js
 
 import React, { Component } from "react";
-import loadingSpinner from "../art/LoadingSpinner.svg";
+import styled, { keyframes } from "styled-components";
+
+const load8 = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
+const Spinner = styled.div`
+     position: absolute;
+     top: calc(50% - 3em);
+     left: calc(50% - 3em);
+     width: 6em;
+     height: 6em;
+     border: 1.1em solid rgba(0, 0, 0, 0.2);
+     border-left: 1.1em solid #000000;
+     border-radius: 50%;
+     animation: ${load8} 1.1s infinite linear;
+    }
+  `;
 
 class Loader extends Component {
   render() {
-    const style = {
+    const wrapperStyle = {
       position: "absolute",
       display: "flex",
       justifyContent: "center",
@@ -18,14 +40,9 @@ class Loader extends Component {
       zIndex: 1,
     };
 
-    const spinnerStyle = {
-      width: "50vw",
-      height: "25vw",
-    };
-
     return (
-      <div style={style}>
-        <img style={spinnerStyle} src={loadingSpinner} alt="loading" />
+      <div alt="loading" style={wrapperStyle}>
+        <Spinner />
       </div>
     );
   }
