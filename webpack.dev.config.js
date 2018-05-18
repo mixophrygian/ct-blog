@@ -14,12 +14,6 @@ module.exports.plugins.push(
     verbose: true,
     dry: false, // true for simulation
   }),
-  new webpack.DefinePlugin({
-    "process.env": {
-      NODE_ENV: JSON.stringify("development"),
-    },
-    SERVING_URL: JSON.stringify("http://localhost:3000"),
-  }),
   new webpack.optimize.UglifyJsPlugin({
     compress: {
       warnings: false,

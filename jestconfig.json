@@ -7,5 +7,15 @@
   },
   "transform": {
     "^.+\\.jsx?$": "babel-jest" 
+  },
+  "globals": {
+    "AUTH_DOMAIN": "never",
+    "AUTH_CLIENT_ID": "gonna",
+    "SERVING_URL": "give",
+    "AUTH_AUDIENCE": "you",
+    "DB_HOST":"up",
+    "DB_USER":"never",
+    "DB_PASSWORD":"gonna",
+    "DB_NAME":"let",
   }
 }

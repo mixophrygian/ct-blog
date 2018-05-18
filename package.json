@@ -11,9 +11,9 @@
   "scripts": {
     "lint": "eslint .",
     "start": "node server.js",
-    "start-dev": "webpack-dev-server --compress --inline --hot --history-api-fallback --host localhost --port 3000",
-    "build-dev": "webpack --config webpack.dev.config.js",
-    "build-prod": "webpack -p --config webpack.prod.config.js",
+    "start-dev": "env-cmd .env.dev webpack-dev-server --compress --inline --hot --history-api-fallback --host localhost --port 3000",
+    "build-dev": "env-cmd .env.dev webpack --config webpack.dev.config.js",
+    "build-prod": "env-cmd .env.prod webpack --config webpack.prod.config.js",
     "test": "jest --config=jestconfig.json",
     "test-watch": "npm test -- --watch",
     "build": "webpack"
@@ -31,10 +31,12 @@
   "dependencies": {
     "@react-bootstrap/pagination": "^1.0.0",
     "auth0-js": "^9.5.1",
+    "env-cmd": "^8.0.2",
     "express": "^4.16.3",
     "history": "^4.7.2",
     "jquery": "3.3.1",
     "localforage": "1.5.7",
+    "mysql": "^2.15.0",
     "prop-types": "15.5.8",
     "react": "^16.0.0",
     "react-bootstrap": "0.32.1",

@@ -14,12 +14,6 @@ module.exports.plugins.push(
     verbose: true,
     dry: false, // true for simulation
   }),
-  new webpack.DefinePlugin({
-    "process.env": {
-      NODE_ENV: JSON.stringify("production"),
-    },
-    SERVING_URL: JSON.stringify("http://ec2-54-183-244-115.us-west-1.compute.amazonaws.com"),
-  }),
   new webpack.optimize.UglifyJsPlugin({
     minimize: true,
     compress: {

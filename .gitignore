@@ -11,5 +11,5 @@ yarn-error.log
 .swn
 .DS_Store
 package-lock.json
-
 bootstrap-min.css
+.env

@@ -25,9 +25,12 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       "process.env": {
-        NODE_ENV: JSON.stringify("development"),
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
-      SERVING_URL: JSON.stringify("http://localhost:3000"),
+      SERVING_URL: JSON.stringify(process.env.SERVING_URL),
+      AUTH_DOMAIN: JSON.stringify(process.env.AUTH_DOMAIN),
+      AUTH_CLIENT_ID: JSON.stringify(process.env.AUTH_CLIENT_ID),
+      AUTH_AUDIENCE: JSON.stringify(process.env.AUTH_AUDIENCE),
     }),
     new HtmlWebpackPlugin({
       template: path.join(paths.SRC, "index.html"),
