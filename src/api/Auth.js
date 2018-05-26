@@ -1,6 +1,7 @@
-/* eslint-disable no-console, no-undef */
+/* eslint-disable no-console, no-undef, no-unused-vars*/
 
 import auth0 from "auth0-js";
+import db from "./db.js";
 import { Component } from "react";
 
 export default class Auth extends Component {
@@ -34,6 +35,7 @@ export default class Auth extends Component {
     localStorage.removeItem("expires_at");
     localStorage.removeItem("profile");
     this.history.replace("/");
+    window.location.href = `https://${AUTH_DOMAIN}/v2/logout?returnTo=${SERVING_URL}`;
   }
 
   isAuthenticated() {
@@ -68,7 +70,10 @@ export default class Auth extends Component {
       this.auth0.parseHash((err, authResult) => {
         if (authResult && authResult.accessToken && authResult.idToken) {
           this.setSession(authResult);
-          this.fetchProfile();
+          this.fetchProfile().then(profile => {
+            // TODO retrieve a user's entries, reconcile with local storage?
+            // db.callApi("/createUser", { username: profile.email, password: "random" });
+          });
         } else if (err) {
           this.history.replace("/");
           console.log(err);

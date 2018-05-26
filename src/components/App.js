@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import PropTypes from "prop-types";
 import React from "react";
 import { Route, Link, Switch } from "react-router-dom";
@@ -17,6 +19,7 @@ import "../stylesheets/main.scss";
 import localforage from "localforage";
 import { isLoadingAsync } from "../utils/utils";
 import { slide as BurgerMenu } from "react-burger-menu";
+import db from "../api/db.js";
 
 export class App extends React.Component {
   constructor(props) {
@@ -57,6 +60,10 @@ export class App extends React.Component {
   }
 
   componentDidMount() {
+    db
+      .callApi("/createUser", { username: "myOTHERotheremail@example.com", password: "random" })
+      .then(res => res.json())
+      .then(data => console.log("dbcallApi response", data));
     if (isLoadingAsync(this.props.entries)) return;
     this.setState({ isLoading: false });
   }
@@ -109,7 +116,7 @@ export class App extends React.Component {
             <Menu auth={this.auth} openSidebar={this.onToggleSidebar} />
           </div>
           <Switch>
-            <Route exact path="/" render={props => <Home {...props} />} />
+            <Route exact path="/" render={props => <Home auth={this.auth} {...props} />} />
             <Route path="/entry/:id" component={EntryView} />
             <Route exact path="/entry-edit" component={EntryEdit} />
             <Route path="/entry-edit/:id" component={EntryEdit} />
@@ -117,6 +124,7 @@ export class App extends React.Component {
             <Route path="/distortions" component={Distortions} />
             <Route path="/faq" component={FAQ} />
             <Route
+              exact
               path="/authenticate"
               render={props => {
                 this.auth.handleAuthentication(props);

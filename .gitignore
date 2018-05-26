@@ -1,5 +1,6 @@
 .idea/
 node_modules/
+.DS_Store
 public/js/
 public/css/
 .log
@@ -13,3 +14,5 @@ yarn-error.log
 package-lock.json
 bootstrap-min.css
 .env
+.env.dev
+.env.prod

@@ -10,7 +10,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "start": "node server.js",
+    "start": "node -r dotenv/config server.js",
     "start-dev": "env-cmd .env.dev webpack-dev-server --compress --inline --hot --history-api-fallback --host localhost --port 3000",
     "build-dev": "env-cmd .env.dev webpack --config webpack.dev.config.js",
     "build-prod": "env-cmd .env.prod webpack --config webpack.prod.config.js",
@@ -26,15 +26,18 @@
       "stage-3"
     ]
   },
-  "author": "Catalin Luntraru",
+  "author": "Eleanor Weigert",
   "license": "MIT",
   "dependencies": {
     "@react-bootstrap/pagination": "^1.0.0",
     "auth0-js": "^9.5.1",
+    "body-parser": "^1.18.3",
+    "dotenv": "^5.0.1",
     "env-cmd": "^8.0.2",
     "express": "^4.16.3",
     "history": "^4.7.2",
     "jquery": "3.3.1",
+    "knex": "^0.14.6",
     "localforage": "1.5.7",
     "mysql": "^2.15.0",
     "prop-types": "15.5.8",
