@@ -13,21 +13,21 @@ const port = process.env.PORT || 3000;
 app.use(express.static(path.resolve(__dirname, "./public")));
 app.use(bodyParser.json());
 
-app.get("/", (request, response) => {
-  response.sendFile(path.resolve(__dirname, "./public", "index.html"));
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./public", "index.html"));
 });
 
-app.get("/authenticate", (request, response) => {
-  response.sendFile(path.resolve(__dirname, "./public", "index.html"));
+app.get("/authenticate", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./public", "index.html"));
 });
 
-app.post("/createUser", (req, res) => {
+app.post("/createNewUser", (request, response) => {
   dataStore
-    .createUser({
-      username: req.body.username,
-      password: req.body.password,
+    .createNewUser({
+      username: request.body.username,
+      password: request.body.password,
     })
-    .then(stuff => res.status(200).send(stuff));
+    .then(stuff => response.status(200).send(stuff));
 });
 
 app.listen(port, () => console.log(`Tom Servo listening on port ${port}`));

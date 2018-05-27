@@ -61,7 +61,7 @@ export class App extends React.Component {
 
   componentDidMount() {
     db
-      .callApi("/createUser", { username: "myOTHERotheremail@example.com", password: "random" })
+      .callApi("/createNewUser", { username: "santra@example.com", password: "random" })
       .then(res => res.json())
       .then(data => console.log("dbcallApi response", data));
     if (isLoadingAsync(this.props.entries)) return;
