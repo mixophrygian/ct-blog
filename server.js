@@ -25,9 +25,25 @@ app.post("/createNewUser", (request, response) => {
   dataStore
     .createNewUser({
       username: request.body.username,
-      password: request.body.password,
     })
     .then(stuff => response.status(200).send(stuff));
+});
+
+app.post("/saveEntry", (request, response) => {
+  dataStore
+    .saveEntry({
+      username: request.body.username,
+      entry: {
+        id: request.body.entry.id,
+        date: request.body.entry.date,
+        situation: request.body.entry.situation,
+        emotionalResponse: "values.emotionalResponse",
+        automaticThoughts: "values.automaticThoughts",
+        cognitiveDistortions: "cognitiveDistortions",
+        rationalResponse: "values.rationalResponse",
+      },
+    })
+    .then(data => response.status(200).send(data));
 });
 
 app.listen(port, () => console.log(`Tom Servo listening on port ${port}`));

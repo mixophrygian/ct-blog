@@ -61,9 +61,20 @@ export class App extends React.Component {
 
   componentDidMount() {
     db
-      .callApi("/createNewUser", { username: "santra@example.com", password: "random" })
+      .callApi("/saveEntry", {
+        username: "eweigert@gmail.com",
+        entry: {
+          situation: "PANTS-SITUATION",
+          id: 123,
+          date: new Date().toISOString().split("T")[0],
+        },
+      })
       .then(res => res.json())
-      .then(data => console.log("dbcallApi response", data));
+      .then(data => console.log("saveEntry response", data));
+    // db
+    //   .callApi("/createNewUser", { username: "eweigert@gmail.com" })
+    //   .then(res => res.json())
+    //   .then(data => console.log("dbcallApi response", data));
     if (isLoadingAsync(this.props.entries)) return;
     this.setState({ isLoading: false });
   }
