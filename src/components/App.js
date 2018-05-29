@@ -19,7 +19,6 @@ import "../stylesheets/main.scss";
 import localforage from "localforage";
 import { isLoadingAsync } from "../utils/utils";
 import { slide as BurgerMenu } from "react-burger-menu";
-import db from "../api/db.js";
 
 export class App extends React.Component {
   constructor(props) {
@@ -60,21 +59,6 @@ export class App extends React.Component {
   }
 
   componentDidMount() {
-    db
-      .callApi("/saveEntry", {
-        username: "eweigert@gmail.com",
-        entry: {
-          situation: "PANTS-SITUATION",
-          id: 123,
-          date: new Date().toISOString().split("T")[0],
-        },
-      })
-      .then(res => res.json())
-      .then(data => console.log("saveEntry response", data));
-    // db
-    //   .callApi("/createNewUser", { username: "eweigert@gmail.com" })
-    //   .then(res => res.json())
-    //   .then(data => console.log("dbcallApi response", data));
     if (isLoadingAsync(this.props.entries)) return;
     this.setState({ isLoading: false });
   }
@@ -128,9 +112,21 @@ export class App extends React.Component {
           </div>
           <Switch>
             <Route exact path="/" render={props => <Home auth={this.auth} {...props} />} />
-            <Route path="/entry/:id" component={EntryView} />
-            <Route exact path="/entry-edit" component={EntryEdit} />
-            <Route path="/entry-edit/:id" component={EntryEdit} />
+            <Route
+              path="/entry/:id"
+              render={props => {
+                return <EntryView {...props} />;
+              }}
+            />
+            <Route
+              exact
+              path="/entry-edit"
+              render={props => <EntryEdit auth={this.auth} {...props} />}
+            />
+            <Route
+              path="/entry-edit/:id"
+              render={props => <EntryEdit auth={this.auth} {...props} />}
+            />
             <Route path="/about" component={About} />
             <Route path="/distortions" component={Distortions} />
             <Route path="/faq" component={FAQ} />

@@ -6,6 +6,18 @@ export const formatDate = date => {
   return `${weekDays[weekdayIndex]} ${month}/${workingDate.getDate()}`;
 };
 
+export const mySQLDate = date => {
+  return date.toISOString().split("T")[0];
+};
+
 export const isLoadingAsync = props => {
   return props.constructor.name === "Promise";
+};
+
+export const UUID = () => {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c => {
+    const r = (Math.random() * 16) | 0,
+      v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
 };

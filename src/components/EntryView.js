@@ -114,7 +114,6 @@ export class EntryView extends React.Component {
   }
 
   showDelete(entry) {
-    // change the local ui state
     this.setState({
       deleteShow: true,
       deleteEntry: entry,
@@ -122,12 +121,12 @@ export class EntryView extends React.Component {
   }
 
   entryDelete() {
-    // delete the entry
     this.props.dispatch({
       type: "ENTRIES_DELETE",
       entry: this.props.entry,
     });
     this.hideDelete();
+    // TODO: delete from MySQL if logged in
     this.props.history.push("/");
   }
 
@@ -149,7 +148,8 @@ EntryView.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-  const entry = state.entries.find(x => Number(x.id) === Number(ownProps.match.params.id));
+  // eslint-disable-next-line eqeqeq
+  const entry = state.entries.find(x => x.id == ownProps.match.params.id);
   return {
     entry,
   };

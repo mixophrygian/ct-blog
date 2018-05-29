@@ -1,4 +1,18 @@
 #Project Roadmap
+5/28:
+  -Delete entries from mysql
+
+  -set up authenticated calls to mysql api with auth_token for
+  	-create
+  	-fetch
+  	-save
+  	-delete
+
+  -consider affiliating user id to auth0 account as meta data
+
+  -search all "TODO"s in app
+  -check github issues 
+
 3/20: 
   -see about deep linking on aws - why is it broken
   -see about webpack bundle prod - why does it break.

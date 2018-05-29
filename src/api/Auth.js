@@ -21,6 +21,7 @@ export default class Auth extends Component {
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.setSession = this.setSession.bind(this);
     this.fetchProfile = this.fetchProfile.bind(this);
+    this.createUserOrFetchEntries = this.createUserOrFetchEntries.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
   }
 
@@ -29,11 +30,11 @@ export default class Auth extends Component {
   }
 
   logout() {
-    // Clear Access Token and ID Token from local storage
     localStorage.removeItem("access_token");
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
     localStorage.removeItem("profile");
+    // TODO: clear entries from localstorage as well
     this.history.replace("/");
     window.location.href = `https://${AUTH_DOMAIN}/v2/logout?returnTo=${SERVING_URL}`;
   }
@@ -65,14 +66,25 @@ export default class Auth extends Component {
     });
   }
 
+  createUserOrFetchEntries(profile) {
+    db
+      .callApi("/createNewUser", { username: profile.email })
+      .then(data => data.json())
+      .then(response => {
+        /* TODO: affiliate userID with auth0 account? */
+        /* TODO: tell user that the entries in localstorage now belong to their account */
+        console.log("createNewUser response", response);
+      });
+    // TODO: fetch entries from DB for existing users
+  }
+
   handleAuthentication(nextState) {
     if (/access_token|id_token|error/.test(nextState.location.hash)) {
       this.auth0.parseHash((err, authResult) => {
         if (authResult && authResult.accessToken && authResult.idToken) {
           this.setSession(authResult);
           this.fetchProfile().then(profile => {
-            // TODO retrieve a user's entries, reconcile with local storage?
-            // db.callApi("/createUser", { username: profile.email, password: "random" });
+            this.createUserOrFetchEntries(profile);
           });
         } else if (err) {
           this.history.replace("/");

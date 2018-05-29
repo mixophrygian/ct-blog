@@ -33,15 +33,7 @@ app.post("/saveEntry", (request, response) => {
   dataStore
     .saveEntry({
       username: request.body.username,
-      entry: {
-        id: request.body.entry.id,
-        date: request.body.entry.date,
-        situation: request.body.entry.situation,
-        emotionalResponse: "values.emotionalResponse",
-        automaticThoughts: "values.automaticThoughts",
-        cognitiveDistortions: "cognitiveDistortions",
-        rationalResponse: "values.rationalResponse",
-      },
+      entry: request.body.entry,
     })
     .then(data => response.status(200).send(data));
 });

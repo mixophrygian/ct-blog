@@ -1,11 +1,12 @@
-// entries reducer
+import { UUID } from "../utils/utils.js";
+
 export default function entries(state = [], action) {
   switch (action.type) {
     case "ENTRIES_LIST_SAVE":
       return action.entries;
 
     case "ENTRIES_ADD_SAVE":
-      action.entry.id = action.entry.id || new Date().getTime();
+      action.entry.id = action.entry.id || UUID();
       return [...state, action.entry];
 
     case "ENTRIES_EDIT_SAVE":
