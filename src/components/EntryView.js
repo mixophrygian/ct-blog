@@ -5,6 +5,7 @@ import { Button, Panel, NavItem, Glyphicon } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { formatDate } from "../utils/utils";
 import EntryDeletePrompt from "./common/EntryDeletePrompt";
+import db from "../api/db.js";
 
 export class EntryView extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ export class EntryView extends React.Component {
     this.showDelete = this.showDelete.bind(this);
     this.hideDelete = this.hideDelete.bind(this);
     this.entryDelete = this.entryDelete.bind(this);
+    this.deleteEntryFromDB = this.deleteEntryFromDB.bind(this);
     this.renderDistortions = this.renderDistortions.bind(this);
     this.prettyLabel = this.prettyLabel.bind(this);
   }
@@ -125,9 +127,19 @@ export class EntryView extends React.Component {
       type: "ENTRIES_DELETE",
       entry: this.props.entry,
     });
+    this.deleteEntryFromDB(this.props.entry);
     this.hideDelete();
-    // TODO: delete from MySQL if logged in
     this.props.history.push("/");
+  }
+
+  deleteEntryFromDB(entry) {
+    if (!this.props.auth.isAuthenticated()) return;
+    db
+      .callApi("/deleteEntry", {
+        entry,
+      })
+      // eslint-disable-next-line no-console
+      .catch(e => console.log("deleting an entry from the DB messed up", e));
   }
 
   hideDelete() {
@@ -138,6 +150,7 @@ export class EntryView extends React.Component {
   }
 }
 EntryView.propTypes = {
+  auth: PropTypes.object,
   entry: PropTypes.object,
   history: PropTypes.object,
   dispatch: PropTypes.func,

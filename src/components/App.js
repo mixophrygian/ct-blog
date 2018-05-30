@@ -115,7 +115,7 @@ export class App extends React.Component {
             <Route
               path="/entry/:id"
               render={props => {
-                return <EntryView {...props} />;
+                return <EntryView auth={this.auth} {...props} />;
               }}
             />
             <Route

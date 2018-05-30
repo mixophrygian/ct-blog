@@ -19,6 +19,18 @@ module.exports = {
         console.log("Something went wrong creating a new user", e);
       });
   },
+  deleteEntry({ entry }) {
+    return knex("entries")
+      .where({
+        id: entry.id,
+      })
+      .del()
+      .then(() => {
+        console.log("entry was deleted");
+      })
+      .catch(e => console.log("something went wrong deleting the entry", e));
+  },
+
   updateEntry(entry) {
     return knex("entries")
       .where({

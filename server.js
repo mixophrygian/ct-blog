@@ -38,4 +38,12 @@ app.post("/saveEntry", (request, response) => {
     .then(data => response.status(200).send(data));
 });
 
+app.post("/deleteEntry", (request, response) => {
+  dataStore
+    .deleteEntry({
+      entry: request.body.entry,
+    })
+    .then(data => response.status(200).send(data));
+});
+
 app.listen(port, () => console.log(`Tom Servo listening on port ${port}`));
