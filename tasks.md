@@ -1,4 +1,11 @@
 #Project Roadmap
+6/2:
+-when user logs in, fetch their entries from db
+-show user a prompt when inheriting orphaned entries from localstorage
+-affiliate user id to auth0 account as meta data
+-set up authenticated calls to mysql api with auth_token for all of the calls that get made to the DB
+
+
 5/29:
 when user logs in, fetch their entries from db
 when they log out, remove from localstorage 
