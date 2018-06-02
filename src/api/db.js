@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import localforage from "localforage";
 
 module.exports = {
   async callApi(path, data) {
@@ -11,7 +12,17 @@ module.exports = {
       body: JSON.stringify(data),
     });
   },
-
+  createNewUser(profile) {
+    return this.callApi("/createNewUser", { username: profile.email })
+      .then(data => data.json())
+      .then(response => {
+        if (response !== "ER_DUP_ENTRY") {
+          //response will be the user email "eweigert@gmail.com"
+          /* TODO: affiliate userID with auth0 account? */
+        }
+        return response;
+      });
+  },
   deleteEntryFromDB(entry, auth) {
     if (!auth.isAuthenticated()) return;
 
@@ -19,9 +30,10 @@ module.exports = {
       entry,
     }).catch(e => console.log("deleting an entry from the DB messed up", e));
   },
-  saveEntryToDB(entry, auth) {
+  async saveEntryToDB(entry, auth) {
     if (!auth.isAuthenticated()) return;
-    const username = JSON.parse(localStorage.getItem("profile")).email;
+    const profile = await localforage.getItem("profile");
+    const username = profile.email;
     this.callApi("/saveEntry", {
       username,
       entry,

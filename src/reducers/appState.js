@@ -8,5 +8,5 @@ export default function appState(state = initialState, action) {
 }
 
 const initialState = {
-  onboarded: true,
+  onboarded: false,
 };

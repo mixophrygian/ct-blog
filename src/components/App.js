@@ -30,14 +30,9 @@ export class App extends React.Component {
     this.auth = new Auth(props.history);
     this.onToggleSidebar = this.onToggleSidebar.bind(this);
     this.closeSidebar = this.closeSidebar.bind(this);
-  }
-
-  onToggleSidebar() {
-    this.setState({ sidebarOpen: !this.state.sidebarOpen });
-  }
-
-  closeSidebar() {
-    this.setState({ sidebarOpen: false });
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+    this.getProfile = this.getProfile.bind(this);
   }
 
   componentWillMount() {
@@ -48,19 +43,44 @@ export class App extends React.Component {
     this.props.dispatch({
       type: "CHECK_IF_ONBOARDED",
     });
+    this.props.dispatch({
+      type: "GET_USER_PROFILE",
+    });
   }
 
   componentWillReceiveProps(nextProps) {
-    const hasEnoughStateToLoad =
-      !isLoadingAsync(nextProps.entries) && !isLoadingAsync(nextProps.onboarded);
+    const { entries, onboarded } = nextProps;
+    const hasEnoughStateToLoad = !isLoadingAsync(entries) && !isLoadingAsync(onboarded);
     if (hasEnoughStateToLoad) {
       this.setState({ isLoading: false });
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     if (isLoadingAsync(this.props.entries)) return;
-    this.setState({ isLoading: false });
+  }
+
+  async getProfile() {
+    const profile = await this.auth.fetchProfile();
+    this.setState({ profile });
+  }
+
+  login(e) {
+    e.preventDefault();
+    this.setState({ isLoading: true }, () => this.auth.login());
+  }
+
+  logout(e) {
+    e.preventDefault();
+    this.auth.logout();
+  }
+
+  onToggleSidebar() {
+    this.setState({ sidebarOpen: !this.state.sidebarOpen });
+  }
+
+  closeSidebar() {
+    this.setState({ sidebarOpen: false });
   }
 
   render() {
@@ -108,7 +128,7 @@ export class App extends React.Component {
         </BurgerMenu>
         <div className="container">
           <div>
-            <Menu auth={this.auth} openSidebar={this.onToggleSidebar} />
+            <Menu login={this.login} logout={this.logout} profile={this.props.profile} />
           </div>
           <Switch>
             <Route exact path="/" render={props => <Home auth={this.auth} {...props} />} />
@@ -134,7 +154,7 @@ export class App extends React.Component {
               exact
               path="/authenticate"
               render={props => {
-                this.auth.handleAuthentication(props);
+                this.auth.handleAuthentication(props, this.props.dispatch);
                 return <Loader />;
               }}
             />
@@ -153,6 +173,7 @@ function scrollToTop() {
 
 function mapStateToProps(state) {
   return {
+    profile: state.profile,
     entries: state.entries || [],
     onboarded: state.onboarded,
   };
@@ -161,6 +182,7 @@ function mapStateToProps(state) {
 App.propTypes = {
   children: PropTypes.node,
   dispatch: PropTypes.func,
+  profile: PropTypes.any,
   entries: PropTypes.any,
   onboarded: PropTypes.any,
   history: PropTypes.object,

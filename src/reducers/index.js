@@ -3,6 +3,7 @@ import { routerReducer } from "react-router-redux";
 import { reducer as formReducer } from "redux-form";
 import entries from "./entries";
 import onboarded from "./appState";
+import profile from "./profile";
 
 // main reducers
 export const reducers = combineReducers({
@@ -20,4 +21,5 @@ export const reducers = combineReducers({
   }),
   entries,
   onboarded,
+  profile,
 });

@@ -1,6 +1,14 @@
 import { call, put } from "redux-saga/effects";
 import appState from "../api/appState";
 
+export function* getUserProfile() {
+  const profile = yield call(appState.getUserProfile);
+  yield put({
+    type: "SET_USER_PROFILE",
+    profile,
+  });
+}
+
 export function* checkIfOnboarded() {
   const onboarded = yield call(appState.checkIfOnboarded);
   yield put({
