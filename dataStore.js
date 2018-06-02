@@ -68,7 +68,7 @@ module.exports = {
       situation: entry.situation,
       emotionalResponse: entry.emotionalResponse,
       automaticThoughts: entry.automaticThoughts,
-      cognitiveDistortions: entry.cognitiveDistortions,
+      cognitiveDistortions: JSON.stringify(entry.cognitiveDistortions),
       rationalResponse: entry.rationalResponse,
     };
     knex("entries")

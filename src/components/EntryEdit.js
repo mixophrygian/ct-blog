@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
@@ -19,7 +18,6 @@ export class EntryEdit extends React.Component {
 
     this.formSubmit = this.formSubmit.bind(this);
     this.saveChecked = this.saveChecked.bind(this);
-    this.saveEntryToDB = this.saveEntryToDB.bind(this);
     this.toggleChecked = this.toggleChecked.bind(this);
     this.setPreviouslyChecked = this.setPreviouslyChecked.bind(this);
   }
@@ -63,19 +61,8 @@ export class EntryEdit extends React.Component {
     this.setState({ cognitiveDistortions: newDistortions });
   }
 
-  saveEntryToDB(entry) {
-    if (!this.props.auth.isAuthenticated()) return;
-    const username = JSON.parse(localStorage.getItem("profile")).email;
-    db
-      .callApi("/saveEntry", {
-        username,
-        entry,
-      })
-      .catch(e => console.log("save entry to DB messed up", e));
-  }
-
   formSubmit(values) {
-    const { dispatch, entry } = this.props;
+    const { dispatch, entry, auth } = this.props;
     const { cognitiveDistortions } = this.state;
     let date = mySQLDate(new Date());
     let id = null;
@@ -101,7 +88,7 @@ export class EntryEdit extends React.Component {
         },
         callbackSuccess: response => {
           this.setState({ cognitiveDistortions: [] });
-          this.saveEntryToDB(parsedEntry);
+          db.saveEntryToDB(parsedEntry, auth);
           this.props.history.push(`/entry/${response.id}`);
           resolve(parsedEntry);
         },

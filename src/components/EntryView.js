@@ -17,7 +17,6 @@ export class EntryView extends React.Component {
     this.showDelete = this.showDelete.bind(this);
     this.hideDelete = this.hideDelete.bind(this);
     this.entryDelete = this.entryDelete.bind(this);
-    this.deleteEntryFromDB = this.deleteEntryFromDB.bind(this);
     this.renderDistortions = this.renderDistortions.bind(this);
     this.prettyLabel = this.prettyLabel.bind(this);
   }
@@ -123,23 +122,14 @@ export class EntryView extends React.Component {
   }
 
   entryDelete() {
-    this.props.dispatch({
+    const { dispatch, entry, history, auth } = this.props;
+    dispatch({
       type: "ENTRIES_DELETE",
-      entry: this.props.entry,
+      entry: entry,
     });
-    this.deleteEntryFromDB(this.props.entry);
+    db.deleteEntryFromDB(entry, auth);
     this.hideDelete();
-    this.props.history.push("/");
-  }
-
-  deleteEntryFromDB(entry) {
-    if (!this.props.auth.isAuthenticated()) return;
-    db
-      .callApi("/deleteEntry", {
-        entry,
-      })
-      // eslint-disable-next-line no-console
-      .catch(e => console.log("deleting an entry from the DB messed up", e));
+    history.push("/");
   }
 
   hideDelete() {

@@ -7,6 +7,7 @@ import { Table } from "react-bootstrap";
 import SingleEntryRow from "./SingleEntryRow";
 import NoEntries from "./NoEntries";
 import EntryDeletePrompt from "./EntryDeletePrompt";
+import db from "../../api/db.js";
 
 export class EntryList extends React.Component {
   constructor(props) {
@@ -103,11 +104,13 @@ export class EntryList extends React.Component {
   }
 
   entryDelete() {
-    this.props.dispatch({
+    const { dispatch, auth } = this.props;
+    const { deleteEntry } = this.state;
+    dispatch({
       type: "ENTRIES_DELETE",
-      entry: this.state.deleteEntry,
+      entry: deleteEntry,
     });
-
+    db.deleteEntryFromDB(deleteEntry, auth);
     this.hideDelete();
   }
 }
@@ -117,6 +120,7 @@ EntryList.propTypes = {
   dispatch: PropTypes.func,
   history: PropTypes.object,
   page: PropTypes.number,
+  auth: PropTypes.object,
 };
 
 function mapStateToProps(state) {
