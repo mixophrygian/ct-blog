@@ -23,15 +23,16 @@ module.exports = {
         return response;
       });
   },
-  deleteEntryFromDB(entry, auth) {
-    if (!auth.isAuthenticated()) return;
-
+  async deleteEntryFromDB(entry, auth) {
+    const authenticated = await auth.isAuthenticated();
+    if (!authenticated) return;
     this.callApi("/deleteEntry", {
       entry,
     }).catch(e => console.log("deleting an entry from the DB messed up", e));
   },
   async saveEntryToDB(entry, auth) {
-    if (!auth.isAuthenticated()) return;
+    const authenticated = await auth.isAuthenticated();
+    if (!authenticated) return;
     const profile = await localforage.getItem("profile");
     const username = profile.email;
     this.callApi("/saveEntry", {
