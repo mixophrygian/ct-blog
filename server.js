@@ -29,6 +29,14 @@ app.post("/createNewUser", (request, response) => {
     .then(stuff => response.status(200).send(stuff));
 });
 
+app.post("/fetchEntries", (request, response) => {
+  dataStore
+    .fetchEntries({
+      username: request.body.username,
+    })
+    .then(stuff => response.status(200).send(stuff));
+});
+
 app.post("/saveEntry", (request, response) => {
   dataStore
     .saveEntry({

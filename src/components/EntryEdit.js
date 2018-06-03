@@ -66,13 +66,13 @@ export class EntryEdit extends React.Component {
     const { cognitiveDistortions } = this.state;
     let date = mySQLDate(new Date());
     let id = null;
-    if (entry) {
-      date = entry.date;
+    if (entry && entry.id) {
+      date = mySQLDate(new Date(entry.date));
       id = entry.id;
     }
     const parsedEntry = {
       id,
-      date: date,
+      date,
       situation: values.situation || "",
       emotionalResponse: values.emotionalResponse || "",
       automaticThoughts: values.automaticThoughts || "",

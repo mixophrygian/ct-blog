@@ -21,13 +21,12 @@ export function* entriesFetchList() {
 }
 
 export function* entriesAddEdit(action) {
-  const type = action.entry.id ? "ENTRIES_EDIT_SAVE" : "ENTRIES_ADD_SAVE";
-
+  const type = !action.entry.id ? "ENTRIES_ADD_SAVE" : "ENTRIES_EDIT_SAVE";
   yield put({
     type: type,
     entry: action.entry,
   });
-  const entries = yield select(getEntries);
+  const entries = yield select(ApiEntries.getEntries);
   yield call(ApiEntries.saveEntries, entries);
   action.callbackSuccess(action.entry);
 }

@@ -62,7 +62,6 @@ export default class Auth extends Component {
     const expiresAtValue = localforage.setItem("expires_at", expiresAt);
     return Promise.all([accessToken, idToken, expiresAtValue])
       .then(() => {
-        console.log("finished setting the session stuff");
         this.history.replace("/");
       })
       .catch(e => console.log("problem setting the session data"));
@@ -90,7 +89,7 @@ export default class Auth extends Component {
     }
   }
 
-  createUserOrFetchEntries(profile) {
+  createUserOrFetchEntries(profile, dispatch) {
     db
       .createNewUser(profile)
       .then(res => {
@@ -98,9 +97,19 @@ export default class Auth extends Component {
         return res;
       })
       .then(data => {
+        // ER_DUP_ENTRY means a returning user
         if (data === "ER_DUP_ENTRY") {
-          // TODO: fetch entries from DB for existing users
-          console.log("fetch entries from db for existing users");
+          db
+            .fetchEntriesFromDB(profile, this)
+            .then(async entries => {
+              // add any entries to redux /localforage
+              await localEntries.saveEntries(entries);
+            })
+            .then(() => {
+              // tell the components we got some entries
+              dispatch({ type: "ENTRIES_FETCH_LIST" });
+            })
+            .catch(e => console.log("something went wrong fetching user entries from db", e));
         }
       });
   }
@@ -111,12 +120,12 @@ export default class Auth extends Component {
         if (authResult && authResult.accessToken && authResult.idToken) {
           this.setSession(authResult).then(() => {
             this.fetchProfile(dispatch).then(profile => {
-              this.createUserOrFetchEntries(profile);
+              this.createUserOrFetchEntries(profile, dispatch);
             });
           });
         } else if (err) {
           this.history.replace("/");
-          console.log(err);
+          console.log("something bogus about authenticating", err);
         }
       });
     } else {

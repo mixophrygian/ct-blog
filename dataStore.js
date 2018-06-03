@@ -19,6 +19,37 @@ module.exports = {
         console.log("Something went wrong creating a new user", e);
       });
   },
+  async fetchEntries({ username }) {
+    const userId = await knex
+      .select("userId")
+      .from("users")
+      .where({ username })
+      .then(obj => {
+        return obj[0].userId;
+      })
+      .catch(e => {
+        console.log(`Something went wrong getting the userID`, e);
+      });
+    return knex("entries")
+      .where({
+        userId,
+      })
+      .then(entries => {
+        return entries.map(entry => {
+          return {
+            date: entry.date,
+            id: entry.id,
+            userId: entry.userId,
+            situation: entry.situation,
+            emotionalResponse: entry.emotionalResponse,
+            automaticThoughts: entry.automaticThoughts,
+            rationalResponse: entry.rationalResponse,
+            cognitiveDistortions: JSON.parse(entry.cognitiveDistortions),
+          };
+        });
+      })
+      .catch(e => console.log("something went wrong grabbing all the entries", e));
+  },
   deleteEntry({ entry }) {
     return knex("entries")
       .where({
@@ -68,8 +99,8 @@ module.exports = {
       situation: entry.situation,
       emotionalResponse: entry.emotionalResponse,
       automaticThoughts: entry.automaticThoughts,
-      cognitiveDistortions: JSON.stringify(entry.cognitiveDistortions),
       rationalResponse: entry.rationalResponse,
+      cognitiveDistortions: JSON.stringify(entry.cognitiveDistortions),
     };
     knex("entries")
       .insert(parsedEntry)

@@ -30,6 +30,7 @@ module.exports = {
       entry,
     }).catch(e => console.log("deleting an entry from the DB messed up", e));
   },
+
   async saveEntryToDB(entry, auth) {
     const authenticated = await auth.isAuthenticated();
     if (!authenticated) return;
@@ -39,5 +40,15 @@ module.exports = {
       username,
       entry,
     }).catch(e => console.log("save entry to DB messed up", e));
+  },
+
+  async fetchEntriesFromDB(profile, auth) {
+    const authenticated = await auth.isAuthenticated();
+    if (!authenticated) return;
+    return this.callApi("/fetchEntries", {
+      username: profile.email,
+    })
+      .then(data => data.json())
+      .catch(e => console.log("fetch entries from DB messed up", e));
   },
 };
