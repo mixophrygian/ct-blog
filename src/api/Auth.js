@@ -82,7 +82,6 @@ export default class Auth extends Component {
   async promptInheritEntries() {
     const orphanedEntries = await localEntries.getEntries();
     if (orphanedEntries.length) {
-      console.log("orphaned entries found", orphanedEntries);
       orphanedEntries.forEach(entry => db.saveEntryToDB(entry, this));
       /* TODO: tell user that the entries in localstorage now belong to their account */
       console.log("hi user, these entries now belong to you");
@@ -102,11 +101,13 @@ export default class Auth extends Component {
           db
             .fetchEntriesFromDB(profile, this)
             .then(async entries => {
-              // add any entries to redux /localforage
-              await localEntries.saveEntries(entries);
+              // get any existing entries out of localforage
+              const existingEntries = await localEntries.getEntries();
+              // and add any db entries to localforage
+              await localEntries.saveEntries([...existingEntries, ...entries]);
             })
             .then(() => {
-              // tell the components we got some entries
+              // tell the components to check localforage for entries
               dispatch({ type: "ENTRIES_FETCH_LIST" });
             })
             .catch(e => console.log("something went wrong fetching user entries from db", e));

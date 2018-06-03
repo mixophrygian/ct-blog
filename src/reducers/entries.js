@@ -7,7 +7,7 @@ export default function entries(state = [], action) {
 
     case "ENTRIES_ADD_SAVE":
       action.entry.id = action.entry.id || UUID();
-      return [...state, action.entry];
+      return [action.entry, ...state];
 
     case "ENTRIES_EDIT_SAVE":
       return state.map(entry => (entry.id === action.entry.id ? action.entry : entry));

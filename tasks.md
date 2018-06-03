@@ -4,6 +4,7 @@
   -show user a prompt when inheriting orphaned entries from localstorage
   -affiliate user id to auth0 account as meta data
   -set up authenticated calls to mysql api with auth_token for all of the calls that get made to the DB
+  -restore pagination
 
 
 6/2:

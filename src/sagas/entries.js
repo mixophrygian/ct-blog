@@ -26,8 +26,8 @@ export function* entriesAddEdit(action) {
     type: type,
     entry: action.entry,
   });
-  const entries = yield select(ApiEntries.getEntries);
-  yield call(ApiEntries.saveEntries, entries);
+  const entries = yield call(ApiEntries.getEntries);
+  yield call(ApiEntries.saveEntries, [action.entry, ...entries]);
   action.callbackSuccess(action.entry);
 }
 
