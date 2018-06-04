@@ -83,7 +83,6 @@ export default class Auth extends Component {
     const orphanedEntries = await localEntries.getEntries();
     if (orphanedEntries.length) {
       orphanedEntries.forEach(entry => db.saveEntryToDB(entry, this));
-      console.log("hi user, these entries now belong to you");
       dispatch({ type: "SHOW_INHERIT_ENTRIES_PROMPT" });
     }
   }

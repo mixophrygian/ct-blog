@@ -9,8 +9,8 @@ export default class InheritEntriesPrompt extends React.Component {
       <Modal show={show}>
         <Modal.Header>
           <Modal.Title>
-            Looks like you have some entries from before you logged in. These are now attached to
-            your account.
+            Looks like you wrote some entries while logged out. These are now attached to your
+            account.
           </Modal.Title>
         </Modal.Header>
         <Modal.Footer>

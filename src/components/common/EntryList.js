@@ -3,7 +3,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { push } from "react-router-redux";
 import { Table } from "react-bootstrap";
-// import Pagination from "react-bootstrap/lib/Pagination";
+import Pagination from "rc-pagination";
+import "rc-pagination/assets/index.css";
 import SingleEntryRow from "./SingleEntryRow";
 import NoEntries from "./NoEntries";
 import EntryDeletePrompt from "./EntryDeletePrompt";
@@ -17,6 +18,7 @@ export class EntryList extends React.Component {
     this.state = {
       deleteShow: false,
       deleteEntry: {},
+      currentPage: 1,
     };
 
     this.changePage = this.changePage.bind(this);
@@ -27,7 +29,8 @@ export class EntryList extends React.Component {
   }
 
   changePage(page) {
-    this.props.dispatch(push(`/?page=${page}`));
+    this.setState({ currentPage: page });
+    this.props.dispatch(push(`page?/page=${page}`));
   }
 
   showDelete(entry) {
@@ -60,17 +63,17 @@ export class EntryList extends React.Component {
   }
 
   render() {
-    const { entries, page, showInheritEntriesPrompt } = this.props;
-    const perPage = 10;
-    // const pages = Math.ceil(entries.length / perPage);
-    const startOffset = (page - 1) * perPage;
+    const { entries, showInheritEntriesPrompt } = this.props;
+    const { currentPage } = this.state;
+    const PER_PAGE = 6;
+    const startOffset = (currentPage - 1) * PER_PAGE;
     let startCount = 0;
     const savedEntries = entries.length ? (
       <div>
-        <Table bordered hover responsive striped className="Table">
+        <Table bordered hover striped className="Table">
           <tbody>
             {entries.map((entry, index) => {
-              if (index >= startOffset && startCount < perPage) {
+              if (index >= startOffset && startCount < PER_PAGE) {
                 startCount++;
                 return (
                   <SingleEntryRow
@@ -85,22 +88,6 @@ export class EntryList extends React.Component {
             })}
           </tbody>
         </Table>
-
-        {/*
-      <Pagination
-        className="entries-pagination"
-        bsSize="medium"
-        maxButtons={10}
-        first
-        last
-        next
-        prev
-        boundaryLinks
-        items={pages}
-        activePage={page}
-        onSelect={this.changePage}
-      />
-      */}
         <InheritEntriesPrompt
           show={showInheritEntriesPrompt}
           hide={this.hideInheritEntriesPrompt}
@@ -118,6 +105,13 @@ export class EntryList extends React.Component {
       <div className="EntryList">
         <h2>Automatic Thought Journal</h2>
         {savedEntries}
+        <Pagination
+          onChange={this.changePage}
+          current={currentPage}
+          defaultPageSize={PER_PAGE}
+          total={entries.length}
+          showLessItems
+        />
       </div>
     );
   }
@@ -127,7 +121,6 @@ EntryList.propTypes = {
   entries: PropTypes.any,
   dispatch: PropTypes.func,
   history: PropTypes.object,
-  page: PropTypes.number,
   auth: PropTypes.object,
   showInheritEntriesPrompt: PropTypes.bool,
 };
@@ -136,9 +129,7 @@ function mapStateToProps(state) {
   return {
     showInheritEntriesPrompt: state.showInheritEntriesPrompt,
     entries: state.entries,
-    page: 1,
   };
 }
 
-// Number(state.routing.locationBeforeTransitions.query.page) || 1,
 export default connect(mapStateToProps)(EntryList);
