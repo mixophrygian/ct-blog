@@ -26,7 +26,6 @@ export default class EntryDeletePrompt extends React.Component {
 // prop checks
 EntryDeletePrompt.propTypes = {
   show: PropTypes.bool,
-  entry: PropTypes.object,
   hideDelete: PropTypes.func,
   entryDelete: PropTypes.func,
 };

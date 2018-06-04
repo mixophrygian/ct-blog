@@ -34,6 +34,7 @@ module.exports = {
       .where({
         userId,
       })
+      .orderBy("created_at", "desc")
       .then(entries => {
         return entries.map(entry => {
           return {

@@ -7,6 +7,7 @@ import { Table } from "react-bootstrap";
 import SingleEntryRow from "./SingleEntryRow";
 import NoEntries from "./NoEntries";
 import EntryDeletePrompt from "./EntryDeletePrompt";
+import InheritEntriesPrompt from "./InheritEntriesPrompt";
 import db from "../../api/db.js";
 
 export class EntryList extends React.Component {
@@ -22,10 +23,44 @@ export class EntryList extends React.Component {
     this.showDelete = this.showDelete.bind(this);
     this.hideDelete = this.hideDelete.bind(this);
     this.entryDelete = this.entryDelete.bind(this);
+    this.hideInheritEntriesPrompt = this.hideInheritEntriesPrompt.bind(this);
+  }
+
+  changePage(page) {
+    this.props.dispatch(push(`/?page=${page}`));
+  }
+
+  showDelete(entry) {
+    this.setState({
+      deleteShow: true,
+      deleteEntry: entry,
+    });
+  }
+
+  hideDelete() {
+    this.setState({
+      deleteShow: false,
+      deleteEntry: {},
+    });
+  }
+
+  hideInheritEntriesPrompt() {
+    this.props.dispatch({ type: "HIDE_INHERIT_ENTRIES_PROMPT" });
+  }
+
+  entryDelete() {
+    const { dispatch, auth } = this.props;
+    const { deleteEntry } = this.state;
+    dispatch({
+      type: "ENTRIES_DELETE",
+      entry: deleteEntry,
+    });
+    db.deleteEntryFromDB(deleteEntry, auth);
+    this.hideDelete();
   }
 
   render() {
-    const { entries, page } = this.props;
+    const { entries, page, showInheritEntriesPrompt } = this.props;
     const perPage = 10;
     // const pages = Math.ceil(entries.length / perPage);
     const startOffset = (page - 1) * perPage;
@@ -52,24 +87,26 @@ export class EntryList extends React.Component {
         </Table>
 
         {/*
-        <Pagination
-          className="entries-pagination"
-          bsSize="medium"
-          maxButtons={10}
-          first
-          last
-          next
-          prev
-          boundaryLinks
-          items={pages}
-          activePage={page}
-          onSelect={this.changePage}
+      <Pagination
+        className="entries-pagination"
+        bsSize="medium"
+        maxButtons={10}
+        first
+        last
+        next
+        prev
+        boundaryLinks
+        items={pages}
+        activePage={page}
+        onSelect={this.changePage}
+      />
+      */}
+        <InheritEntriesPrompt
+          show={showInheritEntriesPrompt}
+          hide={this.hideInheritEntriesPrompt}
         />
-        */}
-
         <EntryDeletePrompt
           show={this.state.deleteShow}
-          entry={this.state.deleteEntry}
           hideDelete={this.hideDelete}
           entryDelete={this.entryDelete}
         />
@@ -84,35 +121,6 @@ export class EntryList extends React.Component {
       </div>
     );
   }
-
-  changePage(page) {
-    this.props.dispatch(push(`/?page=${page}`));
-  }
-
-  showDelete(entry) {
-    this.setState({
-      deleteShow: true,
-      deleteEntry: entry,
-    });
-  }
-
-  hideDelete() {
-    this.setState({
-      deleteShow: false,
-      deleteEntry: {},
-    });
-  }
-
-  entryDelete() {
-    const { dispatch, auth } = this.props;
-    const { deleteEntry } = this.state;
-    dispatch({
-      type: "ENTRIES_DELETE",
-      entry: deleteEntry,
-    });
-    db.deleteEntryFromDB(deleteEntry, auth);
-    this.hideDelete();
-  }
 }
 
 EntryList.propTypes = {
@@ -121,10 +129,12 @@ EntryList.propTypes = {
   history: PropTypes.object,
   page: PropTypes.number,
   auth: PropTypes.object,
+  showInheritEntriesPrompt: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
   return {
+    showInheritEntriesPrompt: state.showInheritEntriesPrompt,
     entries: state.entries,
     page: 1,
   };
