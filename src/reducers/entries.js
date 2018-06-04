@@ -14,7 +14,6 @@ export default function entries(state = [], action) {
 
     case "ENTRIES_DELETE_SAVE":
       return state.filter(entry => entry.id !== action.entry.id);
-
     // initial state
     default:
       return state;

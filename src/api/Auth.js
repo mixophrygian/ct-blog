@@ -79,12 +79,12 @@ export default class Auth extends Component {
     });
   }
 
-  async promptInheritEntries() {
+  async promptInheritEntries(dispatch) {
     const orphanedEntries = await localEntries.getEntries();
     if (orphanedEntries.length) {
       orphanedEntries.forEach(entry => db.saveEntryToDB(entry, this));
-      /* TODO: tell user that the entries in localstorage now belong to their account */
       console.log("hi user, these entries now belong to you");
+      dispatch({ type: "SHOW_INHERIT_ENTRIES_PROMPT" });
     }
   }
 
@@ -92,7 +92,7 @@ export default class Auth extends Component {
     db
       .createNewUser(profile)
       .then(res => {
-        this.promptInheritEntries();
+        this.promptInheritEntries(dispatch);
         return res;
       })
       .then(data => {

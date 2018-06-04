@@ -4,6 +4,7 @@ import { reducer as formReducer } from "redux-form";
 import entries from "./entries";
 import onboarded from "./appState";
 import profile from "./profile";
+import showInheritEntriesPrompt from "./showInheritEntriesPrompt";
 
 // main reducers
 export const reducers = combineReducers({
@@ -21,5 +22,6 @@ export const reducers = combineReducers({
   }),
   entries,
   onboarded,
+  showInheritEntriesPrompt,
   profile,
 });
