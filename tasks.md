@@ -1,11 +1,10 @@
 #Project Roadmap
 6/3:
-  
-  -restore pagination
   -fix auth0 mismatched state bugs
   -affiliate user id to auth0 account as meta data
   -set up authenticated calls to mysql api with auth_token for all of the calls that get made to the DB
   
+  x-restore pagination
   x-show user a prompt when inheriting orphaned entries from localstorage
   x-fix redux saga warnings (see console)
   x-enforce entries are listed in chronological order
