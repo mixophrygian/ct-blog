@@ -1,8 +1,15 @@
 #Project Roadmap
 6/3:
+  -add cancel to "new/edit entry" form - show will lose changes prompt
   -fix auth0 mismatched state bugs
-  -affiliate user id to auth0 account as meta data
+  -affiliate user id to auth0 account as meta data - google if this is how it's supposed to be done
   -set up authenticated calls to mysql api with auth_token for all of the calls that get made to the DB
+  
+  *milestone!*
+  - start looking into how to host a mysql db on Ec2 / to talk to an Ec2
+    -Auth0 is gonna need new whitelisted domains and apis 
+  -Big goal: Push up big update to prototype site for Justin!
+    Major adds: User account with own entries, absorbs unclaimed entries
   
   x-restore pagination
   x-show user a prompt when inheriting orphaned entries from localstorage
