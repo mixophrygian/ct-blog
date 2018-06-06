@@ -1,9 +1,10 @@
 {
   "testMatch": ["<rootDir>/test/**/*.js"],
   "setupFiles": ["<rootDir>/test-setup.js"],
-  "coveragePathIgnorePatterns": ["<rootDir>/test-setup.js", "<rootDir>/empty-module.js"],
+  "coveragePathIgnorePatterns": ["<rootDir>/test-setup.js", "<rootDir>/test/empty-module.js"],
+  "testPathIgnorePatterns": ["<rootDir>/test-setup.js", "<rootDir>/test/empty-module.js"],
   "moduleNameMapper": {
-    "\\.(css|jpg|png|svg|scss)$": "<rootDir>/empty-module.js"
+    "\\.(css|jpg|png|svg|scss)$": "<rootDir>/test/empty-module.js"
   },
   "transform": {
     "^.+\\.jsx?$": "babel-jest" 

@@ -28,7 +28,7 @@
 when user logs in, fetch their entries from db
 when they log out, remove from localstorage 
 
-edge case: when they log in and there are existing entries in localstorage that are NOT on the db, save them to the DB.  Bonus: show user a prompt that will indicate that these entries are now affiliated with their account, but they can always delete them.
+edge case: when they log in and there are existing entries in localstorage that are NOT on the db, save them to the dB.  Bonus: show user a prompt that will indicate that these entries are now affiliated with their account, but they can always delete them.
 
  -consider affiliating user id to auth0 account as meta data
  

@@ -1,12 +1,12 @@
 {
-  "name": "ATJ",
+  "name": "Automatic_Thought_Journal",
   "version": "1.0.0",
   "description": "A blogging tool for deconstructing automatic thoughts",
   "keywords": [
     "react",
     "redux"
   ],
-  "repository": "",
+  "repository": "http://private.for.now",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -29,14 +29,13 @@
   "author": "Eleanor Weigert",
   "license": "MIT",
   "dependencies": {
-    "@react-bootstrap/pagination": "^1.0.0",
     "auth0-js": "^9.5.1",
     "body-parser": "^1.18.3",
     "dotenv": "^5.0.1",
     "env-cmd": "^8.0.2",
     "express": "^4.16.3",
     "history": "^4.7.2",
-    "jquery": "3.3.1",
+    "jquery": "1.8.0",
     "knex": "^0.14.6",
     "localforage": "1.5.7",
     "mysql": "^2.15.0",
@@ -50,7 +49,6 @@
     "react-router-bootstrap": "0.24.4",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "4.0.7",
-    "react-sidebar": "2.3.0",
     "react-slick": "0.16.0",
     "react-textarea-autosize": "^6.1.0",
     "redux": "3.6.0",
@@ -60,7 +58,7 @@
     "styled-components": "^3.2.6"
   },
   "devDependencies": {
-    "babel-core": "6.26.0",
+    "babel-core": "6",
     "babel-jest": "^22.4.3",
     "babel-loader": "^7.1.4",
     "babel-polyfill": "6.20.0",
@@ -100,7 +98,6 @@
     "webpack": "^3.12.0",
     "webpack-bundle-analyzer": "^2.12.0",
     "webpack-cli": "^2.1.3",
-    "webpack-dev-server": "2.11.1",
-    "whatwg-fetch": "2.0.1"
+    "webpack-dev-server": "2.11.1"
   }
 }

@@ -21,7 +21,7 @@ module.exports = {
     path: paths.DIST,
     filename: "js/bundle.js",
   },
-  // Tell webpack to use html plugin
+
   plugins: [
     new webpack.DefinePlugin({
       "process.env": {
@@ -37,8 +37,7 @@ module.exports = {
     }),
     extractSass,
   ],
-  // Loaders configuration
-  // We are telling webpack to use "babel-loader" for .js and .jsx files
+
   module: {
     noParse: /node_modules\/localforage\/dist\/localforage.js/,
     rules: [

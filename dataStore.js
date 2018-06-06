@@ -19,6 +19,7 @@ module.exports = {
         console.log("Something went wrong creating a new user", e);
       });
   },
+
   async fetchEntries({ username }) {
     const userId = await knex
       .select("userId")
