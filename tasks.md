@@ -1,4 +1,13 @@
 #Project Roadmap
+6/5:
+  -Continue refactor-o-rama 
+    -/src
+    -/test
+  -TODOS:
+    -oh yeah fix the tests - some are broken now
+    -fix server routing so /faq and /about can be hit - consider restoring * catchall?
+    -all below not x'd off
+    
 6/3:
   -add cancel to "new/edit entry" form - show will lose changes prompt
   -fix auth0 mismatched state bugs
