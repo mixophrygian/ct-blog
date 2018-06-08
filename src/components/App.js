@@ -1,24 +1,24 @@
-/* eslint-disable no-console */
-
 import PropTypes from "prop-types";
 import React from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import { connect } from "react-redux";
+import localforage from "localforage";
+import Auth from "../api/Auth.js";
 
+import Loader from "./common/Loader";
 import Menu from "./common/Menu";
+import { slide as BurgerMenu } from "react-burger-menu";
 import About from "./About";
 import Distortions from "./Distortions";
 import FAQ from "./FAQ";
 import Home from "./Home";
 import EntryEdit from "./EntryEdit";
 import EntryView from "./EntryView";
-import Loader from "./common/Loader";
-import Auth from "../api/Auth.js";
 
 import "../stylesheets/main.scss";
-import localforage from "localforage";
 import { isLoadingAsync } from "../utils/utils";
-import { slide as BurgerMenu } from "react-burger-menu";
+
+//const isLoadingAsync = () => false;
 
 export class App extends React.Component {
   constructor(props) {
