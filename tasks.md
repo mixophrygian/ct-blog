@@ -1,7 +1,15 @@
 #Project Roadmap
 6/7:
   -revisit "isloadingAsync" in App.js and then continue down
+  -figure out why database can't save emojis even though set to utf8mb4 or whatever
+  
   -all items below
+  -learned today: 
+    -I actually need the .env file (in addition to .env.dev) to run my db junx.  
+    -if I nuke my db I have to run knex migrate:latest again 
+    -mysql admin to set username and password
+    -make sure brew services mysql is running
+    -sequel pro needs that ^ first before it can get going, make sure the db created matches config file (cbt_test_db)
 
 6/5:
   -Continue refactor-o-rama 
