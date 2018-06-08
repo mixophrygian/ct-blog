@@ -12,7 +12,6 @@ ul.nav::after {
   display: none;
 }
 
-
 .customNav {
   box-sizing: border-box;
   display: flex;
@@ -28,6 +27,11 @@ ul.nav::after {
 
 .loginButton {
   margin-right: 5vw;
+}
+
+.userGreetingAndLogOut {
+  display: flex;
+  align-items: center;
 }
 
 .user-name {
@@ -69,12 +73,11 @@ ul.nav::after {
   background-color: lightgray;
 }
 
-@media only screen and (max-width: 320px){
-  
+@media only screen and (max-width: 320px) {
   .loginButton {
     margin-right: 7vw;
   }
-  
+
   .user-name {
     display: none;
   }

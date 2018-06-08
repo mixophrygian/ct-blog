@@ -7,7 +7,6 @@ import UserGreeting from "./UserGreeting";
 export default class Menu extends React.Component {
   render() {
     const { profile, login, logout } = this.props;
-
     return (
       <div>
         <Navbar className="navbar-fixed-top customNav">
@@ -15,7 +14,7 @@ export default class Menu extends React.Component {
             <NavItem className="loginButton">
               {!profile && <Button onClick={login}>Log In</Button>}
               {profile && (
-                <div>
+                <div className="userGreetingAndLogOut">
                   <UserGreeting profile={profile} />
                   <Button className="btn-margin" onClick={logout}>
                     Log Out

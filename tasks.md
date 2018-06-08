@@ -1,4 +1,8 @@
 #Project Roadmap
+6/7:
+  -revisit "isloadingAsync" in App.js and then continue down
+  -all items below
+
 6/5:
   -Continue refactor-o-rama 
     -/src
