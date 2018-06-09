@@ -10,6 +10,8 @@ describe("Menu component", () => {
   describe("render()", () => {
     it("should render the component", () => {
       const props = {
+        login: () => {},
+        logout: () => {},
         auth: {
           isAuthenticated: () => true,
         },

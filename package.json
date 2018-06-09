@@ -15,7 +15,7 @@
     "build-dev": "env-cmd .env.dev webpack --config webpack.dev.config.js",
     "build-prod": "env-cmd .env.prod webpack --config webpack.prod.config.js",
     "test": "jest --config=jestconfig.json",
-    "test-watch": "npm test -- --watch",
+    "test-watch": "jest --watchAll --config=jestconfig.json",
     "build": "webpack"
   },
   "babel": {

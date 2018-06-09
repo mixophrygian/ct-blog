@@ -54,14 +54,14 @@ describe("Users reducer", () => {
         ),
         [
           {
-            id: 1,
-            situation: "Some situation",
-            emotionalResponse: "Some emotional response",
-          },
-          {
             id: 2,
             situation: "Other situation",
             emotionalResponse: "Other emotional response",
+          },
+          {
+            id: 1,
+            situation: "Some situation",
+            emotionalResponse: "Some emotional response",
           },
         ]
       );
