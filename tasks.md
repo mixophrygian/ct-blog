@@ -1,4 +1,8 @@
 #Project Roadmap
+6/12:
+  -fixED emojis in database
+  -fixED routing so that all routes go back to home, again....make sure it doesnt mess up authentication or mysql calls
+
 6/7:
   -revisit "isloadingAsync" in App.js and then continue down
   -figure out why database can't save emojis even though set to utf8mb4 or whatever
