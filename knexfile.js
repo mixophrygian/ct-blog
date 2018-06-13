@@ -6,5 +6,6 @@ module.exports = {
     user: "root",
     password: "password",
     database: "cbt_test_db",
+    charset: "utf8mb4",
   },
 };
