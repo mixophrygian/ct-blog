@@ -1,7 +1,19 @@
 #Project Roadmap
 6/12:
-  -fixED emojis in database
-  -fixED routing so that all routes go back to home, again....make sure it doesnt mess up authentication or mysql calls
+  todo: 
+    -revisit "isloadingAsync" in App.js and then continue down
+    -add cancel to "new/edit entry" form - show will lose changes prompt
+    -fix auth0 mismatched state bugs
+    -affiliate user id to auth0 account as meta data - google if this is how it's supposed to be done
+    -set up authenticated calls to mysql api with auth_token for all of the calls that get made to the DB
+    
+    *milestone!*
+    - start looking into how to host a mysql db on Ec2 / to talk to an Ec2
+      -Auth0 is gonna need new whitelisted domains and apis 
+  
+  done:
+    -fixED emojis in database
+    -fixED routing so that all routes go back to home, again....make sure it doesnt mess up authentication or mysql calls
 
 6/7:
   -revisit "isloadingAsync" in App.js and then continue down
