@@ -16,9 +16,6 @@ import EntryEdit from "./EntryEdit";
 import EntryView from "./EntryView";
 
 import "../stylesheets/main.scss";
-import { isLoadingAsync } from "../utils/utils";
-
-//const isLoadingAsync = () => false;
 
 export class App extends React.Component {
   constructor(props) {
@@ -48,16 +45,8 @@ export class App extends React.Component {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { entries, onboarded } = nextProps;
-    const hasEnoughStateToLoad = !isLoadingAsync(entries) && !isLoadingAsync(onboarded);
-    if (hasEnoughStateToLoad) {
-      this.setState({ isLoading: false });
-    }
-  }
-
   async componentDidMount() {
-    if (isLoadingAsync(this.props.entries)) return;
+    this.setState({ isLoading: false });
   }
 
   async getProfile() {

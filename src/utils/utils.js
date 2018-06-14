@@ -10,10 +10,6 @@ export const mySQLDate = date => {
   return date.toISOString().split("T")[0];
 };
 
-export const isLoadingAsync = props => {
-  return props.constructor.name === "Promise";
-};
-
 export const UUID = () => {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c => {
     const r = (Math.random() * 16) | 0,
