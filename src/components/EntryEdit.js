@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import { Field, SubmissionError, reduxForm } from "redux-form";
-import { PageHeader, Form } from "react-bootstrap";
+import { Field, SubmissionError, reduxForm, isPristine } from "redux-form";
+import { Form } from "react-bootstrap";
 import FormField from "./common/FormField";
 import FormSubmit from "./common/FormSubmit";
+import EntryDeletePrompt from "./common/EntryDeletePrompt";
 import { mySQLDate } from "../utils/utils.js";
 import db from "../api/db.js";
 
@@ -14,12 +15,16 @@ export class EntryEdit extends React.Component {
     this.state = {
       cognitiveDistortions: [],
       entries: [],
+      shouldShowCancelModal: false,
     };
-
     this.formSubmit = this.formSubmit.bind(this);
     this.saveChecked = this.saveChecked.bind(this);
     this.toggleChecked = this.toggleChecked.bind(this);
     this.setPreviouslyChecked = this.setPreviouslyChecked.bind(this);
+    this.showCancelModal = this.showCancelModal.bind(this);
+    this.hideCancelModal = this.hideCancelModal.bind(this);
+    this.cancelEntry = this.cancelEntry.bind(this);
+    this.actuallyCancel = this.actuallyCancel.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +41,14 @@ export class EntryEdit extends React.Component {
     const node = document.getElementsByName(name)[0];
     node.checked = true;
     node.parentNode.className = `choice-active ${name}`;
+  }
+
+  showCancelModal() {
+    this.setState({ shouldShowCancelModel: true });
+  }
+
+  hideCancelModal() {
+    this.setState({ shouldShowCancelModel: false });
   }
 
   toggleChecked(e) {
@@ -59,6 +72,18 @@ export class EntryEdit extends React.Component {
       if (index > -1) newDistortions.splice(index, 1);
     }
     this.setState({ cognitiveDistortions: newDistortions });
+  }
+
+  actuallyCancel() {
+    this.props.history.goBack();
+  }
+
+  cancelEntry() {
+    if (this.props.pristine) {
+      this.actuallyCancel();
+    } else {
+      this.showCancelModal();
+    }
   }
 
   formSubmit(values) {
@@ -100,8 +125,11 @@ export class EntryEdit extends React.Component {
     const { entry, error, handleSubmit, invalid, submitting } = this.props;
     return (
       <div className="page-entry-edit page">
-        <PageHeader>{entry && entry.id ? "Edit Entry" : "New Entry"}</PageHeader>
-        <Form horizontal onSubmit={handleSubmit(this.formSubmit)}>
+        <div className="header-container">
+          <h1 className="header">{entry && entry.id ? "Edit Entry" : "New Entry"}</h1>
+          <button onClick={this.cancelEntry}>cancel</button>
+        </div>
+        <Form name="entryForm" horizontal onSubmit={handleSubmit(this.formSubmit)}>
           <Field
             component={FormField}
             name="situation"
@@ -232,6 +260,12 @@ export class EntryEdit extends React.Component {
             buttonSave="Save Entry"
           />
         </Form>
+        <EntryDeletePrompt
+          show={this.state.shouldShowCancelModel}
+          hideDelete={this.hideCancelModal}
+          entryDelete={this.actuallyCancel}
+          title="Are you sure you want to discard changes?"
+        />
       </div>
     );
   }
@@ -243,6 +277,7 @@ EntryEdit.propTypes = {
   history: PropTypes.object,
   dispatch: PropTypes.func,
   error: PropTypes.bool,
+  pristine: PropTypes.bool,
   submitting: PropTypes.bool,
   handleSubmit: PropTypes.func,
   invalid: PropTypes.bool,
@@ -264,6 +299,7 @@ const mapStateToProps = (state, ownProps) => {
     ? state.entries.find(x => x.id === ownProps.match.params.id)
     : null;
   return {
+    pristine: isPristine("entryEdit"),
     initialValues: entry,
     entry,
   };

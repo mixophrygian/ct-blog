@@ -6,11 +6,13 @@ import { Modal, Button } from "react-bootstrap";
 export default class EntryDeletePrompt extends React.Component {
   // render
   render() {
-    const { show, hideDelete, entryDelete } = this.props;
+    const { show, hideDelete, entryDelete, title } = this.props;
+    let copy = "Are you sure you want to delete this one?";
+    if (title) copy = title;
     return (
       <Modal show={show}>
         <Modal.Header>
-          <Modal.Title>Are you sure you want to delete this one?</Modal.Title>
+          <Modal.Title>{copy}</Modal.Title>
         </Modal.Header>
         <Modal.Footer>
           <Button onClick={hideDelete}>No</Button>
@@ -28,4 +30,5 @@ EntryDeletePrompt.propTypes = {
   show: PropTypes.bool,
   hideDelete: PropTypes.func,
   entryDelete: PropTypes.func,
+  title: PropTypes.string,
 };

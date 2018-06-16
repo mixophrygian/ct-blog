@@ -88,15 +88,6 @@ export class EntryList extends React.Component {
             })}
           </tbody>
         </Table>
-        <InheritEntriesPrompt
-          show={showInheritEntriesPrompt}
-          hide={this.hideInheritEntriesPrompt}
-        />
-        <EntryDeletePrompt
-          show={this.state.deleteShow}
-          hideDelete={this.hideDelete}
-          entryDelete={this.entryDelete}
-        />
       </div>
     ) : (
       <NoEntries history={this.props.history} className="SingleEntryRow" />
@@ -111,6 +102,15 @@ export class EntryList extends React.Component {
           defaultPageSize={PER_PAGE}
           total={entries.length}
           showLessItems
+        />
+        <InheritEntriesPrompt
+          show={showInheritEntriesPrompt}
+          hide={this.hideInheritEntriesPrompt}
+        />
+        <EntryDeletePrompt
+          show={this.state.deleteShow}
+          hideDelete={this.hideDelete}
+          entryDelete={this.entryDelete}
         />
       </div>
     );
