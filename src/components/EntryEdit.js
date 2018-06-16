@@ -295,13 +295,9 @@ const EntryEditForm = reduxForm({
 })(EntryEdit);
 
 const mapStateToProps = (state, ownProps) => {
-  const entry = state.entries.length
-    ? state.entries.find(x => x.id === ownProps.match.params.id)
-    : null;
   return {
     pristine: isPristine("entryEdit"),
-    initialValues: entry,
-    entry,
+    initialValues: ownProps.entry,
   };
 };
 export default connect(mapStateToProps)(EntryEditForm);

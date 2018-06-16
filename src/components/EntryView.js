@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { connect } from "react-redux";
 import { Button, Panel, NavItem, Glyphicon } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { formatDate } from "../utils/utils";
@@ -150,11 +149,4 @@ EntryView.propTypes = {
   invalid: PropTypes.bool,
 };
 
-function mapStateToProps(state, ownProps) {
-  // eslint-disable-next-line eqeqeq
-  const entry = state.entries.find(x => x.id == ownProps.match.params.id);
-  return {
-    entry,
-  };
-}
-export default connect(mapStateToProps)(EntryView);
+export default EntryView;

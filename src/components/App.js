@@ -30,6 +30,7 @@ export class App extends React.Component {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.getProfile = this.getProfile.bind(this);
+    this.getEntry = this.getEntry.bind(this);
   }
 
   componentWillMount() {
@@ -70,6 +71,11 @@ export class App extends React.Component {
 
   closeSidebar() {
     this.setState({ sidebarOpen: false });
+  }
+
+  getEntry(matchParamsId) {
+    // eslint-disable-next-line eqeqeq
+    return this.props.entries.find(entry => entry.id == matchParamsId);
   }
 
   render() {
@@ -124,7 +130,9 @@ export class App extends React.Component {
             <Route
               path="/entry/:id"
               render={props => {
-                return <EntryView auth={this.auth} {...props} />;
+                if (!this.props.entries.length) return <Loader />;
+                const entry = this.getEntry(props.match.params.id);
+                return <EntryView auth={this.auth} {...props} entry={entry} />;
               }}
             />
             <Route
@@ -134,7 +142,11 @@ export class App extends React.Component {
             />
             <Route
               path="/entry-edit/:id"
-              render={props => <EntryEdit auth={this.auth} {...props} />}
+              render={props => {
+                if (!this.props.entries.length) return <Loader />;
+                const entry = this.getEntry(props.match.params.id);
+                return <EntryEdit auth={this.auth} {...props} entry={entry} />;
+              }}
             />
             <Route path="/about" component={About} />
             <Route path="/distortions" component={Distortions} />
@@ -163,7 +175,7 @@ function scrollToTop() {
 function mapStateToProps(state) {
   return {
     profile: state.profile,
-    entries: state.entries || [],
+    entries: state.entries,
     onboarded: state.onboarded,
   };
 }
