@@ -7,7 +7,7 @@ import Pagination from "rc-pagination";
 import "rc-pagination/assets/index.css";
 import SingleEntryRow from "./SingleEntryRow";
 import NoEntries from "./NoEntries";
-import EntryDeletePrompt from "./EntryDeletePrompt";
+import AreYouSurePrompt from "./AreYouSurePrompt";
 import InheritEntriesPrompt from "./InheritEntriesPrompt";
 import db from "../../api/db.js";
 
@@ -107,10 +107,11 @@ export class EntryList extends React.Component {
           show={showInheritEntriesPrompt}
           hide={this.hideInheritEntriesPrompt}
         />
-        <EntryDeletePrompt
+        <AreYouSurePrompt
           show={this.state.deleteShow}
-          hideDelete={this.hideDelete}
-          entryDelete={this.entryDelete}
+          hidePrompt={this.hideDelete}
+          confirmAction={this.entryDelete}
+          text="Are you sure you want to delete this one?"
         />
       </div>
     );

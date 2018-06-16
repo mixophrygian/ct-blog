@@ -3,7 +3,7 @@ import React from "react";
 import { Button, Panel, NavItem, Glyphicon } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { formatDate } from "../utils/utils";
-import EntryDeletePrompt from "./common/EntryDeletePrompt";
+import AreYouSurePrompt from "./common/AreYouSurePrompt";
 import db from "../api/db.js";
 
 export class EntryView extends React.Component {
@@ -11,7 +11,6 @@ export class EntryView extends React.Component {
     super(props);
     this.state = {
       deleteShow: false,
-      deleteEntry: {},
     };
     this.showDelete = this.showDelete.bind(this);
     this.hideDelete = this.hideDelete.bind(this);
@@ -73,11 +72,11 @@ export class EntryView extends React.Component {
             Delete Entry
           </Button>
         </div>
-        <EntryDeletePrompt
+        <AreYouSurePrompt
           show={this.state.deleteShow}
-          entry={this.state.deleteEntry}
-          hideDelete={this.hideDelete}
-          entryDelete={this.entryDelete}
+          hidePrompt={this.hideDelete}
+          confirmAction={this.entryDelete}
+          text="Are you sure you want to delete this one?"
         />
       </div>
     );
@@ -113,10 +112,9 @@ export class EntryView extends React.Component {
     return returnNodes;
   }
 
-  showDelete(entry) {
+  showDelete() {
     this.setState({
       deleteShow: true,
-      deleteEntry: entry,
     });
   }
 
@@ -134,7 +132,6 @@ export class EntryView extends React.Component {
   hideDelete() {
     this.setState({
       deleteShow: false,
-      deleteEntry: {},
     });
   }
 }

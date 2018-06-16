@@ -5,7 +5,7 @@ import { Field, SubmissionError, reduxForm, isPristine } from "redux-form";
 import { Form } from "react-bootstrap";
 import FormField from "./common/FormField";
 import FormSubmit from "./common/FormSubmit";
-import EntryDeletePrompt from "./common/EntryDeletePrompt";
+import AreYouSurePrompt from "./common/AreYouSurePrompt";
 import { mySQLDate } from "../utils/utils.js";
 import db from "../api/db.js";
 
@@ -260,11 +260,11 @@ export class EntryEdit extends React.Component {
             buttonSave="Save Entry"
           />
         </Form>
-        <EntryDeletePrompt
+        <AreYouSurePrompt
           show={this.state.shouldShowCancelModel}
-          hideDelete={this.hideCancelModal}
-          entryDelete={this.actuallyCancel}
-          title="Are you sure you want to discard changes?"
+          hidePrompt={this.hideCancelModal}
+          confirmAction={this.actuallyCancel}
+          text="Are you sure you want to discard changes?"
         />
       </div>
     );

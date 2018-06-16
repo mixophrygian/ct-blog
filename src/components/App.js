@@ -132,7 +132,7 @@ export class App extends React.Component {
               render={props => {
                 if (!this.props.entries.length) return <Loader />;
                 const entry = this.getEntry(props.match.params.id);
-                return <EntryView auth={this.auth} {...props} entry={entry} />;
+                return <EntryView auth={this.auth} entry={entry} {...this.props} {...props} />;
               }}
             />
             <Route
@@ -145,7 +145,7 @@ export class App extends React.Component {
               render={props => {
                 if (!this.props.entries.length) return <Loader />;
                 const entry = this.getEntry(props.match.params.id);
-                return <EntryEdit auth={this.auth} {...props} entry={entry} />;
+                return <EntryEdit auth={this.auth} {...this.props} {...props} entry={entry} />;
               }}
             />
             <Route path="/about" component={About} />
