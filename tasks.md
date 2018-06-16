@@ -1,4 +1,13 @@
 #Project Roadmap
+6/15:
+  -affiliate user id to auth0 account as meta data - google if this is how it's supposed to be done
+      -set up authenticated calls to mysql api with auth_token for all of the calls that get made to the DB
+      
+      *milestone!*
+      - start looking into how to host a mysql db on Ec2 / to talk to an Ec2
+        -Auth0 is gonna need new whitelisted domains and apis 
+  -fix auth0 mismatched state bugs
+
 6/12:
   todo: 
     -revisit "isloadingAsync" in App.js and then continue down
