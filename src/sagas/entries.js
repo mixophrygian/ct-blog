@@ -7,7 +7,6 @@ export const getEntries = state => state.entries;
 export function* entriesFetchList() {
   try {
     const entries = yield call(ApiEntries.getEntries);
-    console.log("saga entries", entries);
     yield put({
       type: "ENTRIES_LIST_SAVE",
       entries,
@@ -27,8 +26,8 @@ export function* entriesAddEdit(action) {
     type: type,
     entry: action.entry,
   });
-  const entries = yield call(ApiEntries.getEntries);
-  yield call(ApiEntries.saveEntries, [action.entry, ...entries]);
+  const entries = yield select(getEntries);
+  yield call(ApiEntries.saveEntries, entries);
   action.callbackSuccess(action.entry);
 }
 
