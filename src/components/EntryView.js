@@ -35,7 +35,7 @@ export class EntryView extends React.Component {
         <div className="header">
           <div className="date">{formatDate(entry.date)}</div>
 
-          <LinkContainer role="button" className="btn home-button" to={"/"}>
+          <LinkContainer role="button" activeClassName="" className="btn home-button" to={"/"}>
             <NavItem>
               <span>Home</span> <Glyphicon glyph="home" />
             </NavItem>
