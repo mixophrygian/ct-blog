@@ -9,7 +9,6 @@ import SingleEntryRow from "./SingleEntryRow";
 import NoEntries from "./NoEntries";
 import AreYouSurePrompt from "./AreYouSurePrompt";
 import InheritEntriesPrompt from "./InheritEntriesPrompt";
-import db from "../../api/db.js";
 
 export class EntryList extends React.Component {
   constructor(props) {
@@ -52,13 +51,12 @@ export class EntryList extends React.Component {
   }
 
   entryDelete() {
-    const { dispatch, auth } = this.props;
+    const { dispatch } = this.props;
     const { deleteEntry } = this.state;
     dispatch({
       type: "ENTRIES_DELETE",
       entry: deleteEntry,
     });
-    db.deleteEntryFromDB(deleteEntry, auth);
     this.hideDelete();
   }
 
@@ -122,7 +120,6 @@ EntryList.propTypes = {
   entries: PropTypes.any,
   dispatch: PropTypes.func,
   history: PropTypes.object,
-  auth: PropTypes.object,
   showInheritEntriesPrompt: PropTypes.bool,
 };
 

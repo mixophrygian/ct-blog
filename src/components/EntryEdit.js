@@ -7,7 +7,6 @@ import FormField from "./common/FormField";
 import FormSubmit from "./common/FormSubmit";
 import AreYouSurePrompt from "./common/AreYouSurePrompt";
 import { mySQLDate } from "../utils/utils.js";
-import db from "../api/db.js";
 
 export class EntryEdit extends React.Component {
   constructor(props) {
@@ -87,7 +86,7 @@ export class EntryEdit extends React.Component {
   }
 
   formSubmit(values) {
-    const { dispatch, entry, auth } = this.props;
+    const { dispatch, entry } = this.props;
     const { cognitiveDistortions } = this.state;
     let date = mySQLDate(new Date());
     let id = null;
@@ -113,7 +112,6 @@ export class EntryEdit extends React.Component {
         },
         callbackSuccess: response => {
           this.setState({ cognitiveDistortions: [] });
-          db.saveEntryToDB(parsedEntry, auth);
           this.props.history.push(`/entry/${response.id}`);
           resolve(parsedEntry);
         },
@@ -272,7 +270,6 @@ export class EntryEdit extends React.Component {
 }
 
 EntryEdit.propTypes = {
-  auth: PropTypes.object,
   entry: PropTypes.object,
   history: PropTypes.object,
   dispatch: PropTypes.func,

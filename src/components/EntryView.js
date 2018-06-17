@@ -4,7 +4,6 @@ import { Button, Panel, NavItem, Glyphicon } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { formatDate } from "../utils/utils";
 import AreYouSurePrompt from "./common/AreYouSurePrompt";
-import db from "../api/db.js";
 
 export class EntryView extends React.Component {
   constructor(props) {
@@ -119,12 +118,11 @@ export class EntryView extends React.Component {
   }
 
   entryDelete() {
-    const { dispatch, entry, history, auth } = this.props;
+    const { dispatch, entry, history } = this.props;
     dispatch({
       type: "ENTRIES_DELETE",
       entry: entry,
     });
-    db.deleteEntryFromDB(entry, auth);
     this.hideDelete();
     history.push("/");
   }
@@ -136,7 +134,6 @@ export class EntryView extends React.Component {
   }
 }
 EntryView.propTypes = {
-  auth: PropTypes.object,
   entry: PropTypes.object,
   history: PropTypes.object,
   dispatch: PropTypes.func,

@@ -126,26 +126,22 @@ export class App extends React.Component {
             <Menu login={this.login} logout={this.logout} profile={this.props.profile} />
           </div>
           <Switch>
-            <Route exact path="/" render={props => <Home auth={this.auth} {...props} />} />
+            <Route exact path="/" render={props => <Home {...props} />} />
             <Route
               path="/entry/:id"
               render={props => {
                 if (!this.props.entries.length) return <Loader />;
                 const entry = this.getEntry(props.match.params.id);
-                return <EntryView auth={this.auth} entry={entry} {...this.props} {...props} />;
+                return <EntryView entry={entry} {...this.props} {...props} />;
               }}
             />
-            <Route
-              exact
-              path="/entry-edit"
-              render={props => <EntryEdit auth={this.auth} {...props} />}
-            />
+            <Route exact path="/entry-edit" render={props => <EntryEdit {...props} />} />
             <Route
               path="/entry-edit/:id"
               render={props => {
                 if (!this.props.entries.length) return <Loader />;
                 const entry = this.getEntry(props.match.params.id);
-                return <EntryEdit auth={this.auth} {...this.props} {...props} entry={entry} />;
+                return <EntryEdit {...this.props} {...props} entry={entry} />;
               }}
             />
             <Route path="/about" component={About} />
@@ -159,7 +155,7 @@ export class App extends React.Component {
                 return <Loader />;
               }}
             />
-            <Route render={props => <Home auth={this.auth} {...props} />} />
+            <Route render={props => <Home {...props} />} />
           </Switch>
         </div>
         <div className="plzNoLandscape">We think you'll like this better in portrait mode.</div>
