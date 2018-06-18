@@ -7,9 +7,9 @@ module.exports = {
       .insert({
         username,
       })
-      .then(() => {
-        console.log(`New user ${username} successfully added`);
-        return JSON.stringify(username);
+      .then(data => {
+        console.log(`New user ${username} successfully added with id ${data}`);
+        return data;
       })
       .catch(e => {
         if (e.code === "ER_DUP_ENTRY") {

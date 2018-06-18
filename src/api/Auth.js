@@ -5,6 +5,7 @@ import db from "./db.js";
 import localEntries from "./entries.js";
 import localforage from "localforage";
 import { Component } from "react";
+import jwtDecode from "jwt-decode";
 
 export default class Auth extends Component {
   constructor(history) {
@@ -70,12 +71,12 @@ export default class Auth extends Component {
   fetchProfile(dispatch) {
     return new Promise(async (resolve, reject) => {
       const token = await localforage.getItem("access_token");
-      this.auth0.client.userInfo(token, (err, profile) => {
-        if (err) reject(err);
-        dispatch({ type: "SET_USER_PROFILE", profile });
-        localforage.setItem("profile", profile);
-        resolve(profile);
-      });
+      const id_token = await localforage.getItem("id_token");
+      const { email, name, nickname } = jwtDecode(id_token);
+      const profile = { email, name, nickname };
+      dispatch({ type: "SET_USER_PROFILE", profile });
+      localforage.setItem("profile", profile);
+      resolve(profile);
     });
   }
 

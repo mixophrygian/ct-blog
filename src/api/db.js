@@ -19,7 +19,8 @@ const DB = {
       .then(data => data.json())
       .then(response => {
         if (response !== "ER_DUP_ENTRY") {
-          //response will be the user email "eweigert@gmail.com"
+          console.log("user id", response);
+          //response will be the user id
           /* TODO: affiliate userID with auth0 account? */
         }
         return response;

@@ -38,6 +38,7 @@
     "history": "^4.7.2",
     "jquery": "^3.3.1",
     "jwks-rsa": "^1.2.1",
+    "jwt-decode": "^2.2.0",
     "knex": "^0.14.6",
     "localforage": "1.5.7",
     "mysql": "^2.15.0",
