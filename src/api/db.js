@@ -2,18 +2,20 @@
 import localforage from "localforage";
 
 const DB = {
-  async callApi(path, data) {
+  async secureCallApi(path, data) {
+    const token = await localforage.getItem("access_token");
     return fetch(path, {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
       },
       body: JSON.stringify(data),
     });
   },
   createNewUser(profile) {
-    return DB.callApi("/createNewUser", { username: profile.email })
+    return DB.secureCallApi("/createNewUser", { username: profile.email })
       .then(data => data.json())
       .then(response => {
         if (response !== "ER_DUP_ENTRY") {
@@ -26,7 +28,7 @@ const DB = {
   async deleteEntryFromDB(entry, auth) {
     const authenticated = await auth.isAuthenticated();
     if (!authenticated) return;
-    DB.callApi("/deleteEntry", {
+    DB.secureCallApi("/deleteEntry", {
       entry,
     }).catch(e => console.log("deleting an entry from the DB messed up", e));
   },
@@ -36,7 +38,7 @@ const DB = {
     if (!authenticated) return;
     const profile = await localforage.getItem("profile");
     const username = profile.email;
-    DB.callApi("/saveEntry", {
+    DB.secureCallApi("/saveEntry", {
       username,
       entry,
     }).catch(e => console.log("save entry to DB messed up", e));
@@ -45,7 +47,7 @@ const DB = {
   async fetchEntriesFromDB(profile, auth) {
     const authenticated = await auth.isAuthenticated();
     if (!authenticated) return;
-    return DB.callApi("/fetchEntries", {
+    return DB.secureCallApi("/fetchEntries", {
       username: profile.email,
     })
       .then(data => data.json())

@@ -30,7 +30,8 @@ module.exports = {
       SERVING_URL: JSON.stringify(process.env.SERVING_URL),
       AUTH_DOMAIN: JSON.stringify(process.env.AUTH_DOMAIN),
       AUTH_CLIENT_ID: JSON.stringify(process.env.AUTH_CLIENT_ID),
-      AUTH_AUDIENCE: JSON.stringify(process.env.AUTH_AUDIENCE),
+      ISSUER: JSON.stringify(process.env.ISSUER),
+      API_IDENTIFIER: JSON.stringify(process.env.API_IDENTIFIER),
     }),
     new HtmlWebpackPlugin({
       template: path.join(paths.SRC, "index.html"),

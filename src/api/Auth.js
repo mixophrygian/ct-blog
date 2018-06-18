@@ -13,9 +13,9 @@ export default class Auth extends Component {
       domain: `${AUTH_DOMAIN}`,
       clientID: `${AUTH_CLIENT_ID}`,
       redirectUri: `${SERVING_URL}/authenticate`,
-      audience: `${AUTH_AUDIENCE}`,
+      audience: `${API_IDENTIFIER}`,
       responseType: "token id_token",
-      scope: "openid profile email",
+      scope: "openid profile email read:entries write:entries delete:entries",
     });
     this.history = history;
     this.login = this.login.bind(this);
