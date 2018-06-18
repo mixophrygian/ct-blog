@@ -1,4 +1,16 @@
 #Project Roadmap
+6/17:
+  -reconsider the security of a user accessing the db with the access_token and their username.  Should there be an additional piece of meta-data that includes their database id?
+  
+  -done: set up authenticated calls to database API with auth_token!
+    -DRY'd up the user profile data gathering (was in the id_tokena all along)
+    
+- start looking into how to host a mysql db on Ec2 / to talk to an Ec2
+        -Auth0 is gonna need new whitelisted domains and apis 
+  -fix auth0 mismatched state bugs
+
+    
+
 6/15:
   -affiliate user id to auth0 account as meta data - google if this is how it's supposed to be done
       -set up authenticated calls to mysql api with auth_token for all of the calls that get made to the DB
