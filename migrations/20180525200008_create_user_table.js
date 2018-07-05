@@ -4,6 +4,7 @@ exports.up = knex => {
     t.string("username").notNullable();
     t.unique("username");
     t.timestamps(false, true);
+    t.charset("utf8");
   });
 };
 

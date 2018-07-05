@@ -6,7 +6,7 @@ exports.up = (knex, Promise) => {
         .unsigned()
         .references("userId")
         .inTable("users");
-      table.string("id").notNullable();
+      table.string("id", 191).notNullable();
       table.dateTime("date");
       table.text("situation");
       table.text("emotionalResponse");
