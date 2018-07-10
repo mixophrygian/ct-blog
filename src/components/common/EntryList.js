@@ -92,7 +92,7 @@ export class EntryList extends React.Component {
     );
     return (
       <div className="EntryList">
-        <h2>Automatic Thought Journal</h2>
+        <h2>New Thought</h2>
         {savedEntries}
         <Pagination
           onChange={this.changePage}

@@ -1,3 +1,5 @@
+@import "colors";
+
 ul.nav {
   display: flex;
   width: 100%;
@@ -19,14 +21,27 @@ ul.nav::after {
   height: 10vh;
   margin: 0;
   z-index: 1 !important;
-}
-
-.nav li {
-  border-radius: 3px;
+  background-color: $bg;
+  border: none;
 }
 
 .loginButton {
   margin-right: 5vw;
+  border-radius: 500px;
+
+  a {
+    button {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}
+
+.btn-default {
+  display: flex;
+  border: 1px solid lightgray;
+  background-color: white;
+  border-radius: 200px;
 }
 
 .userGreetingAndLogOut {
@@ -51,14 +66,20 @@ ul.nav::after {
 }
 
 .new-entry-button {
-  padding: 8px;
+  display: flex;
+  padding: 6px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+  background-color: $lightred;
   justify-content: center;
+  align-content: center;
   align-items: center;
-  border: 1px dashed gray;
+  border: 1px solid gray;
+  border-radius: 200px; //hack o rama
   list-style: none;
 
   a {
-    display: flex;
     color: gray;
     align-items: center;
     justify-content: space-around;
