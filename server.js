@@ -9,7 +9,7 @@ const jwks = require("jwks-rsa");
 
 dotenv.config();
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 const jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
