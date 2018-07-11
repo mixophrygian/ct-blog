@@ -155,7 +155,11 @@ export class App extends React.Component {
                 return <Loader />;
               }}
             />
-            <Route render={props => <Home {...props} />} />
+            <Route
+              render={props => {
+                return <Home {...props} profile={this.props.profile} />;
+              }}
+            />
           </Switch>
         </div>
         <div className="plzNoLandscape">We think you'll like this better in portrait mode.</div>

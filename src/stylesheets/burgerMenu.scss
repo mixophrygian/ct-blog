@@ -1,29 +1,36 @@
-.bm-cross-button {
-}
-
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: fixed;
-  width: 30px;
-  height: 30px;
-  left: 2.5vh;
-  top: 2.5vh;
+  width: 25px;
+  height: 22px;
+  left: 4vh;
+  top: 3vh;
 }
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: lightgray;
+  background: $warmGray;
+  border-top: 2px solid $backGround;
 }
 
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
-  height: 24px;
-  width: 24px;
+  height: 34px;
+  width: 34px;
+  background: transparent;
+}
+
+.bm-cross-button > span {
+  top: 50px;
+  left: 0;
+  right: 0;
 }
 
 /* Color/shape of close button cross */
 .bm-cross {
-  background: #bdc3c7;
+  width: 1px !important;
+  height: 30px !important;
+  background: $warmGray;
 }
 
 /* General sidebar styles */

@@ -21,13 +21,14 @@ ul.nav::after {
   height: 10vh;
   margin: 0;
   z-index: 1 !important;
-  background-color: $bg;
+  background-color: $backGround;
   border: none;
 }
 
 .loginButton {
   margin-right: 5vw;
   border-radius: 500px;
+  background-color: $backGround;
 
   a {
     button {
@@ -44,13 +45,23 @@ ul.nav::after {
   border-radius: 200px;
 }
 
-.userGreetingAndLogOut {
+.logOut {
   display: flex;
   align-items: center;
 }
 
+.loginButton,
+.loginButton .btn-default,
+.logoutButton {
+  color: $bluishGray;
+  border-color: $silver;
+  background-color: $backGround;
+}
+
 .user-name {
-  margin-right: 1vw;
+  color: $bluishGray;
+  font-weight: bold;
+  letter-spacing: 0.3px;
 }
 
 .navbar-nav > .new-entry-button > a {
@@ -75,7 +86,7 @@ ul.nav::after {
   justify-content: center;
   align-content: center;
   align-items: center;
-  border: 1px solid gray;
+  border: 1px solid $lightred;
   border-radius: 200px; //hack o rama
   list-style: none;
 
