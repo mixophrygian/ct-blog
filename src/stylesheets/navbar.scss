@@ -1,3 +1,5 @@
+@import "colors";
+
 ul.nav {
   display: flex;
   width: 100%;
@@ -19,23 +21,47 @@ ul.nav::after {
   height: 10vh;
   margin: 0;
   z-index: 1 !important;
-}
-
-.nav li {
-  border-radius: 3px;
+  background-color: $backGround;
+  border: none;
 }
 
 .loginButton {
   margin-right: 5vw;
+  border-radius: 500px;
+  background-color: $backGround;
+
+  a {
+    button {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
 }
 
-.userGreetingAndLogOut {
+.btn-default {
+  display: flex;
+  border: 1px solid lightgray;
+  background-color: white;
+  border-radius: 200px;
+}
+
+.logOut {
   display: flex;
   align-items: center;
 }
 
+.loginButton,
+.loginButton .btn-default,
+.logoutButton {
+  color: $bluishGray;
+  border-color: $silver;
+  background-color: $backGround;
+}
+
 .user-name {
-  margin-right: 1vw;
+  color: $bluishGray;
+  font-weight: bold;
+  letter-spacing: 0.3px;
 }
 
 .navbar-nav > .new-entry-button > a {
@@ -51,14 +77,20 @@ ul.nav::after {
 }
 
 .new-entry-button {
-  padding: 8px;
+  display: flex;
+  padding: 6px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+  background-color: $lightred;
   justify-content: center;
+  align-content: center;
   align-items: center;
-  border: 1px dashed gray;
+  border: 1px solid $lightred;
+  border-radius: 200px; //hack o rama
   list-style: none;
 
   a {
-    display: flex;
     color: gray;
     align-items: center;
     justify-content: space-around;

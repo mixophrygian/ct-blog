@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, Nav, Navbar, NavItem, Glyphicon } from "react-bootstrap";
+import { Button, Nav, Navbar, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import UserGreeting from "./UserGreeting";
 
 export default class Menu extends React.Component {
   render() {
@@ -14,9 +13,8 @@ export default class Menu extends React.Component {
             <NavItem className="loginButton">
               {!profile && <Button onClick={login}>Log In</Button>}
               {profile && (
-                <div className="userGreetingAndLogOut">
-                  <UserGreeting profile={profile} />
-                  <Button className="btn-margin" onClick={logout}>
+                <div className="logOut">
+                  <Button className="btn-margin logoutButton" onClick={logout}>
                     Log Out
                   </Button>
                 </div>
@@ -24,9 +22,7 @@ export default class Menu extends React.Component {
             </NavItem>
             <NavItem>
               <LinkContainer className="new-entry-button" to="/entry-edit">
-                <div role="button">
-                  New <Glyphicon glyph="plus-sign" />
-                </div>
+                <div role="button">New Entry</div>
               </LinkContainer>
             </NavItem>
           </Nav>

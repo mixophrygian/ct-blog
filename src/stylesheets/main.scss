@@ -17,7 +17,8 @@ html {
 }
 body {
   height: 100%;
-  font-family: sans-serif;
+  font-family: "Varela", sans-serif;
+  background-color: $backGround;
 }
 
 //remove annoying orange/blue outline on safari
@@ -27,6 +28,11 @@ div:focus {
   outline: 0;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   -webkit-tap-highlight-color: transparent; // i.e. Nexus5/Chrome and Kindle Fire HD 7''
+  font-family: inherit;
+}
+
+h2 {
+  font-weight: bold;
 }
 
 .home-button {

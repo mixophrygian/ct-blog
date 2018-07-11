@@ -2,9 +2,11 @@
 
 .page-home {
   display: flex;
+  flex-direction: column;
 
   h2 {
     margin-bottom: 4vw;
+    margin-top: 1vw;
   }
 
   div:first-child {

@@ -1,3 +1,5 @@
+@import "colors";
+
 .empty-container {
   background-color: #eee;
   padding: 6vw;
@@ -7,13 +9,17 @@
 }
 
 .cta {
-  border: 1px solid #a29e9ey;
-  background-color: #b5ffb5;
+  border: 1px solid $lightgreen;
+  background-color: $lightgreen;
   width: 100px;
-  border-radius: 5px;
-  color: black;
+  border-radius: 8px;
+  color: white;
 }
 
 .cta a {
   color: black;
+}
+
+.whatIsThis {
+  color: $lightred;
 }

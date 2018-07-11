@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 export default class UserGreeting extends React.Component {
   render() {
     const { profile } = this.props;
-    const nickname = profile ? profile.nickname : "";
+    const nickname = profile ? profile.name : "";
 
-    return <span className="user-name">Hi, {nickname}</span>;
+    return <span className="user-name">Welcome back, {nickname}</span>;
   }
 }
 

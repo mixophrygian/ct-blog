@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
-import { Glyphicon } from "react-bootstrap";
 
 export default class NoEntries extends React.Component {
   constructor(props) {
@@ -12,18 +10,18 @@ export default class NoEntries extends React.Component {
   render() {
     return (
       <div className="empty-container">
+        <h4>Welcome</h4>
         <p className="quote">
-          [Last updated: 7/4 5:26pm PST] 🇺🇸 - Hooked up production instance to production database
+          Ideally this section will contain some kind of introduction or high level summary of this
+          if you didn't fully understand the onboarding flow. Ultimately it should funnel you into
+          either an explanation or a new entry. Last updated 7/10 9:48pm PST
         </p>
-        <p className="quote">TODO: Implement wireframe/prototype UI (the fun part!)</p>
-        <Link to={"/about"}>What is this?</Link>
+        <br />
+        <Link className="whatIsThis" to={"/about"}>
+          What is this?
+        </Link>
         <br />
         <br />
-        <LinkContainer className="btn btn-default edit-button cta" to="/entry-edit">
-          <div>
-            New Entry <Glyphicon glyph="plus-sign" />
-          </div>
-        </LinkContainer>
       </div>
     );
   }
