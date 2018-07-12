@@ -45,12 +45,13 @@ export class Home extends React.Component {
 
   render() {
     const { profile } = this.props;
-    return this.state.showSplash ? (
-      <SplashAndOnboarding hide={this.hideSplash} />
-    ) : (
-      <div className="page-home page">
-        {profile && <UserGreeting profile={profile} />}
-        <EntryList {...this.props} />
+    return (
+      <div>
+        {this.state.showSplash && <SplashAndOnboarding hide={this.hideSplash} />}
+        <div className="page-home page">
+          {profile && <UserGreeting profile={profile} />}
+          <EntryList {...this.props} />
+        </div>
       </div>
     );
   }
