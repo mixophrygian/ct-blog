@@ -23,6 +23,7 @@ export class App extends React.Component {
     this.state = {
       isLoading: true,
       sidebarOpen: false,
+      callSave: false,
     };
     this.auth = new Auth(props.history);
     this.onToggleSidebar = this.onToggleSidebar.bind(this);
@@ -31,6 +32,8 @@ export class App extends React.Component {
     this.logout = this.logout.bind(this);
     this.getProfile = this.getProfile.bind(this);
     this.getEntry = this.getEntry.bind(this);
+    this.cancelEntry = this.cancelEntry.bind(this);
+    this.saveEntry = this.saveEntry.bind(this);
   }
 
   componentWillMount() {
@@ -78,8 +81,21 @@ export class App extends React.Component {
     return this.props.entries.find(entry => entry.id == matchParamsId);
   }
 
+  cancelEntry() {
+    this.props.history.goBack();
+    this.setState({
+      callSave: false,
+    });
+  }
+
+  saveEntry() {
+    this.setState({
+      callSave: true,
+    });
+  }
+
   render() {
-    const { isLoading } = this.state;
+    const { isLoading, callSave } = this.state;
     if (isLoading) {
       return <Loader />;
     }
@@ -98,6 +114,8 @@ export class App extends React.Component {
         backgroundColor: "white",
       },
     };
+
+    const isEditing = this.props.history.location.pathname === "/entry-edit";
 
     const sidebarContent = (
       <div style={styles.content}>
@@ -118,12 +136,21 @@ export class App extends React.Component {
 
     return (
       <div className="mainWrapper">
-        <BurgerMenu isOpen={this.state.sidebarOpen} width={"45vw"}>
-          {sidebarContent}
-        </BurgerMenu>
+        {!isEditing && (
+          <BurgerMenu isOpen={this.state.sidebarOpen} width={"45vw"}>
+            {sidebarContent}
+          </BurgerMenu>
+        )}
         <div className="container">
           <div>
-            <Menu login={this.login} logout={this.logout} profile={this.props.profile} />
+            <Menu
+              login={this.login}
+              isEditing={isEditing}
+              logout={this.logout}
+              profile={this.props.profile}
+              cancel={this.cancelEntry}
+              save={this.saveEntry}
+            />
           </div>
           <Switch>
             <Route exact path="/" render={props => <Home {...props} />} />
@@ -141,7 +168,16 @@ export class App extends React.Component {
               render={props => {
                 if (!this.props.entries.length) return <Loader />;
                 const entry = this.getEntry(props.match.params.id);
-                return <EntryEdit {...this.props} {...props} entry={entry} />;
+                return (
+                  <EntryEdit
+                    cancel={this.cancelEntry}
+                    save={this.saveEntry}
+                    callSave={callSave}
+                    entry={entry}
+                    {...this.props}
+                    {...props}
+                  />
+                );
               }}
             />
             <Route path="/about" component={About} />

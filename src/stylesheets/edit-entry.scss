@@ -23,6 +23,12 @@
   form > * {
   }
 
+  .cancel {
+    padding: 0.8rem;
+    border-radius: 3px;
+    background-color: white;
+  }
+
   .header-container {
     display: flex;
     flex-direction: row;
@@ -31,12 +37,6 @@
     align-items: center;
     font-family: sans-serif;
     border-bottom: 1px solid #eee;
-
-    button {
-      padding: 0.8rem;
-      border-radius: 3px;
-      background-color: white;
-    }
   }
 }
 
