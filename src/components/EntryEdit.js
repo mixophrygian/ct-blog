@@ -1,10 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import { Field, SubmissionError, reduxForm, isPristine } from "redux-form";
-import { Form } from "react-bootstrap";
+import { Form, Field, SubmissionError, reduxForm, isPristine } from "redux-form";
 import FormField from "./common/FormField";
-import FormSubmit from "./common/FormSubmit";
 import AreYouSurePrompt from "./common/AreYouSurePrompt";
 import { mySQLDate } from "../utils/utils.js";
 
@@ -15,7 +13,6 @@ export class EntryEdit extends React.Component {
       cognitiveDistortions: [],
       entries: [],
       shouldShowCancelModal: false,
-      values: null,
     };
     this.formSubmit = this.formSubmit.bind(this);
     this.saveChecked = this.saveChecked.bind(this);
@@ -25,7 +22,6 @@ export class EntryEdit extends React.Component {
     this.hideCancelModal = this.hideCancelModal.bind(this);
     this.cancelEntry = this.cancelEntry.bind(this);
     this.actuallyCancel = this.actuallyCancel.bind(this);
-    this.formSubmitForReal = this.formSubmitForReal.bind(this);
   }
 
   componentDidMount() {
@@ -39,8 +35,7 @@ export class EntryEdit extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    //console.log("new props", props);
-    if (props.callSave) this.formSubmitForReal(this.state.values);
+    if (props.cancel) this.cancelEntry();
   }
 
   setPreviouslyChecked(name) {
@@ -92,7 +87,7 @@ export class EntryEdit extends React.Component {
     }
   }
 
-  formSubmitForReal(values) {
+  formSubmit(values) {
     const { dispatch, entry } = this.props;
     const { cognitiveDistortions } = this.state;
     let date = mySQLDate(new Date());
@@ -126,17 +121,8 @@ export class EntryEdit extends React.Component {
     });
   }
 
-  formSubmit(values) {
-    this.setState(
-      {
-        values,
-      },
-      () => this.props.save()
-    );
-  }
-
   render() {
-    const { entry, error, handleSubmit, invalid, submitting } = this.props;
+    const { entry, handleSubmit } = this.props;
     return (
       <div className="page-entry-edit page">
         <div className="header-container">
@@ -265,13 +251,6 @@ export class EntryEdit extends React.Component {
             label="Rational Response"
             placeholder="A rational response to these distortions"
           />
-          <FormSubmit
-            error={error}
-            invalid={invalid}
-            submitting={submitting}
-            buttonSaveLoading="Saving..."
-            buttonSave="Save Entry"
-          />
         </Form>
         <AreYouSurePrompt
           show={this.state.shouldShowCancelModel}
@@ -288,14 +267,12 @@ EntryEdit.propTypes = {
   entry: PropTypes.object,
   history: PropTypes.object,
   dispatch: PropTypes.func,
+  cancel: PropTypes.bool,
   error: PropTypes.bool,
   pristine: PropTypes.bool,
   submitting: PropTypes.bool,
   handleSubmit: PropTypes.func,
   invalid: PropTypes.bool,
-  values: PropTypes.any,
-  save: PropTypes.func,
-  callSave: PropTypes.bool,
 };
 
 const EntryEditForm = reduxForm({

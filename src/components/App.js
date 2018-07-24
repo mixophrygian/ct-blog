@@ -23,7 +23,6 @@ export class App extends React.Component {
     this.state = {
       isLoading: true,
       sidebarOpen: false,
-      callSave: false,
     };
     this.auth = new Auth(props.history);
     this.onToggleSidebar = this.onToggleSidebar.bind(this);
@@ -33,7 +32,6 @@ export class App extends React.Component {
     this.getProfile = this.getProfile.bind(this);
     this.getEntry = this.getEntry.bind(this);
     this.cancelEntry = this.cancelEntry.bind(this);
-    this.saveEntry = this.saveEntry.bind(this);
   }
 
   componentWillMount() {
@@ -50,7 +48,7 @@ export class App extends React.Component {
   }
 
   async componentDidMount() {
-    this.setState({ isLoading: false });
+    this.setState({ isLoading: false, cancel: false });
   }
 
   async getProfile() {
@@ -82,20 +80,11 @@ export class App extends React.Component {
   }
 
   cancelEntry() {
-    this.props.history.goBack();
-    this.setState({
-      callSave: false,
-    });
-  }
-
-  saveEntry() {
-    this.setState({
-      callSave: true,
-    });
+    this.setState({ cancel: true });
   }
 
   render() {
-    const { isLoading, callSave } = this.state;
+    const { isLoading, cancel } = this.state;
     if (isLoading) {
       return <Loader />;
     }
@@ -115,7 +104,7 @@ export class App extends React.Component {
       },
     };
 
-    const isEditing = this.props.history.location.pathname === "/entry-edit";
+    const isEditing = this.props.history.location.pathname.includes("/entry-edit");
 
     const sidebarContent = (
       <div style={styles.content}>
@@ -149,7 +138,6 @@ export class App extends React.Component {
               logout={this.logout}
               profile={this.props.profile}
               cancel={this.cancelEntry}
-              save={this.saveEntry}
             />
           </div>
           <Switch>
@@ -168,16 +156,7 @@ export class App extends React.Component {
               render={props => {
                 if (!this.props.entries.length) return <Loader />;
                 const entry = this.getEntry(props.match.params.id);
-                return (
-                  <EntryEdit
-                    cancel={this.cancelEntry}
-                    save={this.saveEntry}
-                    callSave={callSave}
-                    entry={entry}
-                    {...this.props}
-                    {...props}
-                  />
-                );
+                return <EntryEdit cancel={cancel} entry={entry} {...this.props} {...props} />;
               }}
             />
             <Route path="/about" component={About} />

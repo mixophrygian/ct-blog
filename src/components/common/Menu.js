@@ -2,8 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Nav, Navbar, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { connect } from "react-redux";
+import { submit } from "redux-form";
 
-export default class Menu extends React.Component {
+class Menu extends React.Component {
   render() {
     const loginLogout = profile ? (
       <div className="logOut">
@@ -36,7 +38,10 @@ export default class Menu extends React.Component {
         // <LinkContainer className="new-entry-button" to="/entry-edit">
         //   <div role="button">Save</div>
         // </LinkContainer>
-        <Button className="new-entry-button" onClick={this.props.save}>
+        <Button
+          className="new-entry-button"
+          onClick={() => this.props.dispatch(submit("entryEdit"))}
+        >
           Save
         </Button>
       );
@@ -67,6 +72,8 @@ Menu.propTypes = {
   logout: PropTypes.func.isRequired,
   profile: PropTypes.any,
   isEditing: PropTypes.bool,
-  save: PropTypes.func,
   cancel: PropTypes.func,
+  dispatch: PropTypes.func,
 };
+
+export default connect()(Menu);
