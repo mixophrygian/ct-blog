@@ -49,6 +49,7 @@ export class EntryEdit extends React.Component {
   }
 
   hideCancelModal() {
+    this.props.resetCancel();
     this.setState({ shouldShowCancelModel: false });
   }
 
@@ -76,6 +77,7 @@ export class EntryEdit extends React.Component {
   }
 
   actuallyCancel() {
+    this.props.resetCancel();
     this.props.history.goBack();
   }
 
@@ -128,7 +130,7 @@ export class EntryEdit extends React.Component {
         <div className="header-container">
           <h1 className="header">{entry && entry.id ? "Edit Entry" : "New Entry"}</h1>
         </div>
-        <Form name="entryForm" horizontal onSubmit={handleSubmit(this.formSubmit)}>
+        <Form name="entryForm" onSubmit={handleSubmit(this.formSubmit)}>
           <Field
             component={FormField}
             name="situation"
@@ -270,6 +272,7 @@ EntryEdit.propTypes = {
   cancel: PropTypes.bool,
   error: PropTypes.bool,
   pristine: PropTypes.bool,
+  resetCancel: PropTypes.func,
   submitting: PropTypes.bool,
   handleSubmit: PropTypes.func,
   invalid: PropTypes.bool,

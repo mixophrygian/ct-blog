@@ -32,6 +32,7 @@ export class App extends React.Component {
     this.getProfile = this.getProfile.bind(this);
     this.getEntry = this.getEntry.bind(this);
     this.cancelEntry = this.cancelEntry.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   componentWillMount() {
@@ -83,8 +84,13 @@ export class App extends React.Component {
     this.setState({ cancel: true });
   }
 
+  reset() {
+    this.setState({ cancel: false });
+  }
+
   render() {
     const { isLoading, cancel } = this.state;
+    const { reset } = this;
     if (isLoading) {
       return <Loader />;
     }
@@ -156,7 +162,15 @@ export class App extends React.Component {
               render={props => {
                 if (!this.props.entries.length) return <Loader />;
                 const entry = this.getEntry(props.match.params.id);
-                return <EntryEdit cancel={cancel} entry={entry} {...this.props} {...props} />;
+                return (
+                  <EntryEdit
+                    cancel={cancel}
+                    entry={entry}
+                    resetCancel={reset}
+                    {...this.props}
+                    {...props}
+                  />
+                );
               }}
             />
             <Route path="/about" component={About} />
