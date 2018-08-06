@@ -1,3 +1,6 @@
+import { withRouter } from "react-router";
+export default withRouter;
+
 export const formatDate = date => {
   const workingDate = new Date(date);
   const month = workingDate.getMonth() + 1;

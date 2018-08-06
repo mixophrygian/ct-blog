@@ -1,10 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import { Field, SubmissionError, reduxForm, isPristine } from "redux-form";
-import { Form } from "react-bootstrap";
+import { Form, Field, SubmissionError, reduxForm, isPristine } from "redux-form";
 import FormField from "./common/FormField";
-import FormSubmit from "./common/FormSubmit";
 import AreYouSurePrompt from "./common/AreYouSurePrompt";
 import { mySQLDate } from "../utils/utils.js";
 
@@ -36,6 +34,10 @@ export class EntryEdit extends React.Component {
     }
   }
 
+  componentWillReceiveProps(props) {
+    if (props.cancel) this.cancelEntry();
+  }
+
   setPreviouslyChecked(name) {
     const node = document.getElementsByName(name)[0];
     node.checked = true;
@@ -47,6 +49,7 @@ export class EntryEdit extends React.Component {
   }
 
   hideCancelModal() {
+    this.props.resetCancel();
     this.setState({ shouldShowCancelModel: false });
   }
 
@@ -74,6 +77,7 @@ export class EntryEdit extends React.Component {
   }
 
   actuallyCancel() {
+    this.props.resetCancel();
     this.props.history.goBack();
   }
 
@@ -120,14 +124,13 @@ export class EntryEdit extends React.Component {
   }
 
   render() {
-    const { entry, error, handleSubmit, invalid, submitting } = this.props;
+    const { entry, handleSubmit } = this.props;
     return (
       <div className="page-entry-edit page">
         <div className="header-container">
           <h1 className="header">{entry && entry.id ? "Edit Entry" : "New Entry"}</h1>
-          <button onClick={this.cancelEntry}>cancel</button>
         </div>
-        <Form name="entryForm" horizontal onSubmit={handleSubmit(this.formSubmit)}>
+        <Form name="entryForm" onSubmit={handleSubmit(this.formSubmit)}>
           <Field
             component={FormField}
             name="situation"
@@ -250,13 +253,6 @@ export class EntryEdit extends React.Component {
             label="Rational Response"
             placeholder="A rational response to these distortions"
           />
-          <FormSubmit
-            error={error}
-            invalid={invalid}
-            submitting={submitting}
-            buttonSaveLoading="Saving..."
-            buttonSave="Save Entry"
-          />
         </Form>
         <AreYouSurePrompt
           show={this.state.shouldShowCancelModel}
@@ -273,8 +269,10 @@ EntryEdit.propTypes = {
   entry: PropTypes.object,
   history: PropTypes.object,
   dispatch: PropTypes.func,
+  cancel: PropTypes.bool,
   error: PropTypes.bool,
   pristine: PropTypes.bool,
+  resetCancel: PropTypes.func,
   submitting: PropTypes.bool,
   handleSubmit: PropTypes.func,
   invalid: PropTypes.bool,

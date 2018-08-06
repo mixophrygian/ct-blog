@@ -31,6 +31,8 @@ export class App extends React.Component {
     this.logout = this.logout.bind(this);
     this.getProfile = this.getProfile.bind(this);
     this.getEntry = this.getEntry.bind(this);
+    this.cancelEntry = this.cancelEntry.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   componentWillMount() {
@@ -47,7 +49,7 @@ export class App extends React.Component {
   }
 
   async componentDidMount() {
-    this.setState({ isLoading: false });
+    this.setState({ isLoading: false, cancel: false });
   }
 
   async getProfile() {
@@ -78,8 +80,17 @@ export class App extends React.Component {
     return this.props.entries.find(entry => entry.id == matchParamsId);
   }
 
+  cancelEntry() {
+    this.setState({ cancel: true });
+  }
+
+  reset() {
+    this.setState({ cancel: false });
+  }
+
   render() {
-    const { isLoading } = this.state;
+    const { isLoading, cancel } = this.state;
+    const { reset } = this;
     if (isLoading) {
       return <Loader />;
     }
@@ -98,6 +109,8 @@ export class App extends React.Component {
         backgroundColor: "white",
       },
     };
+
+    const isEditing = this.props.history.location.pathname.includes("/entry-edit");
 
     const sidebarContent = (
       <div style={styles.content}>
@@ -118,12 +131,20 @@ export class App extends React.Component {
 
     return (
       <div className="mainWrapper">
-        <BurgerMenu isOpen={this.state.sidebarOpen} width={"45vw"}>
-          {sidebarContent}
-        </BurgerMenu>
+        {!isEditing && (
+          <BurgerMenu isOpen={this.state.sidebarOpen} width={"45vw"}>
+            {sidebarContent}
+          </BurgerMenu>
+        )}
         <div className="container">
           <div>
-            <Menu login={this.login} logout={this.logout} profile={this.props.profile} />
+            <Menu
+              login={this.login}
+              isEditing={isEditing}
+              logout={this.logout}
+              profile={this.props.profile}
+              cancel={this.cancelEntry}
+            />
           </div>
           <Switch>
             <Route exact path="/" render={props => <Home {...props} />} />
@@ -135,13 +156,25 @@ export class App extends React.Component {
                 return <EntryView entry={entry} {...this.props} {...props} />;
               }}
             />
-            <Route exact path="/entry-edit" render={props => <EntryEdit {...props} />} />
+            <Route
+              exact
+              path="/entry-edit"
+              render={props => <EntryEdit cancel={cancel} resetCancel={reset} {...props} />}
+            />
             <Route
               path="/entry-edit/:id"
               render={props => {
                 if (!this.props.entries.length) return <Loader />;
                 const entry = this.getEntry(props.match.params.id);
-                return <EntryEdit {...this.props} {...props} entry={entry} />;
+                return (
+                  <EntryEdit
+                    cancel={cancel}
+                    entry={entry}
+                    resetCancel={reset}
+                    {...this.props}
+                    {...props}
+                  />
+                );
               }}
             />
             <Route path="/about" component={About} />
