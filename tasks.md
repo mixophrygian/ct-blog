@@ -1,4 +1,7 @@
 #Project Roadmap
+8/5: 
+  -Finish implementing zeplin designs! - Either new entry or home page ( probably home page, right?)
+  
 6/17:
   -reconsider the security of a user accessing the db with the access_token and their username.  Should there be an additional piece of meta-data that includes their database id?
   
