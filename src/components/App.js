@@ -156,7 +156,11 @@ export class App extends React.Component {
                 return <EntryView entry={entry} {...this.props} {...props} />;
               }}
             />
-            <Route exact path="/entry-edit" render={props => <EntryEdit {...props} />} />
+            <Route
+              exact
+              path="/entry-edit"
+              render={props => <EntryEdit cancel={cancel} resetCancel={reset} {...props} />}
+            />
             <Route
               path="/entry-edit/:id"
               render={props => {
