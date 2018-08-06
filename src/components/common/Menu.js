@@ -7,6 +7,7 @@ import { submit } from "redux-form";
 
 class Menu extends React.Component {
   render() {
+    const { isEditing, profile, login, logout } = this.props;
     const loginLogout = profile ? (
       <div className="logOut">
         <Button className="btn-margin logoutButton" onClick={logout}>
@@ -47,7 +48,6 @@ class Menu extends React.Component {
       );
     };
 
-    const { profile, login, logout, isEditing } = this.props;
     return (
       <div>
         <Navbar className="navbar-fixed-top customNav">

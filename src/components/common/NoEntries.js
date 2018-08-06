@@ -14,7 +14,7 @@ export default class NoEntries extends React.Component {
         <p className="quote">
           Ideally this section will contain some kind of introduction or high level summary of this
           if you didn't fully understand the onboarding flow. Ultimately it should funnel you into
-          either an explanation or a new entry. Last updated 7/10 9:48pm PST
+          either an explanation or a new entry. Last updated 8/05 8:58pm PST
         </p>
         <br />
         <Link className="whatIsThis" to={"/about"}>
