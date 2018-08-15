@@ -1,4 +1,11 @@
 #Project Roadmap
+8/14: 
+  -did the are you sure modal styling
+  -pick another design thing to do that's not done!
+    -home page
+    -entry view
+    -entry edit
+    
 8/5: 
   -Finish implementing zeplin designs! - Either new entry or home page ( probably home page, right?)
   
