@@ -1,0 +1,19 @@
+@import "colors";
+
+.u-sure-container {
+  width: 50%;
+  margin: 0 auto;
+  min-width: 250px;
+  background-color: lilac;
+}
+
+.modal-footer {
+  display: flex;
+  padding: 10px;
+  justify-content: space-around;
+}
+
+.modal-footer::before,
+.modal-footer::after {
+  display: none;
+}
