@@ -8,13 +8,13 @@ export default class AreYouSurePrompt extends React.Component {
   render() {
     const { show, hidePrompt, confirmAction, text } = this.props;
     return (
-      <Modal show={show}>
+      <Modal className="u-sure-container" show={show}>
         <Modal.Header>
           <Modal.Title>{text}</Modal.Title>
         </Modal.Header>
         <Modal.Footer>
           <Button onClick={hidePrompt}>No</Button>
-          <Button bsStyle="primary" onClick={confirmAction}>
+          <Button className="new-entry-button" onClick={confirmAction}>
             Yes
           </Button>
         </Modal.Footer>
