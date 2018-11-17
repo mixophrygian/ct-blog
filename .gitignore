@@ -1,6 +1,7 @@
 .idea/
 node_modules/
 .DS_Store
+public/
 public/js/
 public/css/
 .log
