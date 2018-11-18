@@ -5,6 +5,7 @@ const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = require("./webpack.config.js"); // inherit from the main config file
 
+module.exports.mode = "production";
 // disable the hot reload
 module.exports.entry = ["babel-polyfill", "./src/index.js"];
 

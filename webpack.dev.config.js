@@ -5,6 +5,8 @@ const UglifyWebpackPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = require("./webpack.config.js"); // inherit from the main config file
 
+module.exports.mode = "development";
+
 // disable the hot reload
 module.exports.entry = ["babel-polyfill", "./src/index.js"];
 

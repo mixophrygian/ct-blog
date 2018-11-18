@@ -14,6 +14,7 @@ const paths = {
 const extractSass = new ExtractTextPlugin("css/main.css");
 
 module.exports = {
+  mode: "development",
   target: "web",
   entry: path.join(paths.JS, "index.js"),
   output: {
