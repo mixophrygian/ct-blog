@@ -1,6 +1,5 @@
 const webpack = require("webpack"); /* eslint no-unused-vars: 0 */
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const UglifyWebpackPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = require("./webpack.config.js"); // inherit from the main config file
@@ -15,17 +14,10 @@ module.exports.plugins.push(
     verbose: true,
     dry: false, // true for simulation
   }),
-  new webpack.optimize.UglifyJsPlugin({
-    minimize: true,
-    compress: {
-      warnings: false,
-    },
-  }),
   new OptimizeCssAssetsPlugin({
     assetNameRegExp: /\.optimize\.css$/g,
     cssProcessor: require("cssnano"),
     cssProcessorOptions: { discardComments: { removeAll: true } },
     canPrint: true,
-  }),
-  new UglifyWebpackPlugin()
+  })
 );

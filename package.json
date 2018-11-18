@@ -97,7 +97,6 @@
     "sass-loader": "^6.0.6",
     "sinon": "2.3.2",
     "style-loader": "0.13.1",
-    "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "0.5.8",
     "webpack": "^4.8.2",
     "webpack-bundle-analyzer": "^2.12.0",
