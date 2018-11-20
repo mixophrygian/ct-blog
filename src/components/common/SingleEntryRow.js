@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Button, Glyphicon } from "react-bootstrap";
 import { formatDate } from "../../utils/utils";
 
 // User List Element component
@@ -8,6 +7,7 @@ export default class SingleEntryRow extends React.Component {
   constructor(props) {
     super(props);
     this.viewEntry = this.viewEntry.bind(this);
+    this.renderDistortionLabels = this.renderDistortionLabels.bind(this);
   }
 
   viewEntry(e) {
@@ -18,32 +18,29 @@ export default class SingleEntryRow extends React.Component {
     }
   }
 
+  renderDistortionLabels(list) {
+    if (!list) return;
+    return (
+      <div className="distortionLabelContainer">
+        {list.map(label => <div className={`${label} distortionLabel`}>{label}</div>)}
+      </div>
+    );
+  }
+
   render() {
-    const { entry, showDelete } = this.props;
+    const { entry } = this.props;
     const date = formatDate(entry.date);
 
     return (
-      <tr data-id={entry.id} onClick={this.viewEntry}>
-        <td className="entryDate">
-          <div>{date}</div>
-        </td>
-        <td className="entryTitle">
-          <div>{entry.situation}</div>
-
-          <div className="buttonWrapper">
-            <Button
-              bsSize="xsmall"
-              className="glyphbutton entry-delete"
-              onClick={() => showDelete(entry)}
-            >
-              <Glyphicon glyph="remove-circle" />
-            </Button>
-          </div>
-        </td>
-      </tr>
+      <div className="tableRow " data-id={entry.id} onClick={this.viewEntry}>
+        <div className="entryDate">{date}</div>
+        <div className="entryTitle">{entry.situation}</div>
+        {this.renderDistortionLabels(entry.cognitiveDistortions)}
+      </div>
     );
   }
 }
+/* <a href="">more</a> */
 
 // prop checks
 SingleEntryRow.propTypes = {

@@ -11,39 +11,34 @@
 
   div:first-child {
     max-width: 100%;
-    flex: 1;
   }
 
   .EntryList .Table {
-    height: 54vh;
     border-bottom: 0;
     border-left: 0;
     border-right: 0;
 
-    tr {
+    .tableRow {
       display: flex;
-      height: 9vh;
+      flex-direction: column;
+      margin-bottom: 3vh;
     }
     .entryDate,
     .entryTitle {
-      flex: 4;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid lightgray;
       border-top: 0;
-      height: 9vh;
 
       div {
-        display: block;
+        height: 100%;
         justify-content: flex-start;
-        flex: 3;
-        white-space: nowrap;
         text-overflow: ellipsis;
-        width: 0px;
+        max-width: 85%;
         overflow: hidden;
 
         a {
+          display: block;
           z-index: 2;
         }
       }
@@ -67,8 +62,15 @@
         }
       }
     }
+    .entryTitle {
+      flex: 3;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     .entryDate {
-      flex: 2;
+      flex: 1;
+      color: gray;
     }
   }
 }
@@ -104,6 +106,10 @@
       .entryDate,
       .entryTitle {
         padding-left: 30px;
+      }
+
+      .entryDate {
+        color: black;
       }
     }
   }
