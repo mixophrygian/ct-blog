@@ -5,7 +5,7 @@
   flex-direction: column;
 
   h2 {
-    margin-bottom: 4vw;
+    margin-bottom: 3rem;
     margin-top: 1vw;
   }
 
@@ -21,7 +21,7 @@
     .tableRow {
       display: flex;
       flex-direction: column;
-      margin-bottom: 3vh;
+      margin-bottom: 4vh;
     }
     .entryDate,
     .entryTitle {
@@ -71,6 +71,7 @@
     .entryDate {
       flex: 1;
       color: gray;
+      margin-bottom: 1rem;
     }
   }
 }
@@ -78,6 +79,19 @@
 .rc-pagination {
   display: flex;
   justify-content: flex-end;
+}
+
+.distortionLabelContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.distortionLabel {
+  font-family: "Futura";
+  border-radius: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+  padding: 1vw 1.5vw;
 }
 
 @media only screen and (min-width: 768px) {

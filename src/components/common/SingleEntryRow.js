@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { formatDate } from "../../utils/utils";
+import { formatDate, displayLabel } from "../../utils/utils";
 
 // User List Element component
 export default class SingleEntryRow extends React.Component {
@@ -22,7 +22,7 @@ export default class SingleEntryRow extends React.Component {
     if (!list) return;
     return (
       <div className="distortionLabelContainer">
-        {list.map(label => <div className={`${label} distortionLabel`}>{label}</div>)}
+        {list.map(label => <div className={`${label} distortionLabel`}>{displayLabel(label)}</div>)}
       </div>
     );
   }
