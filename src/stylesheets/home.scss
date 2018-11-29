@@ -1,3 +1,5 @@
+@import "colors";
+
 //page-home
 
 .page-home {
@@ -42,25 +44,12 @@
           z-index: 2;
         }
       }
-
-      .buttonWrapper {
-        display: flex;
-        justify-content: flex-end;
-        flex: 1;
-
-        button {
-          background: #eee;
-          color: #999;
-          border-color: lightgray;
-          vertical-align: center;
-          display: flex;
-
-          span {
-            top: 0;
-            padding: 3px 1px;
-          }
-        }
-      }
+    }
+    .moreLink {
+      color: $skyblue;
+      font-weight: bold;
+      border: none;
+      background: transparent;
     }
     .entryTitle {
       flex: 3;
@@ -72,6 +61,8 @@
       flex: 1;
       color: gray;
       margin-bottom: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
   }
 }
