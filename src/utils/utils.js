@@ -20,3 +20,20 @@ export const UUID = () => {
     return v.toString(16);
   });
 };
+
+const labelMap = {
+  allOrNothingThinking: "All or Nothing",
+  overgeneralization: "Overgeneralization",
+  mentalFilter: "Mental Filter",
+  discountingThePositive: "Discounting Positives",
+  jumpingToConclusions: "Jumping To Conclusions",
+  magnifyingOrMinifying: "Magnifying/Minifying",
+  emotionalReasoning: "Emotional Reasoning",
+  shouldStatements: "Should Statements",
+  labeling: "Labeling",
+  personalizationAndBlame: "Personalization",
+};
+
+export const displayLabel = label => {
+  return labelMap[label];
+};

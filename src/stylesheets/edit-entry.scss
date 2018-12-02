@@ -47,10 +47,12 @@ button {
 }
 .distortions-container {
   margin: 0 -15px 15px -15px;
+  font-family: "Futura";
 }
 
 .choice,
 .choice-active {
+  font-family: "Futura";
   opacity: 0.5;
   width: 100%;
   max-width: 100%;
@@ -58,7 +60,6 @@ button {
   border: none;
   border-radius: 4px;
   color: #333;
-  font-family: "Futura";
   letter-spacing: 2px;
   margin-bottom: 8px;
   outline: none;

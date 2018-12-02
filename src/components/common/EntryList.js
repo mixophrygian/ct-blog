@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
 import { push } from "react-router-redux";
-import { Table } from "react-bootstrap";
 import Pagination from "rc-pagination";
 import "rc-pagination/assets/index.css";
 import SingleEntryRow from "./SingleEntryRow";
@@ -63,29 +62,27 @@ export class EntryList extends React.Component {
   render() {
     const { entries, showInheritEntriesPrompt } = this.props;
     const { currentPage } = this.state;
-    const PER_PAGE = 6;
+    const PER_PAGE = 3;
     const startOffset = (currentPage - 1) * PER_PAGE;
     let startCount = 0;
     const savedEntries = entries.length ? (
       <div>
-        <Table bordered hover striped className="Table">
-          <tbody>
-            {entries.map((entry, index) => {
-              if (index >= startOffset && startCount < PER_PAGE) {
-                startCount++;
-                return (
-                  <SingleEntryRow
-                    history={this.props.history}
-                    key={index}
-                    entry={entry}
-                    showDelete={this.showDelete}
-                    className="SingleEntryRow"
-                  />
-                );
-              }
-            })}
-          </tbody>
-        </Table>
+        <div className="Table">
+          {entries.map((entry, index) => {
+            if (index >= startOffset && startCount < PER_PAGE) {
+              startCount++;
+              return (
+                <SingleEntryRow
+                  history={this.props.history}
+                  key={index}
+                  entry={entry}
+                  showDelete={this.showDelete}
+                  className="SingleEntryRow"
+                />
+              );
+            }
+          })}
+        </div>
       </div>
     ) : (
       <NoEntries history={this.props.history} className="SingleEntryRow" />

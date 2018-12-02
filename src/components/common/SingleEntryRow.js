@@ -1,13 +1,14 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Button, Glyphicon } from "react-bootstrap";
-import { formatDate } from "../../utils/utils";
+import { formatDate, displayLabel } from "../../utils/utils";
 
 // User List Element component
 export default class SingleEntryRow extends React.Component {
   constructor(props) {
     super(props);
     this.viewEntry = this.viewEntry.bind(this);
+    this.renderDistortionLabels = this.renderDistortionLabels.bind(this);
+    this.truncateAndAddMoreLink = this.truncateAndAddMoreLink.bind(this);
   }
 
   viewEntry(e) {
@@ -18,32 +19,47 @@ export default class SingleEntryRow extends React.Component {
     }
   }
 
-  render() {
-    const { entry, showDelete } = this.props;
-    const date = formatDate(entry.date);
-
+  renderDistortionLabels(list) {
+    if (!list) return;
     return (
-      <tr data-id={entry.id} onClick={this.viewEntry}>
-        <td className="entryDate">
-          <div>{date}</div>
-        </td>
-        <td className="entryTitle">
-          <div>{entry.situation}</div>
-
-          <div className="buttonWrapper">
-            <Button
-              bsSize="xsmall"
-              className="glyphbutton entry-delete"
-              onClick={() => showDelete(entry)}
-            >
-              <Glyphicon glyph="remove-circle" />
-            </Button>
+      <div className="distortionLabelContainer">
+        {list.map(label => (
+          <div key={label} className={`${label} distortionLabel`}>
+            {displayLabel(label)}
           </div>
-        </td>
-      </tr>
+        ))}
+      </div>
+    );
+  }
+
+  truncateAndAddMoreLink(text) {
+    if (text.length > 210) {
+      const truncatedText = text.substring(0, 210) + "...";
+      return (
+        <span>
+          {truncatedText}
+          <button className="moreLink" onClick={this.viewEntry}>
+            more
+          </button>
+        </span>
+      );
+    }
+    return <span>{text}</span>;
+  }
+
+  render() {
+    const { entry } = this.props;
+    const date = formatDate(entry.date);
+    return (
+      <div className="tableRow " data-id={entry.id} onClick={this.viewEntry}>
+        <div className="entryDate">{date}</div>
+        <div className="entryTitle">{this.truncateAndAddMoreLink(entry.situation)}</div>
+        {this.renderDistortionLabels(entry.cognitiveDistortions)}
+      </div>
     );
   }
 }
+/* <a href="">more</a> */
 
 // prop checks
 SingleEntryRow.propTypes = {
