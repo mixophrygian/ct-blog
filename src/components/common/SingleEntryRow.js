@@ -44,6 +44,7 @@ export default class SingleEntryRow extends React.Component {
         </span>
       );
     }
+    return <span>{text}</span>;
   }
 
   render() {
