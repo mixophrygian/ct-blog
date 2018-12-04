@@ -2,8 +2,9 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Button, div, NavItem, Glyphicon } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { formatDate } from "../utils/utils";
+import checkMark from "./icons/checkmark.svg";
 import AreYouSurePrompt from "./common/AreYouSurePrompt";
+import { labelTitle, labelDescription, formatDate } from "../utils/utils";
 
 export class EntryView extends React.Component {
   constructor(props) {
@@ -15,7 +16,6 @@ export class EntryView extends React.Component {
     this.hideDelete = this.hideDelete.bind(this);
     this.entryDelete = this.entryDelete.bind(this);
     this.renderDistortions = this.renderDistortions.bind(this);
-    this.prettyLabel = this.prettyLabel.bind(this);
   }
 
   componentWillMount() {
@@ -54,10 +54,10 @@ export class EntryView extends React.Component {
           <p>{entry.emotionalResponse || ""}</p>
         </div>
         <div>
-          <div className="header">Automatic Thoughts</div>
+          <div className="header">Initial Thoughts</div>
           <p>{entry.automaticThoughts || ""}</p>
         </div>
-        <div className="header">Cognitive Distortions</div>
+        <div className="header distortionsHeader">Distortions</div>
         <div className="distortions-container">{distortions}</div>
         <br />
         <div>
@@ -79,31 +79,18 @@ export class EntryView extends React.Component {
     );
   }
 
-  prettyLabel(name) {
-    const list = {
-      allOrNothingThinking: "All-or-Nothing Thinking",
-      overgeneralization: "Overgeneralization",
-      mentalFilter: "Mental Filter",
-      discountingThePositive: "Discounting The Positives",
-      jumpingToConclusions: "Jumping to Conclusions",
-      magnifyingOrMinifying: "Magnifying Or Minifying",
-      emotionalReasoning: "Emotional Reasoning",
-      shouldStatements: "'Should' Statements",
-      labeling: "Labeling",
-      personalizationAndBlame: "Personalization and Blame",
-    };
-    return list[name];
-  }
-
   renderDistortions(distortionsList) {
     if (!distortionsList || distortionsList.length === 0 || typeof distortionsList === "string")
       return distortionsList;
     const returnNodes = distortionsList.map((distortion, index) => {
-      const classes = `distortionsView ${distortion}`;
       return (
-        <p className={classes} key={index}>
-          {this.prettyLabel(distortion)}
-        </p>
+        <div className="distortionsView" key={index}>
+          <img src={checkMark} />
+          <div className="textContainer">
+            <div className="labelTitle">{labelTitle(distortion)}</div>
+            <div className="labelDescription">{labelDescription(distortion)}</div>
+          </div>
+        </div>
       );
     });
     return returnNodes;
