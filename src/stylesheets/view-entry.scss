@@ -8,11 +8,17 @@
   .date {
     display: flex;
     align-items: center;
+    color: gray;
   }
   .header {
+    font-weight: bold;
+    color: black;
     justify-content: space-between;
     margin-bottom: 20px;
     padding-left: 3px;
+  }
+  p {
+    margin-bottom: 20px;
   }
   .home-button,
   .delete-button,
