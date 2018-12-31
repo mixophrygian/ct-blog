@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Button, div, NavItem, Glyphicon } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+import { Button } from "react-bootstrap";
 import checkMark from "./icons/checkmark.svg";
 import AreYouSurePrompt from "./common/AreYouSurePrompt";
 import { labelTitle, labelDescription, formatDate } from "../utils/utils";
@@ -33,12 +32,6 @@ export class EntryView extends React.Component {
       <div className="page-entry-view page">
         <div className="date">{formatDate(entry.date)}</div>
         <h3 className="header">Thought</h3>
-        <LinkContainer role="button" className="btn edit-button" to={`/entry-edit/${entry.id}`}>
-          <NavItem>
-            <span>Edit</span> <Glyphicon glyph="edit" />
-          </NavItem>
-        </LinkContainer>
-
         <div>
           <div className="header">Situation</div>
           <p>{entry.situation}</p>

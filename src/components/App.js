@@ -112,8 +112,10 @@ export class App extends React.Component {
       },
     };
 
-    const isEditing = this.props.history.location.pathname.includes("/entry-edit");
-    const isViewingEntry = this.props.history.location.pathname.includes("/entry/") && !isEditing;
+    const path = this.props.history.location.pathname.split("/");
+    const entryID = path[2];
+    const isEditing = path[1].includes("entry-edit");
+    const isViewingEntry = path[1].includes("entry") && !isEditing;
 
     const sidebarContent = (
       <div style={styles.content}>
@@ -150,8 +152,10 @@ export class App extends React.Component {
             <Menu
               login={this.login}
               isEditing={isEditing}
+              isViewingEntry={isViewingEntry}
               logout={this.logout}
               profile={this.props.profile}
+              entryID={entryID}
               cancel={this.cancelEntry}
             />
           </div>

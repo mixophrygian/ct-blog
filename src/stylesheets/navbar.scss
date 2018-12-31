@@ -76,12 +76,14 @@ ul.nav::after {
   color: #555;
 }
 
+.editButton,
 .new-entry-button {
   display: flex;
   padding: 6px;
   padding-left: 20px;
   padding-right: 20px;
   color: white;
+  letter-spacing: 1px;
   background-color: $lightred;
   justify-content: center;
   align-content: center;
@@ -102,8 +104,15 @@ ul.nav::after {
   }
 }
 
+.editButton,
 .new-entry-button:active {
   background-color: lightgray;
+}
+
+.editButton {
+  background-color: $grayishBlue;
+  opacity: 0.5;
+  border-color: $grayishBlue;
 }
 
 @media only screen and (max-width: 320px) {
