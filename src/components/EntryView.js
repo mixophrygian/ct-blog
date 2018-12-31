@@ -33,12 +33,6 @@ export class EntryView extends React.Component {
       <div className="page-entry-view page">
         <div className="date">{formatDate(entry.date)}</div>
         <h3 className="header">Thought</h3>
-        <LinkContainer role="button" activeClassName="" className="btn home-button" to={"/"}>
-          <NavItem>
-            <span>Home</span> <Glyphicon glyph="home" />
-          </NavItem>
-        </LinkContainer>
-
         <LinkContainer role="button" className="btn edit-button" to={`/entry-edit/${entry.id}`}>
           <NavItem>
             <span>Edit</span> <Glyphicon glyph="edit" />
