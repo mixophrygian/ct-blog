@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Route, Link, Switch } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 import { connect } from "react-redux";
 import localforage from "localforage";
 import Auth from "../api/Auth.js";
@@ -8,6 +9,7 @@ import Auth from "../api/Auth.js";
 import Loader from "./common/Loader";
 import Menu from "./common/Menu";
 import { slide as BurgerMenu } from "react-burger-menu";
+import back from "./icons/back.svg";
 import About from "./About";
 import Distortions from "./Distortions";
 import FAQ from "./FAQ";
@@ -110,7 +112,10 @@ export class App extends React.Component {
       },
     };
 
-    const isEditing = this.props.history.location.pathname.includes("/entry-edit");
+    const path = this.props.history.location.pathname.split("/");
+    const entryID = path[2];
+    const isEditing = path[1].includes("entry-edit");
+    const isViewingEntry = path[1].includes("entry") && !isEditing;
 
     const sidebarContent = (
       <div style={styles.content}>
@@ -131,18 +136,26 @@ export class App extends React.Component {
 
     return (
       <div className="mainWrapper">
-        {!isEditing && (
-          <BurgerMenu isOpen={this.state.sidebarOpen} width={"45vw"}>
-            {sidebarContent}
-          </BurgerMenu>
+        {!isEditing &&
+          !isViewingEntry && (
+            <BurgerMenu isOpen={this.state.sidebarOpen} width={"45vw"}>
+              {sidebarContent}
+            </BurgerMenu>
+          )}
+        {isViewingEntry && (
+          <LinkContainer role="button" className="back-arrow" to={"/"}>
+            <img src={back} />
+          </LinkContainer>
         )}
         <div className="container">
           <div>
             <Menu
               login={this.login}
               isEditing={isEditing}
+              isViewingEntry={isViewingEntry}
               logout={this.logout}
               profile={this.props.profile}
+              entryID={entryID}
               cancel={this.cancelEntry}
             />
           </div>

@@ -18,7 +18,7 @@ html {
 }
 body {
   height: 100%;
-  font-family: "Varela", sans-serif;
+  font-family: "Futura", sans-serif;
   background-color: $backGround;
 }
 
@@ -33,6 +33,12 @@ div:focus {
 }
 
 h2 {
+  font-weight: bold;
+}
+
+.header {
+  font-family: "futura";
+  letter-spacing: 0.2px;
   font-weight: bold;
 }
 

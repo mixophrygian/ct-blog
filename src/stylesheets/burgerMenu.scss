@@ -1,4 +1,5 @@
 /* Position and sizing of burger button */
+.back-arrow,
 .bm-burger-button {
   position: fixed;
   width: 25px;
@@ -7,10 +8,13 @@
   top: 3vh;
 }
 
+.back-arrow {
+  z-index: 1000;
+}
+
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
   background: $warmGray;
-  border-top: 2px solid $backGround;
 }
 
 /* Position and sizing of clickable cross button */

@@ -7,7 +7,7 @@ import { submit } from "redux-form";
 
 class Menu extends React.Component {
   render() {
-    const { isEditing, profile, login, logout } = this.props;
+    const { isEditing, isViewingEntry, entryID, profile, login, logout } = this.props;
     const loginLogout = profile ? (
       <div className="logOut">
         <Button className="btn-margin logoutButton" onClick={logout}>
@@ -34,11 +34,16 @@ class Menu extends React.Component {
       );
     };
 
+    const edit = () => {
+      return (
+        <LinkContainer className="editButton" to={`/entry-edit/${entryID}`}>
+          <div role="button">Edit</div>
+        </LinkContainer>
+      );
+    };
+
     const save = () => {
       return (
-        // <LinkContainer className="new-entry-button" to="/entry-edit">
-        //   <div role="button">Save</div>
-        // </LinkContainer>
         <Button
           className="new-entry-button"
           onClick={() => this.props.dispatch(submit("entryEdit"))}
@@ -53,11 +58,12 @@ class Menu extends React.Component {
         <Navbar className="navbar-fixed-top customNav">
           <Nav bsStyle="pills">
             <NavItem className="loginButton">
-              {!isEditing && loginLogout}
+              {!isEditing && !isViewingEntry && loginLogout}
               {isEditing && cancel()}
             </NavItem>
             <NavItem>
-              {!isEditing && newEntry()}
+              {!isEditing && !isViewingEntry && newEntry()}
+              {isViewingEntry && edit()}
               {isEditing && save()}
             </NavItem>
           </Nav>
@@ -72,7 +78,10 @@ Menu.propTypes = {
   logout: PropTypes.func.isRequired,
   profile: PropTypes.any,
   isEditing: PropTypes.bool,
+  isViewingEntry: PropTypes.bool,
+  isEditingEntry: PropTypes.bool,
   cancel: PropTypes.func,
+  entryID: PropTypes.string,
   dispatch: PropTypes.func,
 };
 

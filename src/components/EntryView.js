@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Button, Panel, NavItem, Glyphicon } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import { formatDate } from "../utils/utils";
+import { Button } from "react-bootstrap";
+import checkMark from "./icons/checkmark.svg";
 import AreYouSurePrompt from "./common/AreYouSurePrompt";
+import { labelTitle, labelDescription, formatDate } from "../utils/utils";
 
 export class EntryView extends React.Component {
   constructor(props) {
@@ -15,7 +15,6 @@ export class EntryView extends React.Component {
     this.hideDelete = this.hideDelete.bind(this);
     this.entryDelete = this.entryDelete.bind(this);
     this.renderDistortions = this.renderDistortions.bind(this);
-    this.prettyLabel = this.prettyLabel.bind(this);
   }
 
   componentWillMount() {
@@ -31,41 +30,27 @@ export class EntryView extends React.Component {
     const distortions = this.renderDistortions(entry.cognitiveDistortions);
     return (
       <div className="page-entry-view page">
-        <div className="header">
-          <div className="date">{formatDate(entry.date)}</div>
-
-          <LinkContainer role="button" activeClassName="" className="btn home-button" to={"/"}>
-            <NavItem>
-              <span>Home</span> <Glyphicon glyph="home" />
-            </NavItem>
-          </LinkContainer>
-
-          <LinkContainer role="button" className="btn edit-button" to={`/entry-edit/${entry.id}`}>
-            <NavItem>
-              <span>Edit</span> <Glyphicon glyph="edit" />
-            </NavItem>
-          </LinkContainer>
+        <div className="date">{formatDate(entry.date)}</div>
+        <h3 className="header">Thought</h3>
+        <div>
+          <div className="header">Situation</div>
+          <p>{entry.situation}</p>
         </div>
-
-        <Panel>
-          <Panel.Heading>Situation</Panel.Heading>
-          <Panel.Body>{entry.situation}</Panel.Body>
-        </Panel>
-        <Panel>
-          <Panel.Heading>Emotional Response</Panel.Heading>
-          <Panel.Body>{entry.emotionalResponse || ""}</Panel.Body>
-        </Panel>
-        <Panel>
-          <Panel.Heading>Automatic Thoughts</Panel.Heading>
-          <Panel.Body>{entry.automaticThoughts || ""}</Panel.Body>
-        </Panel>
-        <h4>Cognitive Distortions</h4>
+        <div>
+          <div className="header">Emotional Response</div>
+          <p>{entry.emotionalResponse || ""}</p>
+        </div>
+        <div>
+          <div className="header">Initial Thoughts</div>
+          <p>{entry.automaticThoughts || ""}</p>
+        </div>
+        <div className="header distortionsHeader">Distortions</div>
         <div className="distortions-container">{distortions}</div>
         <br />
-        <Panel>
-          <Panel.Heading>Rational Response</Panel.Heading>
-          <Panel.Body>{entry.rationalResponse || ""}</Panel.Body>
-        </Panel>
+        <div>
+          <div className="header">Rational Response</div>
+          <p>{entry.rationalResponse || ""}</p>
+        </div>
         <div className="delete-container">
           <Button className="btn delete-button" onClick={() => this.showDelete(entry)}>
             Delete Entry
@@ -81,31 +66,18 @@ export class EntryView extends React.Component {
     );
   }
 
-  prettyLabel(name) {
-    const list = {
-      allOrNothingThinking: "All-or-Nothing Thinking",
-      overgeneralization: "Overgeneralization",
-      mentalFilter: "Mental Filter",
-      discountingThePositive: "Discounting The Positives",
-      jumpingToConclusions: "Jumping to Conclusions",
-      magnifyingOrMinifying: "Magnifying Or Minifying",
-      emotionalReasoning: "Emotional Reasoning",
-      shouldStatements: "'Should' Statements",
-      labeling: "Labeling",
-      personalizationAndBlame: "Personalization and Blame",
-    };
-    return list[name];
-  }
-
   renderDistortions(distortionsList) {
     if (!distortionsList || distortionsList.length === 0 || typeof distortionsList === "string")
       return distortionsList;
     const returnNodes = distortionsList.map((distortion, index) => {
-      const classes = `distortionsView ${distortion}`;
       return (
-        <p className={classes} key={index}>
-          {this.prettyLabel(distortion)}
-        </p>
+        <div className="distortionsView" key={index}>
+          <img src={checkMark} />
+          <div className="textContainer">
+            <div className="labelTitle">{labelTitle(distortion)}</div>
+            <div className="labelDescription">{labelDescription(distortion)}</div>
+          </div>
+        </div>
       );
     });
     return returnNodes;

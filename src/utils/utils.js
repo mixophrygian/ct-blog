@@ -21,19 +21,67 @@ export const UUID = () => {
   });
 };
 
-const labelMap = {
-  allOrNothingThinking: "All or Nothing",
-  overgeneralization: "Overgeneralization",
-  mentalFilter: "Mental Filter",
-  discountingThePositive: "Discounting Positives",
-  jumpingToConclusions: "Jumping To Conclusions",
-  magnifyingOrMinifying: "Magnifying/Minifying",
-  emotionalReasoning: "Emotional Reasoning",
-  shouldStatements: "Should Statements",
-  labeling: "Labeling",
-  personalizationAndBlame: "Personalization",
+export const labelMap = {
+  allOrNothingThinking: {
+    title: "All-or-Nothing Thinking",
+    shortTitle: "All or Nothing",
+    description: "A place holder description",
+  },
+  overgeneralization: {
+    title: "Overgeneralization",
+    shortTitle: "Overgeneralization",
+    description: "A place holder description",
+  },
+  mentalFilter: {
+    title: "Mental Filter",
+    shortTitle: "Mental Filter",
+    description: "A place holder description",
+  },
+  discountingThePositive: {
+    title: "Discounting The Positives",
+    shortTitle: "Discounting Positives",
+    description: "A place holder description",
+  },
+  jumpingToConclusions: {
+    title: "Jumping to Conclusions",
+    shortTitle: "Jumping To Conclusions",
+    description: "A place holder description",
+  },
+  magnifyingOrMinifying: {
+    title: "Magnifying Or Minifying",
+    shortTitle: "Magnifying/Minifying",
+    description: "A place holder description",
+  },
+  emotionalReasoning: {
+    title: "Emotional Reasoning",
+    shortTitle: "Emotional Reasoning",
+    description: "A place holder description",
+  },
+  shouldStatements: {
+    title: "'Should' Statements",
+    shortTitle: "Should Statements",
+    description: "A place holder description",
+  },
+  labeling: {
+    title: "Labeling",
+    shortTitle: "Labeling",
+    description: "A place holder description",
+  },
+  personalizationAndBlame: {
+    title: "Personalization and Blame",
+    shortTitle: "Personalization",
+    description: "A place holder description",
+  },
 };
 
-export const displayLabel = label => {
-  return labelMap[label];
+export const shortLabel = label => {
+  return labelMap[label].shortTitle;
+};
+
+export const labelTitle = label => {
+  return labelMap[label].title;
+};
+
+export const labelDescription = label => {
+  return labelMap[label].description;
 };

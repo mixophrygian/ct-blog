@@ -1,4 +1,5 @@
 //page entry view
+@import "./colors.scss";
 
 .page-entry-view {
   display: flex;
@@ -8,11 +9,21 @@
   .date {
     display: flex;
     align-items: center;
+    color: gray;
+    font-size: 14;
   }
   .header {
+    font-weight: bold;
+    color: black;
     justify-content: space-between;
     margin-bottom: 20px;
     padding-left: 3px;
+  }
+  p {
+    margin-bottom: 20px;
+    color: $grayishBlue;
+    font-size: 15px;
+    line-height: 21px;
   }
   .home-button,
   .delete-button,
@@ -29,11 +40,28 @@
     margin: 0;
   }
 
+  .labelTitle {
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  .labelDescription {
+    color: $grayishBlue;
+    font-weight: lighter;
+    font-size: 15px;
+  }
+
   .distortionsView {
+    display: flex;
+    align-items: center;
     margin: 0 0 10px;
-    border-radius: 5px;
-    text-align: center;
     padding: 10px;
+    padding-left: 0;
+    img {
+      width: 3rem;
+      height: 3rem;
+      margin-right: 1rem;
+    }
   }
 
   .delete-container {
