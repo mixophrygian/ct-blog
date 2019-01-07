@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Button } from "react-bootstrap";
-import checkMark from "./icons/checkmark.svg";
+import colors from "../stylesheets/colors.scss";
+import CheckMark from "./icons/checkmark.js";
 import AreYouSurePrompt from "./common/AreYouSurePrompt";
 import { labelTitle, labelDescription, formatDate } from "../utils/utils";
 
@@ -72,7 +73,9 @@ export class EntryView extends React.Component {
     const returnNodes = distortionsList.map((distortion, index) => {
       return (
         <div className="distortionsView" key={index}>
-          <img src={checkMark} />
+          <div className="checkMarkContainer">
+            <CheckMark size={35} fill={colors.warmpurple} />
+          </div>
           <div className="textContainer">
             <div className="labelTitle">{labelTitle(distortion)}</div>
             <div className="labelDescription">{labelDescription(distortion)}</div>

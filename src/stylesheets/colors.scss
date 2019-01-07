@@ -26,3 +26,8 @@ $placeholderText: rgb(144, 164, 174);
 
 $silver: rgb(207, 216, 220);
 $warmGray: rgb(117, 117, 117);
+
+// so JS files can use colors too
+:export {
+  warmpurple: $warmpurple;
+}

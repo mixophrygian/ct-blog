@@ -16,9 +16,14 @@
     font-weight: bold;
     color: black;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     padding-left: 3px;
   }
+
+  .distortionsHeader {
+    margin-bottom: 10px;
+  }
+
   p {
     margin-bottom: 20px;
     color: $grayishBlue;
@@ -57,11 +62,12 @@
     margin: 0 0 10px;
     padding: 10px;
     padding-left: 0;
-    img {
-      width: 3rem;
-      height: 3rem;
-      margin-right: 1rem;
-    }
+  }
+
+  .checkMarkContainer {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1.5rem;
   }
 
   .delete-container {
