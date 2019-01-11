@@ -39,7 +39,7 @@ export default class FormField extends React.Component {
     const { input, type, placeholder, children } = this.props;
     return (
       <Textarea
-        spellcheck={"false"}
+        spellCheck={"false"}
         {...input}
         autoComplete={"off"}
         type={type}

@@ -25,51 +25,61 @@ export const labelMap = {
   allOrNothingThinking: {
     title: "All-or-Nothing Thinking",
     shortTitle: "All or Nothing",
+    cssClass: "allOrNothingThinking",
     description: "A place holder description",
   },
   overgeneralization: {
     title: "Overgeneralization",
     shortTitle: "Overgeneralization",
+    cssClass: "overgeneralization",
     description: "A place holder description",
   },
   mentalFilter: {
     title: "Mental Filter",
     shortTitle: "Mental Filter",
+    cssClass: "mentalFilter",
     description: "A place holder description",
   },
   discountingThePositive: {
     title: "Discounting The Positives",
     shortTitle: "Discounting Positives",
+    cssClass: "discountingThePositive",
     description: "A place holder description",
   },
   jumpingToConclusions: {
     title: "Jumping to Conclusions",
     shortTitle: "Jumping To Conclusions",
+    cssClass: "jumpingToConclusions",
     description: "A place holder description",
   },
   magnifyingOrMinifying: {
     title: "Magnifying Or Minifying",
     shortTitle: "Magnifying/Minifying",
+    cssClass: "magnifyingOrMinifying",
     description: "A place holder description",
   },
   emotionalReasoning: {
     title: "Emotional Reasoning",
     shortTitle: "Emotional Reasoning",
+    cssClass: "emotionalReasoning",
     description: "A place holder description",
   },
   shouldStatements: {
     title: "'Should' Statements",
     shortTitle: "Should Statements",
+    cssClass: "shouldStatements",
     description: "A place holder description",
   },
   labeling: {
     title: "Labeling",
     shortTitle: "Labeling",
+    cssClass: "labeling",
     description: "A place holder description",
   },
   personalizationAndBlame: {
     title: "Personalization and Blame",
     shortTitle: "Personalization",
+    cssClass: "personalizationAndBlame",
     description: "A place holder description",
   },
 };
