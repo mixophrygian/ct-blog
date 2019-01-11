@@ -150,7 +150,10 @@ export class EntryEdit extends React.Component {
             placeholder="The automatic thoughts"
           />
 
-          <p>Cognitive Distortions</p>
+          <div className="label-link-container">
+            <div className="form-label">Distortions</div>
+            <div className="help">Help</div>
+          </div>
           <div className="distortions-container">
             <button className="choice" onClick={this.toggleChecked}>
               All-or-Nothing Thinking
