@@ -1,4 +1,6 @@
 import { withRouter } from "react-router";
+import colors from "../stylesheets/colors.scss";
+
 export default withRouter;
 
 export const formatDate = date => {
@@ -27,60 +29,70 @@ export const labelMap = {
     shortTitle: "All or Nothing",
     cssClass: "allOrNothingThinking",
     description: "A place holder description",
+    color: colors.lightred,
   },
   overgeneralization: {
     title: "Overgeneralization",
     shortTitle: "Overgeneralization",
     cssClass: "overgeneralization",
     description: "A place holder description",
+    color: colors.orangecream,
   },
   mentalFilter: {
     title: "Mental Filter",
     shortTitle: "Mental Filter",
     cssClass: "mentalFilter",
     description: "A place holder description",
+    color: colors.lemon,
   },
   discountingThePositive: {
     title: "Discounting The Positives",
     shortTitle: "Discounting Positives",
     cssClass: "discountingThePositive",
     description: "A place holder description",
+    color: colors.fungreen,
   },
   jumpingToConclusions: {
     title: "Jumping to Conclusions",
     shortTitle: "Jumping To Conclusions",
     cssClass: "jumpingToConclusions",
     description: "A place holder description",
+    color: colors.skyblue,
   },
   magnifyingOrMinifying: {
     title: "Magnifying Or Minifying",
     shortTitle: "Magnifying/Minifying",
     cssClass: "magnifyingOrMinifying",
     description: "A place holder description",
+    color: colors.lilac,
   },
   emotionalReasoning: {
     title: "Emotional Reasoning",
     shortTitle: "Emotional Reasoning",
     cssClass: "emotionalReasoning",
     description: "A place holder description",
+    color: colors.warmpurple,
   },
   shouldStatements: {
     title: "'Should' Statements",
     shortTitle: "Should Statements",
     cssClass: "shouldStatements",
     description: "A place holder description",
+    color: colors.lightpink,
   },
   labeling: {
     title: "Labeling",
     shortTitle: "Labeling",
     cssClass: "labeling",
     description: "A place holder description",
+    color: colors.lightred,
   },
   personalizationAndBlame: {
     title: "Personalization and Blame",
     shortTitle: "Personalization",
     cssClass: "personalizationAndBlame",
     description: "A place holder description",
+    color: colors.orangecream,
   },
 };
 

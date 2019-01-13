@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { Form, Field, SubmissionError, reduxForm, isPristine } from "redux-form";
 import FormField from "./common/FormField";
 import AreYouSurePrompt from "./common/AreYouSurePrompt";
+import CheckMark from "./icons/checkmark.js";
 import { mySQLDate, labelMap } from "../utils/utils.js";
 
 export class EntryEdit extends React.Component {
@@ -57,12 +58,12 @@ export class EntryEdit extends React.Component {
 
   toggleChecked(e) {
     e.preventDefault();
-    const checkbox = e.target.getElementsByTagName("input")[0];
+    const checkbox = e.currentTarget.getElementsByTagName("input")[0];
     checkbox.checked = !checkbox.checked;
     if (checkbox.checked) {
-      e.target.className = `choice-active ${checkbox.name}`;
+      e.currentTarget.className = `choice-active ${checkbox.name}`;
     } else {
-      e.target.className = `choice `;
+      e.currentTarget.className = `choice `;
     }
     this.saveChecked(checkbox);
   }
@@ -129,8 +130,14 @@ export class EntryEdit extends React.Component {
     const buttons = [];
     for (const distortion in labelMap) {
       buttons.push(
-        <button key={distortion} className="choice" onClick={this.toggleChecked}>
-          {labelMap[distortion].title}
+        <button key={distortion} className="choice distortionsView" onClick={this.toggleChecked}>
+          <div className="checkMarkContainer">
+            <CheckMark size={35} fill={labelMap[distortion].color} />
+          </div>
+          <div className="distortionTextContainer">
+            <div className="labelTitle spacer">{labelMap[distortion].title}</div>
+            <div className="labelDescription">{labelMap[distortion].description}</div>
+          </div>
           <input
             type="checkbox"
             className="invisible"

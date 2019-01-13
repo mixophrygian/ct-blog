@@ -45,31 +45,6 @@
     margin: 0;
   }
 
-  .labelTitle {
-    font-weight: bold;
-    font-size: 15px;
-  }
-
-  .labelDescription {
-    color: $grayishBlue;
-    font-weight: lighter;
-    font-size: 15px;
-  }
-
-  .distortionsView {
-    display: flex;
-    align-items: center;
-    margin: 0 0 10px;
-    padding: 10px;
-    padding-left: 0;
-  }
-
-  .checkMarkContainer {
-    width: 3rem;
-    height: 3rem;
-    margin-right: 1.5rem;
-  }
-
   .delete-container {
     align-self: flex-end;
   }
