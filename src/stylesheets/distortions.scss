@@ -55,14 +55,12 @@
   display: flex;
   align-items: center;
   margin: 0 0 10px;
-  padding: 10px;
-  padding-left: 0;
+  padding: 20px;
 }
 
 .choice,
 .choice-active {
   font-family: "Futura";
-  opacity: 0.5;
   border: none;
   border-radius: 4px;
   color: #333;
@@ -70,9 +68,20 @@
 }
 
 .choice-active {
-  opacity: 1;
   outline: none;
-  color: black;
+  color: white;
+}
+
+.choice .labelDescription {
+  color: $warmGray;
+}
+
+.choice-active .labelDescription {
+  color: white;
+}
+
+.choice-active .checkMarkContainer {
+  color: white;
 }
 
 @media only screen and (min-width: 769px) {

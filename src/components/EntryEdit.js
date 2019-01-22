@@ -18,7 +18,6 @@ export class EntryEdit extends React.Component {
     };
     this.distortionsButtons = this.distortionsButtons.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
-    this.saveChecked = this.saveChecked.bind(this);
     this.toggleChecked = this.toggleChecked.bind(this);
     this.setPreviouslyChecked = this.setPreviouslyChecked.bind(this);
     this.showCancelModal = this.showCancelModal.bind(this);
@@ -60,15 +59,6 @@ export class EntryEdit extends React.Component {
     e.preventDefault();
     const checkbox = e.currentTarget.getElementsByTagName("input")[0];
     checkbox.checked = !checkbox.checked;
-    if (checkbox.checked) {
-      e.currentTarget.className = `choice-active ${checkbox.name}`;
-    } else {
-      e.currentTarget.className = `choice `;
-    }
-    this.saveChecked(checkbox);
-  }
-
-  saveChecked(checkbox) {
     const newDistortions = this.state.cognitiveDistortions.slice();
     if (checkbox.checked) {
       newDistortions.push(checkbox.name);
@@ -127,12 +117,23 @@ export class EntryEdit extends React.Component {
   }
 
   distortionsButtons() {
+    const { cognitiveDistortions } = this.state;
     const buttons = [];
+    let checked = false;
     for (const distortion in labelMap) {
+      if (cognitiveDistortions.indexOf(distortion) > -1) {
+        checked = true;
+      } else {
+        checked = false;
+      }
+      const buttonClass = checked
+        ? `choice-active distortionsView ${distortion}`
+        : "choice distortionsView";
+
       buttons.push(
-        <button key={distortion} className="choice distortionsView" onClick={this.toggleChecked}>
+        <button key={distortion} className={`${buttonClass}`} onClick={this.toggleChecked}>
           <div className="checkMarkContainer">
-            <CheckMark size={35} fill={labelMap[distortion].color} />
+            <CheckMark size={35} fill={checked ? "white" : labelMap[distortion].color} />
           </div>
           <div className="distortionTextContainer">
             <div className="labelTitle spacer">{labelMap[distortion].title}</div>
