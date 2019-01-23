@@ -180,7 +180,13 @@ export class EntryEdit extends React.Component {
 
           <div className="label-link-container">
             <div className="form-label">Distortions</div>
-            <div className="help">Help</div>
+            <div
+              data-balloon="For a more detailed explanation on what these labels mean check out 'Distortions' in the menu"
+              data-balloon-pos="left"
+              className="help"
+            >
+              Help
+            </div>
           </div>
 
           {this.distortionsButtons()}
