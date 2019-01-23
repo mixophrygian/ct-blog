@@ -55,7 +55,7 @@
   display: flex;
   align-items: center;
   margin: 0 0 10px;
-  padding: 20px;
+  padding: 1em;
 }
 
 .choice,
@@ -107,7 +107,7 @@
 
 .labelTitle {
   font-weight: bold;
-  font-size: 15px;
+  font-size: 1.5rem;
 }
 
 .spacer {
@@ -117,10 +117,18 @@
 .labelDescription {
   color: $grayishBlue;
   font-weight: lighter;
-  font-size: 15px;
+  font-size: 1.5rem;
 }
 
 .checkMarkContainer {
   display: flex;
   margin-right: 1.5rem;
+}
+
+@media only screen and (max-width: 320px) {
+  .labelTitle,
+  .labelDescription {
+    font-size: 1.25rem;
+    text-align: left;
+  }
 }
