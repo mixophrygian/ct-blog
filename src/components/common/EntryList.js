@@ -66,23 +66,21 @@ export class EntryList extends React.Component {
     const startOffset = (currentPage - 1) * PER_PAGE;
     let startCount = 0;
     const savedEntries = entries.length ? (
-      <div>
-        <div className="Table">
-          {entries.map((entry, index) => {
-            if (index >= startOffset && startCount < PER_PAGE) {
-              startCount++;
-              return (
-                <SingleEntryRow
-                  history={this.props.history}
-                  key={index}
-                  entry={entry}
-                  showDelete={this.showDelete}
-                  className="SingleEntryRow"
-                />
-              );
-            }
-          })}
-        </div>
+      <div className="Table">
+        {entries.map((entry, index) => {
+          if (index >= startOffset && startCount < PER_PAGE) {
+            startCount++;
+            return (
+              <SingleEntryRow
+                history={this.props.history}
+                key={index}
+                entry={entry}
+                showDelete={this.showDelete}
+                className="SingleEntryRow"
+              />
+            );
+          }
+        })}
       </div>
     ) : (
       <NoEntries history={this.props.history} className="SingleEntryRow" />
