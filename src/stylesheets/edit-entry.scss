@@ -16,6 +16,8 @@
     padding: 9px;
     border: 1px solid white;
     border-radius: 4px;
+    //height is getting overridden somewhere at 40px but where???
+    height: 10rem !important;
   }
 
   .form-label {
@@ -53,4 +55,9 @@
 
 button {
   background-color: transparent;
+}
+
+.bottom-button {
+  width: 100%;
+  padding: 10px;
 }

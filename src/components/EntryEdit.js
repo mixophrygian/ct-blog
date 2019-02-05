@@ -1,8 +1,9 @@
 /* eslint-disable guard-for-in */
 import PropTypes from "prop-types";
 import React from "react";
+import { Button } from "react-bootstrap";
 import { connect } from "react-redux";
-import { Form, Field, SubmissionError, reduxForm, isPristine } from "redux-form";
+import { Form, Field, SubmissionError, reduxForm, submit, isPristine } from "redux-form";
 import FormField from "./common/FormField";
 import AreYouSurePrompt from "./common/AreYouSurePrompt";
 import CheckMark from "./icons/checkmark.js";
@@ -198,6 +199,12 @@ export class EntryEdit extends React.Component {
             label="Rational Response"
             placeholder="A rational response to these distortions"
           />
+          <Button
+            className="new-entry-button bottom-button"
+            onClick={() => this.props.dispatch(submit("entryEdit"))}
+          >
+            Save
+          </Button>
         </Form>
         <AreYouSurePrompt
           show={this.state.shouldShowCancelModel}
