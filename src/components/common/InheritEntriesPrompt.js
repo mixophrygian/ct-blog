@@ -14,7 +14,7 @@ export default class InheritEntriesPrompt extends React.Component {
           </Modal.Title>
         </Modal.Header>
         <Modal.Footer>
-          <Button bsStyle="primary" onClick={hide}>
+          <Button className="new-entry-button" onClick={hide}>
             Okay
           </Button>
         </Modal.Footer>
