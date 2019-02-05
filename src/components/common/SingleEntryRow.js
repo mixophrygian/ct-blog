@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { formatDate, shortLabel } from "../../utils/utils";
+import { formatDate } from "../../utils/utils";
 
 // User List Element component
 export default class SingleEntryRow extends React.Component {
@@ -9,6 +9,22 @@ export default class SingleEntryRow extends React.Component {
     this.viewEntry = this.viewEntry.bind(this);
     this.renderDistortionLabels = this.renderDistortionLabels.bind(this);
     this.truncateAndAddMoreLink = this.truncateAndAddMoreLink.bind(this);
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.getTruncateAmountFromDevice = this.getTruncateAmountFromDevice.bind(this);
+    this.state = { width: 0, height: 0 };
+  }
+
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener("resize", this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   viewEntry(e) {
@@ -19,22 +35,50 @@ export default class SingleEntryRow extends React.Component {
     }
   }
 
+  getTruncateAmountFromDevice() {
+    const { height } = this.state;
+    let truncateChars;
+    switch (true) {
+      // iphone 5
+      case height <= 568:
+        truncateChars = 60;
+        break;
+      // iphone 6
+      case height <= 667:
+        truncateChars = 125;
+        break;
+      // iphone 6 plus
+      case height <= 736:
+        truncateChars = 250;
+        break;
+      // iphone X
+      case height <= 812:
+        truncateChars = 215;
+        break;
+      // tablet and up
+      default:
+        truncateChars = 500;
+    }
+    return truncateChars;
+  }
+
   renderDistortionLabels(list) {
+    /* originally this had the distortion name inside as {shortLabel(label)}
+     * But I think it looks better as a colored dot
+    */
+
     if (!list) return;
     return (
       <div className="distortionLabelContainer">
-        {list.map(label => (
-          <div key={label} className={`${label} distortionLabel`}>
-            {shortLabel(label)}
-          </div>
-        ))}
+        {list.map(label => <div key={label} className={`${label} distortionLabel`} />)}
       </div>
     );
   }
 
   truncateAndAddMoreLink(text) {
-    if (text.length > 210) {
-      const truncatedText = text.substring(0, 210) + "...";
+    const LENGTH = this.getTruncateAmountFromDevice();
+    if (text.length > LENGTH) {
+      const truncatedText = text.substring(0, LENGTH) + "... ";
       return (
         <span>
           {truncatedText}

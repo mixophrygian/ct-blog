@@ -2,7 +2,8 @@
 
 // $lightred: #fab3a8;
 // $orangecream: #fcd48c;
-$lemon: #fcf666;
+//$lemon: #fcf666; //original lemon
+$lemon: #efd829; //more of a goldenrod
 $fungreen: #8cff8c;
 // $skyblue: #7beffa;
 $lilac: #b8b8fe;
@@ -26,3 +27,16 @@ $placeholderText: rgb(144, 164, 174);
 
 $silver: rgb(207, 216, 220);
 $warmGray: rgb(117, 117, 117);
+
+// so JS files can use colors too
+:export {
+  warmpurple: $warmpurple;
+  lemon: $lemon;
+  fungreen: $fungreen;
+  lilac: $lilac;
+  lightpink: $lightpink;
+  lightred: $lightred;
+  orangecream: $orangecream;
+  lightgreen: $lightgreen;
+  skyblue: $skyblue;
+}

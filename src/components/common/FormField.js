@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { FormGroup, FormControl, HelpBlock, Row, Col } from "react-bootstrap";
+import { FormGroup, FormControl, HelpBlock } from "react-bootstrap";
 import Textarea from "react-textarea-autosize";
 
 // Form field component
@@ -25,25 +25,26 @@ export default class FormField extends React.Component {
 
   // the field content
   content() {
-    const { theme, label } = this.props;
-    if (theme === "other_theme") {
-      // layout for some other theme
-    } else {
-      // default theme: 2col
-      return (
-        <Row>
-          <Col sm={3}>{label}</Col>
-          <Col sm={9}>{this.field()}</Col>
-        </Row>
-      );
-    }
+    const { label } = this.props;
+    return (
+      <div className="form-row">
+        <div className="form-label">{label}</div>
+        <div className="form-field">{this.field()}</div>
+      </div>
+    );
   }
 
   // the field itself
   field() {
     const { input, type, placeholder, children } = this.props;
     return (
-      <Textarea {...input} autoComplete={"off"} type={type} placeholder={placeholder}>
+      <Textarea
+        spellCheck={"false"}
+        {...input}
+        autoComplete={"off"}
+        type={type}
+        placeholder={placeholder}
+      >
         {children}
       </Textarea>
     );
@@ -55,7 +56,6 @@ FormField.propTypes = {
   meta: PropTypes.object,
   children: PropTypes.node,
   input: PropTypes.object,
-  theme: PropTypes.string, // 2col (default), etc
   doValidate: PropTypes.bool, // true or false
   label: PropTypes.any, // the field text or a react component if we have html inside (empty string by default)
   type: PropTypes.string, // input type: text (by default), password
