@@ -82,7 +82,7 @@ button {
   width: 40px;
   height: 40px;
   border-radius: 100px;
-  top: 87vh;
+  top: 68%;
   z-index: 1000;
 }
 
@@ -103,7 +103,7 @@ button {
 
 .slick-next {
   transform: rotate(180deg);
-  top: 84vh; //rotating causes this
+  top: 66%; //rotating causes this
   right: 15vw;
 }
 
