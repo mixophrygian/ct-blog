@@ -50,12 +50,16 @@ p {
 
 .slide-container img {
   width: 32vw;
-  border-radius: 50%;
-  border: 1px solid #eee;
+  margin: 1rem 0;
 }
 
 button {
   border: 1px solid $borderGray;
+}
+
+button.gotItButton {
+  position: absolute;
+  bottom: 17%;
 }
 
 .closeIcon {
@@ -76,39 +80,55 @@ button {
 }
 
 .slick-arrow {
-  border: 1px solid $silver;
+  position: absolute;
+  border: 1px solid #777; //nonstandard gray to handle .25 opacity for arrow
   z-index: 10;
   width: 40px;
   height: 40px;
   border-radius: 100px;
-  top: 87vh;
+  top: 68%;
   z-index: 1000;
-  color: red;
+}
+
+.slick-prev,
+.slick-next,
+.slick-prev:focus,
+.slick-next:focus {
+  background-image: url("~/src/components/icons/back.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
+  opacity: 0.25; //hack to make the arrow gray
 }
 
 .slick-prev {
   left: 15vw;
 }
 
+.slick-next {
+  transform: rotate(180deg);
+  top: 66%; //rotating causes this
+  right: 15vw;
+}
+
 .slick-prev:before,
 .slick-next:before {
   color: $warmGray;
-}
-.slick-prev:before {
   content: "";
-}
-
-.slick-next:before {
-  content: "";
-}
-
-.slick-next {
-  right: 15vw;
 }
 
 .slick-dots {
   z-index: 100;
   bottom: 38vh;
+}
+
+.slick-dots {
+  li.slick-active {
+    button:before {
+      font-size: 10px;
+      color: $lightred;
+    }
+  }
 }
 .slick-disabled {
   display: none !important;

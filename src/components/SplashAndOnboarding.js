@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 import React from "react";
 import Slider from "react-slick";
 import { Button } from "react-bootstrap";
-import Flowers from "./art/Flowers.svg";
-import AirBalloon from "./art/AirBalloon.svg";
-import Monkeys from "./art/Monkeys.svg";
-import FingerPuppets from "./art/FingerPuppets.svg";
+import BalloonIllustration from "./art/airBalloonIllustration.svg";
+import HeartHand from "./art/heart-hand.svg";
+import Potion from "./art/potion.svg";
+import Puzzle from "./art/puzzle.svg";
 
 export default class SplashAndOnboarding extends React.Component {
   componentDidMount() {
@@ -32,15 +32,19 @@ export default class SplashAndOnboarding extends React.Component {
         <Slider {...settings}>
           <div className="slide-wrapper">
             <div className="slide-container">
-              <h3>Automatic</h3>
-              <h3>Thought</h3>
-              <h3>Journal</h3>
-              <br />
-              <img src={Flowers} />
+              <div>
+                <h3>Automatic</h3>
+                <h3>Thought</h3>
+                <h3>Journal</h3>
+              </div>
+              <img src={BalloonIllustration} />
               <p>
                 <i>
                   "Your thoughts create your emotions. Therefore, your emotions cannot prove that
-                  your thoughts are accurate." - David Burns.
+                  your thoughts are accurate."
+                  <br />
+                  <br />
+                  David Burns
                 </i>
               </p>
             </div>
@@ -52,11 +56,11 @@ export default class SplashAndOnboarding extends React.Component {
               </Button>
               <h3>Cognitive Distortions?</h3>
               <br />
-              <img src={AirBalloon} />
+              <img src={HeartHand} />
               <p>
                 This micro blog was created to be used as a companion tool for the book{" "}
                 <b>Feeling Good</b>
-                by David Burns. In this book he outlines an exercize in which someone who has
+                {} by David Burns. In this book he outlines an exercize in which someone who has
                 experienced an automatic thought can methodically break it down into manageable
                 pieces.
               </p>
@@ -69,11 +73,12 @@ export default class SplashAndOnboarding extends React.Component {
               </Button>
               <h3>How do I use this?</h3>
               <br />
-              <img src={Monkeys} />
+              <img src={Puzzle} />
 
               <p>
                 By noticing the pattern that the thoughts follow, you start to see the distortions
-                for what they are - distortions.
+                for what they are - distortions - and begin to recognize them before believing that
+                they are the truth.
               </p>
             </div>
           </div>
@@ -81,14 +86,15 @@ export default class SplashAndOnboarding extends React.Component {
             <div className="slide-container">
               <h3>Try it out!</h3>
               <br />
-              <img src={FingerPuppets} />
+              <img src={Potion} />
               <p>
-                Read more about the cognitive distortions from the menu and in David Burns'{" "}
-                <b>Feeling Good</b>.
+                Read more about the cognitive distortions from the side menu and in David Burns'{" "}
+                <b>Feeling Good</b>. Use this journal anonymously or create a free account to save
+                your entries across devices.
               </p>
-              <p>[This onboarding flow only appears when a user has no entries]</p>
-              <br />
-              <Button onClick={this.props.hide}>Got it!</Button>
+              <Button className="gotItButton" onClick={this.props.hide}>
+                Got it!
+              </Button>
             </div>
           </div>
         </Slider>
