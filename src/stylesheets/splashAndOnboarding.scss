@@ -50,12 +50,16 @@ p {
 
 .slide-container img {
   width: 32vw;
-  border-radius: 50%;
-  border: 1px solid #eee;
+  margin: 1rem 0;
 }
 
 button {
   border: 1px solid $borderGray;
+}
+
+button.gotItButton {
+  position: absolute;
+  bottom: 17%;
 }
 
 .closeIcon {
@@ -116,6 +120,15 @@ button {
 .slick-dots {
   z-index: 100;
   bottom: 38vh;
+}
+
+.slick-dots {
+  li.slick-active {
+    button:before {
+      font-size: 10px;
+      color: $lightred;
+    }
+  }
 }
 .slick-disabled {
   display: none !important;
