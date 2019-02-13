@@ -151,6 +151,18 @@ button.gotItButton {
   }
 }
 
+//iphone X sizing
+@media only screen and (min-height: 812px) {
+  p {
+    margin-top: 15%;
+  }
+
+  button.gotItButton {
+    bottom: 21%;
+  }
+}
+
+//weird requirement for slick sider
 * {
   min-height: 0;
   min-width: 0;
