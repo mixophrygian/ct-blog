@@ -41,25 +41,7 @@
     }
   }
 
-  .distortions-container {
-    margin: 0;
-  }
-
   .delete-container {
     align-self: flex-end;
-  }
-}
-
-@media only screen and (min-width: 769px) {
-  .distortions-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    justify-content: center;
-
-    p {
-      width: 260px;
-      margin: 2% !important;
-    }
   }
 }

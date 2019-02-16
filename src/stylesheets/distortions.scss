@@ -88,13 +88,14 @@
   .distortions-container {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     align-items: stretch;
     justify-content: center;
   }
 
   .choice,
   .choice-active {
-    width: 260px;
+    width: 320px;
     margin: 2%;
   }
 }
