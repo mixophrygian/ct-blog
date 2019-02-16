@@ -24,7 +24,8 @@ export default class SplashAndOnboarding extends React.Component {
       slidesToScroll: 1,
       swipeToSlide: true,
       centerMode: false,
-      arrows: true,
+      arrows: false,
+      //adaptiveHeight: true,
     };
 
     return (
@@ -32,7 +33,7 @@ export default class SplashAndOnboarding extends React.Component {
         <Slider {...settings}>
           <div className="slide-wrapper">
             <div className="slide-container">
-              <div>
+              <div className="titleText">
                 <h3>Automatic</h3>
                 <h3>Thought</h3>
                 <h3>Journal</h3>
@@ -51,9 +52,6 @@ export default class SplashAndOnboarding extends React.Component {
           </div>
           <div className="slide-wrapper">
             <div className="slide-container">
-              <Button className="closeIcon" onClick={this.props.hide}>
-                <div aria-hidden="true">&times;</div>
-              </Button>
               <h3>Cognitive Distortions?</h3>
               <br />
               <img src={HeartHand} />
@@ -68,9 +66,6 @@ export default class SplashAndOnboarding extends React.Component {
           </div>
           <div className="slide-wrapper">
             <div className="slide-container">
-              <Button className="closeIcon" onClick={this.props.hide}>
-                <div aria-hidden="true">&times;</div>
-              </Button>
               <h3>How do I use this?</h3>
               <br />
               <img src={Puzzle} />
@@ -87,7 +82,7 @@ export default class SplashAndOnboarding extends React.Component {
               <h3>Try it out!</h3>
               <br />
               <img src={Potion} />
-              <p>
+              <p className="lastSlideText">
                 Read more about the cognitive distortions from the side menu and in David Burns'{" "}
                 <b>Feeling Good</b>. Use this journal anonymously or create a free account to save
                 your entries across devices.

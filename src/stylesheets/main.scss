@@ -47,15 +47,31 @@ h2 {
   border: 1px solid lightgray;
 }
 
+/*
 .page-home,
 .page-entry-view,
 .page-entry-edit,
 .page-faq,
 .page-about {
+*/
+.page {
   height: 100%;
   margin-top: 12vh;
   max-width: 1000px;
   padding: 0 4vw 4vw 4vw;
+}
+
+.page-faq,
+.page-about {
+  h2,
+  h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
 }
 
 .progress {
@@ -67,7 +83,8 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $lightgreen;
+  background-color: $silver;
+  opacity: 50%;
   height: 100vh;
   padding-bottom: 12px;
 }
@@ -87,5 +104,23 @@ h2 {
   }
   .plzNoLandscape {
     display: flex;
+  }
+}
+
+// permit landscape view on tablets and larger
+@media only screen and (min-width: 768px) and (min-height: 400px) {
+  .container {
+    display: block;
+  }
+  .plzNoLandscape {
+    display: none;
+  }
+}
+
+//landcape tablet and larger
+@media only screen and (min-width: 1024px) {
+  .page {
+    margin: 0 auto;
+    margin-top: 12vh;
   }
 }
