@@ -41,11 +41,11 @@ p {
   align-items: center;
   background-color: white;
   border-radius: 5px;
-  width: 100%;
+  //width: 100%;
   height: 66vh;
   padding: 30px;
   margin: 0 5vw 15px 5vw;
-  box-shadow: 0px 5px 35px black;
+  box-shadow: 2px 3px 16px #4e4e4e;
 }
 
 .slide-container img {
@@ -62,64 +62,14 @@ button.gotItButton {
   bottom: 17%;
 }
 
-.closeIcon {
-  position: absolute;
-  top: 8px;
-  right: 10px;
-  box-shadow: none;
-  background: transparent;
-  border: none;
-  color: lightgray;
-  padding-bottom: 11px;
-}
-
 .slick-list {
   text-align: center;
-  height: 100vh;
-  margin-top: 50%;
-}
-
-.slick-arrow {
-  position: absolute;
-  border: 1px solid #777; //nonstandard gray to handle .25 opacity for arrow
-  z-index: 10;
-  width: 40px;
-  height: 40px;
-  border-radius: 100px;
-  top: 68%;
-  z-index: 1000;
-}
-
-.slick-prev,
-.slick-next,
-.slick-prev:focus,
-.slick-next:focus {
-  background-image: url("../components/icons/back.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 60%;
-  opacity: 0.25; //hack to make the arrow gray
-}
-
-.slick-prev {
-  left: 15vw;
-}
-
-.slick-next {
-  transform: rotate(180deg);
-  top: 66%; //rotating causes this
-  right: 15vw;
-}
-
-.slick-prev:before,
-.slick-next:before {
-  color: $warmGray;
-  content: "";
 }
 
 .slick-dots {
   z-index: 100;
-  bottom: 38vh;
+  bottom: 25px;
+  //bottom: 38vh;
 }
 
 .slick-dots {
@@ -162,8 +112,78 @@ button.gotItButton {
   }
 }
 
+//ipad styling
+@media only screen and (min-width: 768px) {
+  .slide-container {
+    width: 70%;
+    max-width: 540px;
+    height: 50vh;
+    max-height: 512px;
+
+    p {
+      margin-top: 5%;
+    }
+
+    .titleText {
+      margin-bottom: 10%;
+    }
+
+    img {
+      max-width: 130px;
+    }
+
+    .lastSlideText {
+      margin-bottom: 18%;
+    }
+
+    button.gotItButton {
+      bottom: 13%;
+    }
+  }
+}
+
 //weird requirement for slick sider
 * {
   min-height: 0;
   min-width: 0;
 }
+
+/* slick arrows for navigating between cards, not currently in use. 
+.slick-arrow {
+  position: absolute;
+  border: 1px solid #777; //nonstandard gray to handle .25 opacity for arrow
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  // top: 68%;
+  z-index: 1000;
+}
+
+.slick-prev,
+.slick-next,
+.slick-prev:focus,
+.slick-next:focus {
+  background-image: url("../components/icons/back.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
+  opacity: 0.25; //hack to make the arrow gray
+}
+
+.slick-prev {
+  //left: 15vw;
+}
+
+.slick-next {
+  transform: rotate(180deg);
+  //top: 66%; //rotating causes this
+  //right: 15vw;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: $warmGray;
+  content: "";
+}
+*/

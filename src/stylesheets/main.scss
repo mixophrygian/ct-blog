@@ -67,7 +67,8 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $lightgreen;
+  background-color: $silver;
+  opacity: 50%;
   height: 100vh;
   padding-bottom: 12px;
 }
@@ -87,5 +88,14 @@ h2 {
   }
   .plzNoLandscape {
     display: flex;
+  }
+}
+
+@media only screen and (min-width: 768px) and (min-height: 400px) {
+  .container {
+    display: block;
+  }
+  .plzNoLandscape {
+    display: none;
   }
 }
