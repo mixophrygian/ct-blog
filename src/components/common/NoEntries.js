@@ -18,7 +18,7 @@ export default class NoEntries extends React.Component {
           experienced an automatic thought can methodically break it down into manageable pieces.{" "}
         </p>
         <br />
-        <Link className="whatIsThis" to={"/about"}>
+        <Link className="link" to={"/about"}>
           How do I use this?
         </Link>
         <br />

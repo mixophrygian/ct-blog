@@ -37,19 +37,22 @@ export default class About extends React.Component {
         </p>
         <h2>How it works</h2>
         <p>
-          In the original triple-column version<a href="#firstAsterix">*</a>, there are only three
-          steps: identify the self-critical thought, identify the cognitive distortion, and then try
-          to respond to the thought rationally. For instance, suppose you are late for an important
-          meeting. You are panicked and nervous. Ask yourself, "What thoughts are going through my
-          mind right now?" You might have been thinking "I never do anything right. I'm always
-          late." Write these down as part of the first step. You may have also thought "Everyone
-          will look down on me. This shows what a jerk I am." These are the MOST important thoughts
-          to write down. Second, identify the cognitive distortion(s) that could apply to these
-          thoughts. (What's a cognitive distortion? <Link to={"/distortions"}>See below</Link>)
-          Lastly, the most critical step in the exercise, is to substitute a more rational, less
-          upsetting response. You cannot try to cheer yourself up by rationalizing or saying things
-          you don't believe. Instead, try to recognize the truth. For example, in response to "I
-          never do anything right" you could write: "Forget that! I do some things right and some
+          In the original triple-column version<a className="link" href="#firstAsterix">
+            *
+          </a>, there are only three steps: identify the self-critical thought, identify the
+          cognitive distortion, and then try to respond to the thought rationally. For instance,
+          suppose you are late for an important meeting. You are panicked and nervous. Ask yourself,
+          "What thoughts are going through my mind right now?" You might have been thinking "I never
+          do anything right. I'm always late." Write these down as part of the first step. You may
+          have also thought "Everyone will look down on me. This shows what a jerk I am." These are
+          the MOST important thoughts to write down. Second, identify the cognitive distortion(s)
+          that could apply to these thoughts. (What's a cognitive distortion?{" "}
+          <Link className="link" to={"/distortions"}>
+            See below
+          </Link>) Lastly, the most critical step in the exercise, is to substitute a more rational,
+          less upsetting response. You cannot try to cheer yourself up by rationalizing or saying
+          things you don't believe. Instead, try to recognize the truth. For example, in response to
+          "I never do anything right" you could write: "Forget that! I do some things right and some
           wrong, just like everybody else. I messed up on my meeting but let's not blow this up out
           of proportion."
         </p>
@@ -74,14 +77,18 @@ export default class About extends React.Component {
         <hr />
 
         <h2>
-          <Link to={"/distortions"}>Cognitive Distortions</Link>
+          <Link className="link" to={"/distortions"}>
+            Cognitive Distortions
+          </Link>
         </h2>
         <p>
           At the heart of this exercise is the ability to identify distorted conclusions that you
           may have been drawing about yourself or your life.*{" "}
-          <Link to={"/distortions"}>Read over these distortions </Link> to get a feel for them and
-          refer back to them when you are feeling upset. This list is the key to clearing the fog of
-          distorted thinking.
+          <Link className="link" to={"/distortions"}>
+            Read over these distortions{" "}
+          </Link>{" "}
+          to get a feel for them and refer back to them when you are feeling upset. This list is the
+          key to clearing the fog of distorted thinking.
         </p>
         <hr />
         <h2>Sources</h2>
@@ -98,14 +105,19 @@ export default class About extends React.Component {
           developed into a more elaborate version called the "Daily Record of Dysfunctional
           Thoughts" by Aaron Beck and his colleagues (Beck, Rush, Shaw & Emery, 1979). This is the
           version that inspired this web application. Because it's {this.currentYear()} and who has
-          time for an elaborate work sheet on paper?<a href="#twoAsterixes">**</a> For the best
-          possible explanation of this exercise I highly recommend reading the original source -
-          Feeling Good by David Burns.
+          time for an elaborate work sheet on paper?<a className="link" href="#twoAsterixes">
+            **
+          </a>{" "}
+          For the best possible explanation of this exercise I highly recommend reading the original
+          source - Feeling Good by David Burns.
         </p>
         <p>
           <span id="twoAsterixes">**</span> Of course, if you prefer an analog version, many are
           available
-          <a href="https://psychologytools.com/daily-record-of-dysfunctional-thoughts.html">
+          <a
+            className="link"
+            href="https://psychologytools.com/daily-record-of-dysfunctional-thoughts.html"
+          >
             {" "}
             here
           </a>.
