@@ -17,7 +17,10 @@ export default class Distortions extends React.Component {
         <p>
           <i>
             Psst, this is a reference page. For an introduction, see
-            <Link to={"/about"}> What is This?</Link>
+            <Link className="link" to={"/about"}>
+              {" "}
+              What is This?
+            </Link>
           </i>
         </p>
         <br />
