@@ -23,10 +23,12 @@ export default class Auth extends Component {
     this.logout = this.logout.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.setSession = this.setSession.bind(this);
+    this.setSessionAndGoHome = this.setSessionAndGoHome.bind(this);
     this.fetchProfile = this.fetchProfile.bind(this);
     this.createUserOrFetchEntries = this.createUserOrFetchEntries.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.promptInheritEntries = this.promptInheritEntries.bind(this);
+    this.renewSession = this.renewSession.bind(this);
   }
 
   login() {
@@ -50,13 +52,21 @@ export default class Auth extends Component {
   async isAuthenticated() {
     const expiresAt = await localforage
       .getItem("expires_at")
-      .catch(e => console.log("something went wrong getting expires at token"));
+      .catch(e => console.log("something went wrong getting expires at token", e));
     if (!expiresAt) return false;
     const expiresAtParsed = JSON.parse(expiresAt);
-    return new Date().getTime() < expiresAtParsed;
+    const now = new Date().getTime();
+    return now < expiresAtParsed;
   }
 
   setSession(authResult) {
+    const expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime());
+    const accessToken = localforage.setItem("access_token", authResult.accessToken);
+    const idToken = localforage.setItem("id_token", authResult.idToken);
+    const expiresAtValue = localforage.setItem("expires_at", expiresAt);
+  }
+
+  setSessionAndGoHome(authResult) {
     const expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime());
     const accessToken = localforage.setItem("access_token", authResult.accessToken);
     const idToken = localforage.setItem("id_token", authResult.idToken);
@@ -66,6 +76,18 @@ export default class Auth extends Component {
         this.history.replace("/");
       })
       .catch(e => console.log("problem setting the session data"));
+  }
+
+  renewSession() {
+    this.auth0.checkSession({}, (err, authResult) => {
+      if (authResult && authResult.accessToken && authResult.idToken) {
+        console.log("good to renew session");
+        this.setSession(authResult);
+      } else if (err) {
+        console.log("Auth0 checkSession returned an error: ", err);
+        this.logout();
+      }
+    });
   }
 
   fetchProfile(dispatch) {
@@ -89,8 +111,7 @@ export default class Auth extends Component {
   }
 
   createUserOrFetchEntries(profile, dispatch) {
-    db
-      .createNewUser(profile)
+    db.createNewUser(profile)
       .then(res => {
         this.promptInheritEntries(dispatch);
         return res;
@@ -98,8 +119,7 @@ export default class Auth extends Component {
       .then(data => {
         // ER_DUP_ENTRY means a returning user
         if (data === "ER_DUP_ENTRY") {
-          db
-            .fetchEntriesFromDB(profile, this)
+          db.fetchEntriesFromDB(profile, this)
             .then(async entries => {
               // get any existing entries out of localforage
               const existingEntries = await localEntries.getEntries();
@@ -118,8 +138,9 @@ export default class Auth extends Component {
   handleAuthentication(nextState, dispatch) {
     if (/access_token|id_token|error/.test(nextState.location.hash)) {
       this.auth0.parseHash((err, authResult) => {
+        console.log("my auth result is", authResult);
         if (authResult && authResult.accessToken && authResult.idToken) {
-          this.setSession(authResult).then(() => {
+          this.setSessionAndGoHome(authResult).then(() => {
             this.fetchProfile(dispatch).then(profile => {
               this.createUserOrFetchEntries(profile, dispatch);
             });

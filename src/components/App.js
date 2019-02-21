@@ -50,10 +50,31 @@ export class App extends React.Component {
     });
   }
 
+  //remove async?
   async componentDidMount() {
     this.setState({ isLoading: false, cancel: false });
   }
 
+  async componentDidUpdate(prevProps) {
+    const oldPath = prevProps.location.pathname.split("/");
+    const newPath = this.props.location.pathname.split("/");
+    //const isEditing = newPath[1].includes("entry-edit");
+    if (oldPath !== newPath) {
+      //check to see if they used to be logged in
+      const wasLoggedIn = await localforage.getItem("access_token");
+      if (wasLoggedIn) {
+        //check if still logged in
+        const isAuthenticated = await this.auth.isAuthenticated();
+        if (!isAuthenticated) {
+          this.auth.logout();
+        }
+        // } else if (isEditing) {
+        //   //lengthen their session when they begin to write
+        //   this.auth.renewSession();
+        // }
+      }
+    }
+  }
   async getProfile() {
     const profile = await this.auth.fetchProfile();
     this.setState({ profile });
