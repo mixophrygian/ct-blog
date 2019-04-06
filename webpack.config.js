@@ -4,6 +4,7 @@ const path = require("path");
 const webpack = require("webpack"); /* eslint no-unused-vars: 0 */
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 const paths = {
   DIST: path.resolve(__dirname, "public"),
@@ -38,6 +39,7 @@ module.exports = {
       template: path.join(paths.SRC, "index.html"),
     }),
     extractSass,
+    new CompressionPlugin(),
   ],
 
   module: {

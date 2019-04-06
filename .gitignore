@@ -1,6 +1,5 @@
 .idea/
 node_modules/
-.DS_Store
 public/
 public/js/
 public/css/
@@ -17,3 +16,4 @@ bootstrap-min.css
 .env
 .env.dev
 .env.prod
+
