@@ -1,5 +1,6 @@
 .idea/
 node_modules/
+public/
 public/js/
 public/css/
 .log
@@ -9,3 +10,5 @@ npm-debug.log
 .swo
 .swn
 .DS_Store
+.env
+.env.*
