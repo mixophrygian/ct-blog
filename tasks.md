@@ -146,8 +146,15 @@ edge case: when they log in and there are existing entries in localstorage that 
 3/4:
 
 TODO:
+<<<<<<< HEAD
   -add new tests for new onboarding redux state - don't show splash when someone has been onboarded
   -consider replacing sidebar component with something better to restore scrolling
+=======
+  -fix existing broken tests
+  -add new tests for new onboarding redux state - don't show splash when someones
+onboarded
+    -consider replacing sidebar component with something better to restore scrolling
+>>>>>>> faf3c37... update tasks and npm
   -Add slick af pre-onboarding animation. -small fade in with title / logo?
   -fix view entry detail margin bullshit / mobile
   

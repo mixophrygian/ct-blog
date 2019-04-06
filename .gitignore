@@ -1,8 +1,8 @@
 .idea/
 node_modules/
-public/
-public/js/
-public/css/
+.DS_Store
+dist/
+dist/**/*
 .log
 npm-debug.log
 yarn-error.log
