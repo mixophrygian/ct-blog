@@ -4,15 +4,14 @@ const common = require("./webpack.config.js"); // inherit from the main config f
 
 module.exports = merge(common, {
   mode: "production",
-  // disable the hot reload
   entry: ["babel-polyfill", "./src/index.js"],
-  optimization: {},
   plugins: [
     new CompressionPlugin({
-      test: /\.(js|css)$/,
-      asset: "[path].gz[query]",
+      filename: "[path].gz[query]",
+      test: /\.js$|\.css$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|\.svg?.+$|\.ico?.+$/,
+      threshold: 10240,
       minRatio: 0.8,
-      deleteOriginalAssets: true,
+      algorithm: "gzip",
     }),
   ],
 });

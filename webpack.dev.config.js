@@ -7,6 +7,6 @@ module.exports = merge(common, {
   entry: ["babel-polyfill", "./src/index.js"],
   devtool: "inline-source-map",
   devServer: {
-    contentBase: "./public",
+    contentBase: "./dist",
   },
 });

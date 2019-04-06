@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 const express = require("express");
+const compression = require("compression");
 const bodyParser = require("body-parser");
 const path = require("path");
 const dataStore = require("./dataStore");
@@ -23,15 +24,16 @@ const jwtCheck = jwt({
   algorithms: ["RS256"],
 });
 
-app.use(express.static(path.resolve(__dirname, "./public")));
+app.use(compression());
+app.use(express.static(path.resolve(__dirname, "./dist")));
 app.use(bodyParser.json());
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./public", "index.html"));
+  res.sendFile(path.resolve(__dirname, "./dist", "index.html"));
 });
 
 app.get("/authenticate", jwtCheck, (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./public", "index.html"));
+  res.sendFile(path.resolve(__dirname, "./dist", "index.html"));
 });
 
 app.post("/createNewUser", jwtCheck, (request, response) => {
