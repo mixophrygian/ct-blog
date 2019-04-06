@@ -1,7 +1,11 @@
 .idea/
 node_modules/
+<<<<<<< HEAD
 .DS_Store
 public/
+=======
+public/**/*
+>>>>>>> bf17c8e... fix bundling WIP
 public/js/
 public/css/
 .log
