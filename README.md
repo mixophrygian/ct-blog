@@ -1,6 +1,15 @@
-#Cognitive Therapy Journal
+# Automatic Thought Journal 
+https://automaticthoughtjournal.com 
+
+### Update: July 4th, 2019
+
+**This project is being sunset due to a conflict of interest.  The site will be up until September 1st 2019.  Thanks for using Automatic Thought Journal.com!**
+
+*If you'd like to keep using a digital form of the Automatic Thought Journal you can download this code and run `npm run start`, open up your browser and point it to http://localhost:3000/.*
 
 
+
+### What is this? 
 A cognitive therapy journal format invented by David Burns in his book "Feeling Good"
 
 Known also as the "three column" technique, where the columns are
@@ -26,5 +35,5 @@ But Burns' full journal has in fact five columns:
 * "Rational Response" - A rational response to someone having those thoughts and feelings.
 
 
-Cognitive Therapy Journal is a mobile-first web app built using React Redux minimal starter kit (boilerplate)
+Cognitive Therapy Journal is a mobile-first web app built using React Redux minimal starter kit 
 https://github.com/catalin-luntraru/redux-minimal
