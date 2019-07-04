@@ -5,14 +5,12 @@ https://automaticthoughtjournal.com
 
 **This project is being sunset due to a conflict of interest.  The site will be up until September 1st 2019.  Thanks for using Automatic Thought Journal.com!**
 
-*If you'd like to keep using a digital form of the Automatic Thought Journal you can download this code and run `npm run start`, open up your browser and point it to http://localhost:3000/.*
+*If you'd like to keep using the Automatic Thought Journal locally you can download this code and run `npm run start`, open up your browser and point it to http://localhost:3000/.*
 
 
 
 ### What is this? 
-A cognitive therapy journal format invented by David Burns in his book "Feeling Good"
-
-Known also as the "three column" technique, where the columns are
+A cognitive therapy journal format invented by David Burns in his book "Feeling Good". Known also as the "three column" technique, where the columns are
 traditionally:
 
 * "Automatic thoughts"
