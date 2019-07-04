@@ -1,4 +1,6 @@
+import "regenerator-runtime/runtime";
 import { createStore, applyMiddleware, compose } from "redux";
+require("history").createBrowserHistory;
 import createBrowserHistory from "history/createBrowserHistory";
 import { syncHistoryWithStore, routerMiddleware } from "react-router-redux";
 import createSagaMiddleware from "redux-saga";
@@ -27,7 +29,10 @@ let middleware = applyMiddleware(...middlewares);
 
 // add the redux dev tools
 if (process.env.NODE_ENV !== "production" && window.devToolsExtension) {
-  middleware = compose(middleware, window.devToolsExtension());
+  middleware = compose(
+    middleware,
+    window.devToolsExtension()
+  );
 }
 // create the store
 const store = createStore(reducers, middleware);
