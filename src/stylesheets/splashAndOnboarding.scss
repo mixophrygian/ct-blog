@@ -39,9 +39,9 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: white;
   border-radius: 5px;
-  //width: 100%;
   height: 66vh;
   padding: 30px;
   margin: 0 5vw 15px 5vw;
@@ -51,6 +51,16 @@ p {
 .slide-container img {
   width: 32vw;
   margin: 1rem 0;
+}
+
+.slick-slide:last-child {
+  .slide-container {
+    justify-content: flex-start;
+  }
+
+  img {
+    margin: 2rem 0;
+  }
 }
 
 button {
@@ -130,6 +140,7 @@ button.gotItButton {
 
     img {
       max-width: 130px;
+      max-height: 130px;
     }
 
     .lastSlideText {

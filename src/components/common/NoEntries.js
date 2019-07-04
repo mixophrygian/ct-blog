@@ -10,7 +10,8 @@ export default class NoEntries extends React.Component {
   render() {
     return (
       <div className="empty-container">
-        <h4>Welcome</h4>
+        <h3>Welcome</h3>
+        <br />
         <p className="quote">
           This micro blog was created to be used as a companion tool for the book{" "}
           <b>Feeling Good</b>
@@ -23,7 +24,12 @@ export default class NoEntries extends React.Component {
         </Link>
         <br />
         <br />
-        <p> Last updated 2/20/19 10:58pm PST</p>
+        <h4>Update - 7/04/19</h4>
+        <p>
+          Thanks for using the prototype of the Automatic Thought Journal! This website will go away
+          on <b>September 1st, 2019</b>. If you'd like to continue using it locally, the code is
+          open sourced on <a href="https://github.com/mixophrygian/ct-blog">Github</a>
+        </p>
       </div>
     );
   }
