@@ -3,7 +3,7 @@ https://automaticthoughtjournal.com
 
 ### Update: July 4th, 2019
 
-**This project is being sunset due to a conflict of interest.  The site will be up until September 1st 2019.  Thanks for using Automatic Thought Journal.com!**
+**This project is being sunset; the site will be up until September 1st 2019.  Thanks for using Automatic Thought Journal.com!**
 
 *If you'd like to keep using the Automatic Thought Journal locally you can download this code and run `npm run start`, open up your browser and point it to http://localhost:3000/.*
 
