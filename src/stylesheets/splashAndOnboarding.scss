@@ -53,6 +53,16 @@ p {
   margin: 1rem 0;
 }
 
+.slick-slide:last-child {
+  .slide-container {
+    justify-content: flex-start;
+  }
+
+  img {
+    margin: 2rem 0;
+  }
+}
+
 button {
   border: 1px solid $borderGray;
 }
@@ -130,6 +140,7 @@ button.gotItButton {
 
     img {
       max-width: 130px;
+      max-height: 130px;
     }
 
     .lastSlideText {
