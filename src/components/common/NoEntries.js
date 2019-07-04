@@ -23,7 +23,7 @@ export default class NoEntries extends React.Component {
         </Link>
         <br />
         <br />
-        <p> Last updated 2/20/19 10:58pm PST</p>
+        <p> Last updated 7/04/19 1:03pm PST</p>
       </div>
     );
   }
