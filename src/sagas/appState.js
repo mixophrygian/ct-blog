@@ -24,3 +24,27 @@ export function* markAsOnboarded() {
     onboarded: newStatus,
   });
 }
+
+export function* checkIfNotifiedOfSunset() {
+  const notifiedOfSunset = yield call(appState.checkIfNotifiedOfSunset);
+  yield put({
+    type: "UPDATE_NOTIFIED_OF_SUNSET_STATE",
+    notifiedOfSunset,
+  });
+}
+
+export function* markAsNotified() {
+  const newStatus = yield call(appState.markAsNotified);
+  yield put({
+    type: "UPDATE_NOTIFIED_OF_SUNSET_STATE",
+    notifiedOfSunset: newStatus,
+  });
+}
+
+export function* renewSunsetNotice() {
+  const newStatus = yield call(appState.renewSunsetNotice);
+  yield put({
+    type: "UPDATE_NOTIFIED_OF_SUNSET_STATE",
+    notifiedOfSunset: newStatus,
+  });
+}

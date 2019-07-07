@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import { routerReducer } from "react-router-redux";
 import { reducer as formReducer } from "redux-form";
 import entries from "./entries";
-import onboarded from "./appState";
+import { notifiedOfSunset, onboarded } from "./appState";
 import profile from "./profile";
 import showInheritEntriesPrompt from "./showInheritEntriesPrompt";
 
@@ -22,6 +22,7 @@ export const reducers = combineReducers({
   }),
   entries,
   onboarded,
+  notifiedOfSunset,
   showInheritEntriesPrompt,
   profile,
 });

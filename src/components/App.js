@@ -48,6 +48,9 @@ export class App extends React.Component {
     this.props.dispatch({
       type: "GET_USER_PROFILE",
     });
+    this.props.dispatch({
+      type: "CHECK_IF_NOTIFIED_OF_SUNSET",
+    });
   }
 
   //remove async?
@@ -157,12 +160,11 @@ export class App extends React.Component {
 
     return (
       <div className="mainWrapper">
-        {!isEditing &&
-          !isViewingEntry && (
-            <BurgerMenu isOpen={this.state.sidebarOpen} width={"45vw"}>
-              {sidebarContent}
-            </BurgerMenu>
-          )}
+        {!isEditing && !isViewingEntry && (
+          <BurgerMenu isOpen={this.state.sidebarOpen} width={"45vw"}>
+            {sidebarContent}
+          </BurgerMenu>
+        )}
         {isViewingEntry && (
           <LinkContainer role="button" className="back-arrow" to={"/"}>
             <img src={back} />
@@ -244,6 +246,7 @@ function mapStateToProps(state) {
     profile: state.profile,
     entries: state.entries,
     onboarded: state.onboarded,
+    notifiedOfSunset: state.notifiedOfSunset,
   };
 }
 
@@ -253,6 +256,7 @@ App.propTypes = {
   profile: PropTypes.any,
   entries: PropTypes.any,
   onboarded: PropTypes.any,
+  notifiedOfSunset: PropTypes.any,
   history: PropTypes.object,
 };
 

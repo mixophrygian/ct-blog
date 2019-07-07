@@ -89,6 +89,17 @@ h2 {
   padding-bottom: 12px;
 }
 
+.modal-dialog {
+  max-width: 100%;
+}
+
+.sunsetGrave {
+  display: block;
+  margin: 1rem auto;
+  width: 30vw;
+  max-width: 150px;
+}
+
 @media screen and (max-device-aspect-ratio: 1/1) and (orientation: portrait) {
   .container {
     display: block;

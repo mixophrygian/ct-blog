@@ -27,6 +27,20 @@ export default class appState {
       });
   }
 
+  static checkIfNotifiedOfSunset() {
+    return localforage
+      .getItem("notifiedOfSunset")
+      .then(notifiedState => {
+        return !!notifiedState;
+      })
+      .catch(err => {
+        console.log(
+          "Something went wrong while trying to get notified-of-sunset state from localforage",
+          err
+        );
+      });
+  }
+
   static markAsOnboarded() {
     return localforage
       .setItem("onboarded", true)
@@ -35,6 +49,33 @@ export default class appState {
       })
       .catch(err => {
         console.log("Something went wrong while trying to set onboardstate from localforage", err);
+      });
+  }
+
+  static markAsNotified() {
+    return localforage
+      .setItem("notifiedOfSunset", true)
+      .then(notifiedState => {
+        return notifiedState;
+      })
+      .catch(err => {
+        console.log(
+          "Something went wrong while trying to set notified of sunset from localforage",
+          err
+        );
+      });
+  }
+  static renewSunsetNotice() {
+    return localforage
+      .setItem("notifiedOfSunset", false)
+      .then(notifiedState => {
+        return notifiedState;
+      })
+      .catch(err => {
+        console.log(
+          "Something went wrong while trying to reset notified of sunset from localforage",
+          err
+        );
       });
   }
 }
