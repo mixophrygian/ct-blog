@@ -30,6 +30,8 @@ export default class NoEntries extends React.Component {
           on <b>September 1st, 2019</b>. If you'd like to continue using it locally, the code is
           open sourced on <a href="https://github.com/mixophrygian/ct-blog">Github</a>
         </p>
+        <br />
+        <p>Last updated: July 7th, 2019</p>
       </div>
     );
   }
